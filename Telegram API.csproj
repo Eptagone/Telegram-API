@@ -29,6 +29,7 @@ All objects and methods are sorted in namespaces in the same order of sections a
     <Product>Telegram API NET</Product>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/Eptagone/Telegram-API</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
