@@ -15,7 +15,7 @@ namespace TelegramAPI.Available_Types
         [JsonProperty(PropertyName = "height", Required = Required.Always)]
         public uint Height { get; set; }
         ///<summary>Optional. File size.</summary>
-        [JsonProperty(PropertyName = "file_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "file_size", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint File_size { get; set; }
     }
 }
