@@ -19,7 +19,7 @@ namespace TelegramAPI
             Task.Wait();
             var output = JObject.Parse(Task.Result);
             if (output["ok"].Value<bool>() == true)
-                return (output["result"] as JObject).ToObject<T>();
+                return output["result"].ToObject<T>();
             else
                 throw new BotRequestException(output);
         }
