@@ -43,4 +43,4 @@ In the event of any error in any request, a BotRequestException will be thrown, 
 MIT
 
 ## Version
-**1.0.2**
+**1.0.5**

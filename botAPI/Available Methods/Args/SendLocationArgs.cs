@@ -13,6 +13,6 @@ namespace TelegramAPI.Available_Methods
         public float Longitude { get; set; }
         ///<summary>Optional. Period in seconds for which the location will be updated, should be between 60 and 86400.</summary>
         [JsonProperty(PropertyName = "live_period", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Live_period { get; set; }
+        public uint Live_period { get; set; }
     }
 }

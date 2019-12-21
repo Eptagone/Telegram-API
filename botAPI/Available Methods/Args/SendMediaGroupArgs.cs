@@ -16,6 +16,6 @@ namespace TelegramAPI.Available_Methods
         public bool Disable_notification { get; set; }
         /// <summary>Optional. If the message is a reply, ID of the original message.</summary>
         [JsonProperty(PropertyName = "reply_to_message_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Reply_to_message_id { get; set; }
+        public uint Reply_to_message_id { get; set; }
     }
 }

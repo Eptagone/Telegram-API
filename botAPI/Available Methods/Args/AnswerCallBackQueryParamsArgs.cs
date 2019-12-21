@@ -19,6 +19,6 @@ namespace TelegramAPI.Available_Methods
         public string Url { get; set; }
         ///<summary>Optional. The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.</summary>
         [JsonProperty(PropertyName = "cache_time", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Cache_time { get; set; }
+        public uint Cache_time { get; set; }
     }
 }

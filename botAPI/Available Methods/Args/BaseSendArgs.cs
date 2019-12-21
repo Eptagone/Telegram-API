@@ -12,7 +12,7 @@ namespace TelegramAPI.Available_Methods
         public bool Disable_notification { get; set; }
         /// <summary>Optional. If the message is a reply, ID of the original message.</summary>
         [JsonProperty(PropertyName = "reply_to_message_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Reply_to_message_id { get; set; }
+        public uint Reply_to_message_id { get; set; }
         /// <summary>Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. <see cref="Available_Types.InlineKeyboardMarkup"/> or <see cref="Available_Types.ReplyKeyboardMarkup"/> or <see cref="Available_Types.ReplyKeyboardRemove"/> or <see cref="Available_Types.ForceReply"/></summary>
         [JsonProperty(PropertyName = "reply_markup", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object Reply_markup { get; set; }

@@ -15,6 +15,6 @@ namespace TelegramAPI.Updating_messages
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
-        public static bool DeleteMessage(this BotClient T, object chat_id, int message_id) => T.RPC<bool>("deleteMessage", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) });
+        public static bool DeleteMessage(this BotClient T, object chat_id, uint message_id) => T.RPC<bool>("deleteMessage", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) });
     }
 }
