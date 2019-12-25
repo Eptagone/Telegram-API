@@ -16,10 +16,10 @@
 * Uses [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/).
 
 ## Documentation
--  [Getting started](./docs/readme.md)
+-  [Getting started](docs/readme.md)
 
 ## License
 [MIT](LICENSE)
 
 ## Change log
-[See change log](.docs/change_log.md)
+[See change log](docs/change_log.md)
