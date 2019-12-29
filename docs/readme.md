@@ -1,5 +1,5 @@
 # Telegram-API NET Documentation
-[![NuGet version (Telegram_API)](https://img.shields.io/nuget/v/Telegram_API.svg?style=flat-square)](https://www.nuget.org/packages/Telegram_API/) ![Latest version (Telegram_API)](https://img.shields.io/badge/Pre_release-none-orange?style=flat-square)
+[![NuGet version (Telegram_API)](https://img.shields.io/nuget/v/Telegram_API.svg?style=flat-square)](https://www.nuget.org/packages/Telegram_API/) ![Latest version (Telegram_API)](https://img.shields.io/badge/Pre_release-v1.0.12-orange?style=flat-square)
 
 ## Getting started
 To get started you just need to start a new BotClient as follows.
