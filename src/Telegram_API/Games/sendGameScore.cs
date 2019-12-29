@@ -13,7 +13,7 @@ namespace TelegramAPI.Games
         /// <param name="args">Parameters.</param>
         public static dynamic SetGameScore(this BotClient T, SetGameScoreArgs args)
         {
-            var json_message = T.RPC<JValue>("setGameScore", args);
+            var json_message = T.RPC<JToken>("setGameScore", args);
             if (json_message.Type == JTokenType.Object)
                 return json_message.ToObject<Available_Types.Message>();
             else

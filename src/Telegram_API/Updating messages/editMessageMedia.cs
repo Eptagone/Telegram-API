@@ -15,7 +15,7 @@ namespace TelegramAPI.Updating_messages
         /// <returns>Message Object.</returns>
         public static dynamic EditMessageMedia(this BotClient T, EditMessageMediaArgs args)
         {
-            var json_result = T.RPC<JValue>("editMessageMedia", args);
+            var json_result = T.RPC<JToken>("editMessageMedia", args);
             if (json_result.Type == JTokenType.Object)
                 return json_result.ToObject<Available_Types.Message>();
             else

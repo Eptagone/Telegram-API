@@ -13,7 +13,7 @@ namespace TelegramAPI.Updating_messages
         /// <param name="args">Parameters.</param>
         public static dynamic EditMessageCaption(this BotClient T, EditMessageCaptionArgs args)
         {
-            var json_result = T.RPC<JValue>("editMessageCaption", args);
+            var json_result = T.RPC<JToken>("editMessageCaption", args);
             if (json_result.Type == JTokenType.Object)
                 return json_result.ToObject<Available_Types.Message>();
             else

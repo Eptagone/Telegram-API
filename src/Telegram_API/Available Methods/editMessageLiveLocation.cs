@@ -11,7 +11,7 @@ namespace TelegramAPI.Available_Methods
         /// <param name="args">Parameters.</param>
         public static dynamic EditMessageLiveLocation(this BotClient T, EditMessageLiveLocationArgs args)
         {
-            var json_result = T.RPC<JValue>("editMessageLiveLocation", args);
+            var json_result = T.RPC<JToken>("editMessageLiveLocation", args);
             if (json_result.Type == JTokenType.Object)
                 return json_result.ToObject<Available_Types.Message>();
             else

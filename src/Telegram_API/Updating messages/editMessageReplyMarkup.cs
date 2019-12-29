@@ -14,7 +14,7 @@ namespace TelegramAPI.Updating_messages
         /// <returns>Message Object.</returns>
         public static dynamic EditMessageReplyMarkup(this BotClient T, EditMessageReplyMarkup args)
         {
-            var json_result = T.RPC<JValue>("editMessageReplyMarkup", args);
+            var json_result = T.RPC<JToken>("editMessageReplyMarkup", args);
             if (json_result.Type == JTokenType.Object)
                 return json_result.ToObject<Available_Types.Message>();
             else
