@@ -1049,6 +1049,10 @@
         <member name="T:TelegramAPI.Available_Types.KeyboardButton">
             <summary>This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields are mutually exclusive.</summary>
         </member>
+        <member name="M:TelegramAPI.Available_Types.KeyboardButton.#ctor(System.String)">
+            <summary>Creates a new keyboard button.</summary>
+            <param name="text">Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed.</param>
+        </member>
         <member name="P:TelegramAPI.Available_Types.KeyboardButton.Text">
             <summary>Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed.</summary>
         </member>

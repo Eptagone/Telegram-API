@@ -42,5 +42,33 @@ namespace TelegramAPI.Getting_updates
         ///<summary>Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot.</summary>
         [JsonProperty(PropertyName = "poll", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Available_Types.Poll Poll { get; set; }
+        /// <summary>Update type.</summary>
+        public UpdateType Type
+        {
+            get
+            {
+                if (Message != default)
+                    return UpdateType.Message;
+                if (Edited_message != default)
+                    return UpdateType.Edited_message;
+                if (Channel_post != default)
+                    return UpdateType.Channel_post;
+                if (Edited_channel_post != default)
+                    return UpdateType.Edited_channel_post;
+                if (Inline_query != default)
+                    return UpdateType.Inline_query;
+                if (Chosen_inline_result != default)
+                    return UpdateType.Chosen_inline_result;
+                if (Callback_query != default)
+                    return UpdateType.Callback_query;
+                if (Shipping_query != default)
+                    return UpdateType.Shipping_query;
+                if (Pre_checkout_query != default)
+                    return UpdateType.Pre_checkout_query;
+                if (Poll != default)
+                    return UpdateType.Poll;
+                return UpdateType.Unknown;
+            }
+        }
     }
 }

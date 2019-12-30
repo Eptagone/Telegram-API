@@ -10,7 +10,7 @@ namespace TelegramAPI
     /// <summary>Excepcion que se genera cuando una peticion hacia el api bot de telegram obtuvo una respuesta de error.</summary>
     public class BotRequestException : Exception
     {
-        internal BotRequestException(JObject result)
+        internal BotRequestException(JObject result) : base(result["description"].Value<string>())
         {
             Ok = result["ok"].Value<bool>();
             Error_code = result["error_code"].Value<int>();

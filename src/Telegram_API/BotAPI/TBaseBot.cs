@@ -62,43 +62,41 @@ namespace TelegramAPI
         }
         /// <summary>Call the corresponding method according to the type of update provided.</summary>
         /// <param name="update"></param>
-        protected virtual async void OnUpdate(Update update)
+        public virtual void OnUpdate(Update update)
         {
-            await Task.Run(()=>{
-                switch (update.GetUpdateType())
-                {
-                    case UpdateType.Message:
-                        OnMessage(update.Message);
-                        break;
-                    case UpdateType.Edited_message:
-                        OnEditedMessage(update.Edited_message);
-                        break;
-                    case UpdateType.Channel_post:
-                        OnChannelPost(update.Channel_post);
-                        break;
-                    case UpdateType.Edited_channel_post:
-                        OnEditedChannelPost(update.Edited_channel_post);
-                        break;
-                    case UpdateType.Inline_query:
-                        OnInlineQuery(update.Inline_query);
-                        break;
-                    case UpdateType.Chosen_inline_result:
-                        OnChosenInlineResult(update.Chosen_inline_result);
-                        break;
-                    case UpdateType.Callback_query:
-                        OnCallbackQuery(update.Callback_query);
-                        break;
-                    case UpdateType.Shipping_query:
-                        OnShippingQuery(update.Shipping_query);
-                        break;
-                    case UpdateType.Pre_checkout_query:
-                        OnPreCheckoutQuery(update.Pre_checkout_query);
-                        break;
-                    case UpdateType.Poll:
-                        OnPoll(update.Poll);
-                        break;
-                }
-            });
+            switch (update.Type)
+            {
+                case UpdateType.Message:
+                    OnMessage(update.Message);
+                    break;
+                case UpdateType.Edited_message:
+                    OnEditedMessage(update.Edited_message);
+                    break;
+                case UpdateType.Channel_post:
+                    OnChannelPost(update.Channel_post);
+                    break;
+                case UpdateType.Edited_channel_post:
+                    OnEditedChannelPost(update.Edited_channel_post);
+                    break;
+                case UpdateType.Inline_query:
+                    OnInlineQuery(update.Inline_query);
+                    break;
+                case UpdateType.Chosen_inline_result:
+                    OnChosenInlineResult(update.Chosen_inline_result);
+                    break;
+                case UpdateType.Callback_query:
+                    OnCallbackQuery(update.Callback_query);
+                    break;
+                case UpdateType.Shipping_query:
+                    OnShippingQuery(update.Shipping_query);
+                    break;
+                case UpdateType.Pre_checkout_query:
+                    OnPreCheckoutQuery(update.Pre_checkout_query);
+                    break;
+                case UpdateType.Poll:
+                    OnPoll(update.Poll);
+                    break;
+            }
         }
         //abstract methods
         /// <summary>Executes scheduled instructions for a message update.</summary>

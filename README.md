@@ -1,7 +1,7 @@
 | <img src="./docs/icon.png" alt="Logo" width="64"/> | <h1>Telegram-API NET</h1> |
 |--------|--------|
 
-[![NuGet version (Telegram_API)](https://img.shields.io/nuget/v/Telegram_API.svg?style=flat-square)](https://www.nuget.org/packages/Telegram_API/) ![Latest version (Telegram_API)](https://img.shields.io/badge/Pre_release-v1.0.12-orange?style=flat-square)
+[![NuGet version (Telegram_API)](https://img.shields.io/nuget/v/Telegram_API.svg?style=flat-square)](https://www.nuget.org/packages/Telegram_API/)
 
   Telegram API NET is one of the most complete libraries available to interact with the Telegram Bot API in your .NET projects. Free and open source.
 
@@ -21,5 +21,5 @@
 ## License
 [MIT](LICENSE)
 
-## Change log
-[See change log](docs/change_log.md)
+## Release notes
+[See release notes]([docs/change_log.md](https://github.com/Eptagone/Telegram-API/releases))

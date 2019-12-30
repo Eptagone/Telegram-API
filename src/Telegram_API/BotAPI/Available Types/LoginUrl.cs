@@ -12,13 +12,13 @@ namespace TelegramAPI.Available_Types
         [JsonProperty(PropertyName = "url", Required = Required.Always)]
         public string Url { get; set; }
         /// <summary>Optional. New text of the button in forwarded messages.</summary>
-        [JsonProperty(PropertyName = "forward_text", Required = Required.Always)]
+        [JsonProperty(PropertyName = "forward_text", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Forward_text { get; set; }
         /// <summary>Optional. Username of a bot, which will be used for user authorization. See <a href="https://core.telegram.org/widgets/login#setting-up-a-bot">Setting up a bot</a> for more details. If not specified, the current bot's username will be assumed. The url's domain must be the same as the domain linked with the bot. See <a href="https://core.telegram.org/widgets/login#linking-your-domain-to-the-bot">Linking your domain</a> to the bot for more details.</summary>
-        [JsonProperty(PropertyName = "bot_username", Required = Required.Always)]
+        [JsonProperty(PropertyName = "bot_username", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Bot_username { get; set; }
         /// <summary>Optional. Pass True to request the permission for your bot to send messages to the user.</summary>
-        [JsonProperty(PropertyName = "request_write_access", Required = Required.Always)]
+        [JsonProperty(PropertyName = "request_write_access", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Request_write_access { get; set; }
     }
 }
