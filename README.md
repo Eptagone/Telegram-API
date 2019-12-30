@@ -22,4 +22,4 @@
 [MIT](LICENSE)
 
 ## Release notes
-[See release notes]([docs/change_log.md](https://github.com/Eptagone/Telegram-API/releases))
+[See release notes](https://github.com/Eptagone/Telegram-API/releases)
