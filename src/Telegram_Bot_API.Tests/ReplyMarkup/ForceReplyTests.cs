@@ -1,24 +1,22 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using TelegramAPI.Available_Types;
 using TelegramAPI.Available_Methods;
+using TelegramAPI.Available_Types;
 using Xunit;
 
-namespace Telegram_API.Tests
+namespace TelegramBotAPI.Tests
 {
-    public class ForceReplyTests
+    public sealed partial class ReplyMarkupTests
     {
         [Fact]
+        [Trait("ForceReply", "ForceReply")]
         public void ForceReplyTest()
         {
-            var message = Tools.bot.SendMessage(
+            var message = bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = Tools.chat_id,
+                    Chat_id = chat_id,
                     Text = "ForceReply Test",
                     Reply_markup = new ForceReply()
                 });

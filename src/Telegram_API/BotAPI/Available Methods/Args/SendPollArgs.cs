@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Methods
 {
     /// <summary>SendPoll method arguments.</summary>
-    public class SendPollArgs : BaseSendArgs
+    public sealed class SendPollArgs : BaseSendArgs
     {
         ///<summary>Poll question, 1-255 characters.</summary>
         [JsonProperty(PropertyName = "question", DefaultValueHandling = DefaultValueHandling.Ignore)]

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,14 +6,14 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     /// <summary>This object represents an audio file to be treated as music by the Telegram clients.</summary>
-    public class Audio
+    public sealed class Audio
     {
-        ///<summary>Unique identifier for this file.</summary>
-        [JsonProperty(PropertyName = "file_id", Required = Required.Always)]
+        ///<summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        [JsonProperty(PropertyName = "file_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string File_id { get; set; }
-        ///<summary>Duration of the audio in seconds as defined by sender.</summary>
-        [JsonProperty(PropertyName = "duration", Required = Required.Always)]
-        public uint Duration { get; set; }
+        ///<summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
+        [JsonProperty(PropertyName = "file_unique_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string File_unique_id { get; set; }
         ///<summary>Optional. Performer of the audio as defined by sender or by audio tags.</summary>
         [JsonProperty(PropertyName = "performer", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Performer { get; set; }

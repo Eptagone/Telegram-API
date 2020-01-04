@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Methods
 {
     /// <summary>StopMessageLiveLocation method arguments</summary>
-    public class StopMessageLiveLocationArgs
+    public sealed class StopMessageLiveLocationArgs
     {
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonProperty(PropertyName = "chat_id", DefaultValueHandling = DefaultValueHandling.Ignore)]

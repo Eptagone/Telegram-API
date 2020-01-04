@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# CA1303: No pasar cadenas literal como parámetros localizados
+dotnet_diagnostic.CA1303.severity = none
+
+# CA1707: Los identificadores no deben contener caracteres de subrayado
+dotnet_diagnostic.CA1707.severity = none
+
+# CA1819: Las propiedades no deben devolver matrices
+dotnet_diagnostic.CA1819.severity = none

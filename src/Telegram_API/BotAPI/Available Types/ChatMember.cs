@@ -1,18 +1,21 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 using Newtonsoft.Json;
 
 namespace TelegramAPI.Available_Types
 {
     ///<summary>This object contains information about one member of a chat.</summary>
-    public class ChatMember
+    public sealed class ChatMember
     {
         ///<summary>Information about the user.</summary>
-        [JsonProperty(PropertyName = "user", Required = Required.Always)]
+        [JsonProperty(PropertyName = "user", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public User User { get; set; }
         ///<summary>The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”.</summary>
-        [JsonProperty(PropertyName = "status", Required = Required.Always)]
+        [JsonProperty(PropertyName = "status", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Status { get; set; }
+        ///<summary>Optional. Owner and administrators only. Custom title for this user.</summary>
+        [JsonProperty(PropertyName = "custom_title", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Custom_title { get; set; }
         ///<summary>Optional. Restricted and kicked only. Date when restrictions will be lifted for this user, unix time.</summary>
         [JsonProperty(PropertyName = "until_date", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Until_date { get; set; }

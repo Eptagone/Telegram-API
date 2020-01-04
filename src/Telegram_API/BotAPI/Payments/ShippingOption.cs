@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,16 +6,16 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Payments
 {
     /// <summary>This object represents one shipping option.</summary>
-    public class ShippingOption
+    public sealed class ShippingOption
     {
         /// <summary>Shipping option identifier</summary>
-        [JsonProperty(PropertyName = "id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
         /// <summary>Option title</summary>
-        [JsonProperty(PropertyName = "title", Required = Required.Always)]
+        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Title { get; set; }
         /// <summary>List of price portions</summary>
-        [JsonProperty(PropertyName = "prices", Required = Required.Always)]
+        [JsonProperty(PropertyName = "prices", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public LabeledPrice[] Prices { get; set; }
     }
 }

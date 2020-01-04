@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     /// <summary>Describes actions that a non-administrator user is allowed to take in a chat.</summary>
-    public class ChatPermissions
+    public sealed class ChatPermissions
     {
         ///<summary>Optional. True, if the user is allowed to send text messages, contacts, locations and venues.</summary>
         [JsonProperty(PropertyName = "can_send_messages", DefaultValueHandling = DefaultValueHandling.Ignore)]

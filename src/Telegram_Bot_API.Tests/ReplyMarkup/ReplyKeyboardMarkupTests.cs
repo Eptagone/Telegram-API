@@ -1,16 +1,16 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using TelegramAPI.Available_Types;
 using TelegramAPI.Available_Methods;
+using TelegramAPI.Available_Types;
 using Xunit;
 
-namespace Telegram_API.Tests
+namespace TelegramBotAPI.Tests
 {
-    public class ReplyKeyboardMarkupTests
+    public sealed partial class ReplyMarkupTests
     {
-        /// <summary>new Reply Keyboard 2 cols and 4 rows.</summary>
         [Fact]
+        [Trait("Keyboard 2 x 4", "ReplyKeyboardMarkup")]
         public void NewReplyKeyboard2CX4R()
         {
             var replykeyboard = new ReplyKeyboardMarkup
@@ -23,21 +23,22 @@ namespace Telegram_API.Tests
                     new KeyboardButton[] { new KeyboardButton("R4C1"), new KeyboardButton("R4C2") } //Row 4
                 }
             }; // New reply keyboard with 2 cols and 4 rows
-            var message = Tools.bot.SendMessage(
+            var message = bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = Tools.chat_id,
+                    Chat_id = chat_id,
                     Text = "ReplyKeyboard2x4",
                     Reply_markup = replykeyboard
                 });
         }
         [Fact]
+        [Trait("Remove Keyboard", "ReplyKeyboardMarkup")]
         public void RemoveKeyboardMarkup()
         {
-            var message = Tools.bot.SendMessage(
+            var message = bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = Tools.chat_id,
+                    Chat_id = chat_id,
                     Text = "Remove Reply Keyboard",
                     Reply_markup = new ReplyKeyboardRemove()
                 });

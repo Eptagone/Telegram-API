@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,10 +6,10 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     ///<summary>This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).</summary>
-    public class ReplyKeyboardMarkup
+    public sealed class ReplyKeyboardMarkup
     {
         ///<summary>Array of button rows, each represented by an Array of KeyboardButton objects.</summary>
-        [JsonProperty(PropertyName = "keyboard", Required = Required.Always)]
+        [JsonProperty(PropertyName = "keyboard", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public KeyboardButton[][] Keyboard { get; set; }
         ///<summary>Optional. Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller if there are just two rows of buttons). Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboards.</summary>
         [JsonProperty(PropertyName = "resize_keyboard", DefaultValueHandling = DefaultValueHandling.Ignore)]

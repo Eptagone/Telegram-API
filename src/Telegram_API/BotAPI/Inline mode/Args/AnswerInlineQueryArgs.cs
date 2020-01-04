@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,13 +6,13 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Inline_mode
 {
     /// <summary>AnswerInlineQuery method arguments.</summary>
-    public class AnswerInlineQueryArgs
+    public sealed class AnswerInlineQueryArgs
     {
         ///<summary>Unique identifier for the answered query.</summary>
-        [JsonProperty(PropertyName = "inline_query_id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "inline_query_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Inline_query_id { get; set; }
         ///<summary>A <see cref="InlineQueryResult"/> array of results for the inline query.</summary>
-        [JsonProperty(PropertyName = "results", Required = Required.Always)]
+        [JsonProperty(PropertyName = "results", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public InlineQueryResult[] Results { get; set; }
         ///<summary>The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.</summary>
         [JsonProperty(PropertyName = "cache_time", DefaultValueHandling = DefaultValueHandling.Ignore)]

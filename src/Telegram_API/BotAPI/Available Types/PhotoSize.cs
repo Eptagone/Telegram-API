@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,16 +6,19 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     /// <summary>This object represents one size of a photo or a file / sticker thumbnail.</summary>
-    public class PhotoSize
+    public sealed class PhotoSize
     {
-        ///<summary>Unique identifier for this file.</summary>
-        [JsonProperty(PropertyName = "file_id", Required = Required.Always)]
+        ///<summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        [JsonProperty(PropertyName = "file_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string File_id { get; set; }
+        ///<summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
+        [JsonProperty(PropertyName = "file_unique_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string File_unique_id { get; set; }
         ///<summary>Photo width.</summary>
-        [JsonProperty(PropertyName = "width", Required = Required.Always)]
+        [JsonProperty(PropertyName = "width", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Width { get; set; }
         ///<summary>Photo height.</summary>
-        [JsonProperty(PropertyName = "height", Required = Required.Always)]
+        [JsonProperty(PropertyName = "height", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Height { get; set; }
         ///<summary>Optional. File size.</summary>
         [JsonProperty(PropertyName = "file_size", DefaultValueHandling = DefaultValueHandling.Ignore)]

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,10 +6,10 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Inline_mode
 {
     /// <summary>Represents the content of a text message to be sent as the result of an inline query.</summary>
-    public class InputTextMessageContent : InputMessageContent
+    public sealed class InputTextMessageContent : InputMessageContent
     {
         ///<summary>Text of the message to be sent, 1-4096 characters.</summary>
-        [JsonProperty(PropertyName = "message_text", Required = Required.Always)]
+        [JsonProperty(PropertyName = "message_text", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Message_text { get; set; }
         ///<summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</summary>
         [JsonProperty(PropertyName = "parse_mode", DefaultValueHandling = DefaultValueHandling.Ignore)]

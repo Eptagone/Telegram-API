@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -29,16 +29,16 @@ namespace TelegramAPI.Inline_mode
     public class InlineQueryResult
     {
         /// <summary>Type of the result.</summary>
-        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public virtual string Type { get; }
         /// <summary>Unique identifier for this result, 1-64 Bytes.</summary>
-        [JsonProperty(PropertyName = "id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
         /// <summary>Title of the result.</summary>
-        [JsonProperty(PropertyName = "title", Required = Required.Always)]
+        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Title { get; set; }
         /// <summary>Content of the message to be sent.</summary>
-        [JsonProperty(PropertyName = "input_message_content", Required = Required.Always)]
+        [JsonProperty(PropertyName = "input_message_content", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public InputMessageContent Input_message_content { get; set; }
         /// <summary>Optional. Inline keyboard attached to the message.</summary>
         [JsonProperty(PropertyName = "reply_markup", DefaultValueHandling = DefaultValueHandling.Ignore)]

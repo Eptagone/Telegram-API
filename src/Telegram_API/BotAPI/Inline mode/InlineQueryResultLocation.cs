@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Inline_mode
 {
     /// <summary>Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.</summary>
-    public class InlineQueryResultLocation : InlineQueryResult
+    public sealed class InlineQueryResultLocation : InlineQueryResult
     {
         /// <summary>Type of the result, must be location.</summary>
         [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -22,7 +22,7 @@ namespace TelegramAPI.Inline_mode
         public uint Live_period { get; set; }
         /// <summary>Optional. Url of the thumbnail for the result.</summary>
         [JsonProperty(PropertyName = "thumb_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Thumb_url { get; set; }
+        public System.Uri Thumb_url { get; set; }
         /// <summary>Optional. Thumbnail width.</summary>
         [JsonProperty(PropertyName = "thumb_width", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Thumb_width { get; set; }

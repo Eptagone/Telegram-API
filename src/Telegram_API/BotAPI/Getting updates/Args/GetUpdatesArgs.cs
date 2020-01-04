@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
 namespace TelegramAPI.Getting_updates
 {
     /// <summary>GetUpdate method arguments</summary>
-    public class GetUpdatesArgs
+    public sealed class GetUpdatesArgs
     {
         ///<summary>Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned.</summary>
         [JsonProperty(PropertyName = "offset", DefaultValueHandling = DefaultValueHandling.Ignore)]

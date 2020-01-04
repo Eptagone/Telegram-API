@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,38 +6,38 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Payments
 {
     /// <summary>SendInvoice method arguments.</summary>
-    public class SendInvoiceArgs
+    public sealed class SendInvoiceArgs
     {
         /// <summary>Unique identifier for the target private chat.</summary>
-        [JsonProperty(PropertyName = "chat_id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "chat_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public long Chat_id { get; set; }
         /// <summary>Product name, 1-32 characters.</summary>
-        [JsonProperty(PropertyName = "title", Required = Required.Always)]
+        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Title { get; set; }
         /// <summary>Product description, 1-255 characters.</summary>
-        [JsonProperty(PropertyName = "description", Required = Required.Always)]
+        [JsonProperty(PropertyName = "description", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.</summary>
-        [JsonProperty(PropertyName = "payload", Required = Required.Always)]
+        [JsonProperty(PropertyName = "payload", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Payload { get; set; }
         /// <summary>Payments provider token, obtained via Botfather.</summary>
-        [JsonProperty(PropertyName = "provider_token", Required = Required.Always)]
+        [JsonProperty(PropertyName = "provider_token", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Provider_token { get; set; }
         /// <summary>Unique deep-linking parameter that can be used to generate this invoice when used as a start parameter.</summary>
-        [JsonProperty(PropertyName = "start_parameter", Required = Required.Always)]
+        [JsonProperty(PropertyName = "start_parameter", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Start_parameter { get; set; }
         /// <summary>Three-letter ISO 4217 currency code, see more <a href="https://core.telegram.org/bots/payments#supported-currencies">on currencies</a>.</summary>
-        [JsonProperty(PropertyName = "currency", Required = Required.Always)]
+        [JsonProperty(PropertyName = "currency", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Currency { get; set; }
         /// <summary>Price breakdown, a list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)</summary>
-        [JsonProperty(PropertyName = "prices", Required = Required.Always)]
+        [JsonProperty(PropertyName = "prices", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public LabeledPrice Prices { get; set; }
         /// <summary>Optional. JSON-encoded data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider.</summary>
         [JsonProperty(PropertyName = "provider_data", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Provider_data { get; set; }
         /// <summary>Optional. URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service. People like it better when they see what they are paying for.</summary>
         [JsonProperty(PropertyName = "photo_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Photo_url { get; set; }
+        public System.Uri Photo_url { get; set; }
         /// <summary>Optional. Photo size.</summary>
         [JsonProperty(PropertyName = "photo_size", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Photo_size { get; set; }

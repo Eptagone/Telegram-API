@@ -1,15 +1,14 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
-
 namespace TelegramAPI.Telegram_Passport
 {
     /// <summary>Contains information about documents or other Telegram Passport elements shared with the bot by the user.</summary>
-    public class EncryptedPassportElement
+    public sealed class EncryptedPassportElement
     {
         /// <summary>Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”.</summary>
-        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type { get; set; }
         /// <summary>Optional. Base64-encoded encrypted Telegram Passport element data provided by the user, available for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address” types. Can be decrypted and verified using the accompanying EncryptedCredentials.</summary>
         [JsonProperty(PropertyName = "data", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -36,7 +35,7 @@ namespace TelegramAPI.Telegram_Passport
         [JsonProperty(PropertyName = "translation", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public PassportFile[] Translation { get; set; }
         /// <summary>Base64-encoded element hash for using in PassportElementErrorUnspecified.</summary>
-        [JsonProperty(PropertyName = "hash", Required = Required.Always)]
+        [JsonProperty(PropertyName = "hash", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Hash { get; set; }
     }
 }

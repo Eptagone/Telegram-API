@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,10 +6,10 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Inline_mode
 {
     /// <summary>Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation.</summary>
-    public class InlineQueryResultCachedGif : InlineQueryResult
+    public sealed class InlineQueryResultCachedGif : InlineQueryResult
     {
         /// <summary>Type of the result, must be gif.</summary>
-        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public override string Type => "gif";
         /// <summary>A valid file identifier for the GIF file..</summary>
         [JsonProperty(PropertyName = "gif_file_id", DefaultValueHandling = DefaultValueHandling.Ignore)]

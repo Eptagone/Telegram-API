@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,13 +6,13 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Methods
 {
     /// <summary>PromoteChatMember method arguments.</summary>
-    public class PromoteChatMemberArgs
+    public sealed class PromoteChatMemberArgs
     {
         ///<summary>Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</summary>
-        [JsonProperty(PropertyName = "chat_id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "chat_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object Chat_id { get; set; }
         ///<summary>Unique identifier of the target user.</summary>
-        [JsonProperty(PropertyName = "user_id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "user_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int User_id { get; set; }
         ///<summary>Optional. Pass True, if the administrator can change chat title, photo and other settings.</summary>
         [JsonProperty(PropertyName = "can_change_info", DefaultValueHandling = DefaultValueHandling.Ignore)]

@@ -1,19 +1,21 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
-
+using System;
+using TelegramAPI.Available_Types;
 namespace TelegramAPI.Getting_updates
 {
     /// <summary>SetWebhook method arguments</summary>
-    public class SetWebhookArgs
+    public sealed class SetWebhookArgs
     {
         ///<summary>HTTPS url to send updates to. Use an empty string to remove webhook integration.</summary>
-        [JsonProperty(PropertyName = "url", Required = Required.Always)]
-        public string Url { get; set; } = string.Empty;
+        [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Uri Url { get; set; } = new Uri(string.Empty);
         ///<summary>Upload your public key certificate so that the root certificate in use can be checked. See our <a href="https://core.telegram.org/bots/self-signed">self-signed guide</a> for details.</summary>
         [JsonProperty(PropertyName = "certificate", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public object Certificate { get; set; }
+        [InputFile("certificate")]
+        public InputFile Certificate { get; set; }
         ///<summary>Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot‘s server, and higher values to increase your bot’s throughput.</summary>
         [JsonProperty(PropertyName = "max_connections", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Max_connections { get; set; }

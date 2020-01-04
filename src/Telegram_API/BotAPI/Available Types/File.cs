@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,11 +6,14 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     ///<summary>This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt;. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.</summary>
-    public class File
+    public sealed class File
     {
-        ///<summary>Unique identifier for this file.</summary>
-        [JsonProperty(PropertyName = "file_id", Required = Required.Always)]
+        ///<summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        [JsonProperty(PropertyName = "file_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string File_id { get; set; }
+        ///<summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
+        [JsonProperty(PropertyName = "file_unique_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string File_unique_id { get; set; }
         ///<summary>Optional. File size, if known.</summary>
         [JsonProperty(PropertyName = "file_size", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint File_size { get; set; }

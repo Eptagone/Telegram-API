@@ -14,13 +14,16 @@
 namespace TelegramAPI
 {
     /// <summary>Telegram Bot Client.</summary>
-    public partial class BotClient
+    public sealed partial class BotClient
     {
-        internal const string TelegramBotAPIUrl = "https://api.telegram.org/bot";
+        internal string TAPIurl => "https://api.telegram.org/bot" + Token;
         /// <summary>Token granted by BotFather. Required to access the Telegram bot API.</summary>
         public string Token { get; set; }
         /// <summary>Initialize a Telegram Bot Client.</summary>
         /// <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API.</param>
-        public BotClient(string accessToken) => Token = accessToken;
+        public BotClient(string accessToken)
+        {
+            Token = accessToken;
+        }
     }
 }

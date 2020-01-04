@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,14 +6,14 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     /// <summary>This object represents one button of an inline keyboard. You must use exactly one of the optional fields.</summary>
-    public class InlineKeyboardButton
+    public sealed class InlineKeyboardButton
     {
         ///<summary>Label text on the button.</summary>
-        [JsonProperty(PropertyName = "text", Required = Required.Always)]
+        [JsonProperty(PropertyName = "text", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Text { get; set; }
         ///<summary>Optional. HTTP or tg:// url to be opened when button is pressed.</summary>
         [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Url { get; set; }
+        public System.Uri Url { get; set; }
         ///<summary>Optional. An HTTP URL used to automatically authorize the user. Can be used as a replacement for the Telegram Login Widget.</summary>
         [JsonProperty(PropertyName = "login_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public LoginUrl Login_url { get; set; }

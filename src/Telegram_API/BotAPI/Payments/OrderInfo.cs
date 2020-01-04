@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Payments
 {
     /// <summary>This object represents information about an order.</summary>
-    public class OrderInfo
+    public sealed class OrderInfo
     {
         /// <summary>Optional. User name</summary>
         [JsonProperty(PropertyName = "name", DefaultValueHandling = DefaultValueHandling.Ignore)]

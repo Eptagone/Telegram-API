@@ -1,6 +1,8 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using TelegramAPI.Available_Types;
 using TelegramAPI.Getting_updates;
@@ -13,57 +15,43 @@ namespace TelegramAPI
     public abstract class TBaseBot
     {
         /// <summary>Bot client for API Requets.</summary>
-        protected BotClient TBot { get; private set; }
-        /// <summary>True if the update search is active.</summary>
-        public bool Running { get; private set; }
-        private Task BGTask { get; set; }
+        public BotClient TBot { get; private set; }
         /// <summary>Initializes TBaseBot implementation</summary>
         /// <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API</param>
-        protected TBaseBot(string accessToken) => TBot = new BotClient(accessToken);
-        /// <summary>Starts a constant search for new updates. Use Stop() to stop it.<br/>
-        /// If you are using a webhook, this will not work. Instead send the update to the OnUpdate() function.</summary>
-        public void Start()
+        protected TBaseBot(string accessToken)
         {
-            if (Running)
-                return;
-            BGTask = GetUpdateLoop();
+            TBot = new BotClient(accessToken);
         }
-        /// <summary>Stops searching for updates, assuming it's active</summary>
-        public void Stop()
+
+        /// <summary>Create a task to start a constant update search.</summary>
+        /// <param name="cancellationToken">Cancelation token</param>
+        public async Task UpdateSearch(System.Threading.CancellationToken cancellationToken)
         {
-            if (BGTask != default)
-            {
-                if (!BGTask.IsCompleted)
-                    Running = false;
-                BGTask.Wait();
-                BGTask.Dispose();
-            }
-        }
-        private async Task GetUpdateLoop()
-        {
-            Running = true;
             await Task.Run(() =>
             {
-                while (Running)
+                Update[] updates = TBot.GetUpdates();
+                while (true)
                 {
-                    var updates = TBot.GetUpdates();
+                    cancellationToken.ThrowIfCancellationRequested();
                     if (updates.Length != 0)
                     {
                         foreach (var update in updates)
                         {
                             OnUpdate(update);
-                            updates = TBot.GetUpdates(new GetUpdatesArgs { Offset = updates[0].Update_id + 1 });
                         }
+                        updates = TBot.GetUpdates(new GetUpdatesArgs { Offset = updates.Max(u => u.Update_id) + 1 });
                     }
                     else
                         updates = TBot.GetUpdates();
                 }
-            });
+            }, cancellationToken).ConfigureAwait(true);
         }
         /// <summary>Call the corresponding method according to the type of update provided.</summary>
         /// <param name="update"></param>
         public virtual void OnUpdate(Update update)
         {
+            if (update == default)
+                throw new ArgumentNullException(nameof(update));
             switch (update.Type)
             {
                 case UpdateType.Message:

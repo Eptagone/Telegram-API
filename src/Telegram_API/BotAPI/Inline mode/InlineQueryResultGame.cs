@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -7,13 +7,13 @@ using System;
 namespace TelegramAPI.Inline_mode
 {
     /// <summary>Represents a Game.</summary>
-    public class InlineQueryResultGame : InlineQueryResult
+    public sealed class InlineQueryResultGame : InlineQueryResult
     {
         /// <summary>Type of the result, must be game.</summary>
-        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public override string Type => "game";
         /// <summary>Short name of the game.</summary>
-        [JsonProperty(PropertyName = "game_short_name", Required = Required.Always)]
+        [JsonProperty(PropertyName = "game_short_name", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Game_short_name { get; set; }
         /// <summary>Title of the result.</summary>
         [Obsolete("Don't use this", true)]

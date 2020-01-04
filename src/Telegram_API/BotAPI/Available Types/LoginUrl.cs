@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,11 +6,11 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     /// <summary>This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in</summary>
-    public class LoginUrl
+    public sealed class LoginUrl
     {
         /// <summary>An HTTP URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data.<para>NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization.</para></summary>
-        [JsonProperty(PropertyName = "url", Required = Required.Always)]
-        public string Url { get; set; }
+        [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public System.Uri Url { get; set; }
         /// <summary>Optional. New text of the button in forwarded messages.</summary>
         [JsonProperty(PropertyName = "forward_text", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Forward_text { get; set; }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,13 +6,13 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Methods
 {
     /// <summary>SendLocation method arguments.</summary>
-    public class SendLocationArgs : BaseSendArgs
+    public sealed class SendLocationArgs : BaseSendArgs
     {
         ///<summary>Latitude of the location.</summary>
-        [JsonProperty(PropertyName = "latitude", Required = Required.Always)]
+        [JsonProperty(PropertyName = "latitude", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float Latitude { get; set; }
         ///<summary>Longitude of the location.</summary>
-        [JsonProperty(PropertyName = "longitude", Required = Required.Always)]
+        [JsonProperty(PropertyName = "longitude", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float Longitude { get; set; }
         ///<summary>Optional. Period in seconds for which the location will be updated, should be between 60 and 86400.</summary>
         [JsonProperty(PropertyName = "live_period", DefaultValueHandling = DefaultValueHandling.Ignore)]

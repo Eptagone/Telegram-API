@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json.Linq;
@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace TelegramAPI.Payments
 {
     /// <summary>Payments</summary>
-    public static partial class Payments
+    public static partial class PaymentsMethods
     {
         /// <summary>Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.</summary>
         /// <param name="T">Bot Client</param>
@@ -16,6 +16,8 @@ namespace TelegramAPI.Payments
         /// <returns>On success, True is returned.</returns>
         public static bool AnswerPreCheckoutQuery(this BotClient T, string pre_checkout_query_id, bool ok, [Optional] string error_message)
         {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
             var output = new JObject
             {
                 new JProperty("pre_checkout_query_id", pre_checkout_query_id),

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Methods
 {
     /// <summary>EditMessageLiveLocation method arguments.</summary>
-    public class EditMessageLiveLocationArgs
+    public sealed class EditMessageLiveLocationArgs
     {
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonProperty(PropertyName = "chat_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -18,10 +18,10 @@ namespace TelegramAPI.Available_Methods
         [JsonProperty(PropertyName = "inline_message_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Inline_message_id { get; set; }
         ///<summary>Latitude of new location.</summary>
-        [JsonProperty(PropertyName = "latitude", Required = Required.Always)]
+        [JsonProperty(PropertyName = "latitude", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float Latitude { get; set; }
         ///<summary>Longitude of new location.</summary>
-        [JsonProperty(PropertyName = "longitude", Required = Required.Always)]
+        [JsonProperty(PropertyName = "longitude", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float Longitude { get; set; }
         ///<summary>Optional. A JSON object for a new inline keyboard.</summary>
         [JsonProperty(PropertyName = "reply_markup", DefaultValueHandling = DefaultValueHandling.Ignore)]

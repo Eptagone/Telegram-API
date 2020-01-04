@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,19 +6,19 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     /// <summary>This object represents a message.</summary>
-    public class Message
+    public sealed class Message
     {
         /// <summary>Unique message identifier inside this chat.</summary>
-        [JsonProperty(PropertyName = "message_id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "message_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Message_id { get; set; }
         /// <summary>Optional. Sender, empty for messages sent to channels.</summary>
         [JsonProperty(PropertyName = "from", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public User From { get; set; }
         /// <summary>Date the message was sent in Unix time.</summary>
-        [JsonProperty(PropertyName = "date", Required = Required.Always)]
+        [JsonProperty(PropertyName = "date", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Date { get; set; }
         /// <summary>Conversation the message belongs to.</summary>
-        [JsonProperty(PropertyName = "chat", Required = Required.Always)]
+        [JsonProperty(PropertyName = "chat", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Chat Chat { get; set; }
         /// <summary>Optional. For forwarded messages, sender of the original message.</summary>
         [JsonProperty(PropertyName = "forward_from", DefaultValueHandling = DefaultValueHandling.Ignore)]

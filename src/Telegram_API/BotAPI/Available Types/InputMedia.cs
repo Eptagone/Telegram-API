@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -13,10 +13,10 @@ namespace TelegramAPI.Available_Types
     public class InputMedia
     {
         ///<summary>Type of the result.</summary>
-        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public virtual string Type { get; }
         ///<summary>File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://&lt;file_attach_name&gt;” to upload a new one using multipart/form-data under &lt;file_attach_name&gt; name.</summary>
-        [JsonProperty(PropertyName = "media", Required = Required.Always)]
+        [JsonProperty(PropertyName = "media", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Media { get; set; }
         ///<summary>Optional. Caption of the file to be sent, 0-1024 characters.</summary>
         [JsonProperty(PropertyName = "caption", DefaultValueHandling = DefaultValueHandling.Ignore)]

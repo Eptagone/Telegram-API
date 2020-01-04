@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,10 +6,10 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Methods
 {
     /// <summary>SendMessage method arguments.</summary>
-    public class SendMessageArgs : BaseSendArgs
+    public sealed class SendMessageArgs : BaseSendArgs
     {
         ///<summary>Text of the message to be sent.</summary>
-        [JsonProperty(PropertyName = "text", Required = Required.Always)]
+        [JsonProperty(PropertyName = "text", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Text { get; set; }
         /// <summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</summary>
         [JsonProperty(PropertyName = "parse_mode", DefaultValueHandling = DefaultValueHandling.Ignore)]

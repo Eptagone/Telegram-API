@@ -1,20 +1,20 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
 namespace TelegramAPI.Getting_updates
 {
     /// <summary>Contains information about the current status of a webhook.</summary>
-    public class WebhookInfo
+    public sealed class WebhookInfo
     {
         ///<summary>Webhook URL, may be empty if webhook is not set up.</summary>
-        [JsonProperty(PropertyName = "url", Required = Required.Always)]
-        public string Url { get; set; }
+        [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public System.Uri Url { get; set; }
         ///<summary>True, if a custom certificate was provided for webhook certificate checks.</summary>
-        [JsonProperty(PropertyName = "has_custom_certificate", Required = Required.Always)]
+        [JsonProperty(PropertyName = "has_custom_certificate", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Has_custom_certificate { get; set; }
         ///<summary>Number of updates awaiting delivery.</summary>
-        [JsonProperty(PropertyName = "pending_update_count", Required = Required.Always)]
+        [JsonProperty(PropertyName = "pending_update_count", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Pending_update_count { get; set; }
         ///<summary>Optional. Unix time for the most recent error that happened when trying to deliver an update via webhook.</summary>
         [JsonProperty(PropertyName = "Last_error_date", DefaultValueHandling = DefaultValueHandling.Ignore)]

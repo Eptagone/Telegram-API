@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,13 +6,13 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     /// <summary>This object represents a chat.</summary>
-    public class Chat
+    public sealed class Chat
     {
         /// <summary>Unique identifier for this chat.</summary>
-        [JsonProperty(PropertyName = "id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public long Id { get; set; }
         /// <summary>Type of chat, can be either “private”, “group”, “supergroup” or “channel”.</summary>
-        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type { get; set; }
         /// <summary>Optional. Title, for supergroups, channels and group chats.</summary>
         [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -41,6 +41,9 @@ namespace TelegramAPI.Available_Types
         /// <summary>Optional. Default chat member permissions, for groups and supergroups. Returned only in getChat.</summary>
         [JsonProperty(PropertyName = "permissions", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ChatPermissions Permissions { get; set; }
+        /// <summary>Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user. Returned only in getChat.</summary>
+        [JsonProperty(PropertyName = "slow_mode_delay", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public uint Slow_mode_delay { get; set; }
         /// <summary>Optional. For supergroups, name of group sticker set. Returned only in getChat.</summary>
         [JsonProperty(PropertyName = "sticker_set_name", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Sticker_set_name { get; set; }

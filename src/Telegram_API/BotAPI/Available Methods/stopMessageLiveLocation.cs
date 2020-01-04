@@ -1,15 +1,17 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json.Linq;
 namespace TelegramAPI.Available_Methods
 {
-    public static partial class Available_Methods
+    public static partial class AvailableMethods
     {
         /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
         /// <param name="T">BotClient</param>
         public static dynamic StopMessageLiveLocation(this BotClient T)
         {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
             var json_result = T.RPC<JToken>("stopMessageLiveLocation");
             if (json_result.Type == JTokenType.Object)
                 return json_result.ToObject<Available_Types.Message>();
@@ -21,6 +23,8 @@ namespace TelegramAPI.Available_Methods
         /// <param name="args">Parameters.</param>
         public static dynamic StopMessageLiveLocation(this BotClient T, StopMessageLiveLocationArgs args = null)
         {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
             var json_result = T.RPC<JToken>("stopMessageLiveLocation", args);
             if (json_result.Type == JTokenType.Object)
                 return json_result.ToObject<Available_Types.Message>();

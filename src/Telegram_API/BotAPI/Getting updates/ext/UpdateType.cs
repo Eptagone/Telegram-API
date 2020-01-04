@@ -1,11 +1,10 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System;
 namespace TelegramAPI.Getting_updates
 {
     /// <summary>Available update types.</summary>
-    public enum UpdateType : ushort
+    public enum UpdateType
     {
         /// <summary>Unknown update type</summary>
         Unknown,

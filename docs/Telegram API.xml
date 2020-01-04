@@ -4,35 +4,35 @@
         <name>Telegram API</name>
     </assembly>
     <members>
-        <member name="T:TelegramAPI.Available_Methods.Available_Methods">
+        <member name="T:TelegramAPI.Available_Methods.AvailableMethods">
             <summary>Available Methods</summary>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.AnswerCallbackQuery(TelegramAPI.BotClient,TelegramAPI.Available_Methods.AnswerCallbackQueryArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.AnswerCallbackQuery(TelegramAPI.BotClient,TelegramAPI.Available_Methods.AnswerCallbackQueryArgs)">
             <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.DeleteChatPhoto(TelegramAPI.BotClient,System.Object)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.DeleteChatPhoto(TelegramAPI.BotClient,System.Object)">
             <summary>Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.DeleteChatStickerSet(TelegramAPI.BotClient,System.Object)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.DeleteChatStickerSet(TelegramAPI.BotClient,System.Object)">
             <summary>Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.EditMessageLiveLocation(TelegramAPI.BotClient,TelegramAPI.Available_Methods.EditMessageLiveLocationArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.EditMessageLiveLocation(TelegramAPI.BotClient,TelegramAPI.Available_Methods.EditMessageLiveLocationArgs)">
             <summary>Use this method to edit live location messages sent by the bot or via the bot (for inline bots). A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.ExportChatInviteLink(TelegramAPI.BotClient,System.Object)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.ExportChatInviteLink(TelegramAPI.BotClient,System.Object)">
             <summary>Use this method to generate a new invite link for a chat; any previously generated link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the new invite link as String on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.ForwardMessage(TelegramAPI.BotClient,System.Object,System.Object,System.UInt32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.ForwardMessage(TelegramAPI.BotClient,System.Object,System.Object,System.UInt32)">
             <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -40,7 +40,7 @@
             <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.ForwardMessage(TelegramAPI.BotClient,System.Object,System.Object,System.UInt32,System.Boolean)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.ForwardMessage(TelegramAPI.BotClient,System.Object,System.Object,System.UInt32,System.Boolean)">
             <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -49,60 +49,60 @@
             <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetChat(TelegramAPI.BotClient,System.String)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetChat(TelegramAPI.BotClient,System.String)">
             <summary>Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <returns>Chat Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetChat(TelegramAPI.BotClient,System.Int64)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetChat(TelegramAPI.BotClient,System.Int64)">
             <summary>Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <returns>Chat Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetChatAdministrators(TelegramAPI.BotClient,System.Object)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetChatAdministrators(TelegramAPI.BotClient,System.Object)">
             <summary>Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <returns>Array de ChatMember Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetChatMember(TelegramAPI.BotClient,System.Object,System.Int32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetChatMember(TelegramAPI.BotClient,System.Object,System.Int32)">
             <summary>Use this method to get information about a member of a chat. Returns a ChatMember object on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="user_id">Unique identifier of the target user.</param>
             <returns><see cref="T:TelegramAPI.Available_Types.ChatMember"/></returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetChatMembersCount(TelegramAPI.BotClient,System.Object)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetChatMembersCount(TelegramAPI.BotClient,System.Object)">
             <summary>Use this method to get the number of members in a chat. Returns Int on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetFile(TelegramAPI.BotClient,System.String)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetFile(TelegramAPI.BotClient,System.String)">
             <summary>Use this method to get basic info about a file and prepare it for downloading.. On success, a File object is returned.</summary>
             <param name="T">BotClient</param>
             <param name="file_id">File identifier to get info about.</param>
             <returns><see cref="T:TelegramAPI.Available_Types.File"/></returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetMe(TelegramAPI.BotClient)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetMe(TelegramAPI.BotClient)">
             <summary>A simple method for testing your bot's auth token. Returns basic information about the bot in form of a User object.</summary>
             <returns>User Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetUserProfilePhotos(TelegramAPI.BotClient,System.Int32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetUserProfilePhotos(TelegramAPI.BotClient,System.Int32)">
             <summary>Use this method to get a list of profile pictures for a user.</summary>
             <param name="T">BotClient</param>
             <param name="user_id">Unique identifier of the target user.</param>
             <returns>UserProfilePhotos Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetUserProfilePhotos(TelegramAPI.BotClient,System.Int32,System.UInt32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetUserProfilePhotos(TelegramAPI.BotClient,System.Int32,System.UInt32)">
             <summary>Use this method to get a list of profile pictures for a user.</summary>
             <param name="T">BotClient</param>
             <param name="user_id">Unique identifier of the target user.</param>
             <param name="offset">Sequential number of the first photo to be returned. By default, all photos are returned.</param>
             <returns>UserProfilePhotos Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.GetUserProfilePhotos(TelegramAPI.BotClient,System.Int32,System.UInt32,System.UInt16)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.GetUserProfilePhotos(TelegramAPI.BotClient,System.Int32,System.UInt32,System.UInt16)">
             <summary>Use this method to get a list of profile pictures for a user.</summary>
             <param name="T">BotClient</param>
             <param name="user_id">Unique identifier of the target user.</param>
@@ -110,50 +110,50 @@
             <param name="limit">Limits the number of photos to be retrieved. Values between 1—100 are accepted. Defaults to 100.</param>
             <returns>UserProfilePhotos Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.KickChatMember(TelegramAPI.BotClient,System.Object,System.Int32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.KickChatMember(TelegramAPI.BotClient,System.Object,System.Int32)">
             <summary>Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
             <param name="user_id">Unique identifier of the target user.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.KickChatMember(TelegramAPI.BotClient,System.Object,System.Int32,System.Int32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.KickChatMember(TelegramAPI.BotClient,System.Object,System.Int32,System.Int32)">
             <summary>Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
             <param name="user_id">Unique identifier of the target user.</param>
             /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.LeaveChat(TelegramAPI.BotClient,System.Object)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.LeaveChat(TelegramAPI.BotClient,System.Object)">
             <summary>Use this method for your bot to leave a group, supergroup or channel. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.PinChatMessage(TelegramAPI.BotClient,System.Object,System.UInt32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.PinChatMessage(TelegramAPI.BotClient,System.Object,System.UInt32)">
             <summary>Use this method to pin a message in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the ‘can_pin_messages’ admin right in the supergroup or ‘can_edit_messages’ admin right in the channel. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="message_id">Identifier of a message to pin.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.PinChatMessage(TelegramAPI.BotClient,System.Object,System.UInt32,System.Boolean)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.PinChatMessage(TelegramAPI.BotClient,System.Object,System.UInt32,System.Boolean)">
             <summary>Use this method to pin a message in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the ‘can_pin_messages’ admin right in the supergroup or ‘can_edit_messages’ admin right in the channel. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="message_id">Identifier of a message to pin.</param>
             <param name="disable_notification">Optional. Pass True, if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.PromoteChatMember(TelegramAPI.BotClient,TelegramAPI.Available_Methods.PromoteChatMemberArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.PromoteChatMember(TelegramAPI.BotClient,TelegramAPI.Available_Methods.PromoteChatMemberArgs)">
             <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.RestrictChatMember(TelegramAPI.BotClient,System.Object,System.Int32,TelegramAPI.Available_Types.ChatPermissions)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.RestrictChatMember(TelegramAPI.BotClient,System.Object,System.Int32,TelegramAPI.Available_Types.ChatPermissions)">
             <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="user_id">Unique identifier of the target user.</param>
             <param name="permissions">New user permissions.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.RestrictChatMember(TelegramAPI.BotClient,System.Object,System.Int32,TelegramAPI.Available_Types.ChatPermissions,System.UInt32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.RestrictChatMember(TelegramAPI.BotClient,System.Object,System.Int32,TelegramAPI.Available_Types.ChatPermissions,System.UInt32)">
             <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
@@ -161,62 +161,62 @@
             <param name="permissions">New user permissions.</param>
             <param name="until_date">Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendAnimation(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendAnimationArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendAnimation(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendAnimationArgs)">
             <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendAudio(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendAudioArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendAudio(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendAudioArgs)">
             <summary>Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .mp3 format. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendChatAction(TelegramAPI.BotClient,System.Object,System.String)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendChatAction(TelegramAPI.BotClient,System.Object,System.String)">
             <summary>Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
             <param name="action">Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_audio or upload_audio for audio files, upload_document for general files, find_location for location data, record_video_note or upload_video_note for video notes.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendContact(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendContactArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendContact(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendContactArgs)">
             <summary>Use this method to send phone contacts. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendDocument(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendDocumentArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendDocument(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendDocumentArgs)">
             <summary>Use this method to send general files. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendLocation(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendLocationArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendLocation(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendLocationArgs)">
             <summary>Use this method to send point on the map. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendMediaGroup(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendMediaGroupArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendMediaGroup(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendMediaGroupArgs)">
             <summary>Use this method to send a group of photos or videos as an album. On success, an array of the sent Messages is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
-            <returns>Message Object.</returns>
+            <returns>Message array.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendMessage(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendMessageArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendMessage(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendMessageArgs)">
             <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendMessage(TelegramAPI.BotClient,System.Object,System.String)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendMessage(TelegramAPI.BotClient,System.Object,System.String)">
             <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
             <param name="text">Text of the message to be sent.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendMessage(TelegramAPI.BotClient,System.Object,System.String,System.UInt32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendMessage(TelegramAPI.BotClient,System.Object,System.String,System.UInt32)">
             <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -224,87 +224,140 @@
             <param name="reply_to_message_id">If the message is a reply, ID of the original message.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendPhoto(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendPhotoArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendPhoto(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendPhotoArgs)">
             <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendPoll(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendPollArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendPoll(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendPollArgs)">
             <summary>Use this method to send a native poll. A native poll can't be sent to a private chat. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendVenue(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendVenueArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendVenue(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendVenueArgs)">
             <summary>Use this method to send information about a venue. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendVideo(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendVideoArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendVideo(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendVideoArgs)">
             <summary>Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendVideoNote(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendVideoNoteArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendVideoNote(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendVideoNoteArgs)">
             <summary>As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SendVoice(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendVoiceArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SendVoice(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SendVoiceArgs)">
             <summary>Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
             <returns>Message Object.</returns>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SetChatDescription(TelegramAPI.BotClient,System.Object,System.String)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatAdministratorCustomTitle(TelegramAPI.BotClient,System.Object,System.Int32,System.String)">
+            <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
+            <param name="T">Bot Client</param>
+            <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+            <param name="user_id">Unique identifier of the target user.</param>
+            <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+            <returns>True</returns>
+        </member>
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatAdministratorCustomTitle(TelegramAPI.BotClient,System.Int64,System.Int32,System.String)">
+            <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
+            <param name="T">Bot Client</param>
+            <param name="chat_id">Unique identifier for the target chat.</param>
+            <param name="user_id">Unique identifier of the target user.</param>
+            <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+            <returns>True</returns>
+        </member>
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatAdministratorCustomTitle(TelegramAPI.BotClient,System.String,System.Int32,System.String)">
+            <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
+            <param name="T">Bot Client</param>
+            <param name="chat_id">Unique username of the target supergroup (in the format @supergroupusername).</param>
+            <param name="user_id">Unique identifier of the target user.</param>
+            <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+            <returns>True</returns>
+        </member>
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatDescription(TelegramAPI.BotClient,System.Object,System.String)">
             <summary>Use this method to change the description of a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="description">New chat description, 0-255 characters.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SetChatPermissions(TelegramAPI.BotClient,System.Object,TelegramAPI.Available_Types.ChatPermissions)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatPermissions(TelegramAPI.BotClient,System.Object,TelegramAPI.Available_Types.ChatPermissions)">
             <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="permissions">New default chat permissions.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SetChatPhoto(TelegramAPI.BotClient,System.Object,System.Object)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatPhoto(TelegramAPI.BotClient,System.Object,TelegramAPI.Available_Types.InputFile)">
             <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="photo">New chat photo, uploaded using multipart/form-data.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SetChatStickerSet(TelegramAPI.BotClient,System.Object,System.String)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatPhoto(TelegramAPI.BotClient,System.Int64,TelegramAPI.Available_Types.InputFile)">
+            <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Unique identifier for the target chat.</param>
+            <param name="photo">New chat photo, uploaded using multipart/form-data.</param>
+        </member>
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatPhoto(TelegramAPI.BotClient,System.String,TelegramAPI.Available_Types.InputFile)">
+            <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Username of the target supergroup (in the format @supergroupusername).</param>
+            <param name="photo">New chat photo, uploaded using multipart/form-data.</param>
+        </member>
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatPhoto(TelegramAPI.BotClient,TelegramAPI.Available_Methods.SetChatPhotoArgs)">
+            <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
+            <param name="T">BotClient</param>
+            <param name="args">Parameters.</param>
+        </member>
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatStickerSet(TelegramAPI.BotClient,System.Object,System.String)">
             <summary>Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="sticker_set_name">Name of the sticker set to be set as the group sticker set.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.SetChatTitle(TelegramAPI.BotClient,System.Object,System.String)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.SetChatTitle(TelegramAPI.BotClient,System.Object,System.String)">
             <summary>Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
             <param name="title">New chat title, 1-255 characters.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.StopMessageLiveLocation(TelegramAPI.BotClient)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.StopMessageLiveLocation(TelegramAPI.BotClient)">
             <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
             <param name="T">BotClient</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.StopMessageLiveLocation(TelegramAPI.BotClient,TelegramAPI.Available_Methods.StopMessageLiveLocationArgs)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.StopMessageLiveLocation(TelegramAPI.BotClient,TelegramAPI.Available_Methods.StopMessageLiveLocationArgs)">
             <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.UnbanChatMember(TelegramAPI.BotClient,System.Object,System.Int32)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.UnbanChatMember(TelegramAPI.BotClient,System.Object,System.Int32)">
             <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
             <param name="user_id">Unique identifier of the target user.</param>
         </member>
-        <member name="M:TelegramAPI.Available_Methods.Available_Methods.UnPinChatMessage(TelegramAPI.BotClient,System.Object)">
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.UnbanChatMember(TelegramAPI.BotClient,System.Int64,System.Int32)">
+            <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. Returns True on success.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Unique identifier for the target group, supergroup or channel.</param>
+            <param name="user_id">Unique identifier of the target user.</param>
+        </member>
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.UnbanChatMember(TelegramAPI.BotClient,System.String,System.Int32)">
+            <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. Returns True on success.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Unique username of the target supergroup or channel.</param>
+            <param name="user_id">Unique identifier of the target user.</param>
+        </member>
+        <member name="M:TelegramAPI.Available_Methods.AvailableMethods.UnPinChatMessage(TelegramAPI.BotClient,System.Object)">
             <summary>Use this method to unpin a message in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the ‘can_pin_messages’ admin right in the supergroup or ‘can_edit_messages’ admin right in the channel. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
@@ -420,6 +473,9 @@
         <member name="P:TelegramAPI.Available_Methods.SendAnimationArgs.Parse_mode">
             <summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
         </member>
+        <member name="P:TelegramAPI.Available_Methods.SendAnimationArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
         <member name="T:TelegramAPI.Available_Methods.SendAudioArgs">
             <summary>SendAudio method arguments.</summary>
         </member>
@@ -443,6 +499,9 @@
         </member>
         <member name="P:TelegramAPI.Available_Methods.SendAudioArgs.Thumb">
             <summary>Optional. InputFile or String. Thumbnail of the file sent. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail‘s width and height should not exceed 90. Ignored if the file is not uploaded using multipart/form-data.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Methods.SendAudioArgs.AttachFiles">
+            <summary>Attached files.</summary>
         </member>
         <member name="T:TelegramAPI.Available_Methods.SendContactArgs">
             <summary>SendContact method arguments.</summary>
@@ -474,6 +533,9 @@
         <member name="P:TelegramAPI.Available_Methods.SendDocumentArgs.Parse_mode">
             <summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
         </member>
+        <member name="P:TelegramAPI.Available_Methods.SendDocumentArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
         <member name="T:TelegramAPI.Available_Methods.SendLocationArgs">
             <summary>SendLocation method arguments.</summary>
         </member>
@@ -501,6 +563,9 @@
         <member name="P:TelegramAPI.Available_Methods.SendMediaGroupArgs.Reply_to_message_id">
             <summary>Optional. If the message is a reply, ID of the original message.</summary>
         </member>
+        <member name="P:TelegramAPI.Available_Methods.SendMediaGroupArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
         <member name="T:TelegramAPI.Available_Methods.SendMessageArgs">
             <summary>SendMessage method arguments.</summary>
         </member>
@@ -520,10 +585,13 @@
             <summary>InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Methods.SendPhotoArgs.Caption">
-            <summary>Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</summary>
+            <summary>Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Methods.SendPhotoArgs.Parse_mode">
             <summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Methods.SendPhotoArgs.AttachFiles">
+            <summary>Attached files.</summary>
         </member>
         <member name="T:TelegramAPI.Available_Methods.SendPollArgs">
             <summary>SendPoll method arguments.</summary>
@@ -582,6 +650,9 @@
         <member name="P:TelegramAPI.Available_Methods.SendVideoArgs.Supports_streaming">
             <summary>Optional. Pass True, if the uploaded video is suitable for streaming.</summary>
         </member>
+        <member name="P:TelegramAPI.Available_Methods.SendVideoArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
         <member name="T:TelegramAPI.Available_Methods.SendVideoNoteArgs">
             <summary>SendVideoNote method arguments.</summary>
         </member>
@@ -597,6 +668,9 @@
         <member name="P:TelegramAPI.Available_Methods.SendVideoNoteArgs.Thumb">
             <summary>Optional. Thumbnail of the file sent. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail‘s width and height should not exceed 90. Ignored if the file is not uploaded using multipart/form-data.</summary>
         </member>
+        <member name="P:TelegramAPI.Available_Methods.SendVideoNoteArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
         <member name="T:TelegramAPI.Available_Methods.SendVoiceArgs">
             <summary>SendVoice method arguments.</summary>
         </member>
@@ -611,6 +685,18 @@
         </member>
         <member name="P:TelegramAPI.Available_Methods.SendVoiceArgs.Duration">
             <summary>Optional. Duration of the voice message in seconds.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Methods.SendVoiceArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
+        <member name="T:TelegramAPI.Available_Methods.SetChatPhotoArgs">
+            <summary>SetChatPhoto method arguments.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Methods.SetChatPhotoArgs.Chat_id">
+            <summary>Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Methods.SetChatPhotoArgs.Photo">
+            <summary>New chat photo, uploaded using multipart/form-data.</summary>
         </member>
         <member name="T:TelegramAPI.Available_Methods.StopMessageLiveLocationArgs">
             <summary>StopMessageLiveLocation method arguments</summary>
@@ -631,7 +717,10 @@
             <summary>This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Animation.File_id">
-            <summary>Unique file identifier.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.Animation.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Animation.Width">
             <summary>Video width as defined by sender.</summary>
@@ -658,10 +747,10 @@
             <summary>This object represents an audio file to be treated as music by the Telegram clients.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Audio.File_id">
-            <summary>Unique identifier for this file.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
         </member>
-        <member name="P:TelegramAPI.Available_Types.Audio.Duration">
-            <summary>Duration of the audio in seconds as defined by sender.</summary>
+        <member name="P:TelegramAPI.Available_Types.Audio.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Audio.Performer">
             <summary>Optional. Performer of the audio as defined by sender or by audio tags.</summary>
@@ -738,6 +827,9 @@
         <member name="P:TelegramAPI.Available_Types.Chat.Permissions">
             <summary>Optional. Default chat member permissions, for groups and supergroups. Returned only in getChat.</summary>
         </member>
+        <member name="P:TelegramAPI.Available_Types.Chat.Slow_mode_delay">
+            <summary>Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user. Returned only in getChat.</summary>
+        </member>
         <member name="P:TelegramAPI.Available_Types.Chat.Sticker_set_name">
             <summary>Optional. For supergroups, name of group sticker set. Returned only in getChat.</summary>
         </member>
@@ -752,6 +844,9 @@
         </member>
         <member name="P:TelegramAPI.Available_Types.ChatMember.Status">
             <summary>The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.ChatMember.Custom_title">
+            <summary>Optional. Owner and administrators only. Custom title for this user.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.ChatMember.Until_date">
             <summary>Optional. Restricted and kicked only. Date when restrictions will be lifted for this user, unix time.</summary>
@@ -832,10 +927,16 @@
             <summary>This object represents a chat photo.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.ChatPhoto.Small_file_id">
-            <summary>Unique file identifier of small (160x160) chat photo. This file_id can be used only for photo download.</summary>
+            <summary>File identifier of small (160x160) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.ChatPhoto.Small_file_unique_id">
+            <summary>Unique file identifier of small (160x160) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.ChatPhoto.Big_file_id">
-            <summary>Unique file identifier of big (640x640) chat photo. This file_id can be used only for photo download.</summary>
+            <summary>File identifier of big (640x640) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.ChatPhoto.Big_file_unique_id">
+            <summary>Unique file identifier of big (640x640) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="T:TelegramAPI.Available_Types.Contact">
             <summary>This object represents a phone contact..</summary>
@@ -859,7 +960,10 @@
             <summary>This object represents a general file (as opposed to photos, voice messages and audio files).</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Document.File_id">
-            <summary>Unique file identifier.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.Document.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Document.Thumb">
             <summary>Optional. Document thumbnail as defined by sender.</summary>
@@ -877,7 +981,10 @@
             <summary>This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt;. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.File.File_id">
-            <summary>Unique identifier for this file.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.File.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.File.File_size">
             <summary>Optional. File size, if known.</summary>
@@ -926,6 +1033,38 @@
         </member>
         <member name="P:TelegramAPI.Available_Types.InlineKeyboardMarkup.Inline_keyboard">
             <summary>Array of button rows, each represented by an Array of <see cref="T:TelegramAPI.Available_Types.InlineKeyboardButton"/> objects.</summary>
+        </member>
+        <member name="T:TelegramAPI.Available_Types.InputFile">
+            <summary>This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.InputFile.Content">
+            <summary>HTTP file content.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.InputFile.Filename">
+            <summary>File name.</summary>
+        </member>
+        <member name="M:TelegramAPI.Available_Types.InputFile.#ctor(System.Net.Http.StreamContent,System.String)">
+            <summary>New InputFile.</summary>
+            <param name="streamcontent">HTTP file content.</param>
+            <param name="filename">File name.</param>
+        </member>
+        <member name="M:TelegramAPI.Available_Types.InputFile.#ctor(System.IO.MemoryStream,System.String)">
+            <summary>New InputFile.</summary>
+            <param name="streamfile">Stream file.</param>
+            <param name="filename">File name.</param>
+        </member>
+        <member name="M:TelegramAPI.Available_Types.InputFile.#ctor(System.Byte[],System.String)">
+            <summary>New InputFile.</summary>
+            <param name="file">File.</param>
+            <param name="filename">File name.</param>
+        </member>
+        <member name="T:TelegramAPI.Available_Types.AttachFile">
+            <summary>This object represents a attachfile.</summary>
+        </member>
+        <member name="M:TelegramAPI.Available_Types.AttachFile.#ctor(System.String,TelegramAPI.Available_Types.InputFile)">
+            <summary>New AttachFile</summary>
+            <param name="name">File attach name.</param>
+            <param name="inputFile">This object represents the contents of a file to be uploaded.</param>
         </member>
         <member name="T:TelegramAPI.Available_Types.InputMedia">
             <summary>This object represents the content of a media message to be sent. It should be one of: <br /><br />
@@ -1234,7 +1373,7 @@
             <summary>This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.MessageEntity.Type">
-            <summary>Type of the entity. Can be mention (@username), hashtag, cashtag, bot_command, url, email, phone_number, bold (bold text), italic (italic text), code (monowidth string), pre (monowidth block), text_link (for clickable text URLs), text_mention (for users without usernames).</summary>
+            <summary>Type of the entity. Can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames).</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.MessageEntity.Offset">
             <summary>Offset in UTF-16 code units to the start of the entity.</summary>
@@ -1252,7 +1391,10 @@
             <summary>This object represents one size of a photo or a file / sticker thumbnail.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.PhotoSize.File_id">
-            <summary>Unique identifier for this file.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.PhotoSize.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.PhotoSize.Width">
             <summary>Photo width.</summary>
@@ -1372,7 +1514,10 @@
             <summary>This object represents a video file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Video.File_id">
-            <summary>Unique identifier for this file.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.Video.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Video.Width">
             <summary>Video width as defined by sender.</summary>
@@ -1396,7 +1541,10 @@
             <summary>This object represents a video message (available in Telegram apps as of v.4.0).</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.VideoNote.File_id">
-            <summary>Unique identifier for this file.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.VideoNote.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.VideoNote.Length">
             <summary>Video width and height (diameter of the video message) as defined by sender.</summary>
@@ -1414,7 +1562,10 @@
             <summary>This object represents a voice note.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Voice.File_id">
-            <summary>Unique identifier for this file.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Available_Types.Voice.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Available_Types.Voice.Duration">
             <summary>Duration of the audio in seconds as defined by sender.</summary>
@@ -1425,71 +1576,27 @@
         <member name="P:TelegramAPI.Available_Types.Voice.File_size">
             <summary>Optional. File size.</summary>
         </member>
+        <member name="T:TelegramAPI.BotClient">
+            <summary>Telegram Bot Client.</summary>
+        </member>
+        <member name="P:TelegramAPI.BotClient.Token">
+            <summary>Token granted by BotFather. Required to access the Telegram bot API.</summary>
+        </member>
+        <member name="M:TelegramAPI.BotClient.#ctor(System.String)">
+            <summary>Initialize a Telegram Bot Client.</summary>
+            <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API.</param>
+        </member>
         <member name="T:TelegramAPI.BotRequestException">
             <summary>Excepcion que se genera cuando una peticion hacia el api bot de telegram obtuvo una respuesta de error.</summary>
         </member>
         <member name="P:TelegramAPI.BotRequestException.Ok">
-            <summary>Ok. False si existe error.</summary>
+            <summary>Ok. False if error.</summary>
         </member>
         <member name="P:TelegramAPI.BotRequestException.Error_code">
-            <summary>Codigo de error.</summary>
+            <summary>Error code.</summary>
         </member>
         <member name="P:TelegramAPI.BotRequestException.Description">
-            <summary>Descripcion del error.</summary>
-        </member>
-        <member name="T:TelegramAPI.Games.CallbackGame">
-            <summary>A placeholder, currently holds no information. Use BotFather to set up your game.</summary>
-        </member>
-        <member name="T:TelegramAPI.Games.Game">
-            <summary>This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.Game.Title">
-            <summary>Title of the game.</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.Game.Description">
-            <summary>Description of the game.</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.Game.Photo">
-            <summary>Photo that will be displayed in the game message in chats.</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.Game.Text">
-            <summary>Optional. Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters.</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.Game.Text_entities">
-            <summary>Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.Game.Animation">
-            <summary>Optional. Animation that will be displayed in the game message in chats. Upload via BotFather.</summary>
-        </member>
-        <member name="T:TelegramAPI.Games.GameHighScore">
-            <summary>This object represents one row of the high scores table for a game.</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.GameHighScore.Position">
-            <summary>Position in high score table for the game</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.GameHighScore.User">
-            <summary>User</summary>
-        </member>
-        <member name="P:TelegramAPI.Games.GameHighScore.Score">
-            <summary>Score</summary>
-        </member>
-        <member name="T:TelegramAPI.Games.Games">
-            <summary>Extension methods for Games</summary>
-        </member>
-        <member name="M:TelegramAPI.Games.Games.GetGameScore(TelegramAPI.BotClient,TelegramAPI.Games.GetGameScoreArgs)">
-            <summary>Use this method to get data for high score tables. Will return the score of the specified user and several of his neighbors in a game. On success, returns an Array of GameHighScore objects.<para>This method will currently return scores for the target user, plus two of his closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.</para></summary>
-            <param name="T">BotClient</param>
-             <param name="args">Parameters.</param>
-        </member>
-        <member name="M:TelegramAPI.Games.Games.SendGame(TelegramAPI.BotClient,TelegramAPI.Games.SendGameArgs)">
-            <summary>Use this method to send a game. On success, the sent Message is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="args"></param>
-        </member>
-        <member name="M:TelegramAPI.Games.Games.SetGameScore(TelegramAPI.BotClient,TelegramAPI.Games.SetGameScoreArgs)">
-            <summary>Use this method to set the score of the specified user in a game. On success, if the message was sent by the bot, returns the edited Message, otherwise returns True. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.</summary>
-            <param name="T">BotClient</param>
-             <param name="args">Parameters.</param>
+            <summary>Error description.</summary>
         </member>
         <member name="T:TelegramAPI.Games.GetGameScoreArgs">
             <summary>GetGameScore method args.</summary>
@@ -1548,6 +1655,60 @@
         <member name="P:TelegramAPI.Games.SetGameScoreArgs.Inline_message_id">
             <summary>Required if chat_id and message_id are not specified. Identifier of the inline message.</summary>
         </member>
+        <member name="T:TelegramAPI.Games.CallbackGame">
+            <summary>A placeholder, currently holds no information. Use BotFather to set up your game.</summary>
+        </member>
+        <member name="T:TelegramAPI.Games.Game">
+            <summary>This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.Game.Title">
+            <summary>Title of the game.</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.Game.Description">
+            <summary>Description of the game.</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.Game.Photo">
+            <summary>Photo that will be displayed in the game message in chats.</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.Game.Text">
+            <summary>Optional. Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters.</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.Game.Text_entities">
+            <summary>Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.Game.Animation">
+            <summary>Optional. Animation that will be displayed in the game message in chats. Upload via BotFather.</summary>
+        </member>
+        <member name="T:TelegramAPI.Games.GameHighScore">
+            <summary>This object represents one row of the high scores table for a game.</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.GameHighScore.Position">
+            <summary>Position in high score table for the game</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.GameHighScore.User">
+            <summary>User</summary>
+        </member>
+        <member name="P:TelegramAPI.Games.GameHighScore.Score">
+            <summary>Score</summary>
+        </member>
+        <member name="T:TelegramAPI.Games.GamesMethods">
+            <summary>Extension methods for Games</summary>
+        </member>
+        <member name="M:TelegramAPI.Games.GamesMethods.GetGameScore(TelegramAPI.BotClient,TelegramAPI.Games.GetGameScoreArgs)">
+            <summary>Use this method to get data for high score tables. Will return the score of the specified user and several of his neighbors in a game. On success, returns an Array of GameHighScore objects.<para>This method will currently return scores for the target user, plus two of his closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.</para></summary>
+            <param name="T">BotClient</param>
+             <param name="args">Parameters.</param>
+        </member>
+        <member name="M:TelegramAPI.Games.GamesMethods.SendGame(TelegramAPI.BotClient,TelegramAPI.Games.SendGameArgs)">
+            <summary>Use this method to send a game. On success, the sent Message is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="args"></param>
+        </member>
+        <member name="M:TelegramAPI.Games.GamesMethods.SetGameScore(TelegramAPI.BotClient,TelegramAPI.Games.SetGameScoreArgs)">
+            <summary>Use this method to set the score of the specified user in a game. On success, if the message was sent by the bot, returns the edited Message, otherwise returns True. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.</summary>
+            <param name="T">BotClient</param>
+             <param name="args">Parameters.</param>
+        </member>
         <member name="T:TelegramAPI.Getting_updates.GetUpdatesArgs">
             <summary>GetUpdate method arguments</summary>
         </member>
@@ -1578,35 +1739,34 @@
         <member name="P:TelegramAPI.Getting_updates.SetWebhookArgs.Allowed_updates">
             <summary>List the types of updates you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.<para>Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.</para></summary>
         </member>
-        <member name="T:TelegramAPI.Getting_updates.Getting_updates">
+        <member name="T:TelegramAPI.Getting_updates.GettingUpdates">
             <summary>Getting Updates</summary>
         </member>
-        <member name="M:TelegramAPI.Getting_updates.Getting_updates.DeleteWebhook(TelegramAPI.BotClient)">
+        <member name="M:TelegramAPI.Getting_updates.GettingUpdates.DeleteWebhook(TelegramAPI.BotClient)">
             <summary>Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. Requires no parameters.</summary>
         </member>
-        <member name="M:TelegramAPI.Getting_updates.Getting_updates.GetUpdateType(TelegramAPI.Getting_updates.Update)">
-            <summary>Get update type.</summary>
-            <param name="U">Update</param>
-        </member>
-        <member name="M:TelegramAPI.Getting_updates.Getting_updates.GetUpdates(TelegramAPI.BotClient)">
+        <member name="M:TelegramAPI.Getting_updates.GettingUpdates.GetUpdates(TelegramAPI.BotClient)">
             <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="T:TelegramAPI.Getting_updates.Update"/> objects is returned.</summary>
             <param name="T">BotClient</param>
         </member>
-        <member name="M:TelegramAPI.Getting_updates.Getting_updates.GetUpdates(TelegramAPI.BotClient,TelegramAPI.Getting_updates.GetUpdatesArgs)">
+        <member name="M:TelegramAPI.Getting_updates.GettingUpdates.GetUpdates(TelegramAPI.BotClient,TelegramAPI.Getting_updates.GetUpdatesArgs)">
             <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="T:TelegramAPI.Getting_updates.Update"/> objects is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Optional parameters.</param>
         </member>
-        <member name="M:TelegramAPI.Getting_updates.Getting_updates.GetWebhookInfo(TelegramAPI.BotClient)">
+        <member name="M:TelegramAPI.Getting_updates.GettingUpdates.GetWebhookInfo(TelegramAPI.BotClient)">
             <summary>Use this method to get current webhook status. On success, returns a <see cref="T:TelegramAPI.Getting_updates.WebhookInfo"/> object. If the bot is using getUpdates, will return an object with the url field empty.</summary>
         </member>
-        <member name="M:TelegramAPI.Getting_updates.Getting_updates.SetWebhook(TelegramAPI.BotClient,TelegramAPI.Getting_updates.SetWebhookArgs)">
+        <member name="M:TelegramAPI.Getting_updates.GettingUpdates.SetWebhook(TelegramAPI.BotClient,TelegramAPI.Getting_updates.SetWebhookArgs)">
             <summary>Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
         </member>
         <member name="T:TelegramAPI.Getting_updates.UpdateType">
             <summary>Available update types.</summary>
+        </member>
+        <member name="F:TelegramAPI.Getting_updates.UpdateType.Unknown">
+            <summary>Unknown update type</summary>
         </member>
         <member name="F:TelegramAPI.Getting_updates.UpdateType.Message">
             <summary>Message update</summary>
@@ -1675,6 +1835,9 @@
         <member name="P:TelegramAPI.Getting_updates.Update.Poll">
             <summary>Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot.</summary>
         </member>
+        <member name="P:TelegramAPI.Getting_updates.Update.Type">
+            <summary>Update type.</summary>
+        </member>
         <member name="T:TelegramAPI.Getting_updates.WebhookInfo">
             <summary>Contains information about the current status of a webhook.</summary>
         </member>
@@ -1699,10 +1862,10 @@
         <member name="P:TelegramAPI.Getting_updates.WebhookInfo.Allowed_updates">
             <summary>Optional. A list of update types the bot is subscribed to. Defaults to all update types.</summary>
         </member>
-        <member name="T:TelegramAPI.Inline_mode.Inline_mode">
+        <member name="T:TelegramAPI.Inline_mode.Inlinemode">
             <summary>Inline mode</summary>
         </member>
-        <member name="M:TelegramAPI.Inline_mode.Inline_mode.AnswerInlineQuery(TelegramAPI.BotClient,TelegramAPI.Inline_mode.AnswerInlineQueryArgs)">
+        <member name="M:TelegramAPI.Inline_mode.Inlinemode.AnswerInlineQuery(TelegramAPI.BotClient,TelegramAPI.Inline_mode.AnswerInlineQueryArgs)">
             <summary>Use this method to send answers to an inline query. On success, True is returned. 
             No more than 50 results per query are allowed.</summary>
             <param name="T">BotClient</param>
@@ -2382,41 +2545,88 @@
         </member>
         <member name="T:TelegramAPI.ParseMode">
             <summary><b>Formatting options</b><br/>
-            The Bot API supports basic formatting for messages.You can use bold and italic text, as well as inline links and pre-formatted code in your bots' messages. Telegram clients will render them accordingly. You can use either markdown-style or HTML-style formatting.</summary>
+            <para>The Bot API supports basic formatting for messages. You can use bold, italic, underlined and strikethrough text, as well as inline links and pre-formatted code in your bots' messages. Telegram clients will render them accordingly. You can use either markdown-style or HTML-style formatting.</para>
+            <para>Note that Telegram clients will display an alert to the user before opening an inline link (‘Open this link?’ together with the full URL).</para>
+            <para>Message entities can be nested, providing following restrictions are met: <br/>
+            - If two entities has common characters then one of them is fully contained inside another.<br/>
+            - bold, italic, underline and strikethrough entities can contain and to be contained in any other entities, except pre and code.<br/>
+            - All other entities can't contain each other.</para>
+            <para>
+            Links tg://user?id=&lt;user_id&gt; can be used to mention a user by their ID without using a username. Please note:<br/>
+            • These links will work <b>only</b> if they are used inside an inline link. For example, they will not work, when used in an inline keyboard button or in a message text.<br/>
+            • These mentions are only guaranteed to work if the user has contacted the bot in the past, has sent a callback query to the bot via inline button or is a member in the group where he was mentioned.
+            </para></summary>
         </member>
         <member name="P:TelegramAPI.ParseMode.Markdown">
             <summary>To use this mode, pass Markdown in the parse_mode field. Use the following syntax in your message:
-            <para>*bold text* <br/>
+            <para>*bold text*<br/>
             _italic text_<br/>
             [inline URL](http://www.example.com/)<br/>
             [inline mention of a user] (tg://user?id=123456789)<br/>
             `inline fixed-width code`<br/>
-            ```block_language<br/>
+            ```<br/>
             pre - formatted fixed-width code block<br/>
-            ```</para></summary>
+            ```<br/>
+            ```python<br/>
+            pre - formatted fixed-width code block written in the Python programming language<br/>
+            ```</para>
+            <para>Please note.</para>
+            <para>
+            • Entities must not be nested, use parse mode MarkdownV2 instead.<br/>
+            • There is no way to specify underline and strikethrough entities, use parse mode MarkdownV2 instead.<br/>
+            • To escape characters '_‘, ’*‘, ’`‘, ’[‘ outside of an entity, prepend the characters ’\' before them.<br/>
+            • Escaping inside entities is not allowed, so entity must be closed first and reopened again: use <i>_snake_\__case_</i> for italic <i>snake_case</i> and <i>*2*\**2=4*</i> for bold <i>2*2=4</i>.</para>
+            </summary>
+        </member>
+        <member name="P:TelegramAPI.ParseMode.MarkdownV2">
+            <summary>To use this mode, pass MarkdownV2 in the parse_mode field. Use the following syntax in your message:
+            <para>*bold \*text*<br/>
+            _italic \*text_<br/>
+            __underline__<br/>
+            ~strikethrough~<br/>
+            *bold _italic bold ~italic bold strikethrough~__underline italic bold___ bold*<br/>
+            [inline URL] (http://www.example.com/)<br/>
+            [inline mention of a user] (tg://user?id=123456789)<br/>
+            `inline fixed-width code`<br/>
+            ```<br/>
+            pre - formatted fixed-width code block<br/>
+            ```<br/>
+            ```python<br/>
+            pre - formatted fixed-width code block written in the Python programming language<br/>
+            </para>
+            <para>Please note:</para>
+            <para>• Any character between 1 and 126 inclusively can be escaped anywhere with a preceding '\' character, in which case it is treated as an ordinary character and not a part of the markup.<br/>
+            • Inside pre and code entities, all '`‘ and ’\‘ characters must be escaped with a preceding ’\' character.<br/>
+            • Inside(...) part of inline link definition, all ')‘ and ’\‘ must be escaped with a preceding ’\' character.<br/>
+            • In all other places characters '_‘, ’*‘, ’[‘, ’]‘, ’(‘, ’)‘, ’~‘, ’`‘, ’>‘, ’#‘, ’+‘, ’-‘, ’=‘, ’|‘, ’{‘, ’}‘, ’.‘, ’!‘ must be escaped with the preceding character ’\'.<br/>
+            • In case of ambiguity between italic and underline entities ‘__’ is always greadily treated from left to right as beginning or end of underline entity, so instead of ___italic underline___ use ___italic underline_\r__, where \r is a character with code 13, which will be ignored.</para>
+            </summary>
         </member>
         <member name="P:TelegramAPI.ParseMode.HTML">
             <summary>To use this mode, pass HTML in the parse_mode field. The following tags are currently supported:
-            <para>
-            &lt;b&gt;bold&lt;/b&gt;, &lt;strong&gt;bold&lt;/strong&gt; <br/>
-            &lt;i&gt;italic&lt;/i&gt;, &lt;em&gt;italic&lt;/em&gt; <br/>
-            &lt;a href = "http://www.example.com/" &gt; inline URL&lt;/a&gt; <br/>
-            &lt;a href = "tg://user?id=123456789" &gt; inline mention of a user&lt;/a&gt; <br/>
-            &lt;code&gt;inline fixed-width code &lt;/ code &gt; <br/>
-            &lt;pre &gt; pre - formatted fixed-width code block &lt;/ pre &gt;
+            <para>&lt;b&gt;bold&lt;/b&gt;, &lt;strong&gt;bold&lt;/strong&gt;<br/>
+            &lt;i&gt;italic&lt;/i&gt;, &lt;em&gt;italic&lt;/em&gt;<br/>
+            &lt;u&gt;underline&lt;/u&gt;, &lt;ins&gt;underline&lt;/ins&gt;<br/>
+            &lt;s&gt;strikethrough&lt;/s&gt;, &lt;strike&gt;strikethrough&lt;/strike&gt;, &lt;del&gt;strikethrough&lt;/del&gt;<br/>
+            &lt;b&gt;bold&lt;i&gt; italic bold&lt;s&gt; italic bold strikethrough&lt;/s&gt; &lt;u&gt;underline italic bold&lt;/u&gt;&lt;/i&gt; bold&lt;/b&gt;<br/>
+            &lt;a href = "http://www.example.com/" &gt; inline URL&lt;/a&gt;<br/>
+            &lt;a href = "tg://user?id=123456789" &gt; inline mention of a user&lt;/a&gt;<br/>
+            &lt;code&gt;inline fixed-width code &lt;/ code &gt;<br/>
+            &lt; pre &gt; pre - formatted fixed-width code block &lt;/pre &gt;<br/>
+            &lt; pre &gt;&lt; code class="language-python"&gt;pre-formatted fixed-width code block written in the Python programming language &lt;/code &gt;&lt;/pre &gt;
             </para>
             <para>Please note:</para>
             <para>Only the tags mentioned above are currently supported. <br/>
-            Tags must not be nested. <br/>
-            All&lt;,&gt; and &amp; symbols that are not a part of a tag or an HTML entity must be replaced with the corresponding HTML entities (&lt; with &amp;lt;, &gt; with &amp;gt; and &amp; with &amp;amp;). <br/>
-            All numerical HTML entities are supported. <br/>
-            The API currently supports only the following named HTML entities: &amp;lt;, &amp;gt;, &amp;amp; and &amp;quot;.</para>
-            </summary>
+            • All&lt;,&gt; and &amp; symbols that are not a part of a tag or an HTML entity must be replaced with the corresponding HTML entities (&lt; with &amp;lt;, &gt; with &amp;gt; and &amp; with &amp;amp;). <br/>
+            • All numerical HTML entities are supported. <br/>
+            • The API currently supports only the following named HTML entities: &amp;lt;, &amp;gt;, &amp;amp; and &amp;quot;.<br/>
+            • Use nested <i>pre</i> and <i>code</i> tags, to define programming language for <i>pre</i> entity. <br/>
+            • Programming language can't be specified for standalone <i>code</i> tags.</para></summary>
         </member>
-        <member name="T:TelegramAPI.Payments.Payments">
+        <member name="T:TelegramAPI.Payments.PaymentsMethods">
             <summary>Payments</summary>
         </member>
-        <member name="M:TelegramAPI.Payments.Payments.AnswerPreCheckoutQuery(TelegramAPI.BotClient,System.String,System.Boolean,System.String)">
+        <member name="M:TelegramAPI.Payments.PaymentsMethods.AnswerPreCheckoutQuery(TelegramAPI.BotClient,System.String,System.Boolean,System.String)">
             <summary>Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.</summary>
             <param name="T">Bot Client</param>
             <param name="pre_checkout_query_id">Unique identifier for the query to be answered.</param>
@@ -2424,7 +2634,7 @@
             <param name="error_message">Required if ok is False. Error message in human readable form that explains the reason for failure to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!"). Telegram will display this message to the user.</param>
             <returns>On success, True is returned.</returns>
         </member>
-        <member name="M:TelegramAPI.Payments.Payments.AnswerShippingQuery(TelegramAPI.BotClient,System.String,System.Boolean,TelegramAPI.Payments.ShippingOption[],System.String)">
+        <member name="M:TelegramAPI.Payments.PaymentsMethods.AnswerShippingQuery(TelegramAPI.BotClient,System.String,System.Boolean,TelegramAPI.Payments.ShippingOption[],System.String)">
             <summary>If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.</summary>
             <param name="T">BotClient</param>
             <param name="shipping_query_id">Unique identifier for the query to be answered</param>
@@ -2433,7 +2643,7 @@
             <param name="error_message">Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.</param>
             <returns></returns>
         </member>
-        <member name="M:TelegramAPI.Payments.Payments.SendInvoice(TelegramAPI.BotClient,TelegramAPI.Payments.SendInvoiceArgs)">
+        <member name="M:TelegramAPI.Payments.PaymentsMethods.SendInvoice(TelegramAPI.BotClient,TelegramAPI.Payments.SendInvoiceArgs)">
             <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters</param>
@@ -2648,20 +2858,10 @@
         <member name="P:TelegramAPI.Payments.SuccessfulPayment.Provider_payment_charge_id">
             <summary>Provider payment identifier.</summary>
         </member>
-        <member name="T:TelegramAPI.BotClient">
-            <summary>Telegram Bot Client.</summary>
-        </member>
-        <member name="P:TelegramAPI.BotClient.Token">
-            <summary>Token granted by BotFather. Required to access the Telegram bot API.</summary>
-        </member>
-        <member name="M:TelegramAPI.BotClient.#ctor(System.String)">
-            <summary>Initialize a Telegram Bot Client.</summary>
-            <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API.</param>
-        </member>
-        <member name="T:TelegramAPI.Stickers.Stickers">
+        <member name="T:TelegramAPI.Stickers.StickersMethods">
             <summary>Stickers</summary>
         </member>
-        <member name="M:TelegramAPI.Stickers.Stickers.AddStickerToSet(TelegramAPI.BotClient,System.Int32,System.String,System.String,System.String)">
+        <member name="M:TelegramAPI.Stickers.StickersMethods.AddStickerToSet(TelegramAPI.BotClient,System.Int32,System.String,System.String,System.String)">
             <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="user_id">User identifier of sticker set owner.</param>
@@ -2669,7 +2869,7 @@
             <param name="png_sticker">Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</param>
             <param name="emojis">One or more emoji corresponding to the sticker.</param>
         </member>
-        <member name="M:TelegramAPI.Stickers.Stickers.AddStickerToSet(TelegramAPI.BotClient,System.Int32,System.String,System.String,System.String,TelegramAPI.Stickers.MaskPosition)">
+        <member name="M:TelegramAPI.Stickers.StickersMethods.AddStickerToSet(TelegramAPI.BotClient,System.Int32,System.String,System.String,System.String,TelegramAPI.Stickers.MaskPosition)">
             <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="user_id">User identifier of sticker set owner.</param>
@@ -2678,38 +2878,69 @@
             <param name="emojis">One or more emoji corresponding to the sticker.</param>
             <param name="mask_position">A <see cref="T:TelegramAPI.Stickers.MaskPosition"/> for position where the mask should be placed on faces.</param>
         </member>
-        <member name="M:TelegramAPI.Stickers.Stickers.CreateNewStickerSet(TelegramAPI.BotClient,TelegramAPI.Stickers.CreateNewStickerSetArgs)">
+        <member name="M:TelegramAPI.Stickers.StickersMethods.AddStickerToSet(TelegramAPI.BotClient,TelegramAPI.Stickers.AddStickerToSetArgs)">
+            <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
+            <param name="T">BotClient</param>
+            <param name="args">Parameters.</param>
+        </member>
+        <member name="M:TelegramAPI.Stickers.StickersMethods.CreateNewStickerSet(TelegramAPI.BotClient,TelegramAPI.Stickers.CreateNewStickerSetArgs)">
             <summary>Use this method to create new sticker set owned by a user. The bot will be able to edit the created sticker set. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
         </member>
-        <member name="M:TelegramAPI.Stickers.Stickers.DeleteStickerFromSet(TelegramAPI.BotClient,System.String)">
+        <member name="M:TelegramAPI.Stickers.StickersMethods.DeleteStickerFromSet(TelegramAPI.BotClient,System.String)">
             <summary>Use this method to delete a sticker from a set created by the bot. Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="sticker">File identifier of the sticker.</param>
         </member>
-        <member name="M:TelegramAPI.Stickers.Stickers.GetStickerSet(TelegramAPI.BotClient,System.String)">
+        <member name="M:TelegramAPI.Stickers.StickersMethods.GetStickerSet(TelegramAPI.BotClient,System.String)">
             <summary>Use this method to get a sticker set. On success, a StickerSet object is returned.</summary>
             <param name="T">BotClient</param>
             <param name="name">Name of the sticker set.</param>
             <returns><see cref="T:TelegramAPI.Stickers.StickerSet"/> object.</returns>
         </member>
-        <member name="M:TelegramAPI.Stickers.Stickers.SendSticker(TelegramAPI.BotClient,TelegramAPI.Stickers.SendStickerArgs)">
+        <member name="M:TelegramAPI.Stickers.StickersMethods.SendSticker(TelegramAPI.BotClient,TelegramAPI.Stickers.SendStickerArgs)">
             <summary>Use this method to send static .WEBP or animated .TGS stickers. On success, the sent Message is returned..</summary>
             <param name="T">BotClient</param>
             <param name="args">Parameters.</param>
         </member>
-        <member name="M:TelegramAPI.Stickers.Stickers.SetStickerPositionInSet(TelegramAPI.BotClient,System.String,System.Int32)">
+        <member name="M:TelegramAPI.Stickers.StickersMethods.SetStickerPositionInSet(TelegramAPI.BotClient,System.String,System.Int32)">
             <summary>Use this method to move a sticker in a set created by the bot to a specific position . Returns True on success.</summary>
             <param name="T">BotClient</param>
             <param name="sticker">File identifier of the sticker.</param>
             <param name="position">New sticker position in the set, zero-based.</param>
         </member>
-        <member name="M:TelegramAPI.Stickers.Stickers.UploadStickerFile(TelegramAPI.BotClient,System.Int32,System.Object)">
+        <member name="M:TelegramAPI.Stickers.StickersMethods.UploadStickerFile(TelegramAPI.BotClient,System.Int32,TelegramAPI.Available_Types.InputFile)">
             <summary>Use this method to upload a .png file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded File on success.</summary>
             <param name="T">BotClient</param>
             <param name="user_id">User identifier of sticker file owner.</param>
             <param name="png_sticker">Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px.</param>
+        </member>
+        <member name="M:TelegramAPI.Stickers.StickersMethods.UploadStickerFile(TelegramAPI.BotClient,TelegramAPI.Stickers.UploadStickerFileArgs)">
+            <summary>Use this method to upload a .png file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded File on success.</summary>
+            <param name="T">BotClient</param>
+            <param name="args">Parameters.</param>
+        </member>
+        <member name="T:TelegramAPI.Stickers.AddStickerToSetArgs">
+            <summary>AddStickerToSet method arguments.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.AddStickerToSetArgs.User_id">
+            <summary>User identifier of sticker set owner.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.AddStickerToSetArgs.Name">
+            <summary>Sticker set name.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.AddStickerToSetArgs.Png_sticker">
+            <summary>Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.AddStickerToSetArgs.Emojis">
+            <summary>One or more emoji corresponding to the sticker.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.AddStickerToSetArgs.Mask_position">
+            <summary>Optional. A <see cref="T:TelegramAPI.Stickers.MaskPosition"/> object for position where the mask should be placed on faces.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.AddStickerToSetArgs.AttachFiles">
+            <summary>Attached files.</summary>
         </member>
         <member name="T:TelegramAPI.Stickers.CreateNewStickerSetArgs">
             <summary>CreateNewStickerSet method arguments.</summary>
@@ -2735,11 +2966,26 @@
         <member name="P:TelegramAPI.Stickers.CreateNewStickerSetArgs.Mask_position">
             <summary>Optional. A JSON object for position where the mask should be placed on faces.</summary>
         </member>
+        <member name="P:TelegramAPI.Stickers.CreateNewStickerSetArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
         <member name="T:TelegramAPI.Stickers.SendStickerArgs">
             <summary>SendSticker method arguments</summary>
         </member>
         <member name="P:TelegramAPI.Stickers.SendStickerArgs.Sticker">
             <summary>Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .webp file from the Internet, or upload a new one using multipart/form-data.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.SendStickerArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
+        <member name="T:TelegramAPI.Stickers.UploadStickerFileArgs">
+            <summary>UploadStickerFile method arguments.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.UploadStickerFileArgs.User_id">
+            <summary>User identifier of sticker file owner.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.UploadStickerFileArgs.Png_sticker">
+            <summary>Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px.</summary>
         </member>
         <member name="T:TelegramAPI.Stickers.MaskPosition">
             <summary>This object describes the position on faces where a mask should be placed by default.</summary>
@@ -2760,7 +3006,10 @@
             <summary>This object represents a sticker.</summary>
         </member>
         <member name="P:TelegramAPI.Stickers.Sticker.File_id">
-            <summary>Unique identifier for this file.</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Stickers.Sticker.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Stickers.Sticker.Width">
             <summary>Sticker width.</summary>
@@ -2810,19 +3059,13 @@
         <member name="P:TelegramAPI.TBaseBot.TBot">
             <summary>Bot client for API Requets.</summary>
         </member>
-        <member name="P:TelegramAPI.TBaseBot.Running">
-            <summary>True if the update search is active.</summary>
-        </member>
         <member name="M:TelegramAPI.TBaseBot.#ctor(System.String)">
             <summary>Initializes TBaseBot implementation</summary>
             <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API</param>
         </member>
-        <member name="M:TelegramAPI.TBaseBot.Start">
-            <summary>Starts a constant search for new updates. Use Stop() to stop it.<br/>
-            If you are using a webhook, this will not work. Instead send the update to the OnUpdate() function.</summary>
-        </member>
-        <member name="M:TelegramAPI.TBaseBot.Stop">
-            <summary>Stops searching for updates, assuming it's active</summary>
+        <member name="M:TelegramAPI.TBaseBot.UpdateSearch(System.Threading.CancellationToken)">
+            <summary>Create a task to start a constant update search.</summary>
+            <param name="cancellationToken">Cancelation token</param>
         </member>
         <member name="M:TelegramAPI.TBaseBot.OnUpdate(TelegramAPI.Getting_updates.Update)">
             <summary>Call the corresponding method according to the type of update provided.</summary>
@@ -3058,7 +3301,10 @@
             <summary>This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.</summary>
         </member>
         <member name="P:TelegramAPI.Telegram_Passport.PassportFile.File_id">
-            <summary>Identifier for this file</summary>
+            <summary>Identifier for this file, which can be used to download or reuse the file.</summary>
+        </member>
+        <member name="P:TelegramAPI.Telegram_Passport.PassportFile.File_unique_id">
+            <summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
         </member>
         <member name="P:TelegramAPI.Telegram_Passport.PassportFile.File_size">
             <summary>File size</summary>
@@ -3066,80 +3312,15 @@
         <member name="P:TelegramAPI.Telegram_Passport.PassportFile.File_date">
             <summary>Unix time when the file was uploaded</summary>
         </member>
-        <member name="T:TelegramAPI.Telegram_Passport.Telegram_Passport">
+        <member name="T:TelegramAPI.Telegram_Passport.TelegramPassport">
             <summary>Telegram Passport</summary>
         </member>
-        <member name="M:TelegramAPI.Telegram_Passport.Telegram_Passport.setPassportDataErrors(TelegramAPI.BotClient,System.Int32,TelegramAPI.Telegram_Passport.PassportElementError[])">
+        <member name="M:TelegramAPI.Telegram_Passport.TelegramPassport.SetPassportDataErrors(TelegramAPI.BotClient,System.Int32,TelegramAPI.Telegram_Passport.PassportElementError[])">
             <summary>Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
             <para>Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.</para></summary>
             <param name="T">Bot Client</param>
             <param name="user_id">User identifier</param>
             <param name="errors">An array of <see cref="T:TelegramAPI.Telegram_Passport.PassportElementError"/> describing the errors</param>
-        </member>
-        <member name="T:TelegramAPI.Updating_messages.Updating_messages">
-            <summary>Updating messages</summary>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.DeleteMessage(TelegramAPI.BotClient,System.Object,System.UInt32)">
-            <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
-            - A message can only be deleted if it was sent less than 48 hours ago.<br/>
-            - Bots can delete outgoing messages in private chats, groups, and supergroups.<br/>
-            - Bots can delete incoming messages in private chats.<br/>
-            - Bots granted can_post_messages permissions can delete outgoing messages in channels.<br/>
-            - If the bot is an administrator of a group, it can delete any message there.<br/>
-            - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
-            Returns True on success.</summary>
-            <param name="T">BotClient</param>
-            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-            <param name="message_id">Identifier of the message to delete.</param>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.EditMessageCaption(TelegramAPI.BotClient,TelegramAPI.Updating_messages.EditMessageCaptionArgs)">
-            <summary>Use this method to edit captions of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="args">Parameters.</param>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.EditMessageMedia(TelegramAPI.BotClient,TelegramAPI.Updating_messages.EditMessageMediaArgs)">
-            <summary>Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="args">Parameters.</param>
-            <returns>Message Object.</returns>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.EditMessageReplyMarkup(TelegramAPI.BotClient,TelegramAPI.Updating_messages.EditMessageReplyMarkup)">
-            <summary>Use this method to edit only the reply markup of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="args">Parameters.</param>
-            <returns>Message Object.</returns>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.EditMessageText(TelegramAPI.BotClient,TelegramAPI.Updating_messages.EditMessageTextArgs)">
-            <summary>Use this method to edit text and game messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="args">Parameters.</param>
-            <returns>Message Object.</returns>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.StopPoll(TelegramAPI.BotClient,System.Int64,System.UInt32)">
-            <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-            <param name="message_id">Identifier of the original message with the poll</param>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.StopPoll(TelegramAPI.BotClient,System.String,System.UInt32)">
-            <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-            <param name="message_id">Identifier of the original message with the poll</param>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.StopPoll(TelegramAPI.BotClient,System.Int64,System.UInt32,TelegramAPI.Available_Types.InlineKeyboardMarkup)">
-            <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-            <param name="message_id">Identifier of the original message with the poll</param>
-            <param name="reply_markup">A <see cref="T:TelegramAPI.Available_Types.InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
-        </member>
-        <member name="M:TelegramAPI.Updating_messages.Updating_messages.StopPoll(TelegramAPI.BotClient,System.String,System.UInt32,TelegramAPI.Available_Types.InlineKeyboardMarkup)">
-            <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
-            <param name="T">BotClient</param>
-            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-            <param name="message_id">Identifier of the original message with the poll</param>
-            <param name="reply_markup">A <see cref="T:TelegramAPI.Available_Types.InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
         </member>
         <member name="T:TelegramAPI.Updating_messages.EditMessageCaptionArgs">
             <summary>EditMessageCaption method arguments.</summary>
@@ -3218,6 +3399,71 @@
         </member>
         <member name="P:TelegramAPI.Updating_messages.EditMessageTextArgs.Reply_markup">
             <summary>A <see cref="T:TelegramAPI.Available_Types.InlineKeyboardMarkup"/> object for an inline keyboard.</summary>
+        </member>
+        <member name="T:TelegramAPI.Updating_messages.UpdatingMessages">
+            <summary>Updating messages</summary>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.DeleteMessage(TelegramAPI.BotClient,System.Object,System.UInt32)">
+            <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
+            - A message can only be deleted if it was sent less than 48 hours ago.<br/>
+            - Bots can delete outgoing messages in private chats, groups, and supergroups.<br/>
+            - Bots can delete incoming messages in private chats.<br/>
+            - Bots granted can_post_messages permissions can delete outgoing messages in channels.<br/>
+            - If the bot is an administrator of a group, it can delete any message there.<br/>
+            - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
+            Returns True on success.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+            <param name="message_id">Identifier of the message to delete.</param>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.EditMessageCaption(TelegramAPI.BotClient,TelegramAPI.Updating_messages.EditMessageCaptionArgs)">
+            <summary>Use this method to edit captions of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="args">Parameters.</param>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.EditMessageMedia(TelegramAPI.BotClient,TelegramAPI.Updating_messages.EditMessageMediaArgs)">
+            <summary>Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="args">Parameters.</param>
+            <returns>Message Object.</returns>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.EditMessageReplyMarkup(TelegramAPI.BotClient,TelegramAPI.Updating_messages.EditMessageReplyMarkup)">
+            <summary>Use this method to edit only the reply markup of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="args">Parameters.</param>
+            <returns>Message Object.</returns>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.EditMessageText(TelegramAPI.BotClient,TelegramAPI.Updating_messages.EditMessageTextArgs)">
+            <summary>Use this method to edit text and game messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="args">Parameters.</param>
+            <returns>Message Object.</returns>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.StopPoll(TelegramAPI.BotClient,System.Int64,System.UInt32)">
+            <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+            <param name="message_id">Identifier of the original message with the poll</param>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.StopPoll(TelegramAPI.BotClient,System.String,System.UInt32)">
+            <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+            <param name="message_id">Identifier of the original message with the poll</param>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.StopPoll(TelegramAPI.BotClient,System.Int64,System.UInt32,TelegramAPI.Available_Types.InlineKeyboardMarkup)">
+            <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+            <param name="message_id">Identifier of the original message with the poll</param>
+            <param name="reply_markup">A <see cref="T:TelegramAPI.Available_Types.InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
+        </member>
+        <member name="M:TelegramAPI.Updating_messages.UpdatingMessages.StopPoll(TelegramAPI.BotClient,System.String,System.UInt32,TelegramAPI.Available_Types.InlineKeyboardMarkup)">
+            <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
+            <param name="T">BotClient</param>
+            <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+            <param name="message_id">Identifier of the original message with the poll</param>
+            <param name="reply_markup">A <see cref="T:TelegramAPI.Available_Types.InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
         </member>
     </members>
 </doc>

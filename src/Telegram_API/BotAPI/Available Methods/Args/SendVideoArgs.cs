@@ -1,15 +1,17 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
+using TelegramAPI.Available_Types;
 
 namespace TelegramAPI.Available_Methods
 {
     /// <summary>SendVideo method arguments.</summary>
-    public class SendVideoArgs : BaseSendArgs
+    public sealed class SendVideoArgs : BaseSendArgs
     {
         ///<summary>Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data.</summary>
-        [JsonProperty(PropertyName = "video", Required = Required.Always)]
+        [JsonProperty(PropertyName = "video", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [InputFile("video")]
         public object Video { get; set; }
         ///<summary>Optional. Duration of sent video in seconds.</summary>
         [JsonProperty(PropertyName = "duration", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -22,6 +24,7 @@ namespace TelegramAPI.Available_Methods
         public uint Height { get; set; }
         ///<summary>Optional. InputFile or String. Thumbnail of the file sent. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail‘s width and height should not exceed 90. Ignored if the file is not uploaded using multipart/form-data.</summary>
         [JsonProperty(PropertyName = "thumb", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [InputFile("thumb")]
         public object Thumb { get; set; }
         ///<summary>Optional. Video caption (may also be used when resending videos by file_id), 0-1024 characters.</summary>
         [JsonProperty(PropertyName = "caption", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -32,5 +35,8 @@ namespace TelegramAPI.Available_Methods
         ///<summary>Optional. Pass True, if the uploaded video is suitable for streaming.</summary>
         [JsonProperty(PropertyName = "supports_streaming", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Supports_streaming { get; set; }
+        /// <summary>Attached files.</summary>
+        [JsonIgnore]
+        public AttachFile[] AttachFiles { get; set; }
     }
 }

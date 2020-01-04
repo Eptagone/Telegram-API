@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Quetzal Rivera.
+﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -6,14 +6,14 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Inline_mode
 {
     /// <summary>Represents a link to an mp3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.</summary>
-    public class InlineQueryResultAudio : InlineQueryResult
+    public sealed class InlineQueryResultAudio : InlineQueryResult
     {
         /// <summary>Type of the result, must be audio.</summary>
-        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public override string Type => "audio";
         ///<summary>A valid URL for the audio file.</summary>
         [JsonProperty(PropertyName = "audio_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Audio_url { get; set; }
+        public System.Uri Audio_url { get; set; }
         ///<summary>Optional. Caption, 0-1024 characters.</summary>
         [JsonProperty(PropertyName = "caption", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
