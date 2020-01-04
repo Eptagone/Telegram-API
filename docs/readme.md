@@ -3,14 +3,14 @@
 
 ## Getting started
 To get started you just need to start a new BotClient as follows.
-```
+```CSharp
 var MyBot = new BotClient(YoutAccessTokenString);
 ```
 By adding the respective namespaces you will be able to use the extension methods for the instance you just created. For example, if you want to use the "GetChat" method you should include the namespace "TelegramAPI.Available_Methods" to use method as follows.
-```
+```CSharp
 using TelegramAPI.Available_Methods; //Contains methods
-...
-
+```
+```CSharp
 var result = Bot.GetChat(chat_id); //returns a Chat object available in "TelegramAPI.Available_Types"
 ```
 In the event of any error in any request, a BotRequestException will be thrown, which will include an object with the error information.

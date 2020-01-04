@@ -1,5 +1,5 @@
 ﻿{
-  "accesstoken": "1013859717:AAHZb33x_Ow_E1E9uLhH6LbcYAp7aEhxcSY", //Replace with your bot's access token
-  "chat_id": -339947707, // Replace with your group's unique chat id
-  "sampledocumentid": "BQADAQAD0wADHJmBRO8mV9jDLRPlFgQ" // Replace with a document id from telegram servers.
+  "accesstoken": "<token>",
+  "chat_id": -1,
+  "sampledocumentid": "<doc_id>"
 }

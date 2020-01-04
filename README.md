@@ -5,7 +5,7 @@
 
   Telegram API NET is one of the most complete libraries available to interact with the Telegram Bot API in your .NET projects. Free and open source.
 
- It contains all the methods available in the API 4.4 Bot released on July 29, 2019. In addition, it has a complete set of classes with all the objects used.
+ It contains all the methods available in the API 4.4 Bot released on December 31, 2019. In addition, it has a complete set of classes with all the objects used.
 
  All objects and methods are sorted in namespaces in the same order of sections as on the official Website of the [Telegram Bot API](https://core.telegram.org/bots/api).
 
