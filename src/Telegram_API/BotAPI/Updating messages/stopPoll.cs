@@ -16,7 +16,7 @@ namespace TelegramAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Available_Types.Poll>("stoppPoll", new JObject { chat_id, message_id });
+            return T.RPC<Available_Types.Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) });
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -27,7 +27,7 @@ namespace TelegramAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Available_Types.Poll>("stoppPoll", new JObject { chat_id, message_id });
+            return T.RPC<Available_Types.Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) });
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -39,7 +39,7 @@ namespace TelegramAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Available_Types.Poll>("stoppPoll", new JObject { chat_id, message_id, reply_markup });
+            return T.RPC<Available_Types.Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id), new JProperty("reply_markup", reply_markup) });
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -51,7 +51,7 @@ namespace TelegramAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Available_Types.Poll>("stoppPoll", new JObject { chat_id, message_id, reply_markup });
+            return T.RPC<Available_Types.Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id), new JProperty("reply_markup", reply_markup) });
         }
     }
 }

@@ -31,7 +31,7 @@ namespace TelegramAPI
             if (output["ok"].Value<bool>() == true)
                 return output["result"].ToObject<T>();
             else
-                throw new BotRequestException(output);
+                throw new BotRequestException(output) { Parameters = JsonConvert.SerializeObject(args, Formatting.Indented) };
         }
         internal T RPCF<T>(string method, object args)
         {

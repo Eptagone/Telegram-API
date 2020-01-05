@@ -11,14 +11,13 @@ namespace TelegramAPI
     public sealed class BotRequestException : Exception
     {
         ///<summary>Ok. False if error.</summary>
-        [JsonProperty(PropertyName = "ok")]
         public bool Ok { get; set; }
         ///<summary>Error code.</summary>
-        [JsonProperty(PropertyName = "error_code")]
         public int Error_code { get; set; }
         ///<summary>Error description.</summary>
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+        /// <summary>JSON message that was sent in the request.</summary>
+        public string Parameters { get; set; }
         internal BotRequestException(JObject result) : base(result["description"].Value<string>())
         {
             Ok = result["ok"].Value<bool>();
@@ -35,7 +34,6 @@ namespace TelegramAPI
         {
             Ok = false;
         }
-
         internal BotRequestException(string message) : base(message)
         {
             Ok = false;
