@@ -16,6 +16,10 @@ namespace TelegramAPI
 {
     public sealed partial class BotClient
     {
+        /// <summary>RPC</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        /// <param name="args">parameters</param>
         internal T RPC<T>(string method, object args = null)
         {
             Task<string> Task;
@@ -33,6 +37,30 @@ namespace TelegramAPI
             else
                 throw new BotRequestException(output) { Parameters = JsonConvert.SerializeObject(args, Formatting.Indented) };
         }
+        /// <summary>RPC async</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        /// <param name="args">parameters</param>
+        internal async Task<T> RPCA<T>(string method, object args = null)
+        {
+            string result;
+            if (args != null)
+            {
+                var jsonargs = JsonConvert.SerializeObject(args, Formatting.Indented);
+                result = await PostRequestAsync(TAPIurl, method, jsonargs).ConfigureAwait(true);
+            }
+            else
+                result = await GetRequestAsync(TAPIurl, method).ConfigureAwait(true);
+            var output = JObject.Parse(result);
+            if (output["ok"].Value<bool>() == true)
+                return output["result"].ToObject<T>();
+            else
+                throw new BotRequestException(output) { Parameters = JsonConvert.SerializeObject(args, Formatting.Indented) };
+        }
+        /// <summary>RPC for files</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        /// <param name="args">parameters</param>
         internal T RPCF<T>(string method, object args)
         {
             var properties = args.GetType().GetProperties();
@@ -74,6 +102,55 @@ namespace TelegramAPI
             Task = PostRequestAsyncFormData(TAPIurl, method, content);
             Task.Wait(); content.Dispose();
             var output = JObject.Parse(Task.Result);
+            if (output["ok"].Value<bool>() == true)
+                return output["result"].ToObject<T>();
+            else
+                throw new BotRequestException(output);
+        }
+        /// <summary>RPC async for files</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        /// <param name="args">parameters</param>
+        internal async Task<T> RPCAF<T>(string method, object args)
+        {
+            var properties = args.GetType().GetProperties();
+            var prolist = new List<string>();
+            var content = new MultipartFormDataContent(Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks);
+            var attachprop = args.GetType().GetProperty("AttachFiles");
+            AttachFile[] attachfiles = attachprop != default ? (AttachFile[])attachprop.GetValue(args) : default;
+            foreach (var prop in properties)
+            {
+                InputFileAttribute[] attributes = (InputFileAttribute[])prop.GetCustomAttributes(typeof(InputFileAttribute), false);
+                if (attributes.Length > 0)
+                    if (prop.GetValue(args) != default)
+                        if (prop.GetValue(args).GetType() == typeof(InputFile))
+                        {
+                            var file = (InputFile)prop.GetValue(args);
+                            prolist.Add(attributes[0].PropertyName);
+                            content.Add(file.Content, attributes[0].PropertyName, file.Filename);
+                        }
+            }
+            if (prolist.Count == 0 && attachfiles == default)
+            {
+                content.Dispose();
+                return RPC<T>(method, args);
+            }
+            var inputfiles = prolist.ToArray();
+            var stringdata = JObject.FromObject(args).Properties().Where(p => !inputfiles.Any(u => u == p.Name)).Select(p => new { p.Name, Content = new StringContent(p.Value.ToString()) });
+            foreach (var data in stringdata)
+            {
+                content.Add(data.Content, data.Name);
+            }
+            if (attachfiles != default)
+            {
+                foreach (AttachFile attachfile in attachfiles)
+                {
+                    content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
+                }
+            }
+            var result = await PostRequestAsyncFormData(TAPIurl, method, content).ConfigureAwait(true);
+            var output = JObject.Parse(result);
+            content.Dispose();
             if (output["ok"].Value<bool>() == true)
                 return output["result"].ToObject<T>();
             else

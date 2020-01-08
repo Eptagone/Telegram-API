@@ -3066,10 +3066,6 @@
             <summary>Initializes TBaseBot implementation</summary>
             <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API</param>
         </member>
-        <member name="M:TelegramAPI.TBaseBot.UpdateSearch(System.Threading.CancellationToken)">
-            <summary>Create a task to start a constant update search.</summary>
-            <param name="cancellationToken">Cancelation token</param>
-        </member>
         <member name="M:TelegramAPI.TBaseBot.OnUpdate(TelegramAPI.Getting_updates.Update)">
             <summary>Call the corresponding method according to the type of update provided.</summary>
             <param name="update"></param>

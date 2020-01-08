@@ -8,3 +8,6 @@ dotnet_diagnostic.CA1707.severity = none
 
 # CA1819: Las propiedades no deben devolver matrices
 dotnet_diagnostic.CA1819.severity = none
+
+# CA1056: Las propiedades URI no deben ser cadenas
+dotnet_diagnostic.CA1056.severity = none

@@ -9,7 +9,7 @@ namespace TelegramAPI.Getting_updates
     {
         ///<summary>Webhook URL, may be empty if webhook is not set up.</summary>
         [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public System.Uri Url { get; set; }
+        public string Url { get; set; }
         ///<summary>True, if a custom certificate was provided for webhook certificate checks.</summary>
         [JsonProperty(PropertyName = "has_custom_certificate", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Has_custom_certificate { get; set; }

@@ -13,7 +13,7 @@ namespace TelegramAPI.Available_Types
         public string Text { get; set; }
         ///<summary>Optional. HTTP or tg:// url to be opened when button is pressed.</summary>
         [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public System.Uri Url { get; set; }
+        public string Url { get; set; }
         ///<summary>Optional. An HTTP URL used to automatically authorize the user. Can be used as a replacement for the Telegram Login Widget.</summary>
         [JsonProperty(PropertyName = "login_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public LoginUrl Login_url { get; set; }

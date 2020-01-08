@@ -18,7 +18,7 @@ namespace TelegramBotAPI.Tests
             {
                 Inline_keyboard = new InlineKeyboardButton[][]
                 {
-                    new InlineKeyboardButton[]{ new InlineKeyboardButton { Text = "URL", Url = new System.Uri("https://core.telegram.org/bots/api#inlinekeyboardmarkup") } }
+                    new InlineKeyboardButton[]{ new InlineKeyboardButton { Text = "URL", Url = "https://core.telegram.org/bots/api#inlinekeyboardmarkup" } }
                 }
             };
             var message = bot.SendMessage(
@@ -98,7 +98,7 @@ namespace TelegramBotAPI.Tests
                 {
                     new InlineKeyboardButton[]{
                         new InlineKeyboardButton {
-                            Text = "Login Url", Login_url = new LoginUrl {  Url = new System.Uri("https://example.com/login") } //Change this domain to your url
+                            Text = "Login Url", Login_url = new LoginUrl {  Url = "https://example.com/login" } //Change this domain to your url
                         }
                     }
                 }
@@ -131,11 +131,11 @@ namespace TelegramBotAPI.Tests
                 Inline_keyboard = new InlineKeyboardButton[][]
                 {
                     new InlineKeyboardButton[] {
-                        new InlineKeyboardButton { Text = "R1C1 URL", Url = new System.Uri("https://core.telegram.org/bots/api#inlinekeyboardmarkup")}
+                        new InlineKeyboardButton { Text = "R1C1 URL", Url = "https://core.telegram.org/bots/api#inlinekeyboardmarkup"}
                     }, //Row 1, 1 col
                     new InlineKeyboardButton[] {
                         new InlineKeyboardButton { Text = "R2C1 switch", Switch_inline_query = "inline_search" },
-                        new InlineKeyboardButton { Text = "R2C2 switchc", Switch_inline_query_current_chat = "inline_search"}
+                        new InlineKeyboardButton { Text = "R2C2 switch", Switch_inline_query_current_chat = "inline_search"}
                     }, //Row 2, 3 cols
                     new InlineKeyboardButton[] {
                         //You'll be able to receive these callback queries in an Update

@@ -19,7 +19,7 @@ namespace TelegramAPI.Available_Types
         public uint Length { get; set; }
         /// <summary>Optional. For “text_link” only, url that will be opened after user taps on the text.</summary>
         [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public System.Uri Url { get; set; }
+        public string Url { get; set; }
         /// <summary>Optional. For “text_mention” only, the mentioned user.</summary>
         [JsonProperty(PropertyName = "user", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public User User { get; set; }

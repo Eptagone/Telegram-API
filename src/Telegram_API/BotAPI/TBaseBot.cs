@@ -2,8 +2,6 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
-using System.Linq;
-using System.Threading.Tasks;
 using TelegramAPI.Available_Types;
 using TelegramAPI.Getting_updates;
 using TelegramAPI.Inline_mode;
@@ -21,30 +19,6 @@ namespace TelegramAPI
         protected TBaseBot(string accessToken)
         {
             TBot = new BotClient(accessToken);
-        }
-
-        /// <summary>Create a task to start a constant update search.</summary>
-        /// <param name="cancellationToken">Cancelation token</param>
-        public async Task UpdateSearch(System.Threading.CancellationToken cancellationToken)
-        {
-            await Task.Run(() =>
-            {
-                Update[] updates = TBot.GetUpdates();
-                while (true)
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    if (updates.Length != 0)
-                    {
-                        foreach (var update in updates)
-                        {
-                            OnUpdate(update);
-                        }
-                        updates = TBot.GetUpdates(new GetUpdatesArgs { Offset = updates.Max(u => u.Update_id) + 1 });
-                    }
-                    else
-                        updates = TBot.GetUpdates();
-                }
-            }, cancellationToken).ConfigureAwait(true);
         }
         /// <summary>Call the corresponding method according to the type of update provided.</summary>
         /// <param name="update"></param>
@@ -84,6 +58,9 @@ namespace TelegramAPI
                 case UpdateType.Poll:
                     OnPoll(update.Poll);
                     break;
+                case UpdateType.Unknown:
+                default:
+                    throw new ArgumentException("The update parameter does not correspond to a valid update.", nameof(update));
             }
         }
         //abstract methods
