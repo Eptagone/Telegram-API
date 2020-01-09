@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     ///<summary>This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).</summary>
-    public sealed class ReplyKeyboardMarkup
+    public sealed class ReplyKeyboardMarkup : ReplyMarkup
     {
         ///<summary>Array of button rows, each represented by an Array of KeyboardButton objects.</summary>
         [JsonProperty(PropertyName = "keyboard", DefaultValueHandling = DefaultValueHandling.Ignore)]

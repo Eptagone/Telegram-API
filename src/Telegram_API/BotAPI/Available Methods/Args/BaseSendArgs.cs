@@ -2,6 +2,8 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
+using TelegramAPI.Available_Types;
+
 namespace TelegramAPI.Available_Methods
 {
     /// <summary>Base object for message-sending methods arguments.</summary>
@@ -16,8 +18,8 @@ namespace TelegramAPI.Available_Methods
         /// <summary>Optional. If the message is a reply, ID of the original message.</summary>
         [JsonProperty(PropertyName = "reply_to_message_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Reply_to_message_id { get; set; }
-        /// <summary>Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. <see cref="Available_Types.InlineKeyboardMarkup"/> or <see cref="Available_Types.ReplyKeyboardMarkup"/> or <see cref="Available_Types.ReplyKeyboardRemove"/> or <see cref="Available_Types.ForceReply"/></summary>
+        /// <summary>Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. <see cref="InlineKeyboardMarkup"/> or <see cref="ReplyKeyboardMarkup"/> or <see cref="ReplyKeyboardRemove"/> or <see cref="ForceReply"/></summary>
         [JsonProperty(PropertyName = "reply_markup", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public object Reply_markup { get; set; }
+        public ReplyMarkup Reply_markup { get; set; }
     }
 }

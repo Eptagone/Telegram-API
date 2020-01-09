@@ -19,11 +19,14 @@ namespace TelegramAPI
         internal string TAPIurl => "https://api.telegram.org/bot" + Token;
         /// <summary>Token granted by BotFather. Required to access the Telegram bot API.</summary>
         public string Token { get; set; }
+        /// <summary>Set true if you want methods to return a default value when bot requests are rejected instead of throwing a <see cref="BotRequestException"/></summary>
+        public bool IgnoreBotExceptions { get; set; }
         /// <summary>Initialize a Telegram Bot Client.</summary>
         /// <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API.</param>
         public BotClient(string accessToken)
         {
             Token = accessToken;
+            IgnoreBotExceptions = false;
         }
     }
 }

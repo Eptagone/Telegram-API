@@ -17,7 +17,7 @@ namespace TelegramBotAPI.Tests
             var message = bot.SendPhoto(new SendPhotoArgs
             {
                 Chat_id = chat_id,
-                Photo = "AgADAQADlagxG2EGUET6E8stSsgT5sDbbgYABAEAAwIAA20AA5VMAAIWBA"
+                Photo = "AgADAQADSKgxGxofwERLH1hy62zAcp3vawYABAEAAwIAA20AA2YPAgABFgQ"
             });
             Assert.NotNull(message);
         }
@@ -31,6 +31,29 @@ namespace TelegramBotAPI.Tests
                     Chat_id = chat_id,
                     Photo = new InputFile(Resources.Image_sample_JPG, "Image sample JPG.jpg")
                 });
+            Assert.NotNull(message);
+        }
+        [Fact]
+        [Trait("Photo from telegram servers", "SendPhotoAsync")]
+        public async void SendPhotoFromTelegramServersAsyncTest()
+        {
+            var message = await bot.SendPhotoAsync(new SendPhotoArgs
+            {
+                Chat_id = chat_id,
+                Photo = "AgADAQADSKgxGxofwERLH1hy62zAcp3vawYABAEAAwIAA20AA2YPAgABFgQ"
+            }).ConfigureAwait(true);
+            Assert.NotNull(message);
+        }
+        [Fact]
+        [Trait("Upload photo", "SendPhotoAsync")]
+        public async void SendPhotoFromUploadFileAsync()
+        {
+            var message = await bot.SendPhotoAsync(
+                new SendPhotoArgs
+                {
+                    Chat_id = chat_id,
+                    Photo = new InputFile(Resources.Image_sample_JPG, "Image sample JPG.jpg")
+                }).ConfigureAwait(true);
             Assert.NotNull(message);
         }
     }

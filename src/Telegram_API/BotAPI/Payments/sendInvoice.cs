@@ -1,6 +1,9 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System.Threading.Tasks;
+using TelegramAPI.Available_Types;
+
 namespace TelegramAPI.Payments
 {
     public static partial class PaymentsMethods
@@ -8,11 +11,20 @@ namespace TelegramAPI.Payments
         /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters</param>
-        public static Available_Types.Message SendInvoice(this BotClient T, SendInvoiceArgs args)
+        public static Message SendInvoice(this BotClient T, SendInvoiceArgs args)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Available_Types.Message>("sendInvoice", args);
+            return T.RPC<Message>("sendInvoice", args);
+        }
+        /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="args">Parameters</param>
+        public static async Task<Message> SendInvoiceAsync(this BotClient T, SendInvoiceArgs args)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            return await T.RPCA<Message>("sendInvoice", args).ConfigureAwait(true);
         }
     }
 }

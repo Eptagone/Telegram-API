@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace TelegramAPI.Available_Types
 {
     ///<summary>This object represents an inline keyboard that appears right next to the message it belongs to.</summary>
-    public sealed class InlineKeyboardMarkup
+    public sealed class InlineKeyboardMarkup : ReplyMarkup
     {
         ///<summary>Array of button rows, each represented by an Array of <see cref="InlineKeyboardButton"/> objects.</summary>
         [JsonProperty(PropertyName = "inline_keyboard", DefaultValueHandling = DefaultValueHandling.Ignore)]

@@ -4,6 +4,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -22,20 +23,27 @@ namespace TelegramAPI
         /// <param name="args">parameters</param>
         internal T RPC<T>(string method, object args = null)
         {
-            Task<string> Task;
-            if (args != null)
+            BotResponse<T> response;
+            if (args != default)
             {
                 var jsonargs = JsonConvert.SerializeObject(args, Formatting.Indented);
-                Task = PostRequestAsync(TAPIurl, method, jsonargs);
+                var aresponse = PostRequestAsync<T>(TAPIurl, method, jsonargs); aresponse.Wait();
+                response = aresponse.Result;
             }
             else
-                Task = GetRequestAsync(TAPIurl, method);
-            Task.Wait();
-            var output = JObject.Parse(Task.Result);
-            if (output["ok"].Value<bool>() == true)
-                return output["result"].ToObject<T>();
+            {
+                var aresponse = GetRequestAsync<T>(TAPIurl, method); aresponse.Wait();
+                response = aresponse.Result;
+            }
+            if (response.Ok == true)
+                return response.Result;
             else
-                throw new BotRequestException(output) { Parameters = JsonConvert.SerializeObject(args, Formatting.Indented) };
+            {
+                if (IgnoreBotExceptions)
+                    return default;
+                else
+                    throw new BotRequestException(response.Error_code, response.Description);
+            }
         }
         /// <summary>RPC async</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -43,19 +51,25 @@ namespace TelegramAPI
         /// <param name="args">parameters</param>
         internal async Task<T> RPCA<T>(string method, object args = null)
         {
-            string result;
-            if (args != null)
+            BotResponse<T> response;
+            if (args != default)
             {
                 var jsonargs = JsonConvert.SerializeObject(args, Formatting.Indented);
-                result = await PostRequestAsync(TAPIurl, method, jsonargs).ConfigureAwait(true);
+                response = await PostRequestAsync<T>(TAPIurl, method, jsonargs).ConfigureAwait(true);
             }
             else
-                result = await GetRequestAsync(TAPIurl, method).ConfigureAwait(true);
-            var output = JObject.Parse(result);
-            if (output["ok"].Value<bool>() == true)
-                return output["result"].ToObject<T>();
+            {
+                response = await GetRequestAsync<T>(TAPIurl, method).ConfigureAwait(true);
+            }
+            if (response.Ok == true)
+                return response.Result;
             else
-                throw new BotRequestException(output) { Parameters = JsonConvert.SerializeObject(args, Formatting.Indented) };
+            {
+                if (IgnoreBotExceptions)
+                    return default;
+                else
+                    throw new BotRequestException(response.Error_code, response.Description);
+            }
         }
         /// <summary>RPC for files</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -98,14 +112,20 @@ namespace TelegramAPI
                     content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
                 }
             }
-            Task<string> Task;
-            Task = PostRequestAsyncFormData(TAPIurl, method, content);
-            Task.Wait(); content.Dispose();
-            var output = JObject.Parse(Task.Result);
-            if (output["ok"].Value<bool>() == true)
-                return output["result"].ToObject<T>();
+            var sTask = PostRequestAsyncFormData<T>(TAPIurl, method, content);
+            var serializer = new JsonSerializer();
+            sTask.Wait();
+            content.Dispose();
+            var response = sTask.Result;
+            if (response.Ok == true)
+                return response.Result;
             else
-                throw new BotRequestException(output);
+            {
+                if (IgnoreBotExceptions)
+                    return default;
+                else
+                    throw new BotRequestException(response.Error_code, response.Description);
+            }
         }
         /// <summary>RPC async for files</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -133,7 +153,7 @@ namespace TelegramAPI
             if (prolist.Count == 0 && attachfiles == default)
             {
                 content.Dispose();
-                return RPC<T>(method, args);
+                return await RPCA<T>(method, args).ConfigureAwait(true);
             }
             var inputfiles = prolist.ToArray();
             var stringdata = JObject.FromObject(args).Properties().Where(p => !inputfiles.Any(u => u == p.Name)).Select(p => new { p.Name, Content = new StringContent(p.Value.ToString()) });
@@ -148,42 +168,49 @@ namespace TelegramAPI
                     content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
                 }
             }
-            var result = await PostRequestAsyncFormData(TAPIurl, method, content).ConfigureAwait(true);
-            var output = JObject.Parse(result);
+            var response = await PostRequestAsyncFormData<T>(TAPIurl, method, content).ConfigureAwait(false);
             content.Dispose();
-            if (output["ok"].Value<bool>() == true)
-                return output["result"].ToObject<T>();
+            if (response.Ok == true)
+                return response.Result;
             else
-                throw new BotRequestException(output);
-        }
-        internal static async Task<string> PostRequestAsyncFormData(string url, string method_name, MultipartFormDataContent args)
-        {
-            using (var Client = new HttpClient())
             {
-                Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
-                var addressurl = url + "/" + method_name;
-                var response = await Client.PostAsync(addressurl, args).ConfigureAwait(true);
-                return await response.Content.ReadAsStringAsync().ConfigureAwait(true);
+                if (IgnoreBotExceptions)
+                    return default;
+                else
+                    throw new BotRequestException(response.Error_code, response.Description);
             }
         }
-        internal static async Task<string> PostRequestAsync(string url, string method_name, string args)
+        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string url, string method_name, MultipartFormDataContent args)
         {
-            using (var Client = new HttpClient())
-            {
-                string AddressUrl = url + "/" + method_name;
-                var content = new StringContent(args, Encoding.UTF8, "application/json");
-                var response = await Client.PostAsync(AddressUrl, content).ConfigureAwait(true);
-                content.Dispose();
-                return await response.Content.ReadAsStringAsync().ConfigureAwait(true);
-            }
+            JsonSerializer serializer = new JsonSerializer();
+            using var Client = new HttpClient();
+            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
+            using var response = await Client.PostAsync(url + "/" + method_name, args).ConfigureAwait(true);
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
+            using TextReader textReader = new StreamReader(stream);
+            using var jsonReader = new JsonTextReader(textReader);
+            return serializer.Deserialize<BotResponse<T>>(jsonReader);
         }
-        internal static async Task<string> GetRequestAsync(string url, string method_name)
+        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, string method_name, string args)
         {
-            using (var Client = new HttpClient())
-            {
-                var response = await Client.GetAsync(url + "/" + method_name).ConfigureAwait(true);
-                return await response.Content.ReadAsStringAsync().ConfigureAwait(true);
-            }
+            JsonSerializer serializer = new JsonSerializer();
+            using var Client = new HttpClient();
+            using var content = new StringContent(args, Encoding.UTF8, "application/json");
+            using var response = await Client.PostAsync(url + "/" + method_name, content).ConfigureAwait(true);
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
+            using TextReader textReader = new StreamReader(stream);
+            using var jsonReader = new JsonTextReader(textReader);
+            return serializer.Deserialize<BotResponse<T>>(jsonReader);
+        }
+        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, string method_name)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            using var client = new HttpClient();
+            using var response = await client.GetAsync(url + "/" + method_name).ConfigureAwait(true);
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
+            using TextReader textReader = new StreamReader(stream);
+            using var jsonReader = new JsonTextReader(textReader);
+            return serializer.Deserialize<BotResponse<T>>(jsonReader);
         }
     }
 }

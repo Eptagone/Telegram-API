@@ -10,7 +10,7 @@ namespace TelegramAPI.Available_Types
     /// • <see cref="InputMediaAudio"/><br />
     /// • <see cref="InputMediaPhoto"/><br />
     /// • <see cref="InputMediaVideo"/></summary>
-    public class InputMedia
+    public abstract class InputMedia
     {
         ///<summary>Type of the result.</summary>
         [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]

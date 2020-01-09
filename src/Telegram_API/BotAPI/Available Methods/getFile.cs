@@ -2,6 +2,8 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
+using TelegramAPI.Available_Types;
 
 namespace TelegramAPI.Available_Methods
 {
@@ -10,12 +12,22 @@ namespace TelegramAPI.Available_Methods
         /// <summary>Use this method to get basic info about a file and prepare it for downloading.. On success, a File object is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="file_id">File identifier to get info about.</param>
-        /// <returns><see cref="Available_Types.File"/></returns>
-        public static Available_Types.File GetFile(this BotClient T, string file_id)
+        /// <returns><see cref="File"/></returns>
+        public static File GetFile(this BotClient T, string file_id)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Available_Types.File>("getFile", new JObject { new JProperty("file_id", file_id) });
+            return T.RPC<File>("getFile", new JObject { new JProperty("file_id", file_id) });
+        }
+        /// <summary>Use this method to get basic info about a file and prepare it for downloading.. On success, a File object is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="file_id">File identifier to get info about.</param>
+        /// <returns><see cref="File"/></returns>
+        public static async Task<File> GetFileAsync(this BotClient T, string file_id)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            return await T.RPCA<File>("getFile", new JObject { new JProperty("file_id", file_id) }).ConfigureAwait(true);
         }
     }
 }

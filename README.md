@@ -10,9 +10,8 @@
  All objects and methods are sorted in namespaces in the same order of sections as on the official Website of the [Telegram Bot API](https://core.telegram.org/bots/api).
 
  ## Features
-* Contains pre-defined methods for all Bot API 4.4 methods.
-* Contains classes for each object type used in the Bot API 4.4
-* Contains a base bot class for a fast implementation.
+* Contains pre-defined methods for all Bot API 4.5 methods.
+* Contains classes for each object type used in the Bot API 4.5
 * Uses [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/).
 
 ## Documentation

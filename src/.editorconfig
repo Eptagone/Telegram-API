@@ -11,3 +11,6 @@ dotnet_diagnostic.CA1819.severity = none
 
 # CA1056: Las propiedades URI no deben ser cadenas
 dotnet_diagnostic.CA1056.severity = none
+
+# CA1032: Implementar constructores de excepción estándar
+dotnet_diagnostic.CA1032.severity = none
