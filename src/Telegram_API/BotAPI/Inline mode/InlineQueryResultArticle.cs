@@ -13,7 +13,7 @@ namespace TelegramAPI.Inline_mode
         public override string Type => "article";
         /// <summary>Optional. URL of the result.</summary>
         [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public System.Uri Url { get; set; }
+        public string Url { get; set; }
         /// <summary>Optional. Pass True, if you don't want the URL to be shown in the message.</summary>
         [JsonProperty(PropertyName = "hide_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Hide_url { get; set; }

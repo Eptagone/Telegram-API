@@ -24,5 +24,8 @@ namespace TelegramAPI.Updating_messages
         ///<summary>A <see cref="Available_Types.InlineKeyboardMarkup"/> object for a new inline keyboard.</summary>
         [JsonProperty(PropertyName = "reply_markup", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Available_Types.InlineKeyboardMarkup Reply_markup { get; set; }
+        /// <summary>Attached files.</summary>
+        [JsonIgnore]
+        public AttachFile[] AttachFiles { get; set; }
     }
 }

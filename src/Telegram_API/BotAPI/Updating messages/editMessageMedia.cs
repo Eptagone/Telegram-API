@@ -17,7 +17,7 @@ namespace TelegramAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var json_result = T.RPC<JToken>("editMessageMedia", args);
+            var json_result = T.RPCF<JToken>("editMessageMedia", args);
             if (json_result.Type == JTokenType.Object)
                 return json_result.ToObject<Message>();
             else
@@ -31,7 +31,7 @@ namespace TelegramAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var json_result = await T.RPCA<JToken>("editMessageMedia", args).ConfigureAwait(true);
+            var json_result = await T.RPCAF<JToken>("editMessageMedia", args).ConfigureAwait(true);
             if (json_result.Type == JTokenType.Object)
                 return json_result.ToObject<Message>();
             else

@@ -2,8 +2,8 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
-using System;
 using TelegramAPI.Available_Types;
+
 namespace TelegramAPI.Getting_updates
 {
     /// <summary>SetWebhook method arguments</summary>
@@ -11,7 +11,7 @@ namespace TelegramAPI.Getting_updates
     {
         ///<summary>HTTPS url to send updates to. Use an empty string to remove webhook integration.</summary>
         [JsonProperty(PropertyName = "url", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Uri Url { get; set; } = new Uri(string.Empty);
+        public string Url { get; set; }
         ///<summary>Upload your public key certificate so that the root certificate in use can be checked. See our <a href="https://core.telegram.org/bots/self-signed">self-signed guide</a> for details.</summary>
         [JsonProperty(PropertyName = "certificate", DefaultValueHandling = DefaultValueHandling.Ignore)]
         [InputFile("certificate")]

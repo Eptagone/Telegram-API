@@ -43,6 +43,7 @@ namespace TelegramAPI.Getting_updates
         [JsonProperty(PropertyName = "poll", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Available_Types.Poll Poll { get; set; }
         /// <summary>Update type.</summary>
+        [JsonIgnore]
         public UpdateType Type
         {
             get
