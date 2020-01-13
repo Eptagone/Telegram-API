@@ -31,3 +31,81 @@ All methods and object types used in the Telegram Bot API are separated into nam
 | TelegramAPI.Games | Contains methods and types for games |
 
 For more detail of what each method does and the properties of each type, it is recommended to consult on the official website of the [Telegram Bot API](https://core.telegram.org/bots/api) while using the library.
+
+## Examples
+- [Send Messages](###Send-Messages)
+- [Upload files](###Upload-files)
+- [Asynchronous methods](###Asynchronous-methods)
+
+### Send Messages
+Sending messages examples
+
+#### Send message text
+
+```CSharp
+using TelegramAPI;
+using TelegramAPI.Available_Methods
+
+var bot = new BotClient(token);
+bot.SendMessage(chat_id, "Message Text");
+```
+#### Send message photo
+```CSharp
+using TelegramAPI.Available_Methods
+
+var bot = new BotClient(token);
+bot.SendPhoto(new SendPhotoArgs
+    {
+        Chat_id = chat_id,
+        Photo = photoid
+    });
+```
+
+### Upload files
+Depending on the method used. You can send attach files in two ways.
+
+The first way is to pass an inputfile object in the respective field. The second way is to add AttachFile objects in the AttachFiles field and pass "attach://\<attachfilename\>" in all the file fields you require.
+
+#### Option 1
+```CSharp
+using TelegramAPI;
+using TelegramAPI.Available_Types;
+using TelegramAPI.Available_Methods
+
+var bot = new BotClient(token);
+bot.SendDocument(
+    new SendDocumentArgs
+    {
+        Chat_id = chat_id,
+        Document = new InputFile(filebytes, "file.zip")
+    }); //upload document
+```
+#### Option 2
+```CSharp
+using TelegramAPI;
+using TelegramAPI.Available_Types;
+using TelegramAPI.Available_Methods
+
+var bot = bot.SendDocument(
+    new SendDocumentArgs
+    {
+        Chat_id = chat_id,
+        Document = "attach://file56",
+        AttachFiles = new AttachFile[]
+        {
+            new AttachFile("file56",
+                new InputFile(filebytes, "file.zip"))
+        }
+    }); //upload document
+```
+### Asynchronous methods
+All available methods have an alternative asynchronous method. These methods have the same name but with Async termination. The way you pass parameters is exactly the same as normal methods.
+
+For example, sending a text message asynchronously would be something like this:
+```CSharp
+using TelegramAPI;
+using TelegramAPI.Available_Methods
+
+var bot = new BotClient(token);
+await bot.SendMessageAsync(chat_id, "Message Text");
+```

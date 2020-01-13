@@ -77,8 +77,7 @@ namespace TelegramAPI
         /// <param name="args">parameters</param>
         internal T RPCF<T>(string method, object args)
         {
-            var properties = args.GetType().GetProperties();
-            var prolist = new List<string>();
+            var properties = args.GetType().GetProperties(); var prolist = new List<string>();
             var content = new MultipartFormDataContent(Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks);
             var attachprop = args.GetType().GetProperty("AttachFiles");
             AttachFile[] attachfiles = attachprop != default ? (AttachFile[])attachprop.GetValue(args) : default;
@@ -89,15 +88,13 @@ namespace TelegramAPI
                     if (prop.GetValue(args) != default)
                         if (prop.GetValue(args).GetType() == typeof(InputFile))
                         {
-                            var file = (InputFile)prop.GetValue(args);
-                            prolist.Add(attributes[0].PropertyName);
+                            var file = (InputFile)prop.GetValue(args); prolist.Add(attributes[0].PropertyName);
                             content.Add(file.Content, attributes[0].PropertyName, file.Filename);
                         }
             }
             if (prolist.Count == 0 && attachfiles == default)
             {
-                content.Dispose();
-                return RPC<T>(method, args);
+                content.Dispose(); return RPC<T>(method, args);
             }
             var inputfiles = prolist.ToArray();
             var stringdata = JObject.FromObject(args).Properties().Where(p => !inputfiles.Any(u => u == p.Name)).Select(p => new { p.Name, Content = new StringContent(p.Value.ToString()) });
@@ -113,9 +110,7 @@ namespace TelegramAPI
                 }
             }
             var sTask = PostRequestAsyncFormData<T>(TAPIurl, method, content);
-            var serializer = new JsonSerializer();
-            sTask.Wait();
-            content.Dispose();
+            var serializer = new JsonSerializer(); sTask.Wait(); content.Dispose();
             var response = sTask.Result;
             if (response.Ok == true)
                 return response.Result;
@@ -133,8 +128,7 @@ namespace TelegramAPI
         /// <param name="args">parameters</param>
         internal async Task<T> RPCAF<T>(string method, object args)
         {
-            var properties = args.GetType().GetProperties();
-            var prolist = new List<string>();
+            var properties = args.GetType().GetProperties(); var prolist = new List<string>();
             var content = new MultipartFormDataContent(Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks);
             var attachprop = args.GetType().GetProperty("AttachFiles");
             AttachFile[] attachfiles = attachprop != default ? (AttachFile[])attachprop.GetValue(args) : default;
@@ -145,8 +139,7 @@ namespace TelegramAPI
                     if (prop.GetValue(args) != default)
                         if (prop.GetValue(args).GetType() == typeof(InputFile))
                         {
-                            var file = (InputFile)prop.GetValue(args);
-                            prolist.Add(attributes[0].PropertyName);
+                            var file = (InputFile)prop.GetValue(args); prolist.Add(attributes[0].PropertyName);
                             content.Add(file.Content, attributes[0].PropertyName, file.Filename);
                         }
             }

@@ -3849,6 +3849,9 @@
         <member name="P:TelegramAPI.Updating_messages.EditMessageMediaArgs.Reply_markup">
             <summary>A <see cref="T:TelegramAPI.Available_Types.InlineKeyboardMarkup"/> object for a new inline keyboard.</summary>
         </member>
+        <member name="P:TelegramAPI.Updating_messages.EditMessageMediaArgs.AttachFiles">
+            <summary>Attached files.</summary>
+        </member>
         <member name="T:TelegramAPI.Updating_messages.EditMessageReplyMarkup">
             <summary>EditMessageReplyMarkup method arguments.</summary>
         </member>
