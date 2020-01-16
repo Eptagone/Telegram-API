@@ -1917,6 +1917,9 @@
             <summary>Initialize a Telegram Bot Client.</summary>
             <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API.</param>
         </member>
+        <member name="F:TelegramAPI.BotClient.client">
+            <summary>HttpClient for bot requests.</summary>
+        </member>
         <member name="M:TelegramAPI.BotClient.RPC``1(System.String,System.Object)">
             <summary>RPC</summary>
             <typeparam name="T">return type.</typeparam>

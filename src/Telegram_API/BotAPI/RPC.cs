@@ -17,6 +17,8 @@ namespace TelegramAPI
 {
     public sealed partial class BotClient
     {
+        /// <summary>HttpClient for bot requests.</summary>
+        public static readonly HttpClient client = new HttpClient() { };
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
@@ -187,9 +189,8 @@ namespace TelegramAPI
         internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, string method_name, string args)
         {
             JsonSerializer serializer = new JsonSerializer();
-            using var Client = new HttpClient();
             using var content = new StringContent(args, Encoding.UTF8, "application/json");
-            using var response = await Client.PostAsync(url + "/" + method_name, content).ConfigureAwait(true);
+            using var response = await client.PostAsync(url + "/" + method_name, content).ConfigureAwait(true);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
             using TextReader textReader = new StreamReader(stream);
             using var jsonReader = new JsonTextReader(textReader);
@@ -198,7 +199,6 @@ namespace TelegramAPI
         internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, string method_name)
         {
             JsonSerializer serializer = new JsonSerializer();
-            using var client = new HttpClient();
             using var response = await client.GetAsync(url + "/" + method_name).ConfigureAwait(true);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
             using TextReader textReader = new StreamReader(stream);
