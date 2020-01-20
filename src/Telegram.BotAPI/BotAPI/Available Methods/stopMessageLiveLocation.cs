@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -11,37 +11,57 @@ namespace Telegram.BotAPI.Available_Methods
     {
         /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
         /// <param name="T">BotClient</param>
-        /// <param name="args">Parameters.</param>
-        public static dynamic StopMessageLiveLocation(this BotClient T, StopMessageLiveLocationArgs args = default)
+        public static dynamic StopMessageLiveLocation(this BotClient T)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            JToken result;
-            if(args == default)
-                result = T.RPC<JToken>("stopMessageLiveLocation");
-            else
-                result = T.RPC<JToken>("stopMessageLiveLocation", args);
-            if (result.Type == JTokenType.Object)
+            var result = T.RPC<JsonElement>("stopMessageLiveLocation");
+            if (result.ValueKind == JsonValueKind.Object)
                 return result.ToObject<Message>();
             else
-                return result.ToObject<bool>();
+                return result.GetBoolean();
         }
         /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
-        public static async Task<dynamic> StopMessageLiveLocationAsync(this BotClient T, StopMessageLiveLocationArgs args = default)
+        public static dynamic StopMessageLiveLocation(this BotClient T, StopMessageLiveLocationArgs args)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            JToken result;
-            if(args == default)
-                result = await T.RPCA<JToken>("stopMessageLiveLocation").ConfigureAwait(true);
-            else
-                result = await T.RPCA<JToken>("stopMessageLiveLocation", args).ConfigureAwait(true);
-            if (result.Type == JTokenType.Object)
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            var result = T.RPC<JsonElement>("stopMessageLiveLocation", args);
+            if (result.ValueKind == JsonValueKind.Object)
                 return result.ToObject<Message>();
             else
-                return result.ToObject<bool>();
+                return result.GetBoolean();
+        }
+        /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
+        /// <param name="T">BotClient</param>
+        public static async Task<dynamic> StopMessageLiveLocationAsync(this BotClient T)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            var result = await T.RPCA<JsonElement>("stopMessageLiveLocation").ConfigureAwait(false);
+            if (result.ValueKind == JsonValueKind.Object)
+                return result.ToObject<Message>();
+            else
+                return result.GetBoolean();
+        }
+        /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="args">Parameters.</param>
+        public static async Task<dynamic> StopMessageLiveLocationAsync(this BotClient T, StopMessageLiveLocationArgs args)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            var result = await T.RPCA<JsonElement>("stopMessageLiveLocation", args).ConfigureAwait(false);
+            if (result.ValueKind == JsonValueKind.Object)
+                return result.ToObject<Message>();
+            else
+                return result.GetBoolean();
         }
     }
 }

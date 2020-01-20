@@ -1,15 +1,14 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -22,21 +21,39 @@ namespace Telegram.BotAPI
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
-        /// <param name="args">parameters</param>
-        internal T RPC<T>(string method, object args = null)
+        internal T RPC<T>(string method)
         {
+            var rpc = RPCA<T>(method);
+            rpc.Wait(); return rpc.Result;
+        }
+        /// <summary>RPC</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        /// <param name="args">parameters</param>
+        internal T RPC<T>(string method, object args)
+        {
+            var rpc = RPCA<T>(method, args);
+            rpc.Wait(); return rpc.Result;
+        }
+        /// <summary>RPC</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        /// <param name="args">parameters</param>
+        internal T RPC<T>(string method, Stream args)
+        {
+            var rpc = RPCA<T>(method, args);
+            rpc.Wait(); return rpc.Result;
+        }
+        /// <summary>RPC async</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        internal async Task<T> RPCA<T>(string method)
+        {
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.CallbackGameJsonConverter());
+            options.Converters.Add(new JsonTools.ReplyMarkupConverter());
             BotResponse<T> response;
-            if (args != default)
-            {
-                var jsonargs = JsonConvert.SerializeObject(args, Formatting.Indented);
-                var aresponse = PostRequestAsync<T>(TAPIurl, method, jsonargs); aresponse.Wait();
-                response = aresponse.Result;
-            }
-            else
-            {
-                var aresponse = GetRequestAsync<T>(TAPIurl, method); aresponse.Wait();
-                response = aresponse.Result;
-            }
+            response = await GetRequestAsync<T>(TAPIurl, method, options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
             else
@@ -51,18 +68,30 @@ namespace Telegram.BotAPI
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
         /// <param name="args">parameters</param>
-        internal async Task<T> RPCA<T>(string method, object args = null)
+        internal async Task<T> RPCA<T>(string method, object args)
         {
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.CallbackGameJsonConverter());
+            options.Converters.Add(new JsonTools.ReplyMarkupConverter());
+            options.Converters.Add(new JsonTools.UintJsonConverter());
+            options.Converters.Add(new JsonTools.UshortJsonConverter());
+            var stream = new MemoryStream();
+            var json = JsonSerializer.Serialize(args, args.GetType(), options);
+            await JsonSerializer.SerializeAsync(stream, args, args.GetType(), options).ConfigureAwait(false);
+            stream.Seek(0, SeekOrigin.Begin);
+            return await RPCA<T>(method, stream).ConfigureAwait(false);
+        }
+        /// <summary>RPC async</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        /// <param name="args">parameters</param>
+        internal async Task<T> RPCA<T>(string method, Stream args)
+        {
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.CallbackGameJsonConverter());
+            options.Converters.Add(new JsonTools.ReplyMarkupConverter());
             BotResponse<T> response;
-            if (args != default)
-            {
-                var jsonargs = JsonConvert.SerializeObject(args, Formatting.Indented);
-                response = await PostRequestAsync<T>(TAPIurl, method, jsonargs).ConfigureAwait(true);
-            }
-            else
-            {
-                response = await GetRequestAsync<T>(TAPIurl, method).ConfigureAwait(true);
-            }
+            response = await PostRequestAsync<T>(TAPIurl, method, args, options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
             else
@@ -79,50 +108,8 @@ namespace Telegram.BotAPI
         /// <param name="args">parameters</param>
         internal T RPCF<T>(string method, object args)
         {
-            var properties = args.GetType().GetProperties(); var prolist = new List<string>();
-            var content = new MultipartFormDataContent(Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks);
-            var attachprop = args.GetType().GetProperty("AttachFiles");
-            AttachFile[] attachfiles = attachprop != default ? (AttachFile[])attachprop.GetValue(args) : default;
-            foreach (var prop in properties)
-            {
-                InputFileAttribute[] attributes = (InputFileAttribute[])prop.GetCustomAttributes(typeof(InputFileAttribute), false);
-                if (attributes.Length > 0)
-                    if (prop.GetValue(args) != default)
-                        if (prop.GetValue(args).GetType() == typeof(InputFile))
-                        {
-                            var file = (InputFile)prop.GetValue(args); prolist.Add(attributes[0].PropertyName);
-                            content.Add(file.Content, attributes[0].PropertyName, file.Filename);
-                        }
-            }
-            if (prolist.Count == 0 && attachfiles == default)
-            {
-                content.Dispose(); return RPC<T>(method, args);
-            }
-            var inputfiles = prolist.ToArray();
-            var stringdata = JObject.FromObject(args).Properties().Where(p => !inputfiles.Any(u => u == p.Name)).Select(p => new { p.Name, Content = new StringContent(p.Value.ToString()) });
-            foreach (var data in stringdata)
-            {
-                content.Add(data.Content, data.Name);
-            }
-            if (attachfiles != default)
-            {
-                foreach (AttachFile attachfile in attachfiles)
-                {
-                    content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
-                }
-            }
-            var sTask = PostRequestAsyncFormData<T>(TAPIurl, method, content);
-            var serializer = new JsonSerializer(); sTask.Wait(); content.Dispose();
-            var response = sTask.Result;
-            if (response.Ok == true)
-                return response.Result;
-            else
-            {
-                if (IgnoreBotExceptions)
-                    return default;
-                else
-                    throw new BotRequestException(response.Error_code, response.Description);
-            }
+            var rpcf = RPCAF<T>(method, args);
+            rpcf.Wait(); return rpcf.Result;
         }
         /// <summary>RPC async for files</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -130,40 +117,58 @@ namespace Telegram.BotAPI
         /// <param name="args">parameters</param>
         internal async Task<T> RPCAF<T>(string method, object args)
         {
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.CallbackGameJsonConverter());
+            options.Converters.Add(new JsonTools.ReplyMarkupConverter());
+            options.Converters.Add(new JsonTools.UintJsonConverter());
+            options.Converters.Add(new JsonTools.UshortJsonConverter());
+            options.Converters.Add(new JsonTools.InputMediaJsonConverter());
             var properties = args.GetType().GetProperties(); var prolist = new List<string>();
-            var content = new MultipartFormDataContent(Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks);
-            var attachprop = args.GetType().GetProperty("AttachFiles");
-            AttachFile[] attachfiles = attachprop != default ? (AttachFile[])attachprop.GetValue(args) : default;
+            using var content = new MultipartFormDataContent(Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks);
             foreach (var prop in properties)
             {
-                InputFileAttribute[] attributes = (InputFileAttribute[])prop.GetCustomAttributes(typeof(InputFileAttribute), false);
-                if (attributes.Length > 0)
-                    if (prop.GetValue(args) != default)
-                        if (prop.GetValue(args).GetType() == typeof(InputFile))
-                        {
-                            var file = (InputFile)prop.GetValue(args); prolist.Add(attributes[0].PropertyName);
-                            content.Add(file.Content, attributes[0].PropertyName, file.Filename);
-                        }
-            }
-            if (prolist.Count == 0 && attachfiles == default)
-            {
-                content.Dispose();
-                return await RPCA<T>(method, args).ConfigureAwait(true);
-            }
-            var inputfiles = prolist.ToArray();
-            var stringdata = JObject.FromObject(args).Properties().Where(p => !inputfiles.Any(u => u == p.Name)).Select(p => new { p.Name, Content = new StringContent(p.Value.ToString()) });
-            foreach (var data in stringdata)
-            {
-                content.Add(data.Content, data.Name);
-            }
-            if (attachfiles != default)
-            {
-                foreach (AttachFile attachfile in attachfiles)
+                var value = prop.GetValue(args);
+                if(value != default)
                 {
-                    content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
+                var jsonattribs = (JsonPropertyNameAttribute[])prop.GetCustomAttributes(typeof(JsonPropertyNameAttribute), false);
+                if (jsonattribs.Length > 0)
+                {
+                    var pname = jsonattribs[0].Name;
+                    if (value.GetType() == typeof(InputFile))
+                    {
+                        var file = (InputFile)value;
+                        content.Add(file.Content, pname, file.Filename);
+                    }
+                    else
+                    {
+                        if(value is string || value is bool || value.IsNumber())
+                        {
+                            var scon = new { Name = pname, Content = new StringContent(value.ToString(), Encoding.UTF8) };
+                            content.Add(scon.Content, scon.Name);
+                        }
+                        else
+                        {
+                            string jvalue = JsonSerializer.Serialize(value, value.GetType(), options);
+                            var scon = new { Name = pname, Content = new StringContent(jvalue, Encoding.UTF8) };
+                            content.Add(scon.Content, scon.Name);
+                        }
+                    }
+                }
+                else
+                {
+                    var attachprop = args.GetType().GetProperty("AttachFiles");
+                    AttachFile[] attachfiles = attachprop == default ? default : (AttachFile[])attachprop.GetValue(args);
+                    if (attachfiles != default)
+                    {
+                        foreach (AttachFile attachfile in attachfiles)
+                        {
+                            content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
+                        }
+                    }
+                }
                 }
             }
-            var response = await PostRequestAsyncFormData<T>(TAPIurl, method, content).ConfigureAwait(false);
+            var response = await PostRequestAsyncFormData<T>(TAPIurl, method, content, options).ConfigureAwait(false);
             content.Dispose();
             if (response.Ok == true)
                 return response.Result;
@@ -175,35 +180,27 @@ namespace Telegram.BotAPI
                     throw new BotRequestException(response.Error_code, response.Description);
             }
         }
-        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string url, string method_name, MultipartFormDataContent args)
+        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string url, string method_name, MultipartFormDataContent args, JsonSerializerOptions options = default)
         {
-            JsonSerializer serializer = new JsonSerializer();
             using var Client = new HttpClient();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
-            using var response = await Client.PostAsync(url + "/" + method_name, args).ConfigureAwait(true);
-            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
-            using TextReader textReader = new StreamReader(stream);
-            using var jsonReader = new JsonTextReader(textReader);
-            return serializer.Deserialize<BotResponse<T>>(jsonReader);
+            using var response = await Client.PostAsync(url + "/" + method_name, args).ConfigureAwait(false);
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
-        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, string method_name, string args)
+        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, string method_name, Stream args, JsonSerializerOptions options = default)
         {
-            JsonSerializer serializer = new JsonSerializer();
-            using var content = new StringContent(args, Encoding.UTF8, "application/json");
-            using var response = await client.PostAsync(url + "/" + method_name, content).ConfigureAwait(true);
-            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
-            using TextReader textReader = new StreamReader(stream);
-            using var jsonReader = new JsonTextReader(textReader);
-            return serializer.Deserialize<BotResponse<T>>(jsonReader);
+            using var content = new StreamContent(args);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            using var response = await client.PostAsync(url + "/" + method_name, content).ConfigureAwait(false);
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
-        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, string method_name)
+        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, string method_name, JsonSerializerOptions options = default)
         {
-            JsonSerializer serializer = new JsonSerializer();
-            using var response = await client.GetAsync(url + "/" + method_name).ConfigureAwait(true);
-            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(true);
-            using TextReader textReader = new StreamReader(stream);
-            using var jsonReader = new JsonTextReader(textReader);
-            return serializer.Deserialize<BotResponse<T>>(jsonReader);
+            using var response = await client.GetAsync(url + "/" + method_name).ConfigureAwait(false);
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
     }
 }

@@ -1,7 +1,7 @@
 // Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using TelegramAPI;
+using Telegram.BotAPI;
 using Telegram.BotAPI.Available_Methods;
 using Xunit;
 

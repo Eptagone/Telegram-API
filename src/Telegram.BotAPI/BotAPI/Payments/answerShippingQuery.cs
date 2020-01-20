@@ -1,8 +1,9 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json.Linq;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -21,7 +22,45 @@ namespace Telegram.BotAPI.Payments
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Message>("answerShippingQuery", new JObject { new JProperty("shipping_query_id", shipping_query_id), new JProperty("ok", ok), ok ? new JProperty("shipping_options", shipping_options) : new JProperty("error_message", error_message) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("shipping_query_id", shipping_query_id);
+            json.WriteBoolean("ok", ok);
+            if (ok)
+            {
+                if (shipping_options == default)
+                    throw new System.ArgumentNullException(nameof(shipping_options));
+                json.WriteStartArray("shipping_options");
+                foreach (var option in shipping_options)
+                {
+                    json.WriteStartObject();
+                    json.WriteString("id", option.Id);
+                    json.WriteString("title", option.Title);
+                    json.WriteStartArray("prices");
+                    foreach (var price in option.Prices)
+                    {
+                        json.WriteStartObject();
+                        json.WriteString("label", price.Label);
+                        json.WriteNumber("amount", price.Amount);
+                        json.WriteEndObject();
+                    }
+                    json.WriteEndArray();
+                    json.WriteEndObject();
+                }
+                json.WriteEndArray();
+            }
+            else
+            {
+                if (error_message == default)
+                    throw new System.ArgumentNullException(nameof(error_message));
+                json.WriteString("error_message", error_message);
+
+            }
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<Message>("answerShippingQuery", stream);
         }
         /// <summary>If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -34,7 +73,46 @@ namespace Telegram.BotAPI.Payments
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Message>("answerShippingQuery", new JObject { new JProperty("shipping_query_id", shipping_query_id), new JProperty("ok", ok), ok ? new JProperty("shipping_options", shipping_options) : new JProperty("error_message", error_message) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("shipping_query_id", shipping_query_id);
+            json.WriteBoolean("ok", ok);
+            if (ok)
+            {
+                if (shipping_options == default)
+                    throw new System.ArgumentNullException(nameof(shipping_options));
+                json.WriteStartArray("shipping_options");
+                foreach (var option in shipping_options)
+                {
+                    json.WriteStartObject();
+                    json.WriteString("id", option.Id);
+                    json.WriteString("title", option.Title);
+                    json.WriteStartArray("prices");
+                    foreach (var price in option.Prices)
+                    {
+                        json.WriteStartObject();
+                        json.WriteString("label", price.Label);
+                        json.WriteNumber("amount", price.Amount);
+                        json.WriteEndObject();
+                    }
+                    json.WriteEndArray();
+                    json.WriteEndObject();
+                }
+                json.WriteEndArray();
+            }
+            else
+            {
+                if (error_message == default)
+                    throw new System.ArgumentNullException(nameof(error_message));
+                json.WriteString("error_message", error_message);
+
+            }
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<Message>("answerShippingQuery", stream).ConfigureAwait(false);
         }
     }
 }

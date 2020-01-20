@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -9,22 +9,22 @@ namespace Telegram.BotAPI.Inline_mode
     public sealed class InlineQueryResultCachedVoice : InlineQueryResult
     {
         /// <summary>Type of the result, must be voice</summary>
-        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("type")]
         public override string Type => "voice";
         /// <summary>A valid file identifier for the voice message.</summary>
-        [JsonProperty(PropertyName = "voice_file_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("voice_file_id")]
         public string Voice_file_id { get; set; }
         /// <summary>Voice message title.</summary>
-        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("title")]
         public new string Title { get; set; }
         /// <summary>Optional. Caption, 0-1024 characters.</summary>
-        [JsonProperty(PropertyName = "caption", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("caption")]
         public string Caption { get; set; }
         /// <summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption..</summary>
-        [JsonProperty(PropertyName = "parse_mode", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("parse_mode")]
         public string Parse_mode { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the voice message.</summary>
-        [JsonProperty(PropertyName = "input_message_content", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("input_message_content")]
         public new InputMessageContent Input_message_content { get; set; }
     }
 }

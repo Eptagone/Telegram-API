@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
 {
@@ -16,13 +16,13 @@ namespace Telegram.BotAPI.Available_Types
         }
 
         ///<summary>Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed.</summary>
-        [JsonProperty(PropertyName = "text", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("text")]
         public string Text { get; set; }
         ///<summary>Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only.</summary>
-        [JsonProperty(PropertyName = "request_contact", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("request_contact")]
         public bool Request_contact { get; set; }
         ///<summary>Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only.</summary>
-        [JsonProperty(PropertyName = "request_location", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("request_location")]
         public bool Request_location { get; set; }
     }
 }

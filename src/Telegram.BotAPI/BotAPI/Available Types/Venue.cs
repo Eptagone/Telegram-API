@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
 {
@@ -9,19 +9,19 @@ namespace Telegram.BotAPI.Available_Types
     public sealed class Venue
     {
         ///<summary>Venue location.</summary>
-        [JsonProperty(PropertyName = "location", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("location")]
         public Location Location { get; set; }
         ///<summary>Name of the venue.</summary>
-        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
         ///<summary>Address of the venue.</summary>
-        [JsonProperty(PropertyName = "address", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("address")]
         public string Address { get; set; }
         ///<summary>Optional. Foursquare identifier of the venue.</summary>
-        [JsonProperty(PropertyName = "foursquare_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("foursquare_id")]
         public string Foursquare_id { get; set; }
         ///<summary>Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)</summary>
-        [JsonProperty(PropertyName = "foursquare_type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("foursquare_type")]
         public string Foursquare_type { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Games
 {
@@ -9,13 +9,13 @@ namespace Telegram.BotAPI.Games
     public sealed class GameHighScore
     {
         /// <summary>Position in high score table for the game</summary>
-        [JsonProperty(PropertyName = "position", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("position")]
         public uint Position { get; set; }
         /// <summary>User</summary>
-        [JsonProperty(PropertyName = "user", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("user")]
         public Available_Types.User User { get; set; }
         /// <summary>Score</summary>
-        [JsonProperty(PropertyName = "score", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("score")]
         public uint Score { get; set; }
     }
 }

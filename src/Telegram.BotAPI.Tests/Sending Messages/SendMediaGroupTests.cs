@@ -20,7 +20,7 @@ namespace Telegram.BotAPI.Tests
                     Chat_id = chat_id,
                     Media = new InputMedia[]
                     {
-                        new InputMediaPhoto{ Media = "attach://filephoto1"},
+                        new InputMediaPhoto{ Media = "attach://filephoto1", Caption = "<b>Stronger</b> shja", Parse_mode = "HTML"},
                         new InputMediaPhoto{ Media = "attach://filephoto2"},
                         new InputMediaPhoto{ Media = "attach://filephoto3"}
                     },

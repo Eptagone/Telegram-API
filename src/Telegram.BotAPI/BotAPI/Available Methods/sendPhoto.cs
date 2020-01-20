@@ -30,7 +30,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCAF<Message>("sendPhoto", args).ConfigureAwait(true);
+            return await T.RPCAF<Message>("sendPhoto", args).ConfigureAwait(false);
         }
     }
 }

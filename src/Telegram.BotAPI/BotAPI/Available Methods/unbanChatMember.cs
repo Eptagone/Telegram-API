@@ -1,7 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Available_Methods
@@ -16,7 +17,15 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<bool>("unbanChatMember", new JObject { new JProperty("chat_id", chat_id), new JProperty("user_id", user_id) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteNumber("chat_id", chat_id);
+            json.WriteNumber("user_id", user_id);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<bool>("unbanChatMember", stream);
         }
         /// <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -26,7 +35,15 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<bool>("unbanChatMember", new JObject { new JProperty("chat_id", chat_id), new JProperty("user_id", user_id) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("chat_id", chat_id);
+            json.WriteNumber("user_id", user_id);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<bool>("unbanChatMember", stream);
         }
         /// <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -36,7 +53,16 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("unbanChatMember", new JObject { new JProperty("chat_id", chat_id), new JProperty("user_id", user_id) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteNumber("chat_id", chat_id);
+            json.WriteNumber("user_id", user_id);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<bool>("unbanChatMember", stream).ConfigureAwait(false);
         }
         /// <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -46,7 +72,16 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("unbanChatMember", new JObject { new JProperty("chat_id", chat_id), new JProperty("user_id", user_id) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("chat_id", chat_id);
+            json.WriteNumber("user_id", user_id);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<bool>("unbanChatMember", stream).ConfigureAwait(false);
         }
     }
 }

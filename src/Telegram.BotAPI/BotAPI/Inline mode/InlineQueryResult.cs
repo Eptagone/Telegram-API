@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -29,19 +29,19 @@ namespace Telegram.BotAPI.Inline_mode
     public class InlineQueryResult
     {
         /// <summary>Type of the result.</summary>
-        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("type")]
         public virtual string Type { get; }
         /// <summary>Unique identifier for this result, 1-64 Bytes.</summary>
-        [JsonProperty(PropertyName = "id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         /// <summary>Title of the result.</summary>
-        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
         /// <summary>Content of the message to be sent.</summary>
-        [JsonProperty(PropertyName = "input_message_content", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("input_message_content")]
         public InputMessageContent Input_message_content { get; set; }
         /// <summary>Optional. Inline keyboard attached to the message.</summary>
-        [JsonProperty(PropertyName = "reply_markup", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("reply_markup")]
         public Available_Types.InlineKeyboardMarkup Reply_markup { get; set; }
     }
 }

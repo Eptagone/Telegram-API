@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Payments
 {
@@ -9,13 +9,13 @@ namespace Telegram.BotAPI.Payments
     public sealed class ShippingOption
     {
         /// <summary>Shipping option identifier</summary>
-        [JsonProperty(PropertyName = "id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         /// <summary>Option title</summary>
-        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
         /// <summary>List of price portions</summary>
-        [JsonProperty(PropertyName = "prices", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("prices")]
         public LabeledPrice[] Prices { get; set; }
     }
 }

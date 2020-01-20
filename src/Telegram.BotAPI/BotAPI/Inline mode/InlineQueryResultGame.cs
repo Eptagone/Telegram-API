@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -10,10 +10,10 @@ namespace Telegram.BotAPI.Inline_mode
     public sealed class InlineQueryResultGame : InlineQueryResult
     {
         /// <summary>Type of the result, must be game.</summary>
-        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("type")]
         public override string Type => "game";
         /// <summary>Short name of the game.</summary>
-        [JsonProperty(PropertyName = "game_short_name", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("game_short_name")]
         public string Game_short_name { get; set; }
         /// <summary>Title of the result.</summary>
         [Obsolete("Don't use this", true)]

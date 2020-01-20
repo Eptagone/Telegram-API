@@ -1,7 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Stickers
@@ -17,7 +18,15 @@ namespace Telegram.BotAPI.Stickers
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<bool>("setStickerPositionInSet", new JObject { new JProperty("sticker", sticker), new JProperty("position", position) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("sticker", sticker);
+            json.WriteNumber("position", position);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<bool>("setStickerPositionInSet", stream);
         }
         /// <summary>Use this method to move a sticker in a set created by the bot to a specific position . Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -27,7 +36,16 @@ namespace Telegram.BotAPI.Stickers
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("setStickerPositionInSet", new JObject { new JProperty("sticker", sticker), new JProperty("position", position) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("sticker", sticker);
+            json.WriteNumber("position", position);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<bool>("setStickerPositionInSet", stream).ConfigureAwait(false);
         }
     }
 }

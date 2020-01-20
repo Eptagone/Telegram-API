@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -17,11 +17,13 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var json_result = T.RPC<JToken>("editMessageText", args);
-            if (json_result.Type == JTokenType.Object)
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            var json_result = T.RPC<JsonElement>("editMessageText", args);
+            if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
-                return json_result.ToObject<bool>();
+                return json_result.GetBoolean();
         }
         /// <summary>Use this method to edit text and game messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -31,11 +33,13 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var json_result = await T.RPCA<JToken>("editMessageText", args).ConfigureAwait(true);
-            if (json_result.Type == JTokenType.Object)
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            var json_result = await T.RPCA<JsonElement>("editMessageText", args).ConfigureAwait(false);
+            if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
-                return json_result.ToObject<bool>();
+                return json_result.GetBoolean();
         }
     }
 }

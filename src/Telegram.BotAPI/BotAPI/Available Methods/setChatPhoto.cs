@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Telegram.BotAPI.Available_Types;
 using System.Threading.Tasks;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -50,7 +50,7 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }).ConfigureAwait(true);
+            return await T.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
@@ -61,7 +61,7 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }).ConfigureAwait(true);
+            return await T.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
@@ -73,7 +73,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCAF<bool>("setChatPhoto", args).ConfigureAwait(true);
+            return await T.RPCAF<bool>("setChatPhoto", args).ConfigureAwait(false);
         }
     }
 }

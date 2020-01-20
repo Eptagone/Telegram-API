@@ -20,7 +20,7 @@ namespace Telegram.BotAPI.Getting_updates
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("deleteWebhook").ConfigureAwait(true);
+            return await T.RPCA<bool>("deleteWebhook").ConfigureAwait(false);
         }
     }
 }

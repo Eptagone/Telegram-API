@@ -2,7 +2,7 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json.Linq;
-using TelegramAPI;
+using Telegram.BotAPI;
 using Telegram.BotAPI.Tests.Properties;
 using Xunit;
 using Xunit.Abstractions;

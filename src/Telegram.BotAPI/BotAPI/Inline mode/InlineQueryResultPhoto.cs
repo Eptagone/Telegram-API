@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -9,34 +9,34 @@ namespace Telegram.BotAPI.Inline_mode
     public sealed class InlineQueryResultPhoto : InlineQueryResult
     {
         /// <summary>Type of the result, must be photo.</summary>
-        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("type")]
         public override string Type => "photo";
         /// <summary>A valid URL of the photo. Photo must be in jpeg format. Photo size must not exceed 5MB.</summary>
-        [JsonProperty(PropertyName = "photo_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("photo_url")]
         public string Photo_url { get; set; }
         /// <summary>Optional. Title of the result.</summary>
-        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("title")]
         public new string Title { get; set; }
         /// <summary>URL of the static thumbnail for the result (jpeg or gif).</summary>
-        [JsonProperty(PropertyName = "thumb_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("thumb_url")]
         public string Thumb_url { get; set; }
         /// <summary>Optional. Width of the photo.</summary>
-        [JsonProperty(PropertyName = "photo_width", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("photo_width")]
         public int Photo_width { get; set; }
         /// <summary>Optional. Height of the photo.</summary>
-        [JsonProperty(PropertyName = "photo_height", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("photo_height")]
         public int Photo_height { get; set; }
         /// <summary>Optional. Short description of the result.</summary>
-        [JsonProperty(PropertyName = "description", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         ///<summary>Optional. Caption of the photo to be sent, 0-1024 characters.</summary>
-        [JsonProperty(PropertyName = "caption", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("caption")]
         public string Caption { get; set; }
         ///<summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
-        [JsonProperty(PropertyName = "parse_mode", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("parse_mode")]
         public string Parse_mode { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the photo.</summary>
-        [JsonProperty(PropertyName = "input_message_content", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("input_message_content")]
         public new InputMessageContent Input_message_content { get; set; }
     }
 }

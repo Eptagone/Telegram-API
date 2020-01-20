@@ -1,7 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Available_Methods
@@ -16,7 +17,15 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<bool>("setChatTitle", new JObject { new JProperty("chat_id", chat_id), new JProperty("title", title) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteNumber("chat_id", chat_id);
+            json.WriteString("title", title);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<bool>("setChatTitle", stream);
         }
         /// <summary>Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -26,7 +35,15 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<bool>("setChatTitle", new JObject { new JProperty("chat_id", chat_id), new JProperty("title", title) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("chat_id", chat_id);
+            json.WriteString("title", title);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<bool>("setChatTitle", stream);
         }
         /// <summary>Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -36,7 +53,16 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("setChatTitle", new JObject { new JProperty("chat_id", chat_id), new JProperty("title", title) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteNumber("chat_id", chat_id);
+            json.WriteString("title", title);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<bool>("setChatTitle", stream).ConfigureAwait(false);
         }
         /// <summary>Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -46,7 +72,16 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("setChatTitle", new JObject { new JProperty("chat_id", chat_id), new JProperty("title", title) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("chat_id", chat_id);
+            json.WriteString("title", title);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<bool>("setChatTitle", stream).ConfigureAwait(false);
         }
     }
 }

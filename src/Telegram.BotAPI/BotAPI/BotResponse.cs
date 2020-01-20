@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿// Copyright (c) 2020 Quetzal Rivera.
+// Licensed under the MIT License, See LICENCE in the project root for license information.
+
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI
 {
@@ -7,16 +10,16 @@ namespace Telegram.BotAPI
     public sealed class BotResponse<T>
     {
         /// <summary>True, if the request was successful, otherwise false.</summary>
-        [JsonProperty("ok", Required = Required.Always)]
+        [JsonPropertyName("ok")]
         public bool Ok { get; set; }
         /// <summary>Result.</summary>
-        [JsonProperty("result", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("result")]
         public T Result { get; set; }
         ///<summary>Error code.</summary>
-        [JsonProperty("error_code", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("error_code")]
         public int Error_code { get; set; }
         ///<summary>Error description.</summary>
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Telegram.BotAPI.Getting_updates
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            if(args == default)
+            if (args == default)
                 return T.RPC<Update[]>("getUpdates");
             else
                 return T.RPC<Update[]>("getUpdates", args);
@@ -26,10 +26,10 @@ namespace Telegram.BotAPI.Getting_updates
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            if(args == default)
-                return await T.RPCA<Update[]>("getUpdates").ConfigureAwait(true);
+            if (args == default)
+                return await T.RPCA<Update[]>("getUpdates").ConfigureAwait(false);
             else
-                return await T.RPCA<Update[]>("getUpdates", args).ConfigureAwait(true);
+                return await T.RPCA<Update[]>("getUpdates", args).ConfigureAwait(false);
         }
     }
 }

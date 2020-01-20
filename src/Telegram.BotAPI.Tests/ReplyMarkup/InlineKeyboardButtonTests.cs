@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using TelegramAPI;
+using Telegram.BotAPI;
 using Telegram.BotAPI.Available_Methods;
 using Telegram.BotAPI.Available_Types;
 using Xunit;
@@ -47,6 +47,7 @@ namespace Telegram.BotAPI.Tests
                     Text = "New inline keyboard button callback Test",
                     Reply_markup = inlinekeyboard
                 });
+            Assert.NotNull(message.Reply_markup);
         }
         [Fact]
         [Trait("Switch inline query", "InlineKeyboardMarkup")]

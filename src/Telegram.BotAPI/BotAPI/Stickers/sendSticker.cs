@@ -28,7 +28,7 @@ namespace Telegram.BotAPI.Stickers
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCAF<Message>("sendSticker", args).ConfigureAwait(true);
+            return await T.RPCAF<Message>("sendSticker", args).ConfigureAwait(false);
         }
     }
 }

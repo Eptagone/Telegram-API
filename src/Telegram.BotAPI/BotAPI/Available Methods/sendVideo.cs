@@ -30,7 +30,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCAF<Message>("sendVideo", args).ConfigureAwait(true);
+            return await T.RPCAF<Message>("sendVideo", args).ConfigureAwait(false);
         }
     }
 }

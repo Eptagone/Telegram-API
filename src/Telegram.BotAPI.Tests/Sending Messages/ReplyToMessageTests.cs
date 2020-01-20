@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.Tests
         public void ReplyToMessage()
         {
             var message = bot.SendMessage(chat_id, "Message to reply"); // Message to reply
-            var reply = bot.SendMessage(chat_id, "Reply message", message.Message_id); //Reply
+            var reply = bot.SendMessage(chat_id, "Reply message", reply_to_message_id: message.Message_id); //Reply
             Assert.NotNull(reply.Reply_to_message);
         }
         [Fact]

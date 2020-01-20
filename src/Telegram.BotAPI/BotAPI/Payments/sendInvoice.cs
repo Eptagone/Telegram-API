@@ -24,7 +24,7 @@ namespace Telegram.BotAPI.Payments
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Message>("sendInvoice", args).ConfigureAwait(true);
+            return await T.RPCA<Message>("sendInvoice", args).ConfigureAwait(false);
         }
     }
 }

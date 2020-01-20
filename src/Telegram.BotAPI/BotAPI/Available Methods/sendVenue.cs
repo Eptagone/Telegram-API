@@ -26,7 +26,7 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Message>("sendVenue", args).ConfigureAwait(true);
+            return await T.RPCA<Message>("sendVenue", args).ConfigureAwait(false);
         }
     }
 }

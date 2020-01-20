@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
 {
@@ -9,7 +9,7 @@ namespace Telegram.BotAPI.Available_Types
     public sealed class InlineKeyboardMarkup : ReplyMarkup
     {
         ///<summary>Array of button rows, each represented by an Array of <see cref="InlineKeyboardButton"/> objects.</summary>
-        [JsonProperty(PropertyName = "inline_keyboard", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("inline_keyboard")]
         public InlineKeyboardButton[][] Inline_keyboard { get; set; }
     }
 }

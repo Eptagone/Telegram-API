@@ -1,7 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Updating_messages
@@ -23,7 +24,15 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<bool>("deleteMessage", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteNumber("chat_id", chat_id);
+            json.WriteNumber("message_id", message_id);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<bool>("deleteMessage", stream);
         }
         /// <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
         /// - A message can only be deleted if it was sent less than 48 hours ago.<br/>
@@ -40,7 +49,15 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<bool>("deleteMessage", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("chat_id", chat_id);
+            json.WriteNumber("message_id", message_id);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<bool>("deleteMessage", stream);
         }
         /// <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
         /// - A message can only be deleted if it was sent less than 48 hours ago.<br/>
@@ -57,7 +74,16 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("deleteMessage", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteNumber("chat_id", chat_id);
+            json.WriteNumber("message_id", message_id);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<bool>("deleteMessage", stream).ConfigureAwait(false);
         }
         /// <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
         /// - A message can only be deleted if it was sent less than 48 hours ago.<br/>
@@ -74,7 +100,16 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("deleteMessage", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("chat_id", chat_id);
+            json.WriteNumber("message_id", message_id);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<bool>("deleteMessage", stream).ConfigureAwait(false);
         }
     }
 }

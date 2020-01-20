@@ -42,7 +42,7 @@ namespace Telegram.BotAPI.Stickers
                 throw new System.ArgumentNullException(nameof(T));
             if (png_sticker is null)
                 throw new System.ArgumentNullException(nameof(png_sticker));
-            return await T.RPCAF<File>("uploadStickerFile", new UploadStickerFileArgs { User_id = user_id, Png_sticker = png_sticker }).ConfigureAwait(true);
+            return await T.RPCAF<File>("uploadStickerFile", new UploadStickerFileArgs { User_id = user_id, Png_sticker = png_sticker }).ConfigureAwait(false);
         }
         /// <summary>Use this method to upload a .png file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded File on success.</summary>
         /// <param name="T">BotClient</param>
@@ -53,7 +53,7 @@ namespace Telegram.BotAPI.Stickers
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCAF<File>("uploadStickerFile", args).ConfigureAwait(true);
+            return await T.RPCAF<File>("uploadStickerFile", args).ConfigureAwait(false);
         }
     }
 }

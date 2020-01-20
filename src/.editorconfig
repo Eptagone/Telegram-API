@@ -14,3 +14,9 @@ dotnet_diagnostic.CA1056.severity = none
 
 # CA1032: Implementar constructores de excepción estándar
 dotnet_diagnostic.CA1032.severity = none
+
+# CA1054: Uri parameters should not be strings
+dotnet_diagnostic.CA1054.severity = none
+
+# CA2225: Operator overloads have named alternates
+dotnet_diagnostic.CA2225.severity = none

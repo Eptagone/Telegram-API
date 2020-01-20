@@ -23,7 +23,7 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<bool>("promoteChatMember", args).ConfigureAwait(true);
+            return await T.RPCA<bool>("promoteChatMember", args).ConfigureAwait(false);
         }
     }
 }

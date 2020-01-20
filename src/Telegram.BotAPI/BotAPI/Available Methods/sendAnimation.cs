@@ -18,7 +18,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return T.RPCF<Message>("sendAnimation", args);
+            return args.UseMultipart() ? T.RPCF<Message>("sendAnimation", args) : T.RPC<Message>("sendAnimation", args);
         }
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -30,7 +30,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCAF<Message>("sendAnimation", args).ConfigureAwait(true);
+            return await (args.UseMultipart() ? T.RPCAF<Message>("sendAnimation", args).ConfigureAwait(false) : T.RPCA<Message>("sendAnimation", args).ConfigureAwait(false));
         }
     }
 }

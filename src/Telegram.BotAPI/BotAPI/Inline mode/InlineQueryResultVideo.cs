@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -9,37 +9,37 @@ namespace Telegram.BotAPI.Inline_mode
     public sealed class InlineQueryResultVideo : InlineQueryResult
     {
         /// <summary>Type of the result, must be video.</summary>
-        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("type")]
         public override string Type => "video";
         ///<summary>A valid URL for the embedded video player or video file.</summary>
-        [JsonProperty(PropertyName = "video_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("video_url")]
         public string Video_url { get; set; }
         /// <summary>Mime type of the content of video url, “text/html” or “video/mp4”.</summary>
-        [JsonProperty(PropertyName = "mime_type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("mime_type")]
         public string Mime_type { get; set; }
         ///<summary>URL of the thumbnail (jpeg only) for the video.</summary>
-        [JsonProperty(PropertyName = "thumb_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("thumb_url")]
         public string Thumb_url { get; set; }
         /// <summary>Optional. Caption of the video to be sent, 0-1024 characters.</summary>
-        [JsonProperty(PropertyName = "caption", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("caption")]
         public string Caption { get; set; }
         ///<summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
-        [JsonProperty(PropertyName = "parse_mode", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("parse_mode")]
         public string Parse_mode { get; set; }
         /// <summary>Optional. Video width.</summary>
-        [JsonProperty(PropertyName = "video_width", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("video_width")]
         public uint Video_width { get; set; }
         ///<summary>Optional. Video height.</summary>
-        [JsonProperty(PropertyName = "video_height", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("video_height")]
         public uint Video_height { get; set; }
         ///<summary>Optional. Video duration in seconds.</summary>
-        [JsonProperty(PropertyName = "video_duration", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("video_duration")]
         public uint Video_duration { get; set; }
         ///<summary>Optional. Short description of the result.</summary>
-        [JsonProperty(PropertyName = "description", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).</summary>
-        [JsonProperty(PropertyName = "input_message_content", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("input_message_content")]
         public new InputMessageContent Input_message_content { get; set; }
     }
 }

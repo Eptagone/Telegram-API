@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
 {
@@ -9,16 +9,16 @@ namespace Telegram.BotAPI.Available_Types
     public sealed class File
     {
         ///<summary>Identifier for this file, which can be used to download or reuse the file.</summary>
-        [JsonProperty(PropertyName = "file_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("file_id")]
         public string File_id { get; set; }
         ///<summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
-        [JsonProperty(PropertyName = "file_unique_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("file_unique_id")]
         public string File_unique_id { get; set; }
         ///<summary>Optional. File size, if known.</summary>
-        [JsonProperty(PropertyName = "file_size", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("file_size")]
         public uint File_size { get; set; }
         ///<summary>Optional. File path. Use https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt; to get the file.</summary>
-        [JsonProperty(PropertyName = "file_path", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("file_path")]
         public string File_path { get; set; }
     }
 }

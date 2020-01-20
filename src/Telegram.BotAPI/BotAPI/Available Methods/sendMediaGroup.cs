@@ -1,6 +1,9 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System.IO;
+using Telegram.BotAPI;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -30,7 +33,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCAF<Message[]>("sendMediaGroup", args).ConfigureAwait(true);
+            return await T.RPCAF<Message[]>("sendMediaGroup", args).ConfigureAwait(false);
         }
     }
 }

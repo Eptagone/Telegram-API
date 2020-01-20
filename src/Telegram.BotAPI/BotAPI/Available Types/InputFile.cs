@@ -39,14 +39,7 @@ namespace Telegram.BotAPI.Available_Types
         }
     }
     [System.AttributeUsage(System.AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-    internal sealed class InputFileAttribute : System.Attribute
-    {
-        public string PropertyName { get; }
-        public InputFileAttribute(string propertyName)
-        {
-            PropertyName = propertyName;
-        }
-    }
+    internal sealed class InputFileAttribute : System.Attribute { }
     /// <summary>This object represents a attachfile.</summary>
     public sealed class AttachFile
     {

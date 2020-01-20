@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -9,10 +9,10 @@ namespace Telegram.BotAPI.Available_Methods
     public sealed class SendPollArgs : BaseSendArgs
     {
         ///<summary>Poll question, 1-255 characters.</summary>
-        [JsonProperty(PropertyName = "question", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("question")]
         public string Question { get; set; }
         ///<summary>List of answer options, 2-10 strings 1-100 characters each.</summary>
-        [JsonProperty(PropertyName = "options", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("options")]
         public string[] Options { get; set; }
     }
 }

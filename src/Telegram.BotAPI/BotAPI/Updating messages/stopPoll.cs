@@ -1,7 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -18,7 +19,15 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteNumber("chat_id", chat_id);
+            json.WriteNumber("message_id", message_id);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<Poll>("stopPoll", stream);
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -29,9 +38,16 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) });
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("chat_id", chat_id);
+            json.WriteNumber("message_id", message_id);
+            json.WriteEndObject();
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<Poll>("stopPoll", stream);
         }
-
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -41,9 +57,16 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id), new JProperty("reply_markup", reply_markup) });
+            if (reply_markup == default)
+                throw new System.ArgumentNullException(nameof(reply_markup));
+            var args = new StopPollArgs
+            {
+                Chat_id = chat_id,
+                Message_id = message_id,
+                Reply_markup = reply_markup
+            };
+            return T.RPC<Poll>("stopPoll", args);
         }
-
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -53,9 +76,17 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id), new JProperty("reply_markup", reply_markup) });
+            if (reply_markup == default)
+                throw new System.ArgumentNullException(nameof(reply_markup));
+            var args = new StopPollArgs
+            {
+                Chat_id = chat_id,
+                Message_id = message_id,
+                Reply_markup = reply_markup
+            };
+            return T.RPC<Poll>("stopPoll", args);
         }
-        
+
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -64,7 +95,16 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteNumber("chat_id", chat_id);
+            json.WriteNumber("message_id", message_id);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<Poll>("stopPoll", stream).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -75,7 +115,16 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id) }).ConfigureAwait(true);
+            var stream = new MemoryStream();
+            using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
+            json.WriteStartObject();
+            json.WriteString("chat_id", chat_id);
+            json.WriteNumber("message_id", message_id);
+            json.WriteEndObject();
+            await json.FlushAsync().ConfigureAwait(false);
+            await json.DisposeAsync();
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<Poll>("stopPoll", stream).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -87,9 +136,16 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id), new JProperty("reply_markup", reply_markup) }).ConfigureAwait(true);
+            if (reply_markup == default)
+                throw new System.ArgumentNullException(nameof(reply_markup));
+            var args = new StopPollArgs
+            {
+                Chat_id = chat_id,
+                Message_id = message_id,
+                Reply_markup = reply_markup
+            };
+            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
         }
-
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -99,7 +155,37 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Poll>("stopPoll", new JObject { new JProperty("chat_id", chat_id), new JProperty("message_id", message_id), new JProperty("reply_markup", reply_markup) }).ConfigureAwait(true);
+            if (reply_markup == default)
+                throw new System.ArgumentNullException(nameof(reply_markup));
+            var args = new StopPollArgs
+            {
+                Chat_id = chat_id,
+                Message_id = message_id,
+                Reply_markup = reply_markup
+            };
+            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
+        }
+        /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="args">Parameters.</param>
+        public static Poll StopPoll(this BotClient T, StopPollArgs args)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            return T.RPC<Poll>("stopPoll", args);
+        }
+        /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="args">Parameters.</param>
+        public static async Task<Poll> StopPollAsync(this BotClient T, StopPollArgs args)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿// Copyright (c) 2020 Quetzal Rivera.
+// Licensed under the MIT License, See LICENCE in the project root for license information.
+
+using System.Text.Json.Serialization;
 using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Available_Methods
@@ -7,11 +10,11 @@ namespace Telegram.BotAPI.Available_Methods
     public sealed class SetChatPhotoArgs
     {
         /// <summary>Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</summary>
-        [JsonProperty("chat_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("chat_id")]
         public object Chat_id { get; set; }
         /// <summary>New chat photo, uploaded using multipart/form-data.</summary>
         [InputFile("photo")]
-        [JsonProperty("photo", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("photo")]
         public InputFile Photo { get; set; }
     }
 }

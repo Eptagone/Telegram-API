@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -9,34 +9,34 @@ namespace Telegram.BotAPI.Inline_mode
     public sealed class InlineQueryResultMpeg4Gif : InlineQueryResult
     {
         /// <summary>Type of the result, must be mpeg4_gif.</summary>
-        [JsonProperty(PropertyName = "type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("type")]
         public override string Type => "mpeg4_gif";
         ///<summary>A valid URL for the MP4 file. File size must not exceed 1MB.</summary>
-        [JsonProperty(PropertyName = "mpeg4_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("mpeg4_url")]
         public string Mpeg4_url { get; set; }
         /// <summary>Optional. Video width.</summary>
-        [JsonProperty(PropertyName = "mpeg4_width", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("mpeg4_width")]
         public int Mpeg4_width { get; set; }
         ///<summary>Optional. Video height.</summary>
-        [JsonProperty(PropertyName = "mpeg4_height", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("mpeg4_height")]
         public int Mpeg4_height { get; set; }
         ///<summary>Optional. Video height.</summary>
-        [JsonProperty(PropertyName = "mpeg4_duration", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("mpeg4_duration")]
         public int Mpeg4_duration { get; set; }
         /// <summary>URL of the static thumbnail for the result (jpeg or gif).</summary>
-        [JsonProperty(PropertyName = "thumb_url", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("thumb_url")]
         public string Thumb_url { get; set; }
         /// <summary>Optional. Title of the result.</summary>
-        [JsonProperty(PropertyName = "title", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("title")]
         public new string Title { get; set; }
         ///<summary>Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters.</summary>
-        [JsonProperty(PropertyName = "caption", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("caption")]
         public string Caption { get; set; }
         ///<summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
-        [JsonProperty(PropertyName = "parse_mode", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("parse_mode")]
         public string Parse_mode { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the video animation.</summary>
-        [JsonProperty(PropertyName = "input_message_content", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonPropertyName("input_message_content")]
         public new InputMessageContent Input_message_content { get; set; }
     }
 }
