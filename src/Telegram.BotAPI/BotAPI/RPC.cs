@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI
 {
@@ -21,37 +22,43 @@ namespace Telegram.BotAPI
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
-        internal T RPC<T>(string method)
+        /// <param name="options">Provides options to be used with JsonSerializer.Deserialize.</param>
+        internal T RPC<T>(string method, [Optional] JsonSerializerOptions options)
         {
-            var rpc = RPCA<T>(method);
+            var rpc = RPCA<T>(method, options);
             rpc.Wait(); return rpc.Result;
         }
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
         /// <param name="args">parameters</param>
-        internal T RPC<T>(string method, object args)
+        /// <param name="serializeoptions">Provides options to be used with JsonSerializer.Serialize.</param>
+        /// <param name="deserializeoptions">Provides options to be used with JsonSerializer.Deserialize.</param>
+        internal T RPC<T>(string method, object args, [Optional] JsonSerializerOptions serializeoptions, [Optional] JsonSerializerOptions deserializeoptions)
         {
-            var rpc = RPCA<T>(method, args);
+            var rpc = RPCA<T>(method, args, serializeoptions, deserializeoptions);
             rpc.Wait(); return rpc.Result;
         }
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
         /// <param name="args">parameters</param>
-        internal T RPC<T>(string method, Stream args)
+        /// <param name="options">Provides options to be used with JsonSerializer.Deserialize.</param>
+        internal T RPC<T>(string method, Stream args, [Optional] JsonSerializerOptions options)
         {
-            var rpc = RPCA<T>(method, args);
+            var rpc = RPCA<T>(method, args, options);
             rpc.Wait(); return rpc.Result;
         }
         /// <summary>RPC async</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
-        internal async Task<T> RPCA<T>(string method)
+        /// <param name="options">Provides options to be used with JsonSerializer.Deserialize.</param>
+        internal async Task<T> RPCA<T>(string method, [Optional] JsonSerializerOptions options)
         {
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.CallbackGameJsonConverter());
-            options.Converters.Add(new JsonTools.ReplyMarkupConverter());
+            if(options == default)
+            {
+                options = new JsonSerializerOptions();
+            }
             BotResponse<T> response;
             response = await GetRequestAsync<T>(TAPIurl, method, options).ConfigureAwait(false);
             if (response.Ok == true)
@@ -68,29 +75,34 @@ namespace Telegram.BotAPI
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
         /// <param name="args">parameters</param>
-        internal async Task<T> RPCA<T>(string method, object args)
+        /// <param name="serializeoptions">Provides options to be used with JsonSerializer.Serialize.</param>
+        /// <param name="deserializeoptions">Provides options to be used with JsonSerializer.Deserialize.</param>
+        internal async Task<T> RPCA<T>(string method, object args, [Optional] JsonSerializerOptions serializeoptions, [Optional] JsonSerializerOptions deserializeoptions)
         {
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.CallbackGameJsonConverter());
-            options.Converters.Add(new JsonTools.ReplyMarkupConverter());
-            options.Converters.Add(new JsonTools.UintJsonConverter());
-            options.Converters.Add(new JsonTools.UshortJsonConverter());
+            if(serializeoptions == default)
+            {
+                serializeoptions = new JsonSerializerOptions { IgnoreNullValues = true };
+                serializeoptions.Converters.Add(new JsonTools.ReplyMarkupConverter());
+                serializeoptions.Converters.Add(new JsonTools.UintJsonConverter());
+                serializeoptions.Converters.Add(new JsonTools.UshortJsonConverter());
+            }
             var stream = new MemoryStream();
-            var json = JsonSerializer.Serialize(args, args.GetType(), options);
-            await JsonSerializer.SerializeAsync(stream, args, args.GetType(), options).ConfigureAwait(false);
+            await JsonSerializer.SerializeAsync(stream, args, args.GetType(), serializeoptions).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await RPCA<T>(method, stream).ConfigureAwait(false);
+            return await RPCA<T>(method, stream, deserializeoptions).ConfigureAwait(false);
         }
         /// <summary>RPC async</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
         /// <param name="args">parameters</param>
-        internal async Task<T> RPCA<T>(string method, Stream args)
+        /// <param name="options">Provides options to be used with JsonSerializer.Deserialize.</param>
+        internal async Task<T> RPCA<T>(string method, Stream args, [Optional] JsonSerializerOptions options)
         {
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.CallbackGameJsonConverter());
-            options.Converters.Add(new JsonTools.ReplyMarkupConverter());
             BotResponse<T> response;
+            if(options == default)
+            {
+                options = new JsonSerializerOptions();
+            }
             response = await PostRequestAsync<T>(TAPIurl, method, args, options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
@@ -106,23 +118,33 @@ namespace Telegram.BotAPI
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
         /// <param name="args">parameters</param>
-        internal T RPCF<T>(string method, object args)
+        /// <param name="serializeoptions">Provides options to be used with JsonSerializer.Serialize.</param>
+        /// <param name="deserializeoptions">Provides options to be used with JsonSerializer.Deserialize.</param>
+        internal T RPCF<T>(string method, object args, [Optional] JsonSerializerOptions serializeoptions, [Optional] JsonSerializerOptions deserializeoptions)
         {
-            var rpcf = RPCAF<T>(method, args);
+            var rpcf = RPCAF<T>(method, args, serializeoptions, deserializeoptions);
             rpcf.Wait(); return rpcf.Result;
         }
         /// <summary>RPC async for files</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
         /// <param name="args">parameters</param>
-        internal async Task<T> RPCAF<T>(string method, object args)
+        /// <param name="serializeoptions">Provides options to be used with JsonSerializer.Serialize.</param>
+        /// <param name="deserializeoptions">Provides options to be used with JsonSerializer.Deserialize.</param>
+        internal async Task<T> RPCAF<T>(string method, object args, [Optional] JsonSerializerOptions serializeoptions, [Optional] JsonSerializerOptions deserializeoptions)
         {
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.CallbackGameJsonConverter());
-            options.Converters.Add(new JsonTools.ReplyMarkupConverter());
-            options.Converters.Add(new JsonTools.UintJsonConverter());
-            options.Converters.Add(new JsonTools.UshortJsonConverter());
-            options.Converters.Add(new JsonTools.InputMediaJsonConverter());
+            if(serializeoptions == default)
+            {
+                serializeoptions = new JsonSerializerOptions { IgnoreNullValues = true };
+                serializeoptions.Converters.Add(new JsonTools.ReplyMarkupConverter());
+                serializeoptions.Converters.Add(new JsonTools.InputMediaJsonConverter());
+                serializeoptions.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            }
+            if(deserializeoptions == default)
+            {
+                deserializeoptions = new JsonSerializerOptions { IgnoreNullValues = true };
+                deserializeoptions.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            }
             var properties = args.GetType().GetProperties(); var prolist = new List<string>();
             using var content = new MultipartFormDataContent(Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks);
             foreach (var prop in properties)
@@ -148,7 +170,7 @@ namespace Telegram.BotAPI
                         }
                         else
                         {
-                            string jvalue = JsonSerializer.Serialize(value, value.GetType(), options);
+                            string jvalue = JsonSerializer.Serialize(value, value.GetType(), serializeoptions);
                             var scon = new { Name = pname, Content = new StringContent(jvalue, Encoding.UTF8) };
                             content.Add(scon.Content, scon.Name);
                         }
@@ -168,7 +190,7 @@ namespace Telegram.BotAPI
                 }
                 }
             }
-            var response = await PostRequestAsyncFormData<T>(TAPIurl, method, content, options).ConfigureAwait(false);
+            var response = await PostRequestAsyncFormData<T>(TAPIurl, method, content, deserializeoptions).ConfigureAwait(false);
             content.Dispose();
             if (response.Ok == true)
                 return response.Result;
@@ -180,7 +202,7 @@ namespace Telegram.BotAPI
                     throw new BotRequestException(response.Error_code, response.Description);
             }
         }
-        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string url, string method_name, MultipartFormDataContent args, JsonSerializerOptions options = default)
+        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string url, string method_name, MultipartFormDataContent args, JsonSerializerOptions options)
         {
             using var Client = new HttpClient();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
@@ -188,7 +210,7 @@ namespace Telegram.BotAPI
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
-        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, string method_name, Stream args, JsonSerializerOptions options = default)
+        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, string method_name, Stream args, JsonSerializerOptions options)
         {
             using var content = new StreamContent(args);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -196,7 +218,7 @@ namespace Telegram.BotAPI
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
-        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, string method_name, JsonSerializerOptions options = default)
+        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, string method_name, JsonSerializerOptions options)
         {
             using var response = await client.GetAsync(url + "/" + method_name).ConfigureAwait(false);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);

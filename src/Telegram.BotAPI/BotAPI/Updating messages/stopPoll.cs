@@ -59,13 +59,15 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (reply_markup == default)
                 throw new System.ArgumentNullException(nameof(reply_markup));
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             var args = new StopPollArgs
             {
                 Chat_id = chat_id,
                 Message_id = message_id,
                 Reply_markup = reply_markup
             };
-            return T.RPC<Poll>("stopPoll", args);
+            return T.RPC<Poll>("stopPoll", args, options);
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -78,13 +80,15 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (reply_markup == default)
                 throw new System.ArgumentNullException(nameof(reply_markup));
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             var args = new StopPollArgs
             {
                 Chat_id = chat_id,
                 Message_id = message_id,
                 Reply_markup = reply_markup
             };
-            return T.RPC<Poll>("stopPoll", args);
+            return T.RPC<Poll>("stopPoll", args, options);
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -138,13 +142,15 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (reply_markup == default)
                 throw new System.ArgumentNullException(nameof(reply_markup));
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             var args = new StopPollArgs
             {
                 Chat_id = chat_id,
                 Message_id = message_id,
                 Reply_markup = reply_markup
             };
-            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
+            return await T.RPCA<Poll>("stopPoll", args, options).ConfigureAwait(false);
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -157,13 +163,15 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (reply_markup == default)
                 throw new System.ArgumentNullException(nameof(reply_markup));
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             var args = new StopPollArgs
             {
                 Chat_id = chat_id,
                 Message_id = message_id,
                 Reply_markup = reply_markup
             };
-            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
+            return await T.RPCA<Poll>("stopPoll", args, options).ConfigureAwait(false);
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -174,7 +182,9 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return T.RPC<Poll>("stopPoll", args);
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            return T.RPC<Poll>("stopPoll", args, options);
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -185,7 +195,9 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            return await T.RPCA<Poll>("stopPoll", args, options).ConfigureAwait(false);
         }
     }
 }

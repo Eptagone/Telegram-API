@@ -11,18 +11,6 @@ namespace Telegram.BotAPI.Available_Methods
     {
         /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
         /// <param name="T">BotClient</param>
-        public static dynamic StopMessageLiveLocation(this BotClient T)
-        {
-            if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
-            var result = T.RPC<JsonElement>("stopMessageLiveLocation");
-            if (result.ValueKind == JsonValueKind.Object)
-                return result.ToObject<Message>();
-            else
-                return result.GetBoolean();
-        }
-        /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
-        /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
         public static dynamic StopMessageLiveLocation(this BotClient T, StopMessageLiveLocationArgs args)
         {
@@ -30,19 +18,9 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var result = T.RPC<JsonElement>("stopMessageLiveLocation", args);
-            if (result.ValueKind == JsonValueKind.Object)
-                return result.ToObject<Message>();
-            else
-                return result.GetBoolean();
-        }
-        /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</summary>
-        /// <param name="T">BotClient</param>
-        public static async Task<dynamic> StopMessageLiveLocationAsync(this BotClient T)
-        {
-            if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
-            var result = await T.RPCA<JsonElement>("stopMessageLiveLocation").ConfigureAwait(false);
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            var result = T.RPC<JsonElement>("stopMessageLiveLocation", args, options);
             if (result.ValueKind == JsonValueKind.Object)
                 return result.ToObject<Message>();
             else
@@ -57,7 +35,9 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var result = await T.RPCA<JsonElement>("stopMessageLiveLocation", args).ConfigureAwait(false);
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            var result = await T.RPCA<JsonElement>("stopMessageLiveLocation", args, options).ConfigureAwait(false);
             if (result.ValueKind == JsonValueKind.Object)
                 return result.ToObject<Message>();
             else

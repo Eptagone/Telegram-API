@@ -19,7 +19,9 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var json_result = T.RPC<JsonElement>("editMessageText", args);
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            var json_result = T.RPC<JsonElement>("editMessageText", args, options);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -35,7 +37,9 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var json_result = await T.RPCA<JsonElement>("editMessageText", args).ConfigureAwait(false);
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            var json_result = await T.RPCA<JsonElement>("editMessageText", args, options).ConfigureAwait(false);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else

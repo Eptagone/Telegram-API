@@ -29,6 +29,8 @@ namespace Telegram.BotAPI.Games
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
             var json_message = await T.RPCA<JsonElement>("setGameScore", args).ConfigureAwait(false);
             if (json_message.ValueKind == JsonValueKind.Object)
                 return json_message.ToObject<Message>();

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -15,7 +16,11 @@ namespace Telegram.BotAPI.Payments
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return T.RPC<Message>("sendInvoice", args);
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            return T.RPC<Message>("sendInvoice", args, options);
         }
         /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -24,7 +29,11 @@ namespace Telegram.BotAPI.Payments
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Message>("sendInvoice", args).ConfigureAwait(false);
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            return await T.RPCA<Message>("sendInvoice", args, options).ConfigureAwait(false);
         }
     }
 }

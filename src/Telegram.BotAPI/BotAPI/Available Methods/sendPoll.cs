@@ -15,6 +15,8 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
             return T.RPC<Message>("sendPoll", args);
         }
         /// <summary>Use this method to send a native poll. A native poll can't be sent to a private chat. On success, the sent Message is returned.</summary>
@@ -24,6 +26,8 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
             return await T.RPCA<Message>("sendPoll", args).ConfigureAwait(false);
         }
     }

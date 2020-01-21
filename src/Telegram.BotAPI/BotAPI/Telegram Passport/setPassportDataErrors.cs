@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Telegram_Passport
@@ -19,12 +21,19 @@ namespace Telegram.BotAPI.Telegram_Passport
                 throw new System.ArgumentNullException(nameof(T));
             if (errors == default)
                 throw new System.ArgumentNullException(nameof(errors));
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.PassportElementErrorJsonConverter());
             var args = new SetPassportDataErrorsArgs
             {
                 User_id = user_id,
                 Errors = errors
             };
-            return T.RPC<bool>("setPassportDataErrors", args);
+            var stream = new MemoryStream();
+            var json = new Utf8JsonWriter(stream);
+            JsonSerializer.Serialize(json, args, options);
+            json.Flush(); json.Dispose();
+            stream.Seek(0, SeekOrigin.Begin);
+            return T.RPC<bool>("setPassportDataErrors", stream);
         }
         /// <summary>Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
         /// <para>Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.</para></summary>
@@ -37,12 +46,17 @@ namespace Telegram.BotAPI.Telegram_Passport
                 throw new System.ArgumentNullException(nameof(T));
             if (errors == default)
                 throw new System.ArgumentNullException(nameof(errors));
+            var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonTools.PassportElementErrorJsonConverter());
             var args = new SetPassportDataErrorsArgs
             {
                 User_id = user_id,
                 Errors = errors
             };
-            return await T.RPCA<bool>("setPassportDataErrors", args).ConfigureAwait(false);
+            var stream = new MemoryStream();
+            await JsonSerializer.SerializeAsync(stream, args, typeof(SetPassportDataErrorsArgs), options).ConfigureAwait(false);
+            stream.Seek(0, SeekOrigin.Begin);
+            return await T.RPCA<bool>("setPassportDataErrors", stream).ConfigureAwait(false);
         }
     }
 }

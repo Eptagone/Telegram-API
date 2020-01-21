@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
@@ -18,7 +17,20 @@ namespace Telegram.BotAPI.Updating_messages
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var json_result = T.RPCF<JsonElement>("editMessageMedia", args);
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            JsonElement json_result;
+            if(args.AttachFiles == default)
+            {
+                var options = new JsonSerializerOptions { IgnoreNullValues = true };
+                options.Converters.Add(new JsonTools.InputMediaJsonConverter());
+                options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+                json_result = T.RPC<JsonElement>("editMessageMedia", args, options);
+            }
+            else
+            {
+                json_result = T.RPCF<JsonElement>("editMessageMedia", args);
+            }
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -34,7 +46,18 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var json_result = await T.RPCAF<JsonElement>("editMessageMedia", args).ConfigureAwait(false);
+            JsonElement json_result;
+            if(args.AttachFiles == default)
+            {
+                var options = new JsonSerializerOptions { IgnoreNullValues = true };
+                options.Converters.Add(new JsonTools.InputMediaJsonConverter());
+                options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+                json_result = await T.RPCA<JsonElement>("editMessageMedia", args, options).ConfigureAwait(false);
+            }
+            else
+            {
+                json_result = await T.RPCAF<JsonElement>("editMessageMedia", args).ConfigureAwait(false);
+            }
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else

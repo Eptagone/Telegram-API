@@ -26,6 +26,8 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
             return await T.RPCA<Message>("sendContact", args).ConfigureAwait(false);
         }
     }

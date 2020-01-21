@@ -21,9 +21,9 @@ namespace Telegram.BotAPI.Updating_messages
         ///<summary>A <see cref="InputMedia"/> object for a new media content of the message.</summary>
         [JsonPropertyName("media")]
         public InputMedia Media { get; set; }
-        ///<summary>A <see cref="Available_Types.InlineKeyboardMarkup"/> object for a new inline keyboard.</summary>
+        ///<summary>A <see cref="InlineKeyboardMarkup"/> object for a new inline keyboard.</summary>
         [JsonPropertyName("reply_markup")]
-        public Available_Types.InlineKeyboardMarkup Reply_markup { get; set; }
+        public InlineKeyboardMarkup Reply_markup { get; set; }
         /// <summary>Attached files.</summary>
         [JsonIgnore]
         public AttachFile[] AttachFiles { get; set; }

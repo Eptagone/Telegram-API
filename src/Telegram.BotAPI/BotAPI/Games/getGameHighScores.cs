@@ -24,6 +24,8 @@ namespace Telegram.BotAPI.Games
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
+            if (args == default)
+                throw new System.ArgumentNullException(nameof(args));
             return await T.RPCA<GameHighScore[]>("getGameHighScores", args).ConfigureAwait(false);
         }
     }
