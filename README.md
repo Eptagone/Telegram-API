@@ -1,7 +1,7 @@
-| <img src="./docs/icon.png" alt="Logo" width="64"/> | <h1>Telegram-API NET</h1> |
+| <img src="./docs/icon.png" alt="Logo" width="64"/> | <h1>Telegram.BotAPI NET</h1> |
 |--------|--------|
 
-[![NuGet version (Telegram_API)](https://img.shields.io/nuget/v/Telegram_API.svg?style=flat-square)](https://www.nuget.org/packages/Telegram_API/)
+[![NuGet version (Telegram.BotAPI)](https://img.shields.io/nuget/v/Telegram.BotAPI.svg?style=flat-square)](https://www.nuget.org/packages/Telegram.BotAPI/)
 
   Telegram API NET is one of the most complete libraries available to interact with the Telegram Bot API in your .NET projects. Free and open source.
 
@@ -12,7 +12,7 @@
  ## Features
 * Contains pre-defined methods for all Bot API 4.5 methods.
 * Contains classes for each object type used in the Bot API 4.5
-* Uses [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/).
+* Uses [System.Text.Json](https://www.nuget.org/packages/System.Text.Json/).
 
 ## Documentation
 -  [Getting started](docs/readme.md)
@@ -21,4 +21,4 @@
 [MIT](LICENSE)
 
 ## Release notes
-[See release notes](https://github.com/Eptagone/Telegram-API/releases)
+[See release notes](https://github.com/Eptagone/Telegram.BotAPI/releases)
