@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using TelegramAPI.Available_Methods;
-using TelegramAPI.Getting_updates;
+using Telegram.BotAPI.Available_Methods;
+using Telegram.BotAPI.Getting_updates;
 
 namespace Webhook_Sample_01.Controllers
 {

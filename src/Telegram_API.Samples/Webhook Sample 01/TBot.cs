@@ -1,4 +1,4 @@
-﻿using TelegramAPI;
+﻿using Telegram.BotAPI;
 
 namespace Webhook_Sample_01
 {

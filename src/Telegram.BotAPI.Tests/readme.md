@@ -1,5 +1,5 @@
-# Telegram-API NET Tests
-[![NuGet version (Telegram_API)](https://img.shields.io/nuget/v/Telegram_API.svg?style=flat-square)](https://www.nuget.org/packages/Telegram_API/)
+# Telegram.BotAPI NET Tests
+[![NuGet version (Telegram.BotAPI)](https://img.shields.io/nuget/v/Telegram.BotAPI.svg?style=flat-square)](https://www.nuget.org/packages/Telegram.BotAPI/)
 
 ## Summary
 This is a unit test project in which you run test procedures using the Telegram API NET project.

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TelegramAPI.Getting_updates;
+using Telegram.BotAPI.Getting_updates;
 
 namespace Webhook_Sample_01
 {
