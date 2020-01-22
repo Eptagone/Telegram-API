@@ -303,7 +303,7 @@ namespace Telegram.BotAPI
         {
             public override InlineKeyboardMarkup Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                return JsonSerializer.Deserialize<InlineKeyboardMarkup>(ref reader, options);
+                throw new NotImplementedException();
             }
 
             public override void Write(Utf8JsonWriter writer, InlineKeyboardMarkup value, JsonSerializerOptions options)

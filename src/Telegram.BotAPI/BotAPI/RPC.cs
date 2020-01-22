@@ -143,7 +143,6 @@ namespace Telegram.BotAPI
             if (deserializeoptions == default)
             {
                 deserializeoptions = new JsonSerializerOptions { IgnoreNullValues = true };
-                deserializeoptions.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             }
             var properties = args.GetType().GetProperties(); var prolist = new List<string>();
             using var content = new MultipartFormDataContent(Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks);
