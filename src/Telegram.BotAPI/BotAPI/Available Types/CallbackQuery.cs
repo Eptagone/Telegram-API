@@ -15,19 +15,19 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("from")]
         public User From { get; set; }
         ///<summary>Optional. Message with the callback button that originated the query. Note that message content and message date will not be available if the message is too old.</summary>
-        [JsonPropertyName("message(")]
+        [JsonPropertyName("message")]
         public Message Message { get; set; }
         ///<summary>Optional. Identifier of the message sent via the bot in inline mode, that originated the query.</summary>
         [JsonPropertyName("inline_message_id")]
         public string Inline_message_id { get; set; }
         ///<summary>Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent. Useful for high scores in games.</summary>
-        [JsonPropertyName("chat_instance(")]
+        [JsonPropertyName("chat_instance")]
         public string Chat_instance { get; set; }
         ///<summary>Optional. Data associated with the callback button. Be aware that a bad client can send arbitrary data in this field.</summary>
         [JsonPropertyName("data")]
         public string Data { get; set; }
         ///<summary>Optional. Short name of a Game to be returned, serves as the unique identifier for the game.</summary>
-        [JsonPropertyName("game_short_name(")]
+        [JsonPropertyName("game_short_name")]
         public string Game_short_name { get; set; }
     }
 }
