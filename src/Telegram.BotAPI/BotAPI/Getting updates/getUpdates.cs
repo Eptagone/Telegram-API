@@ -12,27 +12,41 @@ namespace Telegram.BotAPI.Getting_updates
     {
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>
-        /// <param name="args">Optional parameters.</param>
-        public static Update[] GetUpdates(this BotClient T, [Optional] GetUpdatesArgs args)
+        public static Update[] GetUpdates(this BotClient T)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            if (args == default)
-                return T.RPC<Update[]>("getUpdates");
-            else
-                return T.RPC<Update[]>("getUpdates", args);
+            return T.RPC<Update[]>("getUpdates");
+        }
+        /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
+        /// <param name="T">BotClient</param>
+        public static async Task<Update[]> GetUpdatesAsync(this BotClient T)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            return await T.RPCA<Update[]>("getUpdates").ConfigureAwait(false);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Optional parameters.</param>
-        public static async Task<Update[]> GetUpdatesAsync(this BotClient T, [Optional] GetUpdatesArgs args)
+        public static Update[] GetUpdates(this BotClient T, GetUpdatesArgs args)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            if(args == default)
+                throw new System.ArgumentNullException(nameof(args));
+            return T.RPC<Update[]>("getUpdates", args);
+        }
+        /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="args">Optional parameters.</param>
+        public static async Task<Update[]> GetUpdatesAsync(this BotClient T, GetUpdatesArgs args)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
-                return await T.RPCA<Update[]>("getUpdates").ConfigureAwait(false);
-            else
-                return await T.RPCA<Update[]>("getUpdates", args).ConfigureAwait(false);
+                throw new System.ArgumentNullException(nameof(args));
+            return await T.RPCA<Update[]>("getUpdates", args).ConfigureAwait(false);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>
