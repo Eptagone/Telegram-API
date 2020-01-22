@@ -11,16 +11,18 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Telegram.BotAPI is one of the most complete libraries available to interact with the Telegram Bot API in your NET project.
-Contains all available methods in the Bot API 4.5 released on December 31, 2019. In addition, it has a complete set of classes with all objects used.</Description>
+    Contains all available methods in the Bot API 4.5 released on December 31, 2019. In addition, it has a complete set of classes with all objects used.</Description>
     <PackageTags>Telegram Bot API</PackageTags>
     <ApplicationIcon />
+    <Title>Telegram Bot API</Title>
+    <Summary>Telegram Bot API Wrapper for NET.</Summary>
     <OutputType>Library</OutputType>
     <StartupObject />
     <Win32Resource />
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Telegram.BotAPI.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <Version>1.3.0-beta</Version>
+    <Version>1.3.0</Version>
     <LangVersion>latest</LangVersion>
     <Product>Telegram BotAPI</Product>
     <PackageLicenseExpression></PackageLicenseExpression>
@@ -29,7 +31,7 @@ Contains all available methods in the Bot API 4.5 released on December 31, 2019.
     <PackageIcon>packicon.png</PackageIcon>
     <PackageIconUrl />
     <AssemblyVersion>1.3.0.*</AssemblyVersion>
-    <FileVersion>1.3.0.1</FileVersion>
+    <FileVersion>1.3.0.3</FileVersion>
     <Deterministic>false</Deterministic>
     <PackageProjectUrl>https://github.com/Eptagone/Telegram.BotAPI</PackageProjectUrl>
     <RepositoryType>github</RepositoryType>
@@ -40,13 +42,13 @@ Contains all available methods in the Bot API 4.5 released on December 31, 2019.
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Optimize>false</Optimize>
-    <DocumentationFile>..\..\docs\Telegram API.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DocumentationFile>..\..\docs\Telegram API.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
