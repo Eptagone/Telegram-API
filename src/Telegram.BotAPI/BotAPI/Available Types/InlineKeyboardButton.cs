@@ -2,6 +2,7 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.Games;
 
 namespace Telegram.BotAPI.Available_Types
 {
@@ -27,9 +28,8 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("switch_inline_query_current_chat")]
         public string Switch_inline_query_current_chat { get; set; }
         ///<summary>Optional. Description of the game that will be launched when the user presses the button.<para>NOTE: This type of button must always be the first button in the first row.</para></summary>
-        //[JsonPropertyName("callback_game")]
-        [JsonIgnore]
-        public Games.CallbackGame Callback_game { get; set; }
+        [JsonPropertyName("callback_game")]
+        public CallbackGame Callback_game { get; set; }
         ///<summary>Optional. Specify True, to send a Pay button.<para>NOTE: This type of button must always be the first button in the first row.</para></summary>
         [JsonPropertyName("pay")]
         public bool Pay { get; set; }
@@ -55,6 +55,67 @@ namespace Telegram.BotAPI.Available_Types
                     return InlineKeyboardButtonType.Pay;
                 return InlineKeyboardButtonType.Unknown;
             }
+        }
+        /// <summary>Create a new <see cref="InlineKeyboardButton"/> with a url.</summary>
+        /// <param name="text">Button text.</param>
+        /// <param name="url">Url.</param>
+        /// <returns><see cref="InlineKeyboardButton"/></returns>
+        public static InlineKeyboardButton SetUrl(string text, string url)
+        {
+            return new InlineKeyboardButton { Text = text, Url = url };
+        }
+
+        /// <summary>Create a new <see cref="InlineKeyboardButton"/> with a <see cref="LoginUrl"/>.</summary>
+        /// <param name="text">Button text.</param>
+        /// <param name="login_url">A <see cref="LoginUrl"/></param>
+        /// <returns><see cref="InlineKeyboardButton"/></returns>
+        public static InlineKeyboardButton SetLoginUrl(string text, LoginUrl login_url)
+        {
+            return new InlineKeyboardButton { Text = text, Login_url = login_url };
+        }
+
+        /// <summary>Create a new <see cref="InlineKeyboardButton"/> with a Callback data.</summary>
+        /// <param name="text">Button text.</param>
+        /// <param name="callback_data">Callback data.</param>
+        /// <returns><see cref="InlineKeyboardButton"/></returns>
+        public static InlineKeyboardButton SetCallbackData(string text, string callback_data)
+        {
+            return new InlineKeyboardButton { Text = text, Callback_data = callback_data };
+        }
+
+        /// <summary>Create a new <see cref="InlineKeyboardButton"/> with a inline query.</summary>
+        /// <param name="text">Button text.</param>
+        /// <param name="switch_inline_query">Inline query.</param>
+        /// <returns><see cref="InlineKeyboardButton"/></returns>
+        public static InlineKeyboardButton SetSwitchInlineQuery(string text, string switch_inline_query)
+        {
+            return new InlineKeyboardButton { Text = text, Switch_inline_query = switch_inline_query };
+        }
+
+        /// <summary>Create a new <see cref="InlineKeyboardButton"/> with a inline query for the current chat.</summary>
+        /// <param name="text">Button text.</param>
+        /// <param name="switch_inline_query_current_chat">Inline query.</param>
+        /// <returns><see cref="InlineKeyboardButton"/></returns>
+        public static InlineKeyboardButton SetSwitchInlineQueryCurrentChat(string text, string switch_inline_query_current_chat)
+        {
+            return new InlineKeyboardButton { Text = text, Switch_inline_query_current_chat = switch_inline_query_current_chat };
+        }
+
+        /// <summary>Create a new <see cref="InlineKeyboardButton"/> with a callback game.</summary>
+        /// <param name="text">Button text.</param>
+        /// <param name="callback_game">Callback game.</param>
+        /// <returns><see cref="InlineKeyboardButton"/></returns>
+        public static InlineKeyboardButton SetCallbackGame(string text, CallbackGame callback_game)
+        {
+            return new InlineKeyboardButton { Text = text, Callback_game = callback_game };
+        }
+
+        /// <summary>Create a new <see cref="InlineKeyboardButton"/> for pay.</summary>
+        /// <param name="text">Button text.</param>
+        /// <returns><see cref="InlineKeyboardButton"/></returns>
+        public static InlineKeyboardButton SetPay(string text)
+        {
+            return new InlineKeyboardButton { Text = text, Pay = true };
         }
     }
     /// <summary>inlinekeyboardbutton Type</summary>

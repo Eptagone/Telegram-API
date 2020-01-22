@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegram Bot API", "Telegram.BotAPI\Telegram Bot API.csproj", "{333CEF37-B947-47CA-A339-9B14D4D7E20A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegram Bot API.Tests", "Telegram.BotAPI.Tests\Telegram Bot API.Tests.csproj", "{2DEB28F4-901C-4395-99CE-3D3C35E4A589}"
+	ProjectSection(ProjectDependencies) = postProject
+		{333CEF37-B947-47CA-A339-9B14D4D7E20A} = {333CEF37-B947-47CA-A339-9B14D4D7E20A}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88E99929-2031-4B25-98CB-AF892BC45BF8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{333CEF37-B947-47CA-A339-9B14D4D7E20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{333CEF37-B947-47CA-A339-9B14D4D7E20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{333CEF37-B947-47CA-A339-9B14D4D7E20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{333CEF37-B947-47CA-A339-9B14D4D7E20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DEB28F4-901C-4395-99CE-3D3C35E4A589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DEB28F4-901C-4395-99CE-3D3C35E4A589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DEB28F4-901C-4395-99CE-3D3C35E4A589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DEB28F4-901C-4395-99CE-3D3C35E4A589}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85BE005E-491E-437E-BA2C-2202816F73AF}
+	EndGlobalSection
+EndGlobal

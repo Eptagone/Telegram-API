@@ -2,14 +2,12 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
-using System.IO;
 using System.Buffers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Games;
 using Telegram.BotAPI.Available_Types;
-using Telegram.BotAPI.Telegram_Passport;
 using Telegram.BotAPI.Inline_mode;
+using Telegram.BotAPI.Telegram_Passport;
 
 namespace Telegram.BotAPI
 {
@@ -72,27 +70,27 @@ namespace Telegram.BotAPI
             }
             public override void Write(Utf8JsonWriter writer, InputMedia value, JsonSerializerOptions options)
             {
-                if(value is InputMediaAnimation inputMediaAnimation)
+                if (value is InputMediaAnimation inputMediaAnimation)
                 {
                     JsonSerializer.Serialize(writer, inputMediaAnimation, typeof(InputMediaAnimation), options);
                     return;
                 }
-                if(value is InputMediaAudio inputMediaAudio)
+                if (value is InputMediaAudio inputMediaAudio)
                 {
                     JsonSerializer.Serialize(writer, inputMediaAudio, typeof(InputMediaAudio), options);
                     return;
                 }
-                if(value is InputMediaDocument inputMediaDocument)
+                if (value is InputMediaDocument inputMediaDocument)
                 {
                     JsonSerializer.Serialize(writer, inputMediaDocument, typeof(InputMediaDocument), options);
                     return;
                 }
-                if(value is InputMediaPhoto inputMediaPhoto)
+                if (value is InputMediaPhoto inputMediaPhoto)
                 {
                     JsonSerializer.Serialize(writer, inputMediaPhoto, typeof(InputMediaPhoto), options);
                     return;
                 }
-                if(value is InputMediaVideo inputMediaVideo)
+                if (value is InputMediaVideo inputMediaVideo)
                 {
                     JsonSerializer.Serialize(writer, inputMediaVideo, typeof(InputMediaVideo), options);
                     return;
@@ -109,47 +107,47 @@ namespace Telegram.BotAPI
 
             public override void Write(Utf8JsonWriter writer, PassportElementError value, JsonSerializerOptions options)
             {
-                if(value is PassportElementErrorDataField dataField)
+                if (value is PassportElementErrorDataField dataField)
                 {
                     JsonSerializer.Serialize(writer, dataField, typeof(PassportElementErrorDataField), options);
                     return;
                 }
-                if(value is PassportElementErrorFrontSide frontSide)
+                if (value is PassportElementErrorFrontSide frontSide)
                 {
                     JsonSerializer.Serialize(writer, frontSide, typeof(PassportElementErrorFrontSide), options);
                     return;
                 }
-                if(value is PassportElementErrorReverseSide reverseSide)
+                if (value is PassportElementErrorReverseSide reverseSide)
                 {
                     JsonSerializer.Serialize(writer, reverseSide, typeof(PassportElementErrorReverseSide), options);
                     return;
                 }
-                if(value is PassportElementErrorSelfie errorSelfie)
+                if (value is PassportElementErrorSelfie errorSelfie)
                 {
                     JsonSerializer.Serialize(writer, errorSelfie, typeof(PassportElementErrorSelfie), options);
                     return;
                 }
-                if(value is PassportElementErrorFile errorFile)
+                if (value is PassportElementErrorFile errorFile)
                 {
                     JsonSerializer.Serialize(writer, errorFile, typeof(PassportElementErrorFile), options);
                     return;
                 }
-                if(value is PassportElementErrorFiles errorFiles)
+                if (value is PassportElementErrorFiles errorFiles)
                 {
                     JsonSerializer.Serialize(writer, errorFiles, typeof(PassportElementErrorFiles), options);
                     return;
                 }
-                if(value is PassportElementErrorTranslationFile translationFile)
+                if (value is PassportElementErrorTranslationFile translationFile)
                 {
                     JsonSerializer.Serialize(writer, translationFile, typeof(PassportElementErrorTranslationFile), options);
                     return;
                 }
-                if(value is PassportElementErrorTranslationFiles translationFiles)
+                if (value is PassportElementErrorTranslationFiles translationFiles)
                 {
                     JsonSerializer.Serialize(writer, translationFiles, typeof(PassportElementErrorTranslationFiles), options);
                     return;
                 }
-                if(value is PassportElementErrorUnspecified unspecified)
+                if (value is PassportElementErrorUnspecified unspecified)
                 {
                     JsonSerializer.Serialize(writer, unspecified, typeof(PassportElementErrorUnspecified), options);
                     return;
@@ -166,102 +164,102 @@ namespace Telegram.BotAPI
 
             public override void Write(Utf8JsonWriter writer, InlineQueryResult value, JsonSerializerOptions options)
             {
-                if(value is InlineQueryResultCachedAudio cachedAudio)
+                if (value is InlineQueryResultCachedAudio cachedAudio)
                 {
                     JsonSerializer.Serialize(writer, cachedAudio, typeof(InlineQueryResultCachedAudio), options);
                     return;
                 }
-                if(value is InlineQueryResultCachedDocument cachedDocument)
+                if (value is InlineQueryResultCachedDocument cachedDocument)
                 {
                     JsonSerializer.Serialize(writer, cachedDocument, typeof(InlineQueryResultCachedDocument), options);
                     return;
                 }
-                if(value is InlineQueryResultCachedGif cachedGif)
+                if (value is InlineQueryResultCachedGif cachedGif)
                 {
                     JsonSerializer.Serialize(writer, cachedGif, typeof(InlineQueryResultCachedGif), options);
                     return;
                 }
-                if(value is InlineQueryResultCachedMpeg4Gif cachedMpeg4Gif)
+                if (value is InlineQueryResultCachedMpeg4Gif cachedMpeg4Gif)
                 {
                     JsonSerializer.Serialize(writer, cachedMpeg4Gif, typeof(InlineQueryResultCachedMpeg4Gif), options);
                     return;
                 }
-                if(value is InlineQueryResultCachedPhoto cachedPhoto)
+                if (value is InlineQueryResultCachedPhoto cachedPhoto)
                 {
                     JsonSerializer.Serialize(writer, cachedPhoto, typeof(InlineQueryResultCachedPhoto), options);
                     return;
                 }
-                if(value is InlineQueryResultCachedSticker cachedSticker)
+                if (value is InlineQueryResultCachedSticker cachedSticker)
                 {
                     JsonSerializer.Serialize(writer, cachedSticker, typeof(InlineQueryResultCachedSticker), options);
                     return;
                 }
-                if(value is InlineQueryResultCachedVideo cachedVideo)
+                if (value is InlineQueryResultCachedVideo cachedVideo)
                 {
                     JsonSerializer.Serialize(writer, cachedVideo, typeof(InlineQueryResultCachedVideo), options);
                     return;
                 }
-                if(value is InlineQueryResultCachedVoice cachedVoice)
+                if (value is InlineQueryResultCachedVoice cachedVoice)
                 {
                     JsonSerializer.Serialize(writer, cachedVoice, typeof(InlineQueryResultCachedVoice), options);
                     return;
                 }
-                if(value is InlineQueryResultArticle article)
+                if (value is InlineQueryResultArticle article)
                 {
                     JsonSerializer.Serialize(writer, article, typeof(InlineQueryResultArticle), options);
                     return;
                 }
-                if(value is InlineQueryResultAudio audio)
+                if (value is InlineQueryResultAudio audio)
                 {
                     JsonSerializer.Serialize(writer, audio, typeof(InlineQueryResultAudio), options);
                     return;
                 }
-                if(value is InlineQueryResultContact contact)
+                if (value is InlineQueryResultContact contact)
                 {
                     JsonSerializer.Serialize(writer, contact, typeof(InlineQueryResultContact), options);
                     return;
                 }
-                if(value is InlineQueryResultGame game)
+                if (value is InlineQueryResultGame game)
                 {
                     JsonSerializer.Serialize(writer, game, typeof(InlineQueryResultGame), options);
                     return;
                 }
-                if(value is InlineQueryResultDocument document)
+                if (value is InlineQueryResultDocument document)
                 {
                     JsonSerializer.Serialize(writer, document, typeof(InlineQueryResultDocument), options);
                     return;
                 }
-                if(value is InlineQueryResultGif gif)
+                if (value is InlineQueryResultGif gif)
                 {
                     JsonSerializer.Serialize(writer, gif, typeof(InlineQueryResultGif), options);
                     return;
                 }
-                if(value is InlineQueryResultLocation location)
+                if (value is InlineQueryResultLocation location)
                 {
                     JsonSerializer.Serialize(writer, location, typeof(InlineQueryResultLocation), options);
                     return;
                 }
-                if(value is InlineQueryResultMpeg4Gif mpeg4Gif)
+                if (value is InlineQueryResultMpeg4Gif mpeg4Gif)
                 {
                     JsonSerializer.Serialize(writer, mpeg4Gif, typeof(InlineQueryResultMpeg4Gif), options);
                     return;
                 }
-                if(value is InlineQueryResultPhoto photo)
+                if (value is InlineQueryResultPhoto photo)
                 {
                     JsonSerializer.Serialize(writer, photo, typeof(InlineQueryResultPhoto), options);
                     return;
                 }
-                if(value is InlineQueryResultVenue venue)
+                if (value is InlineQueryResultVenue venue)
                 {
                     JsonSerializer.Serialize(writer, venue, typeof(InlineQueryResultVenue), options);
                     return;
                 }
-                if(value is InlineQueryResultVideo video)
+                if (value is InlineQueryResultVideo video)
                 {
                     JsonSerializer.Serialize(writer, video, typeof(InlineQueryResultVideo), options);
                     return;
                 }
-                if(value is InlineQueryResultVoice voice)
+                if (value is InlineQueryResultVoice voice)
                 {
                     JsonSerializer.Serialize(writer, voice, typeof(InlineQueryResultVoice), options);
                     return;
@@ -278,22 +276,22 @@ namespace Telegram.BotAPI
 
             public override void Write(Utf8JsonWriter writer, InputMessageContent value, JsonSerializerOptions options)
             {
-                if(value is InputTextMessageContent inputText)
+                if (value is InputTextMessageContent inputText)
                 {
                     JsonSerializer.Serialize(writer, inputText, typeof(InputTextMessageContent), options);
                     return;
                 }
-                if(value is InputLocationMessageContent inputLocation)
+                if (value is InputLocationMessageContent inputLocation)
                 {
                     JsonSerializer.Serialize(writer, inputLocation, typeof(InputLocationMessageContent), options);
                     return;
                 }
-                if(value is InputVenueMessageContent inputVenue)
+                if (value is InputVenueMessageContent inputVenue)
                 {
                     JsonSerializer.Serialize(writer, inputVenue, typeof(InputVenueMessageContent), options);
                     return;
                 }
-                if(value is InputContactMessageContent inputContact)
+                if (value is InputContactMessageContent inputContact)
                 {
                     JsonSerializer.Serialize(writer, inputContact, typeof(InputContactMessageContent), options);
                     return;
@@ -367,19 +365,19 @@ namespace Telegram.BotAPI
             public override ReplyMarkup Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 var replymarkup = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
-                if(replymarkup.TryGetProperty("force_reply", out JsonElement force_reply))
+                if (replymarkup.TryGetProperty("force_reply", out JsonElement force_reply))
                 {
                     return JsonSerializer.Deserialize<ForceReply>(ref reader, options);
                 }
-                if(replymarkup.TryGetProperty("keyboard", out JsonElement replykeyboard))
+                if (replymarkup.TryGetProperty("keyboard", out JsonElement replykeyboard))
                 {
                     return JsonSerializer.Deserialize<ReplyKeyboardMarkup>(ref reader, options);
                 }
-                if(replymarkup.TryGetProperty("inline_keyboard", out JsonElement inline_keyboard))
+                if (replymarkup.TryGetProperty("inline_keyboard", out JsonElement inline_keyboard))
                 {
                     return JsonSerializer.Deserialize<InlineKeyboardMarkup>(ref reader, options);
                 }
-                if(replymarkup.TryGetProperty("remove_keyboard", out JsonElement remove_keyboard))
+                if (replymarkup.TryGetProperty("remove_keyboard", out JsonElement remove_keyboard))
                 {
                     return JsonSerializer.Deserialize<ReplyKeyboardRemove>(ref reader, options);
                 }
@@ -387,7 +385,7 @@ namespace Telegram.BotAPI
             }
             public override void Write(Utf8JsonWriter writer, ReplyMarkup value, JsonSerializerOptions options)
             {
-                if(value is ForceReply forceReply)
+                if (value is ForceReply forceReply)
                 {
                     writer.WriteStartObject();
                     writer.WriteBoolean("force_reply", true);
@@ -396,14 +394,14 @@ namespace Telegram.BotAPI
                     writer.WriteEndObject();
                     return;
                 }
-                if(value is ReplyKeyboardMarkup replyKeyboardMarkup)
+                if (value is ReplyKeyboardMarkup replyKeyboardMarkup)
                 {
                     writer.WriteStartObject();
                     writer.WriteStartArray("keyboard");
-                    foreach(var ka in replyKeyboardMarkup.Keyboard)
+                    foreach (var ka in replyKeyboardMarkup.Keyboard)
                     {
                         writer.WriteStartArray();
-                        foreach(var button in ka)
+                        foreach (var button in ka)
                         {
                             writer.WriteStartObject();
                             writer.WriteString("text", button.Text);
@@ -425,14 +423,14 @@ namespace Telegram.BotAPI
                     writer.WriteEndObject();
                     return;
                 }
-                if(value is InlineKeyboardMarkup inlineKeyboardMarkup)
+                if (value is InlineKeyboardMarkup inlineKeyboardMarkup)
                 {
                     writer.WriteStartObject();
                     writer.WriteStartArray("inline_keyboard");
-                    foreach(var ink in inlineKeyboardMarkup.Inline_keyboard)
+                    foreach (var ink in inlineKeyboardMarkup.Inline_keyboard)
                     {
                         writer.WriteStartArray();
-                        foreach(var button in ink)
+                        foreach (var button in ink)
                         {
                             writer.WriteStartObject();
                             writer.WriteString("text", button.Text);
@@ -478,7 +476,7 @@ namespace Telegram.BotAPI
                     writer.WriteEndObject();
                     return;
                 }
-                if(value is ReplyKeyboardRemove replyKeyboardRemove)
+                if (value is ReplyKeyboardRemove replyKeyboardRemove)
                 {
                     writer.WriteStartObject();
                     writer.WriteBoolean("remove_keyboard", true);

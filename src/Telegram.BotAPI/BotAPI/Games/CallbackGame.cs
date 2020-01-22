@@ -10,7 +10,11 @@ namespace Telegram.BotAPI.Games
     {
         /// <summary>Create a new CallbackGame.</summary>
         /// <param name="game_short_name">Game short name</param>
-        public CallbackGame(string game_short_name) => Game_short_name = game_short_name;
+        public CallbackGame(string game_short_name)
+        {
+            Game_short_name = game_short_name;
+        }
+
         /// <summary>Game short name</summary>
         [JsonPropertyName("game_short_name")]
         public string Game_short_name { get; set; }

@@ -20,7 +20,7 @@ namespace Telegram.BotAPI.Updating_messages
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
             JsonElement json_result;
-            if(args.AttachFiles == default)
+            if (args.AttachFiles == default)
             {
                 var options = new JsonSerializerOptions { IgnoreNullValues = true };
                 options.Converters.Add(new JsonTools.InputMediaJsonConverter());
@@ -47,7 +47,7 @@ namespace Telegram.BotAPI.Updating_messages
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
             JsonElement json_result;
-            if(args.AttachFiles == default)
+            if (args.AttachFiles == default)
             {
                 var options = new JsonSerializerOptions { IgnoreNullValues = true };
                 options.Converters.Add(new JsonTools.InputMediaJsonConverter());

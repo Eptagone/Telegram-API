@@ -4,14 +4,14 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
-using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI
 {
@@ -55,7 +55,7 @@ namespace Telegram.BotAPI
         /// <param name="options">Provides options to be used with JsonSerializer.Deserialize.</param>
         internal async Task<T> RPCA<T>(string method, [Optional] JsonSerializerOptions options)
         {
-            if(options == default)
+            if (options == default)
             {
                 options = new JsonSerializerOptions();
             }
@@ -79,7 +79,7 @@ namespace Telegram.BotAPI
         /// <param name="deserializeoptions">Provides options to be used with JsonSerializer.Deserialize.</param>
         internal async Task<T> RPCA<T>(string method, object args, [Optional] JsonSerializerOptions serializeoptions, [Optional] JsonSerializerOptions deserializeoptions)
         {
-            if(serializeoptions == default)
+            if (serializeoptions == default)
             {
                 serializeoptions = new JsonSerializerOptions { IgnoreNullValues = true };
                 serializeoptions.Converters.Add(new JsonTools.ReplyMarkupConverter());
@@ -99,7 +99,7 @@ namespace Telegram.BotAPI
         internal async Task<T> RPCA<T>(string method, Stream args, [Optional] JsonSerializerOptions options)
         {
             BotResponse<T> response;
-            if(options == default)
+            if (options == default)
             {
                 options = new JsonSerializerOptions();
             }
@@ -133,14 +133,14 @@ namespace Telegram.BotAPI
         /// <param name="deserializeoptions">Provides options to be used with JsonSerializer.Deserialize.</param>
         internal async Task<T> RPCAF<T>(string method, object args, [Optional] JsonSerializerOptions serializeoptions, [Optional] JsonSerializerOptions deserializeoptions)
         {
-            if(serializeoptions == default)
+            if (serializeoptions == default)
             {
                 serializeoptions = new JsonSerializerOptions { IgnoreNullValues = true };
                 serializeoptions.Converters.Add(new JsonTools.ReplyMarkupConverter());
                 serializeoptions.Converters.Add(new JsonTools.InputMediaJsonConverter());
                 serializeoptions.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             }
-            if(deserializeoptions == default)
+            if (deserializeoptions == default)
             {
                 deserializeoptions = new JsonSerializerOptions { IgnoreNullValues = true };
                 deserializeoptions.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
@@ -150,44 +150,44 @@ namespace Telegram.BotAPI
             foreach (var prop in properties)
             {
                 var value = prop.GetValue(args);
-                if(value != default)
+                if (value != default)
                 {
-                var jsonattribs = (JsonPropertyNameAttribute[])prop.GetCustomAttributes(typeof(JsonPropertyNameAttribute), false);
-                if (jsonattribs.Length > 0)
-                {
-                    var pname = jsonattribs[0].Name;
-                    if (value.GetType() == typeof(InputFile))
+                    var jsonattribs = (JsonPropertyNameAttribute[])prop.GetCustomAttributes(typeof(JsonPropertyNameAttribute), false);
+                    if (jsonattribs.Length > 0)
                     {
-                        var file = (InputFile)value;
-                        content.Add(file.Content, pname, file.Filename);
-                    }
-                    else
-                    {
-                        if(value is string || value is bool || value.IsNumber())
+                        var pname = jsonattribs[0].Name;
+                        if (value.GetType() == typeof(InputFile))
                         {
-                            var scon = new { Name = pname, Content = new StringContent(value.ToString(), Encoding.UTF8) };
-                            content.Add(scon.Content, scon.Name);
+                            var file = (InputFile)value;
+                            content.Add(file.Content, pname, file.Filename);
                         }
                         else
                         {
-                            string jvalue = JsonSerializer.Serialize(value, value.GetType(), serializeoptions);
-                            var scon = new { Name = pname, Content = new StringContent(jvalue, Encoding.UTF8) };
-                            content.Add(scon.Content, scon.Name);
+                            if (value is string || value is bool || value.IsNumber())
+                            {
+                                var scon = new { Name = pname, Content = new StringContent(value.ToString(), Encoding.UTF8) };
+                                content.Add(scon.Content, scon.Name);
+                            }
+                            else
+                            {
+                                string jvalue = JsonSerializer.Serialize(value, value.GetType(), serializeoptions);
+                                var scon = new { Name = pname, Content = new StringContent(jvalue, Encoding.UTF8) };
+                                content.Add(scon.Content, scon.Name);
+                            }
                         }
                     }
-                }
-                else
-                {
-                    var attachprop = args.GetType().GetProperty("AttachFiles");
-                    AttachFile[] attachfiles = attachprop == default ? default : (AttachFile[])attachprop.GetValue(args);
-                    if (attachfiles != default)
+                    else
                     {
-                        foreach (AttachFile attachfile in attachfiles)
+                        var attachprop = args.GetType().GetProperty("AttachFiles");
+                        AttachFile[] attachfiles = attachprop == default ? default : (AttachFile[])attachprop.GetValue(args);
+                        if (attachfiles != default)
                         {
-                            content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
+                            foreach (AttachFile attachfile in attachfiles)
+                            {
+                                content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
+                            }
                         }
                     }
-                }
                 }
             }
             var response = await PostRequestAsyncFormData<T>(TAPIurl, method, content, deserializeoptions).ConfigureAwait(false);
