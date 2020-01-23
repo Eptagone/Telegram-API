@@ -11,7 +11,7 @@ namespace Callback_query_button_01
     {
         static void Main(string[] args)
         {
-            var bot = new BotClient("956001060:AAGrtUYMFn4lQjlfqxmBYdNvuqfPOHEG-Ps");
+            var bot = new BotClient("<your bot token>");
             while (true)
             {
                 var updates = bot.GetUpdates();

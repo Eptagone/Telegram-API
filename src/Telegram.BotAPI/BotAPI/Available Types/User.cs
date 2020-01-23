@@ -26,5 +26,14 @@ namespace Telegram.BotAPI.Available_Types
         /// <summary>Optional. IETF language tag of the user's language.</summary>
         [JsonPropertyName("language_code")]
         public string Language_code { get; set; }
+        /// <summary>Optional. True, if the bot can be invited to groups. Returned only in getMe.</summary>
+        [JsonPropertyName("can_join_groups")]
+        public bool Can_join_groups { get; set; }
+        /// <summary>Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.</summary>
+        [JsonPropertyName("can_read_all_group_messages")]
+        public bool Can_read_all_group_messages { get; set; }
+        /// <summary>Optional. True, if the bot supports inline queries. Returned only in getMe.</summary>
+        [JsonPropertyName("supports_inline_queries")]
+        public bool Supports_inline_queries { get; set; }
     }
 }

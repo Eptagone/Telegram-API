@@ -45,6 +45,9 @@ namespace Telegram.BotAPI.Getting_updates
         ///<summary>Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot.</summary>
         [JsonPropertyName("poll")]
         public Poll Poll { get; set; }
+        ///<summary>Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.</summary>
+        [JsonPropertyName("poll_answer")]
+        public PollAnswer Poll_answer { get; set; }
         /// <summary>Update type.</summary>
         [JsonIgnore]
         public UpdateType Type
@@ -71,8 +74,38 @@ namespace Telegram.BotAPI.Getting_updates
                     return UpdateType.Pre_checkout_query;
                 if (Poll != default)
                     return UpdateType.Poll;
+                if (Poll_answer != default)
+                    return UpdateType.Poll_answer;
                 return UpdateType.Unknown;
             }
         }
+    }
+    /// <summary>Available update types.</summary>
+    public enum UpdateType
+    {
+        /// <summary>Unknown update type</summary>
+        Unknown,
+        /// <summary>Message update</summary>
+        Message,
+        /// <summary>Edited message update</summary>
+        Edited_message,
+        /// <summary>Channel post update</summary>
+        Channel_post,
+        /// <summary>Edited channel post update</summary>
+        Edited_channel_post,
+        /// <summary>Inline query update</summary>
+        Inline_query,
+        /// <summary>Chosen inline result update</summary>
+        Chosen_inline_result,
+        /// <summary>Callback query update</summary>
+        Callback_query,
+        /// <summary>Shipping query update</summary>
+        Shipping_query,
+        /// <summary>Pre checkout query update</summary>
+        Pre_checkout_query,
+        /// <summary>Poll update</summary>
+        Poll,
+        /// <summary>Poll answer update</summary>
+        Poll_answer
     }
 }

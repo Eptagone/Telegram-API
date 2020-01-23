@@ -14,7 +14,6 @@ namespace Telegram.BotAPI.Available_Types
         {
             Text = text;
         }
-
         ///<summary>Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed.</summary>
         [JsonPropertyName("text")]
         public string Text { get; set; }
@@ -24,5 +23,8 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only.</summary>
         [JsonPropertyName("request_location")]
         public bool Request_location { get; set; }
+        ///<summary>Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only.</summary>
+        [JsonPropertyName("request_poll")]
+        public KeyboardButtonPollType Request_poll { get; set; }
     }
 }

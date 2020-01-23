@@ -23,5 +23,8 @@ namespace Telegram.BotAPI.Available_Types
         /// <summary>Optional. For “text_mention” only, the mentioned user.</summary>
         [JsonPropertyName("user")]
         public User User { get; set; }
+        /// <summary>Optional. For “pre” only, the programming language of the entity text.</summary>
+        [JsonPropertyName("language")]
+        public string Language { get; set; }
     }
 }
