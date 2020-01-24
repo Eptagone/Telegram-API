@@ -60,7 +60,7 @@ namespace Telegram.BotAPI
                 options = new JsonSerializerOptions();
             }
             BotResponse<T> response;
-            response = await GetRequestAsync<T>(TAPIurl, method, options).ConfigureAwait(false);
+            response = await GetRequestAsync<T>(BotApiUrl, method, options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
             else
@@ -103,7 +103,7 @@ namespace Telegram.BotAPI
             {
                 options = new JsonSerializerOptions();
             }
-            response = await PostRequestAsync<T>(TAPIurl, method, args, options).ConfigureAwait(false);
+            response = await PostRequestAsync<T>(BotApiUrl, method, args, options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
             else
@@ -189,7 +189,7 @@ namespace Telegram.BotAPI
                     }
                 }
             }
-            var response = await PostRequestAsyncFormData<T>(TAPIurl, method, content, deserializeoptions).ConfigureAwait(false);
+            var response = await PostRequestAsyncFormData<T>(BotApiUrl, method, content, deserializeoptions).ConfigureAwait(false);
             content.Dispose();
             if (response.Ok == true)
                 return response.Result;
@@ -205,7 +205,7 @@ namespace Telegram.BotAPI
         {
             using var Client = new HttpClient();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
-            using var response = await Client.PostAsync(url + "/" + method_name, args).ConfigureAwait(false);
+            using var response = await Client.PostAsync(url + method_name, args).ConfigureAwait(false);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
@@ -213,13 +213,13 @@ namespace Telegram.BotAPI
         {
             using var content = new StreamContent(args);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            using var response = await client.PostAsync(url + "/" + method_name, content).ConfigureAwait(false);
+            using var response = await client.PostAsync(url + method_name, content).ConfigureAwait(false);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
         internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, string method_name, JsonSerializerOptions options)
         {
-            using var response = await client.GetAsync(url + "/" + method_name).ConfigureAwait(false);
+            using var response = await client.GetAsync(url + method_name).ConfigureAwait(false);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }

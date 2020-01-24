@@ -16,7 +16,9 @@ namespace Telegram.BotAPI
     /// <summary>Telegram Bot Client.</summary>
     public sealed partial class BotClient
     {
-        internal string TAPIurl => "https://api.telegram.org/bot" + Token;
+        private string BotApiUrl { get; set; }
+        /// <summary>Bot url for file download.</summary>
+        public string FilesUrl { get; private set; }
         /// <summary>Token granted by BotFather. Required to access the Telegram bot API.</summary>
         public string Token { get; set; }
         /// <summary>Set true if you want methods to return a default value when bot requests are rejected instead of throwing a <see cref="BotRequestException"/></summary>
@@ -27,6 +29,8 @@ namespace Telegram.BotAPI
         {
             Token = accessToken;
             IgnoreBotExceptions = false;
+            BotApiUrl = "https://api.telegram.org/bot" + Token + '/';
+            FilesUrl = "https://api.telegram.org/file/bot" + Token + '/';
         }
     }
 }

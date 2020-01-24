@@ -2,52 +2,46 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.4.1</Version>
+    <PackageId>Telegram.BotAPI</PackageId>
+    <Authors>Quetzal Rivera</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RootNamespace>Telegram</RootNamespace>
-    <Authors>Quetzal Rivera</Authors>
-    <PackageId>Telegram.BotAPI</PackageId>
     <Copyright>Quetzal Rivera 2020 ©</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Telegram.BotAPI is one of the most complete libraries available to interact with the Telegram Bot API in your NET project.
- 
-Contains all available methods in the Bot API 4.6 released on January 23, 2020. In addition, it has a complete set of classes with all objects used.</Description>
+    Contains all available methods in the Bot API 4.6 released on January 23, 2020. In addition, it has a complete set of classes with all objects used.</Description>
     <PackageTags>Telegram Bot API</PackageTags>
-    <ApplicationIcon />
     <Title>Telegram Bot API</Title>
     <Summary>Telegram Bot API Wrapper for NET.</Summary>
     <OutputType>Library</OutputType>
-    <StartupObject />
-    <Win32Resource />
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Telegram.BotAPI.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <Version>1.4</Version>
     <LangVersion>latest</LangVersion>
     <Product>Telegram BotAPI</Product>
-    <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/Eptagone/Telegram.BotAPI</RepositoryUrl>
     <PackageIcon>packicon.png</PackageIcon>
-    <PackageIconUrl />
-    <AssemblyVersion>1.4.0.*</AssemblyVersion>
-    <FileVersion>1.4.0.0</FileVersion>
+    <AssemblyVersion>1.4.1.*</AssemblyVersion>
+    <FileVersion>1.4.1.0</FileVersion>
     <Deterministic>false</Deterministic>
     <PackageProjectUrl>https://github.com/Eptagone/Telegram.BotAPI</PackageProjectUrl>
-    <RepositoryType>github</RepositoryType>
-    <PackageReleaseNotes>- Updated to Bot API 4.6</PackageReleaseNotes>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <AssemblyName>Telegram.BotAPI</AssemblyName>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" Label="Debug">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Optimize>false</Optimize>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" Label="Release">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
@@ -60,7 +54,7 @@ Contains all available methods in the Bot API 4.6 released on January 23, 2020. 
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="System.Text.Json" Version="4.7.0" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
