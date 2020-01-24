@@ -109,3 +109,6 @@ using Telegram.BotAPI.Available_Methods
 var bot = new BotClient(token);
 await bot.SendMessageAsync(chat_id, "Message Text");
 ```
+
+## Samples
+[See samples](../src/Telegram.BotAPI.Samples/readme.md)
