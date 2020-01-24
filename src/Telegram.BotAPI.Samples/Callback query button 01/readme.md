@@ -1,4 +1,17 @@
-﻿using System;
+# Callback query button - Sample 01
+
+## Description
+.NET Core console app
+
+Create a button with the /callback command
+Pressing it edits the message, removing the button and typing new text.
+
+## Preview
+![hello world gif](/docs/media/samples/callback&#32;query&#32;button&#32;01.gif)
+
+## Source Code
+```CSharp
+using System;
 using System.Linq;
 using Telegram.BotAPI;
 using Telegram.BotAPI.Getting_updates;
@@ -54,3 +67,4 @@ namespace Callback_query_button_01
         }
     }
 }
+```

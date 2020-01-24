@@ -1,4 +1,16 @@
-﻿using System;
+# Poll Quiz - Sample 01
+
+## Description
+.NET Core console app
+
+Create a quiz from the new polls 2.0
+
+## Preview
+![hello world gif](/docs/media/samples/quiz&#32;01.gif)
+
+## Source Code
+```CSharp
+using System;
 using System.Linq;
 using Telegram.BotAPI;
 using Telegram.BotAPI.Available_Methods;
@@ -39,3 +51,4 @@ namespace Poll_Quiz_01
         }
     }
 }
+```

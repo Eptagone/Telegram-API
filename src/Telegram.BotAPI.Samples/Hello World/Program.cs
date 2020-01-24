@@ -4,7 +4,7 @@ using Telegram.BotAPI;
 using Telegram.BotAPI.Getting_updates;
 using Telegram.BotAPI.Available_Methods;
 
-namespace Hello_World_01
+namespace Hello_World
 {
     class Program
     {
@@ -22,7 +22,7 @@ namespace Hello_World_01
                             bot.SendMessage(message.Chat.Id, "Hello World!");
                         }
                     }
-                    updates = bot.GetUpdates(new GetUpdatesArgs { Offset = updates.Max(u => u.Update_id) + 1 });
+                    updates = bot.GetUpdates(offset: updates.Max(u => u.Update_id) + 1);
                 }
             }
         }
