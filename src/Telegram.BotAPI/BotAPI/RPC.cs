@@ -2,14 +2,15 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -18,7 +19,12 @@ namespace Telegram.BotAPI
     public sealed partial class BotClient
     {
         /// <summary>HttpClient for bot requests.</summary>
-        public static readonly HttpClient client = new HttpClient() { };
+        public static HttpClient Client { get; set; }
+        static BotClient()
+        {
+            Client = new HttpClient();
+            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
+        }
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
         /// <param name="method">method name</param>
@@ -60,7 +66,7 @@ namespace Telegram.BotAPI
                 options = new JsonSerializerOptions();
             }
             BotResponse<T> response;
-            response = await GetRequestAsync<T>(BotApiUrl, method, options).ConfigureAwait(false);
+            response = await GetRequestAsync<T>($"{BaseBotAPIUrl}{Token}/{method}", options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
             else
@@ -103,7 +109,7 @@ namespace Telegram.BotAPI
             {
                 options = new JsonSerializerOptions();
             }
-            response = await PostRequestAsync<T>(BotApiUrl, method, args, options).ConfigureAwait(false);
+            response = await PostRequestAsync<T>($"{BaseBotAPIUrl}{Token}/{method}", args, options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
             else
@@ -164,6 +170,7 @@ namespace Telegram.BotAPI
                         {
                             if (value is string || value is bool || value.IsNumber())
                             {
+                                var asjkasj = value.ToString();
                                 var scon = new { Name = pname, Content = new StringContent(value.ToString(), Encoding.UTF8) };
                                 content.Add(scon.Content, scon.Name);
                             }
@@ -189,7 +196,7 @@ namespace Telegram.BotAPI
                     }
                 }
             }
-            var response = await PostRequestAsyncFormData<T>(BotApiUrl, method, content, deserializeoptions).ConfigureAwait(false);
+            var response = await PostRequestAsyncFormData<T>($"{BaseBotAPIUrl}{Token}/{method}", content, deserializeoptions).ConfigureAwait(false);
             content.Dispose();
             if (response.Ok == true)
                 return response.Result;
@@ -201,25 +208,31 @@ namespace Telegram.BotAPI
                     throw new BotRequestException(response.Error_code, response.Description);
             }
         }
-        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string url, string method_name, MultipartFormDataContent args, JsonSerializerOptions options)
+        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string url, MultipartFormDataContent args, JsonSerializerOptions options, CancellationToken cancellationToken = default)
         {
-            using var Client = new HttpClient();
-            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
-            using var response = await Client.PostAsync(url + method_name, args).ConfigureAwait(false);
+            using var request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = args
+            };
+            using var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
-        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, string method_name, Stream args, JsonSerializerOptions options)
+        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, Stream args, JsonSerializerOptions options, CancellationToken cancellationToken = default)
         {
-            using var content = new StreamContent(args);
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            using var response = await client.PostAsync(url + method_name, content).ConfigureAwait(false);
+            using var request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = new StreamContent(args)
+            };
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            using var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
-        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, string method_name, JsonSerializerOptions options)
+        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, JsonSerializerOptions options, CancellationToken cancellationToken = default)
         {
-            using var response = await client.GetAsync(url + method_name).ConfigureAwait(false);
+            using var request = new HttpRequestMessage(HttpMethod.Get, url);
+            using var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
