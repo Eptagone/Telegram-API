@@ -16,8 +16,6 @@ namespace Telegram.BotAPI
     /// <summary>Telegram Bot Client.</summary>
     public sealed partial class BotClient
     {
-        /// <summary>Bot base url for call methods.</summary>
-        public static readonly string BaseBotAPIUrl = "https://api.telegram.org/bot";
         /// <summary>Bot base url for file download.</summary>
         public static readonly string NaseFilesUrl = "https://api.telegram.org/file/bot";
         /// <summary>Token granted by BotFather. Required to access the Telegram bot API.</summary>

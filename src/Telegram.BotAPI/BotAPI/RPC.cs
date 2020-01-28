@@ -22,7 +22,10 @@ namespace Telegram.BotAPI
         public static HttpClient Client { get; set; }
         static BotClient()
         {
-            Client = new HttpClient();
+            Client = new HttpClient
+            {
+                BaseAddress = new Uri("https://api.telegram.org/")
+            };
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
         }
         /// <summary>RPC</summary>
@@ -66,7 +69,7 @@ namespace Telegram.BotAPI
                 options = new JsonSerializerOptions();
             }
             BotResponse<T> response;
-            response = await GetRequestAsync<T>($"{BaseBotAPIUrl}{Token}/{method}", options).ConfigureAwait(false);
+            response = await GetRequestAsync<T>($"bot{Token}/{method}", options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
             else
@@ -109,7 +112,7 @@ namespace Telegram.BotAPI
             {
                 options = new JsonSerializerOptions();
             }
-            response = await PostRequestAsync<T>($"{BaseBotAPIUrl}{Token}/{method}", args, options).ConfigureAwait(false);
+            response = await PostRequestAsync<T>($"bot{Token}/{method}", args, options).ConfigureAwait(false);
             if (response.Ok == true)
                 return response.Result;
             else
@@ -196,7 +199,7 @@ namespace Telegram.BotAPI
                     }
                 }
             }
-            var response = await PostRequestAsyncFormData<T>($"{BaseBotAPIUrl}{Token}/{method}", content, deserializeoptions).ConfigureAwait(false);
+            var response = await PostRequestAsyncFormData<T>($"bot{Token}/{method}", content, deserializeoptions).ConfigureAwait(false);
             content.Dispose();
             if (response.Ok == true)
                 return response.Result;
@@ -208,9 +211,9 @@ namespace Telegram.BotAPI
                     throw new BotRequestException(response.Error_code, response.Description);
             }
         }
-        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string url, MultipartFormDataContent args, JsonSerializerOptions options, CancellationToken cancellationToken = default)
+        internal static async Task<BotResponse<T>> PostRequestAsyncFormData<T>(string path, MultipartFormDataContent args, JsonSerializerOptions options, CancellationToken cancellationToken = default)
         {
-            using var request = new HttpRequestMessage(HttpMethod.Post, url)
+            using var request = new HttpRequestMessage(HttpMethod.Post, $"https://api.telegram.org/{path}")
             {
                 Content = args
             };
@@ -218,9 +221,9 @@ namespace Telegram.BotAPI
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
-        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string url, Stream args, JsonSerializerOptions options, CancellationToken cancellationToken = default)
+        internal static async Task<BotResponse<T>> PostRequestAsync<T>(string path, Stream args, JsonSerializerOptions options, CancellationToken cancellationToken = default)
         {
-            using var request = new HttpRequestMessage(HttpMethod.Post, url)
+            using var request = new HttpRequestMessage(HttpMethod.Post, $"https://api.telegram.org/{path}")
             {
                 Content = new StreamContent(args)
             };
@@ -229,9 +232,9 @@ namespace Telegram.BotAPI
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
         }
-        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string url, JsonSerializerOptions options, CancellationToken cancellationToken = default)
+        internal static async Task<BotResponse<T>> GetRequestAsync<T>(string path, JsonSerializerOptions options, CancellationToken cancellationToken = default)
         {
-            using var request = new HttpRequestMessage(HttpMethod.Get, url);
+            using var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.telegram.org/{path}");
             using var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
             using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
