@@ -18,9 +18,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
-            var result = T.RPC<JsonElement>("stopMessageLiveLocation", args, options);
+            var result = T.RPC<JsonElement>("stopMessageLiveLocation", args);
             if (result.ValueKind == JsonValueKind.Object)
                 return result.ToObject<Message>();
             else
@@ -35,9 +33,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
-            var result = await T.RPCA<JsonElement>("stopMessageLiveLocation", args, options).ConfigureAwait(false);
+            var result = await T.RPCA<JsonElement>("stopMessageLiveLocation", args).ConfigureAwait(false);
             if (result.ValueKind == JsonValueKind.Object)
                 return result.ToObject<Message>();
             else

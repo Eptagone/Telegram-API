@@ -11,7 +11,6 @@ namespace Telegram.BotAPI.Available_Methods
     {
         ///<summary>Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</summary>
         [JsonPropertyName("voice")]
-        [InputFile("voice")]
         public object Voice { get; set; }
         ///<summary>Voice message caption, 0-1024 characters.</summary>
         [JsonPropertyName("caption")]

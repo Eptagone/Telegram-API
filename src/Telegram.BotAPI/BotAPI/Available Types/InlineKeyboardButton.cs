@@ -35,7 +35,7 @@ namespace Telegram.BotAPI.Available_Types
         public bool Pay { get; set; }
         ///<summary>Button Type.</summary>
         [JsonIgnore]
-        public InlineKeyboardButtonType ButtonType
+        public InlineKeyboardButtonType Type
         {
             get
             {

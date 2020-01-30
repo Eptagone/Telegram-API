@@ -18,9 +18,7 @@ namespace Telegram.BotAPI.Payments
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
-            return T.RPC<Message>("sendInvoice", args, options);
+            return T.RPC<Message>("sendInvoice", args);
         }
         /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -31,9 +29,7 @@ namespace Telegram.BotAPI.Payments
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
-            return await T.RPCA<Message>("sendInvoice", args, options).ConfigureAwait(false);
+            return await T.RPCA<Message>("sendInvoice", args).ConfigureAwait(false);
         }
     }
 }

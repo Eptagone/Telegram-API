@@ -2,17 +2,35 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.IO;
 using System.Buffers;
+using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Telegram.BotAPI.Available_Types;
 using Telegram.BotAPI.Inline_mode;
 using Telegram.BotAPI.Telegram_Passport;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI
 {
-    internal static class JsonTools
+    internal static class Tools
     {
+        internal static async Task<Stream> SerializeAsStreamAsync(object args, [Optional] JsonSerializerOptions options)
+        {
+            if (options == default)
+            {
+                options = new JsonSerializerOptions { IgnoreNullValues = true };
+                options.Converters.Add(new ReplyMarkupConverter());
+                options.Converters.Add(new InlineKeyboardMarkupConverter());
+                options.Converters.Add(new UintJsonConverter());
+                options.Converters.Add(new UshortJsonConverter());
+            }
+            var stream = new MemoryStream();
+            await JsonSerializer.SerializeAsync(stream, args, args.GetType(), options).ConfigureAwait(false);
+            stream.Seek(0, SeekOrigin.Begin);
+            return stream;
+        }
         internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = default)
         {
             var buffer = new ArrayBufferWriter<byte>();
@@ -305,7 +323,6 @@ namespace Telegram.BotAPI
             {
                 throw new NotImplementedException();
             }
-
             public override void Write(Utf8JsonWriter writer, InlineKeyboardMarkup value, JsonSerializerOptions options)
             {
                 writer.WriteStartObject();
@@ -317,7 +334,7 @@ namespace Telegram.BotAPI
                     {
                         writer.WriteStartObject();
                         writer.WriteString("text", button.Text);
-                        switch (button.ButtonType)
+                        switch (button.Type)
                         {
                             case InlineKeyboardButtonType.Url:
                                 writer.WriteString("url", button.Url);
@@ -365,19 +382,19 @@ namespace Telegram.BotAPI
             public override ReplyMarkup Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 var replymarkup = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
-                if (replymarkup.TryGetProperty("force_reply", out JsonElement force_reply))
+                if (replymarkup.TryGetProperty("force_reply", out _))
                 {
                     return JsonSerializer.Deserialize<ForceReply>(ref reader, options);
                 }
-                if (replymarkup.TryGetProperty("keyboard", out JsonElement replykeyboard))
+                if (replymarkup.TryGetProperty("keyboard", out _))
                 {
                     return JsonSerializer.Deserialize<ReplyKeyboardMarkup>(ref reader, options);
                 }
-                if (replymarkup.TryGetProperty("inline_keyboard", out JsonElement inline_keyboard))
+                if (replymarkup.TryGetProperty("inline_keyboard", out _))
                 {
                     return JsonSerializer.Deserialize<InlineKeyboardMarkup>(ref reader, options);
                 }
-                if (replymarkup.TryGetProperty("remove_keyboard", out JsonElement remove_keyboard))
+                if (replymarkup.TryGetProperty("remove_keyboard", out _))
                 {
                     return JsonSerializer.Deserialize<ReplyKeyboardRemove>(ref reader, options);
                 }
@@ -394,86 +411,14 @@ namespace Telegram.BotAPI
                     writer.WriteEndObject();
                     return;
                 }
-                if (value is ReplyKeyboardMarkup replyKeyboardMarkup)
+                if (value is ReplyKeyboardMarkup)
                 {
-                    writer.WriteStartObject();
-                    writer.WriteStartArray("keyboard");
-                    foreach (var ka in replyKeyboardMarkup.Keyboard)
-                    {
-                        writer.WriteStartArray();
-                        foreach (var button in ka)
-                        {
-                            writer.WriteStartObject();
-                            writer.WriteString("text", button.Text);
-                            if (button.Request_contact)
-                                writer.WriteBoolean("request_contact", true);
-                            if (button.Request_location)
-                                writer.WriteBoolean("request_location", true);
-                            writer.WriteEndObject();
-                        }
-                        writer.WriteEndArray();
-                    }
-                    writer.WriteEndArray();
-                    if (replyKeyboardMarkup.Resize_keyboard)
-                        writer.WriteBoolean("resize_keryboard", true);
-                    if (replyKeyboardMarkup.One_time_keyboard)
-                        writer.WriteBoolean("one_time_keyboard", true);
-                    if (replyKeyboardMarkup.Selective)
-                        writer.WriteBoolean("selective", true);
-                    writer.WriteEndObject();
+                    JsonSerializer.Serialize(writer, value, typeof(ReplyKeyboardMarkup), options);
                     return;
                 }
-                if (value is InlineKeyboardMarkup inlineKeyboardMarkup)
+                if (value is InlineKeyboardMarkup)
                 {
-                    writer.WriteStartObject();
-                    writer.WriteStartArray("inline_keyboard");
-                    foreach (var ink in inlineKeyboardMarkup.Inline_keyboard)
-                    {
-                        writer.WriteStartArray();
-                        foreach (var button in ink)
-                        {
-                            writer.WriteStartObject();
-                            writer.WriteString("text", button.Text);
-                            switch (button.ButtonType)
-                            {
-                                case InlineKeyboardButtonType.Url:
-                                    writer.WriteString("url", button.Url);
-                                    break;
-                                case InlineKeyboardButtonType.Login_Url:
-                                    writer.WriteStartObject("login_url");
-                                    writer.WriteString("url", button.Login_url.Url);
-                                    if (button.Login_url.Forward_text != default)
-                                        writer.WriteString("forward_text", button.Login_url.Forward_text);
-                                    if (button.Login_url.Bot_username != default)
-                                        writer.WriteString("bot_username", button.Login_url.Bot_username);
-                                    if (button.Login_url.Request_write_access)
-                                        writer.WriteBoolean("request_write_access", true);
-                                    writer.WriteEndObject();
-                                    break;
-                                case InlineKeyboardButtonType.Callback_data:
-                                    writer.WriteString("callback_data", button.Callback_data);
-                                    break;
-                                case InlineKeyboardButtonType.Switch_inline_query:
-                                    writer.WriteString("switch_inline_query", button.Switch_inline_query);
-                                    break;
-                                case InlineKeyboardButtonType.Switch_inline_query_current_chat:
-                                    writer.WriteString("switch_inline_query_current_chat", button.Switch_inline_query_current_chat);
-                                    break;
-                                case InlineKeyboardButtonType.Callback_game:
-                                    writer.WriteStartObject("callback_game");
-                                    writer.WriteString("game_short_name", button.Callback_game.Game_short_name);
-                                    writer.WriteEndObject();
-                                    break;
-                                case InlineKeyboardButtonType.Pay:
-                                    writer.WriteBoolean("pay", button.Pay);
-                                    break;
-                            }
-                            writer.WriteEndObject();
-                        }
-                        writer.WriteEndArray();
-                    }
-                    writer.WriteEndArray();
-                    writer.WriteEndObject();
+                    JsonSerializer.Serialize(writer, value, typeof(InlineKeyboardMarkup), options);
                     return;
                 }
                 if (value is ReplyKeyboardRemove replyKeyboardRemove)

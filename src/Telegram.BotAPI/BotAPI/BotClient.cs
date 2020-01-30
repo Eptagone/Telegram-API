@@ -17,13 +17,18 @@ namespace Telegram.BotAPI
     public sealed partial class BotClient
     {
         /// <summary>Bot base url for file download.</summary>
-        public static readonly string NaseFilesUrl = "https://api.telegram.org/file/bot";
+        public static readonly string BaseFilesUrl = "https://api.telegram.org/file/bot";
         /// <summary>Token granted by BotFather. Required to access the Telegram bot API.</summary>
         public string Token { get; set; }
         /// <summary>Set true if you want methods to return a default value when bot requests are rejected instead of throwing a <see cref="BotRequestException"/></summary>
         public bool IgnoreBotExceptions { get; set; }
         /// <summary>Initialize a Telegram Bot Client.</summary>
         /// <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API.</param>
-        public BotClient(string accessToken) => Token = accessToken;
+        public BotClient(string accessToken)
+        {
+            Token = accessToken;
+            if (Client == default)
+                SetHttpClient();
+        }
     }
 }

@@ -13,7 +13,6 @@ namespace Telegram.BotAPI.Available_Methods
         [JsonPropertyName("chat_id")]
         public object Chat_id { get; set; }
         /// <summary>New chat photo, uploaded using multipart/form-data.</summary>
-        [InputFile("photo")]
         [JsonPropertyName("photo")]
         public InputFile Photo { get; set; }
     }

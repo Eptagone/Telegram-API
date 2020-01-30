@@ -1,5 +1,4 @@
 ﻿{
-  "accesstoken": "bot-token",
-  "chat_id": -1,
-  "sampledocumentid": "<doc_id>"
+  "accesstoken": "<bot token>",
+  "chat_id": -1
 }

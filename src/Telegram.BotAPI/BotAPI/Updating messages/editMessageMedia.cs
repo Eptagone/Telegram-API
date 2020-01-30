@@ -21,16 +21,9 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(args));
             JsonElement json_result;
             if (args.AttachFiles == default)
-            {
-                var options = new JsonSerializerOptions { IgnoreNullValues = true };
-                options.Converters.Add(new JsonTools.InputMediaJsonConverter());
-                options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
-                json_result = T.RPC<JsonElement>("editMessageMedia", args, options);
-            }
+                json_result = T.RPC<JsonElement>("editMessageMedia", args);
             else
-            {
                 json_result = T.RPCF<JsonElement>("editMessageMedia", args);
-            }
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -48,16 +41,9 @@ namespace Telegram.BotAPI.Updating_messages
                 throw new System.ArgumentNullException(nameof(args));
             JsonElement json_result;
             if (args.AttachFiles == default)
-            {
-                var options = new JsonSerializerOptions { IgnoreNullValues = true };
-                options.Converters.Add(new JsonTools.InputMediaJsonConverter());
-                options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
-                json_result = await T.RPCA<JsonElement>("editMessageMedia", args, options).ConfigureAwait(false);
-            }
+                json_result = await T.RPCA<JsonElement>("editMessageMedia", args).ConfigureAwait(false);
             else
-            {
                 json_result = await T.RPCAF<JsonElement>("editMessageMedia", args).ConfigureAwait(false);
-            }
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else

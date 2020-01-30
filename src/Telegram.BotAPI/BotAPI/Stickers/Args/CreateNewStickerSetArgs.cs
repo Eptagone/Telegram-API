@@ -19,7 +19,6 @@ namespace Telegram.BotAPI.Stickers
         public string Title { get; set; }
         /// <summary>Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</summary>
         [JsonPropertyName("png_sticker")]
-        [InputFile("png_sticker")]
         public string Png_sticker { get; set; }
         /// <summary>One or more emoji corresponding to the sticker.</summary>
         [JsonPropertyName("emojis")]

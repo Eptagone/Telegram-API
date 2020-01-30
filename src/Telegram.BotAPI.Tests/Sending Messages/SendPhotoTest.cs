@@ -17,7 +17,7 @@ namespace Telegram.BotAPI.Tests
             var message = bot.SendPhoto(new SendPhotoArgs
             {
                 Chat_id = chat_id,
-                Photo = "AgADAQADSKgxGxofwERLH1hy62zAcp3vawYABAEAAwIAA20AA2YPAgABFgQ"
+                Photo = "AgACAgEAAxkBAAM4XjI95Alvnw0bHXMYQzn0PrggqbUAAkOoMRtUu5BFSNvo0gL4nS1f_GsGAAQBAAMCAANtAAOpRgIAARgE"
             });
             Assert.NotNull(message);
         }
@@ -40,7 +40,7 @@ namespace Telegram.BotAPI.Tests
             var message = await bot.SendPhotoAsync(new SendPhotoArgs
             {
                 Chat_id = chat_id,
-                Photo = "AgADAQADSKgxGxofwERLH1hy62zAcp3vawYABAEAAwIAA20AA2YPAgABFgQ"
+                Photo = "AgACAgEAAxkBAAM4XjI95Alvnw0bHXMYQzn0PrggqbUAAkOoMRtUu5BFSNvo0gL4nS1f_GsGAAQBAAMCAANtAAOpRgIAARgE"
             }).ConfigureAwait(true);
             Assert.NotNull(message);
         }

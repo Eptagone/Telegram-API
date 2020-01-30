@@ -21,9 +21,9 @@ namespace Telegram.BotAPI.Inline_mode
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
             var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineQueryResultConverter());
-            options.Converters.Add(new JsonTools.InputMessageContentConverter());
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            options.Converters.Add(new Tools.InlineQueryResultConverter());
+            options.Converters.Add(new Tools.InputMessageContentConverter());
+            options.Converters.Add(new Tools.InlineKeyboardMarkupConverter());
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream);
             JsonSerializer.Serialize(json, args, typeof(AnswerInlineQueryArgs), options);
@@ -42,9 +42,9 @@ namespace Telegram.BotAPI.Inline_mode
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
             var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineQueryResultConverter());
-            options.Converters.Add(new JsonTools.InputMessageContentConverter());
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
+            options.Converters.Add(new Tools.InlineQueryResultConverter());
+            options.Converters.Add(new Tools.InputMessageContentConverter());
+            options.Converters.Add(new Tools.InlineKeyboardMarkupConverter());
             var stream = new MemoryStream();
             await JsonSerializer.SerializeAsync(stream, args, typeof(AnswerInlineQueryArgs), options).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);

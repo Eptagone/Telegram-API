@@ -14,7 +14,6 @@ namespace Telegram.BotAPI.Getting_updates
         public string Url { get; set; }
         ///<summary>Upload your public key certificate so that the root certificate in use can be checked. See our <a href="https://core.telegram.org/bots/self-signed">self-signed guide</a> for details.</summary>
         [JsonPropertyName("certificate")]
-        [InputFile("certificate")]
         public InputFile Certificate { get; set; }
         ///<summary>Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot‘s server, and higher values to increase your bot’s throughput.</summary>
         [JsonPropertyName("max_connections")]

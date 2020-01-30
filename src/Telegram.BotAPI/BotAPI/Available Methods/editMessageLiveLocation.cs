@@ -19,9 +19,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
-            var json_result = T.RPC<JsonElement>("editMessageLiveLocation", args, options);
+            var json_result = T.RPC<JsonElement>("editMessageLiveLocation", args);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -39,8 +37,6 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             var args = new EditMessageLiveLocationArgs
             {
                 Latitude = latitude,
@@ -54,7 +50,7 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Inline_message_id = inline_message_id;
             if (reply_markup != default)
                 args.Reply_markup = reply_markup;
-            var json_result = T.RPC<JsonElement>("editMessageLiveLocation", args, options);
+            var json_result = T.RPC<JsonElement>("editMessageLiveLocation", args);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -72,8 +68,6 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             var args = new EditMessageLiveLocationArgs
             {
                 Latitude = latitude,
@@ -87,7 +81,7 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Inline_message_id = inline_message_id;
             if (reply_markup != default)
                 args.Reply_markup = reply_markup;
-            var json_result = T.RPC<JsonElement>("editMessageLiveLocation", args, options);
+            var json_result = T.RPC<JsonElement>("editMessageLiveLocation", args);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -102,9 +96,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
-            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args, options).ConfigureAwait(false);
+            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args).ConfigureAwait(false);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -122,8 +114,6 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             var args = new EditMessageLiveLocationArgs
             {
                 Latitude = latitude,
@@ -137,7 +127,7 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Inline_message_id = inline_message_id;
             if (reply_markup != default)
                 args.Reply_markup = reply_markup;
-            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args, options).ConfigureAwait(false);
+            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args).ConfigureAwait(false);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -155,8 +145,6 @@ namespace Telegram.BotAPI.Available_Methods
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            var options = new JsonSerializerOptions { IgnoreNullValues = true };
-            options.Converters.Add(new JsonTools.InlineKeyboardMarkupConverter());
             var args = new EditMessageLiveLocationArgs
             {
                 Latitude = latitude,
@@ -170,7 +158,7 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Inline_message_id = inline_message_id;
             if (reply_markup != default)
                 args.Reply_markup = reply_markup;
-            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args, options).ConfigureAwait(false);
+            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args).ConfigureAwait(false);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
