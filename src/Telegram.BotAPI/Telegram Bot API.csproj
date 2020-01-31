@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.4.3</Version>
+    <Version>1.5</Version>
     <PackageId>Telegram.BotAPI</PackageId>
     <Authors>Quetzal Rivera</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -25,12 +25,15 @@ Contains all available methods in the Bot API 4.6 released on January 23, 2020. 
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/Eptagone/Telegram.BotAPI</RepositoryUrl>
     <PackageIcon>packicon.png</PackageIcon>
-    <AssemblyVersion>1.4.3.*</AssemblyVersion>
-    <FileVersion>1.4.3.0</FileVersion>
+    <AssemblyVersion>1.5.0.*</AssemblyVersion>
+    <FileVersion>1.5.0.0</FileVersion>
     <Deterministic>false</Deterministic>
     <PackageProjectUrl>https://github.com/Eptagone/Telegram.BotAPI</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <AssemblyName>Telegram.BotAPI</AssemblyName>
+    <PackageReleaseNotes>- Added cancellation token support
+- Added Newtonsoft.Json support
+- Some features were simplified</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +41,7 @@ Contains all available methods in the Bot API 4.6 released on January 23, 2020. 
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Text.Json" Version="4.7.0" />
   </ItemGroup>
   

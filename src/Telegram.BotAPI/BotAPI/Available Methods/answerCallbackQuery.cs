@@ -91,5 +91,26 @@ namespace Telegram.BotAPI.Available_Methods
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("answerCallbackQuery", stream, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="jsonstream">Json Stream parameters.</param>
+        public static bool AnswerCallbackQuery(this BotClient T, Stream jsonstream)
+        {
+            if (T == default)
+                throw new ArgumentNullException(nameof(T));
+            return T.RPC<bool>("answerCallbackQuery", jsonstream);
+        }
+        /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="jsonstream">Json Stream parameters.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> AnswerCallbackQueryAsync(this BotClient T, Stream jsonstream, [Optional] CancellationToken cancellationToken)
+        {
+            if (T == default)
+                throw new ArgumentNullException(nameof(T));
+            if (jsonstream == default)
+                throw new ArgumentNullException(nameof(jsonstream));
+            return await T.RPCA<bool>("answerCallbackQuery", jsonstream, cancellationToken).ConfigureAwait(false);
+        }
     }
 }

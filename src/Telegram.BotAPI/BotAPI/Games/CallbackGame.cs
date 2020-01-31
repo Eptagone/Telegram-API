@@ -2,12 +2,17 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Telegram.BotAPI.Games
 {
     /// <summary>A placeholder, currently holds no information. Use BotFather to set up your game.</summary>
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class CallbackGame
     {
+        /// <summary>Create a new CallbackGame.</summary>
+        public CallbackGame() { }
         /// <summary>Create a new CallbackGame.</summary>
         /// <param name="game_short_name">Game short name</param>
         public CallbackGame(string game_short_name)
@@ -17,6 +22,7 @@ namespace Telegram.BotAPI.Games
 
         /// <summary>Game short name</summary>
         [JsonPropertyName("game_short_name")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Game_short_name { get; set; }
     }
 }

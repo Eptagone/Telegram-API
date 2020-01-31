@@ -3,6 +3,7 @@
 
 using System.IO;
 using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Telegram.BotAPI.Available_Types
 {
@@ -10,8 +11,10 @@ namespace Telegram.BotAPI.Available_Types
     public sealed class InputFile
     {
         /// <summary>HTTP file content.</summary>
+        [JsonIgnore]
         public StreamContent Content { get; private set; }
         /// <summary>File name.</summary>
+        [JsonIgnore]
         public string Filename { get; private set; }
         /// <summary>New InputFile.</summary>
         /// <param name="streamcontent">HTTP file content.</param>
@@ -38,13 +41,13 @@ namespace Telegram.BotAPI.Available_Types
             Filename = filename;
         }
     }
-    [System.AttributeUsage(System.AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-    internal sealed class InputFileAttribute : System.Attribute { }
     /// <summary>This object represents a attachfile.</summary>
     public sealed class AttachFile
     {
-        internal string Name { get; }
-        internal InputFile File { get; }
+        /// <summary>AttachFile Name</summary>
+        public string Name { get; }
+        /// <summary>File</summary>
+        public InputFile File { get; }
         /// <summary>New AttachFile</summary>
         /// <param name="name">File attach name.</param>
         /// <param name="inputFile">This object represents the contents of a file to be uploaded.</param>
@@ -52,22 +55,6 @@ namespace Telegram.BotAPI.Available_Types
         {
             Name = name;
             File = inputFile;
-        }
-    }
-    [System.AttributeUsage(System.AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
-    internal sealed class AttachFileAttribute : System.Attribute
-    {
-        public string PropertyName { get; }
-        public bool IsArray { get; }
-        public AttachFileAttribute(string propertyName)
-        {
-            PropertyName = propertyName;
-            IsArray = false;
-        }
-        public AttachFileAttribute(string propertyName, bool isArray)
-        {
-            PropertyName = propertyName;
-            IsArray = isArray;
         }
     }
 }

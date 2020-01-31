@@ -1,10 +1,11 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System.Runtime.InteropServices;
+using System.IO;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Available_Methods
@@ -163,6 +164,37 @@ namespace Telegram.BotAPI.Available_Methods
             if (reply_markup != default)
                 args.Reply_markup = reply_markup;
             var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            if (json_result.ValueKind == JsonValueKind.Object)
+                return json_result.ToObject<Message>();
+            else
+                return json_result.GetBoolean();
+        }
+        /// <summary>Use this method to edit live location messages sent by the bot or via the bot (for inline bots). A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="jsonstream">Json Stream parameters.</param>
+        public static dynamic EditMessageLiveLocation(this BotClient T, Stream jsonstream)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            if (jsonstream == default)
+                throw new System.ArgumentNullException(nameof(jsonstream));
+            var json_result = T.RPC<JsonElement>("editMessageLiveLocation", jsonstream);
+            if (json_result.ValueKind == JsonValueKind.Object)
+                return json_result.ToObject<Message>();
+            else
+                return json_result.GetBoolean();
+        }
+        /// <summary>Use this method to edit live location messages sent by the bot or via the bot (for inline bots). A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
+        /// <param name="T">BotClient</param>
+        /// <param name="jsonstream">Json Stream parameters.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<dynamic> EditMessageLiveLocationAsync(this BotClient T, Stream jsonstream, [Optional] CancellationToken cancellationToken)
+        {
+            if (T == default)
+                throw new System.ArgumentNullException(nameof(T));
+            if (jsonstream == default)
+                throw new System.ArgumentNullException(nameof(jsonstream));
+            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", jsonstream, cancellationToken).ConfigureAwait(false);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else

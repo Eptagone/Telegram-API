@@ -21,12 +21,11 @@ namespace Telegram.BotAPI.Getting_updates
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        public static async Task<Update[]> GetUpdatesAsync(this BotClient T, [Optional] CancellationToken cancellationToken)
+        public static async Task<Update[]> GetUpdatesAsync(this BotClient T)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
-            return await T.RPCA<Update[]>("getUpdates", cancellationToken).ConfigureAwait(false);
+            return await T.RPCA<Update[]>("getUpdates").ConfigureAwait(false);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>

@@ -22,8 +22,7 @@ namespace Telegram.BotAPI
                 options = new JsonSerializerOptions { IgnoreNullValues = true };
                 options.Converters.Add(new ReplyMarkupConverter());
                 options.Converters.Add(new InlineKeyboardMarkupConverter());
-                options.Converters.Add(new UintJsonConverter());
-                options.Converters.Add(new UshortJsonConverter());
+                options.Converters.Add(new InputMediaJsonConverter());
             }
             var stream = new MemoryStream();
             await JsonSerializer.SerializeAsync(stream, args, args.GetType(), options).ConfigureAwait(false);
@@ -52,34 +51,6 @@ namespace Telegram.BotAPI
                     || value is float
                     || value is double
                     || value is decimal;
-        }
-        public class UintJsonConverter : JsonConverter<uint>
-        {
-            public override uint Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-            {
-                return reader.GetUInt32();
-            }
-            public override void Write(Utf8JsonWriter writer, uint value, JsonSerializerOptions options)
-            {
-                if (value == default)
-                    writer.WriteNullValue();
-                else
-                    writer.WriteNumberValue(value);
-            }
-        }
-        public class UshortJsonConverter : JsonConverter<ushort>
-        {
-            public override ushort Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-            {
-                return reader.GetUInt16();
-            }
-            public override void Write(Utf8JsonWriter writer, ushort value, JsonSerializerOptions options)
-            {
-                if (value == default)
-                    writer.WriteNullValue();
-                else
-                    writer.WriteNumberValue(value);
-            }
         }
         public class InputMediaJsonConverter : JsonConverter<InputMedia>
         {

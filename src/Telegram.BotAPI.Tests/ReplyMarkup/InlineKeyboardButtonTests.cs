@@ -28,6 +28,7 @@ namespace Telegram.BotAPI.Tests
                     Text = "New inline keyboard button url Test",
                     Reply_markup = inlinekeyboard
                 });
+            Assert.NotNull(message);
         }
         [Fact]
         [Trait("Callback", "InlineKeyboardMarkup")]
@@ -99,7 +100,7 @@ namespace Telegram.BotAPI.Tests
                 {
                     new InlineKeyboardButton[]{
                         new InlineKeyboardButton {
-                            Text = "Login Url", Login_url = new LoginUrl {  Url = "https://example.com/login" } //Change this domain to your url
+                            Text = "Login Url", Login_url = new LoginUrl("https://example.com/login") //Change this domain to your url
                         }
                     }
                 }
@@ -153,6 +154,7 @@ namespace Telegram.BotAPI.Tests
                     Text = "InlineKeyboardMarkup Test. 3 cols, 1 row, 2 rows and 3 rows.",
                     Reply_markup = replykeyboard
                 });
+            Assert.NotNull(message);
         }
     }
 }
