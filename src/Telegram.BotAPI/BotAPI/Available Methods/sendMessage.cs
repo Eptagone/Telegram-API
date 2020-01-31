@@ -2,10 +2,11 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -26,14 +27,15 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> SendMessageAsync(this BotClient T, SendMessageArgs args)
+        public static async Task<Message> SendMessageAsync(this BotClient T, SendMessageArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCA<Message>("sendMessage", args).ConfigureAwait(false);
+            return await T.RPCA<Message>("sendMessage", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -75,8 +77,9 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="reply_to_message_id">If the message is a reply, ID of the original message</param>
         /// <param name="reply_markup">Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> SendMessageAsync(this BotClient T, object chat_id, string text, [Optional] string parse_mode, [Optional] bool disable_web_page_preview, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup)
+        public static async Task<Message> SendMessageAsync(this BotClient T, object chat_id, string text, [Optional] string parse_mode, [Optional] bool disable_web_page_preview, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -95,7 +98,7 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Reply_to_message_id = reply_to_message_id;
             if (reply_markup != default)
                 args.Reply_markup = reply_markup;
-            return await T.RPCA<Message>("sendMessage", args).ConfigureAwait(false);
+            return await T.RPCA<Message>("sendMessage", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
@@ -137,8 +140,9 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="disable_web_page_preview">Disables link previews for links in this message</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="reply_to_message_id">If the message is a reply, ID of the original message</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> SendMessageAsync(this BotClient T, long chat_id, string text, [Optional] string parse_mode, [Optional] bool disable_web_page_preview, [Optional] bool disable_notification, [Optional] uint reply_to_message_id)
+        public static async Task<Message> SendMessageAsync(this BotClient T, long chat_id, string text, [Optional] string parse_mode, [Optional] bool disable_web_page_preview, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -158,7 +162,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Message>("sendMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<Message>("sendMessage", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -3,6 +3,7 @@
 
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -90,13 +91,14 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to edit live location messages sent by the bot or via the bot (for inline bots). A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
-        public static async Task<dynamic> EditMessageLiveLocationAsync(this BotClient T, EditMessageLiveLocationArgs args)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<dynamic> EditMessageLiveLocationAsync(this BotClient T, EditMessageLiveLocationArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args).ConfigureAwait(false);
+            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -110,7 +112,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="latitude">Latitude of new location.</param>
         /// <param name="longitude">Longitude of new location.</param>
         /// <param name="reply_markup">Optional. A <see cref="InlineKeyboardMarkup"/> object for a new inline keyboard.</param>
-        public static async Task<dynamic> EditMessageLiveLocationAsync(this BotClient T, [Optional] long chat_id, [Optional] uint message_id, [Optional] string inline_message_id, float latitude, float longitude, [Optional] InlineKeyboardMarkup reply_markup)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<dynamic> EditMessageLiveLocationAsync(this BotClient T, [Optional] long chat_id, [Optional] uint message_id, [Optional] string inline_message_id, float latitude, float longitude, [Optional] InlineKeyboardMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -127,7 +130,7 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Inline_message_id = inline_message_id;
             if (reply_markup != default)
                 args.Reply_markup = reply_markup;
-            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args).ConfigureAwait(false);
+            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else
@@ -141,7 +144,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="latitude">Latitude of new location.</param>
         /// <param name="longitude">Longitude of new location.</param>
         /// <param name="reply_markup">Optional. A <see cref="InlineKeyboardMarkup"/> object for a new inline keyboard.</param>
-        public static async Task<dynamic> EditMessageLiveLocationAsync(this BotClient T, [Optional] string chat_id, [Optional] uint message_id, [Optional] string inline_message_id, float latitude, float longitude, [Optional] InlineKeyboardMarkup reply_markup)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<dynamic> EditMessageLiveLocationAsync(this BotClient T, [Optional] string chat_id, [Optional] uint message_id, [Optional] string inline_message_id, float latitude, float longitude, [Optional] InlineKeyboardMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -158,7 +162,7 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Inline_message_id = inline_message_id;
             if (reply_markup != default)
                 args.Reply_markup = reply_markup;
-            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args).ConfigureAwait(false);
+            var json_result = await T.RPCA<JsonElement>("editMessageLiveLocation", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             if (json_result.ValueKind == JsonValueKind.Object)
                 return json_result.ToObject<Message>();
             else

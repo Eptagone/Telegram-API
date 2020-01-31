@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -30,7 +32,8 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="T">BotClient</param>
         /// <param name="name">Name of the sticker set.</param>
         /// <returns><see cref="StickerSet"/> object.</returns>
-        public static async Task<StickerSet> GetStickerSetAsync(this BotClient T, string name)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<StickerSet> GetStickerSetAsync(this BotClient T, string name, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -42,7 +45,7 @@ namespace Telegram.BotAPI.Stickers
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<StickerSet>("getStickerSet", stream).ConfigureAwait(false);
+            return await T.RPCA<StickerSet>("getStickerSet", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

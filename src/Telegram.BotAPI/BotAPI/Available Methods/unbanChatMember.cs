@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -49,7 +51,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
-        public static async Task<bool> UnbanChatMemberAsync(this BotClient T, long chat_id, int user_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> UnbanChatMemberAsync(this BotClient T, long chat_id, int user_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -62,13 +65,14 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("unbanChatMember", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("unbanChatMember", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
-        public static async Task<bool> UnbanChatMemberAsync(this BotClient T, string chat_id, int user_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> UnbanChatMemberAsync(this BotClient T, string chat_id, int user_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -81,7 +85,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("unbanChatMember", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("unbanChatMember", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

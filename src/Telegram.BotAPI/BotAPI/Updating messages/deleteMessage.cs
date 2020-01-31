@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Updating_messages
 {
@@ -70,7 +72,8 @@ namespace Telegram.BotAPI.Updating_messages
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
-        public static async Task<bool> DeleteMessageAsync(this BotClient T, long chat_id, uint message_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> DeleteMessageAsync(this BotClient T, long chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -83,7 +86,7 @@ namespace Telegram.BotAPI.Updating_messages
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("deleteMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("deleteMessage", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
         /// - A message can only be deleted if it was sent less than 48 hours ago.<br/>
@@ -96,7 +99,8 @@ namespace Telegram.BotAPI.Updating_messages
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
-        public static async Task<bool> DeleteMessageAsync(this BotClient T, string chat_id, uint message_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> DeleteMessageAsync(this BotClient T, string chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -109,7 +113,7 @@ namespace Telegram.BotAPI.Updating_messages
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("deleteMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("deleteMessage", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

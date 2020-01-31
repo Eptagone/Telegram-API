@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -57,8 +59,9 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>True</returns>
-        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient T, long chat_id, int user_id, string custom_title)
+        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient T, long chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -72,7 +75,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("sendVideoNote", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
@@ -80,8 +83,9 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>True</returns>
-        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient T, string chat_id, int user_id, string custom_title)
+        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient T, string chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -95,7 +99,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("sendVideoNote", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

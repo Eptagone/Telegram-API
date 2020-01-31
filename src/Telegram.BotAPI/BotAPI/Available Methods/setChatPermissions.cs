@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -87,7 +89,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="permissions">New default chat permissions.</param>
-        public static async Task<bool> SetChatPermissionsAsync(this BotClient T, long chat_id, Available_Types.ChatPermissions permissions)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> SetChatPermissionsAsync(this BotClient T, long chat_id, Available_Types.ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -119,13 +122,14 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("setChatPermissions", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("setChatPermissions", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="permissions">New default chat permissions.</param>
-        public static async Task<bool> SetChatPermissionsAsync(this BotClient T, string chat_id, Available_Types.ChatPermissions permissions)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> SetChatPermissionsAsync(this BotClient T, string chat_id, Available_Types.ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -157,7 +161,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("setChatPermissions", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("setChatPermissions", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

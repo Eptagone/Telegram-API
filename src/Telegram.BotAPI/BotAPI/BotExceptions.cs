@@ -5,7 +5,7 @@ using System;
 
 namespace Telegram.BotAPI
 {
-    /// <summary>Exception generated when a request to Telegram Bot API got an error response..</summary>
+    /// <summary>Exception generated when a request to Telegram Bot API got an error response.</summary>
     public sealed class BotRequestException : Exception
     {
         ///<summary>Error code.</summary>

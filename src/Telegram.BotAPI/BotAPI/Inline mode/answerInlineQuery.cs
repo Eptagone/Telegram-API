@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -35,7 +37,8 @@ namespace Telegram.BotAPI.Inline_mode
         /// No more than 50 results per query are allowed.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
-        public static async Task<bool> AnswerInlineQueryAsync(this BotClient T, AnswerInlineQueryArgs args)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> AnswerInlineQueryAsync(this BotClient T, AnswerInlineQueryArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -48,7 +51,7 @@ namespace Telegram.BotAPI.Inline_mode
             var stream = new MemoryStream();
             await JsonSerializer.SerializeAsync(stream, args, typeof(AnswerInlineQueryArgs), options).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("answerInlineQuery", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("answerInlineQuery", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

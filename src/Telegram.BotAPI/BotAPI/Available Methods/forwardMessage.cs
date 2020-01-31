@@ -2,10 +2,11 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -114,8 +115,9 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> ForwardMessageAsync(this BotClient T, string chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification)
+        public static async Task<Message> ForwardMessageAsync(this BotClient T, string chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -130,7 +132,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Message>("forwardMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<Message>("forwardMessage", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -138,8 +140,9 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> ForwardMessageAsync(this BotClient T, long chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification)
+        public static async Task<Message> ForwardMessageAsync(this BotClient T, long chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -154,7 +157,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Message>("forwardMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<Message>("forwardMessage", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -162,8 +165,9 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> ForwardMessageAsync(this BotClient T, string chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification)
+        public static async Task<Message> ForwardMessageAsync(this BotClient T, string chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -178,7 +182,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Message>("forwardMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<Message>("forwardMessage", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -186,8 +190,9 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> ForwardMessageAsync(this BotClient T, long chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification)
+        public static async Task<Message> ForwardMessageAsync(this BotClient T, long chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -202,7 +207,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Message>("forwardMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<Message>("forwardMessage", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

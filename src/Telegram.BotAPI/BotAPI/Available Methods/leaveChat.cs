@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -44,7 +46,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method for your bot to leave a group, supergroup or channel. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
-        public static async Task<bool> LeaveChatAsync(this BotClient T, long chat_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> LeaveChatAsync(this BotClient T, long chat_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -56,12 +59,13 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("leaveChat", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("leaveChat", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method for your bot to leave a group, supergroup or channel. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
-        public static async Task<bool> LeaveChatAsync(this BotClient T, string chat_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> LeaveChatAsync(this BotClient T, string chat_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -73,7 +77,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("leaveChat", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("leaveChat", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

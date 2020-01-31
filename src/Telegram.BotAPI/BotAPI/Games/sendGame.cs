@@ -1,7 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System.Text.Json;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -21,13 +22,14 @@ namespace Telegram.BotAPI.Games
         ///<summary>Use this method to send a game. On success, the sent Message is returned.</summary>
         ///<param name="T">BotClient</param>
         ///<param name="args">Parameters</param>
-        public static async Task<Message> SendGameAsync(this BotClient T, SendGameArgs args)
+        ///<param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<Message> SendGameAsync(this BotClient T, SendGameArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCA<Message>("sendGame", args).ConfigureAwait(false);
+            return await T.RPCA<Message>("sendGame", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

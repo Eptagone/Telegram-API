@@ -3,14 +3,13 @@
 
 using System;
 using System.IO;
-using System.Buffers;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 using Telegram.BotAPI.Inline_mode;
 using Telegram.BotAPI.Telegram_Passport;
-using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI
 {
@@ -33,10 +32,12 @@ namespace Telegram.BotAPI
         }
         internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = default)
         {
-            var buffer = new ArrayBufferWriter<byte>();
-            using var writer = new Utf8JsonWriter(buffer);
+            var stream = new MemoryStream();
+            using var writer = new Utf8JsonWriter(stream);
             element.WriteTo(writer); writer.Flush();
-            return JsonSerializer.Deserialize<T>(buffer.WrittenSpan, options);
+            stream.Seek(0, SeekOrigin.Begin);
+            var buffer = new ReadOnlySpan<byte>(stream.GetBuffer());
+            return JsonSerializer.Deserialize<T>(buffer, options);
         }
         internal static bool IsNumber(this object value)
         {

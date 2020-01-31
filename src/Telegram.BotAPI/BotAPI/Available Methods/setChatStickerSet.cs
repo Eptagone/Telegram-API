@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -49,7 +51,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="sticker_set_name">Name of the sticker set to be set as the group sticker set.</param>
-        public static async Task<bool> SetChatStickerSetAsync(this BotClient T, long chat_id, string sticker_set_name)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> SetChatStickerSetAsync(this BotClient T, long chat_id, string sticker_set_name, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -62,13 +65,14 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("setChatStickerSet", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("setChatStickerSet", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="sticker_set_name">Name of the sticker set to be set as the group sticker set.</param>
-        public static async Task<bool> SetChatStickerSetAsync(this BotClient T, string chat_id, string sticker_set_name)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> SetChatStickerSetAsync(this BotClient T, string chat_id, string sticker_set_name, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -81,7 +85,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("setChatStickerSet", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("setChatStickerSet", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

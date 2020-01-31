@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Telegram_Passport
 {
@@ -40,7 +42,8 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <param name="T">Bot Client</param>
         /// <param name="user_id">User identifier</param>
         /// <param name="errors">An array of <see cref="PassportElementError"/> describing the errors</param>
-        public static async Task<bool> SetPassportDataErrorsAsync(this BotClient T, int user_id, PassportElementError[] errors)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> SetPassportDataErrorsAsync(this BotClient T, int user_id, PassportElementError[] errors, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -56,7 +59,7 @@ namespace Telegram.BotAPI.Telegram_Passport
             var stream = new MemoryStream();
             await JsonSerializer.SerializeAsync(stream, args, typeof(SetPassportDataErrorsArgs), options).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("setPassportDataErrors", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("setPassportDataErrors", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

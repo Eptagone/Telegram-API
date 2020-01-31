@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
 
@@ -23,14 +25,15 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> SendAnimationAsync(this BotClient T, SendAnimationArgs args)
+        public static async Task<Message> SendAnimationAsync(this BotClient T, SendAnimationArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await (args.UseMultipart() ? T.RPCAF<Message>("sendAnimation", args).ConfigureAwait(false) : T.RPCA<Message>("sendAnimation", args).ConfigureAwait(false));
+            return await (args.UseMultipart() ? T.RPCAF<Message>("sendAnimation", args, cancellationToken: cancellationToken).ConfigureAwait(false) : T.RPCA<Message>("sendAnimation", args, cancellationToken: cancellationToken).ConfigureAwait(false));
         }
     }
 }

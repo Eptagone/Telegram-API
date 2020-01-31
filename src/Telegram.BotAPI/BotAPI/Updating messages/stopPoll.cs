@@ -3,8 +3,10 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Updating_messages
 {
@@ -91,7 +93,8 @@ namespace Telegram.BotAPI.Updating_messages
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
-        public static async Task<Poll> StopPollAsync(this BotClient T, long chat_id, uint message_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<Poll> StopPollAsync(this BotClient T, long chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -104,14 +107,15 @@ namespace Telegram.BotAPI.Updating_messages
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Poll>("stopPoll", stream).ConfigureAwait(false);
+            return await T.RPCA<Poll>("stopPoll", stream, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
-        public static async Task<Poll> StopPollAsync(this BotClient T, string chat_id, uint message_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<Poll> StopPollAsync(this BotClient T, string chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -124,7 +128,7 @@ namespace Telegram.BotAPI.Updating_messages
             await json.FlushAsync().ConfigureAwait(false);
             await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Poll>("stopPoll", stream).ConfigureAwait(false);
+            return await T.RPCA<Poll>("stopPoll", stream, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -132,7 +136,8 @@ namespace Telegram.BotAPI.Updating_messages
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <param name="reply_markup">A <see cref="InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
-        public static async Task<Poll> StopPollAsync(this BotClient T, long chat_id, uint message_id, InlineKeyboardMarkup reply_markup)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<Poll> StopPollAsync(this BotClient T, long chat_id, uint message_id, [Optional] InlineKeyboardMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -144,14 +149,15 @@ namespace Telegram.BotAPI.Updating_messages
                 Message_id = message_id,
                 Reply_markup = reply_markup
             };
-            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
+            return await T.RPCA<Poll>("stopPoll", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <param name="reply_markup">A <see cref="InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
-        public static async Task<Poll> StopPollAsync(this BotClient T, string chat_id, uint message_id, InlineKeyboardMarkup reply_markup)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<Poll> StopPollAsync(this BotClient T, string chat_id, uint message_id, InlineKeyboardMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -163,7 +169,7 @@ namespace Telegram.BotAPI.Updating_messages
                 Message_id = message_id,
                 Reply_markup = reply_markup
             };
-            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
+            return await T.RPCA<Poll>("stopPoll", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -179,13 +185,14 @@ namespace Telegram.BotAPI.Updating_messages
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
-        public static async Task<Poll> StopPollAsync(this BotClient T, StopPollArgs args)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<Poll> StopPollAsync(this BotClient T, StopPollArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCA<Poll>("stopPoll", args).ConfigureAwait(false);
+            return await T.RPCA<Poll>("stopPoll", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

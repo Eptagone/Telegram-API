@@ -1,9 +1,10 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Payments
 {
@@ -23,13 +24,14 @@ namespace Telegram.BotAPI.Payments
         /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters</param>
-        public static async Task<Message> SendInvoiceAsync(this BotClient T, SendInvoiceArgs args)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<Message> SendInvoiceAsync(this BotClient T, SendInvoiceArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
             if (args == default)
                 throw new System.ArgumentNullException(nameof(args));
-            return await T.RPCA<Message>("sendInvoice", args).ConfigureAwait(false);
+            return await T.RPCA<Message>("sendInvoice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -3,7 +3,9 @@
 
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -44,7 +46,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to unpin a message in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the ‘can_pin_messages’ admin right in the supergroup or ‘can_edit_messages’ admin right in the channel. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
-        public static async Task<bool> UnPinChatMessageAsync(this BotClient T, long chat_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> UnPinChatMessageAsync(this BotClient T, long chat_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -55,12 +58,13 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("unpinChatMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("unpinChatMessage", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to unpin a message in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the ‘can_pin_messages’ admin right in the supergroup or ‘can_edit_messages’ admin right in the channel. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
-        public static async Task<bool> UnPinChatMessageAsync(this BotClient T, string chat_id)
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public static async Task<bool> UnPinChatMessageAsync(this BotClient T, string chat_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new System.ArgumentNullException(nameof(T));
@@ -71,7 +75,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("unpinChatMessage", stream).ConfigureAwait(false);
+            return await T.RPCA<bool>("unpinChatMessage", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }
