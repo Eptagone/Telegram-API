@@ -1,5 +1,6 @@
 # Telegram.BotAPI NET Documentation
 [![NuGet version (Telegram.BotAPI)](https://img.shields.io/nuget/v/Telegram.BotAPI.svg?style=flat-square)](https://www.nuget.org/packages/Telegram.BotAPI/)
+[![Compatible with Bot API v4.6](https://img.shields.io/badge/Bot%20API%20version-v4.6-blue?style=flat-square)](https://core.telegram.org/bots/api#january-23-2020)
 
 ## Getting started
 To get started you just need to start a new BotClient as follows.
