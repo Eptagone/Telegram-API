@@ -20,10 +20,14 @@ namespace Telegram.BotAPI.Stickers
         [JsonPropertyName("name")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Name { get; set; }
-        /// <summary>Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</summary>
+        /// <summary>Optional. Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</summary>
         [JsonPropertyName("png_sticker")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object Png_sticker { get; set; }
+        /// <summary>TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements</summary>
+        [JsonPropertyName("tgs_sticker")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public InputFile Tgs_sticker { get; set; }
         /// <summary>One or more emoji corresponding to the sticker.</summary>
         [JsonPropertyName("user_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -37,6 +41,8 @@ namespace Telegram.BotAPI.Stickers
             if (Png_sticker != default)
                 if (Png_sticker.GetType() == typeof(InputFile))
                     return true;
+            if (Tgs_sticker != default)
+                return true;
             return false;
         }
     }

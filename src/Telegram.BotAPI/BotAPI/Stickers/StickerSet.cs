@@ -4,6 +4,7 @@
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -31,5 +32,9 @@ namespace Telegram.BotAPI.Stickers
         [JsonPropertyName("stickers")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Sticker[] Stickers { get; set; }
+        ///<summary>Optional. Sticker set thumbnail in the .WEBP or .TGS format.</summary>
+        [JsonPropertyName("thumb")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public PhotoSize Thumb { get; set; }
     }
 }

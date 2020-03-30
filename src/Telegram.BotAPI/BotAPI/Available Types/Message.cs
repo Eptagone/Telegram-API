@@ -135,6 +135,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("poll")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Poll Poll { get; set; }
+        ///<summary>Optional. Message is a dice with random value from 1 to 6</summary>
+        [JsonPropertyName("dice")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Dice Dice { get; set; }
         ///<summary>Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members).</summary>
         [JsonPropertyName("new_chat_members")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

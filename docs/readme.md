@@ -1,6 +1,6 @@
 # Telegram.BotAPI NET Documentation
 [![NuGet version (Telegram.BotAPI)](https://img.shields.io/nuget/v/Telegram.BotAPI.svg?style=flat-square)](https://www.nuget.org/packages/Telegram.BotAPI/)
-[![Compatible with Bot API v4.6](https://img.shields.io/badge/Bot%20API%20version-v4.6-blue?style=flat-square)](https://core.telegram.org/bots/api#january-23-2020)
+[![Compatible with Bot API v4.7](https://img.shields.io/badge/Bot%20API%20version-v4.7-blue?style=flat-square)](https://core.telegram.org/bots/api#march-30-2020)
 
 ## Getting started
 To get started you just need to start a new BotClient as follows.
@@ -12,7 +12,7 @@ By adding the respective namespaces you will be able to use the extension method
 using Telegram.BotAPI.Available_Methods; //Contains methods
 ```
 ```CSharp
-var result = Bot.GetChat(chat_id); //returns a Chat object available in "Telegram.BotAPI.Available_Types"
+var result = MyBot.GetChat(chat_id); //returns a Chat object available in "Telegram.BotAPI.Available_Types"
 ```
 In the event of any error in any request, a BotRequestException will be thrown, which will include an object with the error information.
 ## Namespaces
