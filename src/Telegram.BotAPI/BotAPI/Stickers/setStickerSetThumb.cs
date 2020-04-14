@@ -17,6 +17,8 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="T">BotClient</param>
         /// <param name="name">Sticker set name</param>
         /// <param name="user_id">User identifier of the sticker set owner</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetStickerSetThumb(this BotClient T, string name, int user_id)
         {
@@ -41,6 +43,8 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="name">Sticker set name</param>
         /// <param name="user_id">User identifier of the sticker set owner</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static async Task<bool> SetStickerSetThumbAsync(this BotClient T, string name, int user_id, [Optional] CancellationToken cancellationToken)
         {
@@ -65,6 +69,8 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="name">Sticker set name</param>
         /// <param name="user_id">User identifier of the sticker set owner</param>
         /// <param name="thumb">A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. <a href="https://core.telegram.org/bots/api#sending-files">More info on Sending Files »</a>. Animated sticker set thumbnail can't be uploaded via HTTP URL.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetStickerSetThumb(this BotClient T, string name, int user_id, string thumb)
         {
@@ -93,6 +99,8 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="user_id">User identifier of the sticker set owner</param>
         /// <param name="thumb">A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. <a href="https://core.telegram.org/bots/api#sending-files">More info on Sending Files »</a>. Animated sticker set thumbnail can't be uploaded via HTTP URL.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static async Task<bool> SetStickerSetThumbAsync(this BotClient T, string name, int user_id, string thumb, [Optional] CancellationToken cancellationToken)
         {
@@ -120,6 +128,8 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="name">Sticker set name</param>
         /// <param name="user_id">User identifier of the sticker set owner</param>
         /// <param name="thumb">A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. <a href="https://core.telegram.org/bots/api#sending-files">More info on Sending Files »</a>. Animated sticker set thumbnail can't be uploaded via HTTP URL.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetStickerSetThumb(this BotClient T, string name, int user_id, InputFile thumb)
         {
@@ -140,6 +150,8 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="user_id">User identifier of the sticker set owner</param>
         /// <param name="thumb">A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. <a href="https://core.telegram.org/bots/api#sending-files">More info on Sending Files »</a>. Animated sticker set thumbnail can't be uploaded via HTTP URL.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static async Task<bool> SetStickerSetThumbAsync(this BotClient T, string name, int user_id, InputFile thumb, [Optional] CancellationToken cancellationToken)
         {
@@ -157,6 +169,8 @@ namespace Telegram.BotAPI.Stickers
         /// <summary>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetStickerSetThumb(this BotClient T, SetStickerSetThumbArgs args)
         {
@@ -173,6 +187,8 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static async Task<bool> SetStickerSetThumbAsync(this BotClient T, SetStickerSetThumbArgs args, [Optional] CancellationToken cancellationToken)
         {

@@ -21,8 +21,11 @@ namespace Telegram.BotAPI
         private static HttpClient Client { get; set; }
         /// <summary>Set a httpclient for bot requets.</summary>
         /// <param name="client"><see cref="HttpClient"/> for http requets.</param>
+        /// <exception cref="ArgumentNullException">Thrown when client is null.</exception>
         public static void SetHttpClient([Optional] HttpClient client)
         {
+            if (client == null)
+                throw new ArgumentNullException(nameof(client));
             Client = client ?? new HttpClient();
             if (!Client.DefaultRequestHeaders.Accept.Any(u => u.MediaType == "application/json"))
                 Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -35,7 +38,14 @@ namespace Telegram.BotAPI
         internal T RPC<T>(string method)
         {
             var rpc = RPCA<T>(method);
-            rpc.Wait(); return rpc.Result;
+            try
+            {
+                rpc.Wait(); return rpc.Result;
+            }
+            catch (AggregateException exp)
+            {
+                throw exp.InnerException;
+            }
         }
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -45,7 +55,14 @@ namespace Telegram.BotAPI
         internal T RPC<T>(string method, object args, [Optional] JsonSerializerOptions options)
         {
             var rpc = RPCA<T>(method, args, options);
-            rpc.Wait(); return rpc.Result;
+            try
+            {
+                rpc.Wait(); return rpc.Result;
+            }
+            catch (AggregateException exp)
+            {
+                throw exp.InnerException;
+            }
         }
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -54,7 +71,14 @@ namespace Telegram.BotAPI
         internal T RPC<T>(string method, Stream args)
         {
             var rpc = RPCA<T>(method, args);
-            rpc.Wait(); return rpc.Result;
+            try
+            {
+                rpc.Wait(); return rpc.Result;
+            }
+            catch(AggregateException exp)
+            {
+                throw exp.InnerException;
+            }
         }
         /// <summary>RPC async</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -113,7 +137,14 @@ namespace Telegram.BotAPI
         internal T RPCF<T>(string method, object args, [Optional] JsonSerializerOptions serializeoptions)
         {
             var rpcf = RPCAF<T>(method, args, serializeoptions, default);
-            rpcf.Wait(); return rpcf.Result;
+            try
+            {
+                rpcf.Wait(); return rpcf.Result;
+            }
+            catch (AggregateException exp)
+            {
+                throw exp.InnerException;
+            }
         }
         /// <summary>RPC async for files</summary>
         /// <typeparam name="T">return type.</typeparam>

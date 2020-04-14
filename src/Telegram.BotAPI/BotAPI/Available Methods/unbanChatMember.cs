@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -15,6 +16,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool UnbanChatMember(this BotClient T, long chat_id, int user_id)
         {
             if (T == default)
@@ -33,6 +36,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool UnbanChatMember(this BotClient T, string chat_id, int user_id)
         {
             if (T == default)
@@ -52,6 +57,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> UnbanChatMemberAsync(this BotClient T, long chat_id, int user_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
@@ -72,6 +79,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> UnbanChatMemberAsync(this BotClient T, string chat_id, int user_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)

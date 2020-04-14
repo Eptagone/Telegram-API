@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -16,6 +17,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns><see cref="ChatMember"/></returns>
         public static ChatMember GetChatMember(this BotClient T, string chat_id, int user_id)
         {
@@ -35,6 +38,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns><see cref="ChatMember"/></returns>
         public static ChatMember GetChatMember(this BotClient T, long chat_id, int user_id)
         {
@@ -55,6 +60,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns><see cref="ChatMember"/></returns>
         public static async Task<ChatMember> GetChatMemberAsync(this BotClient T, long chat_id, int user_id, [Optional] CancellationToken cancellationToken)
         {
@@ -75,6 +82,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns><see cref="ChatMember"/></returns>
         public static async Task<ChatMember> GetChatMemberAsync(this BotClient T, string chat_id, int user_id, [Optional] CancellationToken cancellationToken)
         {

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -16,10 +17,12 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool KickChatMember(this BotClient T, long chat_id, int user_id, [Optional] uint until_date)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -37,10 +40,12 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool KickChatMember(this BotClient T, string chat_id, int user_id, [Optional] uint until_date)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -59,10 +64,12 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> KickChatMemberAsync(this BotClient T, long chat_id, int user_id, [Optional] int until_date, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -82,10 +89,12 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> KickChatMemberAsync(this BotClient T, string chat_id, int user_id, [Optional] int until_date, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();

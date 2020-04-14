@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -13,41 +14,49 @@ namespace Telegram.BotAPI.Getting_updates
     {
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static Update[] GetUpdates(this BotClient T)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             return T.RPC<Update[]>("getUpdates");
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<Update[]> GetUpdatesAsync(this BotClient T)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             return await T.RPCA<Update[]>("getUpdates").ConfigureAwait(false);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Optional parameters.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static Update[] GetUpdates(this BotClient T, GetUpdatesArgs args)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             if (args == default)
-                throw new System.ArgumentNullException(nameof(args));
+                throw new ArgumentNullException(nameof(args));
             return T.RPC<Update[]>("getUpdates", args);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Optional parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<Update[]> GetUpdatesAsync(this BotClient T, GetUpdatesArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             if (args == default)
-                throw new System.ArgumentNullException(nameof(args));
+                throw new ArgumentNullException(nameof(args));
             return await T.RPCA<Update[]>("getUpdates", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
@@ -56,10 +65,12 @@ namespace Telegram.BotAPI.Getting_updates
         /// <param name="limit">Limits the number of updates to be retrieved. Values between 1—100 are accepted. Defaults to 100.</param>
         /// <param name="timeout">Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only.</param>
         /// <param name="allowed_updates">List the types of updates you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.<para>Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.</para></param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static Update[] GetUpdates(this BotClient T, [Optional] uint offset, [Optional] ushort limit, [Optional] uint timeout, [Optional] string[] allowed_updates)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream);
             json.WriteStartObject();
@@ -90,10 +101,12 @@ namespace Telegram.BotAPI.Getting_updates
         /// <param name="timeout">Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only.</param>
         /// <param name="allowed_updates">List the types of updates you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.<para>Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.</para></param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<Update[]> GetUpdatesAsync(this BotClient T, [Optional] uint offset, [Optional] ushort limit, [Optional] uint timeout, [Optional] string[] allowed_updates, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream);
             json.WriteStartObject();

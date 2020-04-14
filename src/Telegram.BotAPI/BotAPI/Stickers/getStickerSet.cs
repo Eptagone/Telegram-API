@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -14,11 +15,13 @@ namespace Telegram.BotAPI.Stickers
         /// <summary>Use this method to get a sticker set. On success, a StickerSet object is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="name">Name of the sticker set.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns><see cref="StickerSet"/> object.</returns>
         public static StickerSet GetStickerSet(this BotClient T, string name)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -33,10 +36,12 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="name">Name of the sticker set.</param>
         /// <returns><see cref="StickerSet"/> object.</returns>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<StickerSet> GetStickerSetAsync(this BotClient T, string name, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();

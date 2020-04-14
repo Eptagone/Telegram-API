@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -19,11 +20,13 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message ForwardMessage(this BotClient T, string chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -43,11 +46,13 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message ForwardMessage(this BotClient T, long chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -67,11 +72,13 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message ForwardMessage(this BotClient T, string chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -91,11 +98,13 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message ForwardMessage(this BotClient T, long chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -116,11 +125,13 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> ForwardMessageAsync(this BotClient T, string chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -141,11 +152,13 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> ForwardMessageAsync(this BotClient T, long chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -166,11 +179,13 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> ForwardMessageAsync(this BotClient T, string chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -191,11 +206,13 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
         /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> ForwardMessageAsync(this BotClient T, long chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();

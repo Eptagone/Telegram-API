@@ -11,6 +11,8 @@
 //--------------------------------------------------------------------------
 #endregion
 
+using System;
+
 namespace Telegram.BotAPI
 {
     /// <summary>Telegram Bot Client.</summary>
@@ -24,8 +26,11 @@ namespace Telegram.BotAPI
         public bool IgnoreBotExceptions { get; set; }
         /// <summary>Initialize a Telegram Bot Client.</summary>
         /// <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API.</param>
+        /// <exception cref="ArgumentNullException">Thrown when accessToken is null.</exception>
         public BotClient(string accessToken)
         {
+            if (string.IsNullOrEmpty(accessToken))
+                throw new ArgumentNullException(nameof(accessToken));
             Token = accessToken;
             if (Client == default)
                 SetHttpClient();

@@ -13,6 +13,8 @@ namespace Telegram.BotAPI.Available_Methods
     {
         /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
         /// <param name="T">BotClient</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Array of <see cref="BotCommand"/></returns>
         public static BotCommand[] GetMyCommands(this BotClient T)
         {
@@ -23,6 +25,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Array of <see cref="BotCommand"/></returns>
         public static async Task<BotCommand[]> GetMyCommandsAsync(this BotClient T, [Optional] CancellationToken cancellationToken)
         {

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
@@ -18,10 +19,12 @@ namespace Telegram.BotAPI.Stickers
         /// /// <param name="tgs_sticker">Optional. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.</param>
         /// <param name="emojis">One or more emoji corresponding to the sticker.</param>
         /// <param name="mask_position">A <see cref="MaskPosition"/> for position where the mask should be placed on faces.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool AddStickerToSet(this BotClient T, int user_id, string name, [Optional] string png_sticker, [Optional] InputFile tgs_sticker, string emojis, [Optional] MaskPosition mask_position)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var args = new AddStickerToSetArgs { User_id = user_id, Name = name, Emojis = emojis };
             if (!string.IsNullOrEmpty(png_sticker))
                 args.Png_sticker = png_sticker;
@@ -43,10 +46,12 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="emojis">One or more emoji corresponding to the sticker.</param>
         /// <param name="mask_position">A <see cref="MaskPosition"/> for position where the mask should be placed on faces.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> AddStickerToSetAsync(this BotClient T, int user_id, string name, [Optional] string png_sticker, [Optional] InputFile tgs_sticker, string emojis, [Optional] MaskPosition mask_position, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var args = new AddStickerToSetArgs { User_id = user_id, Name = name, Emojis = emojis };
             if (!string.IsNullOrEmpty(png_sticker))
                 args.Png_sticker = png_sticker;
@@ -67,10 +72,12 @@ namespace Telegram.BotAPI.Stickers
         /// /// <param name="tgs_sticker">Optional. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.</param>
         /// <param name="emojis">One or more emoji corresponding to the sticker.</param>
         /// <param name="mask_position">A <see cref="MaskPosition"/> for position where the mask should be placed on faces.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool AddStickerToSet(this BotClient T, int user_id, string name, [Optional] InputFile png_sticker, [Optional] InputFile tgs_sticker, string emojis, [Optional] MaskPosition mask_position)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var args = new AddStickerToSetArgs { User_id = user_id, Name = name, Emojis = emojis };
             if (png_sticker != default)
                 args.Png_sticker = png_sticker;
@@ -92,10 +99,12 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="emojis">One or more emoji corresponding to the sticker.</param>
         /// <param name="mask_position">A <see cref="MaskPosition"/> for position where the mask should be placed on faces.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> AddStickerToSetAsync(this BotClient T, int user_id, string name, [Optional] InputFile png_sticker, [Optional] InputFile tgs_sticker, string emojis, [Optional] MaskPosition mask_position, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var args = new AddStickerToSetArgs { User_id = user_id, Name = name, Emojis = emojis };
             if (png_sticker != default)
                 args.Png_sticker = png_sticker;
@@ -111,12 +120,14 @@ namespace Telegram.BotAPI.Stickers
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool AddStickerToSet(this BotClient T, AddStickerToSetArgs args)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             if (args == default)
-                throw new System.ArgumentNullException(nameof(args));
+                throw new ArgumentNullException(nameof(args));
             if(args.UseMultipart())
                 return T.RPCF<bool>("addStickerToSet", args);
             else
@@ -126,12 +137,14 @@ namespace Telegram.BotAPI.Stickers
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> AddStickerToSetAsync(this BotClient T, AddStickerToSetArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             if (args == default)
-                throw new System.ArgumentNullException(nameof(args));
+                throw new ArgumentNullException(nameof(args));
             if(args.UseMultipart())
                 return await T.RPCAF<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             else

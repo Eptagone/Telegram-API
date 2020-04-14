@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -17,12 +18,14 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <param name="T">Bot Client</param>
         /// <param name="user_id">User identifier</param>
         /// <param name="errors">An array of <see cref="PassportElementError"/> describing the errors</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool SetPassportDataErrors(this BotClient T, int user_id, PassportElementError[] errors)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             if (errors == default)
-                throw new System.ArgumentNullException(nameof(errors));
+                throw new ArgumentNullException(nameof(errors));
             var options = new JsonSerializerOptions { IgnoreNullValues = true };
             options.Converters.Add(new Tools.PassportElementErrorJsonConverter());
             var args = new SetPassportDataErrorsArgs
@@ -43,12 +46,14 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <param name="user_id">User identifier</param>
         /// <param name="errors">An array of <see cref="PassportElementError"/> describing the errors</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> SetPassportDataErrorsAsync(this BotClient T, int user_id, PassportElementError[] errors, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             if (errors == default)
-                throw new System.ArgumentNullException(nameof(errors));
+                throw new ArgumentNullException(nameof(errors));
             var options = new JsonSerializerOptions { IgnoreNullValues = true };
             options.Converters.Add(new Tools.PassportElementErrorJsonConverter());
             var args = new SetPassportDataErrorsArgs

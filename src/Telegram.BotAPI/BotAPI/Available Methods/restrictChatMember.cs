@@ -13,6 +13,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool RestrictChatMember(this BotClient T, RestrictChatMemberArgs args)
         {
             if (T == default)
@@ -27,6 +29,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="permissions">New user permissions.</param>
         /// <param name="until_date">Optional. Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool RestrictChatMember(this BotClient T, long chat_id, int user_id, Available_Types.ChatPermissions permissions, [Optional] uint until_date)
         {
             if (T == default)
@@ -45,6 +49,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> RestrictChatMemberAsync(this BotClient T, RestrictChatMemberArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
@@ -60,6 +66,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="permissions">New user permissions.</param>
         /// <param name="until_date">Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> RestrictChatMemberAsync(this BotClient T, object chat_id, int user_id, Available_Types.ChatPermissions permissions, [Optional] uint until_date, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)

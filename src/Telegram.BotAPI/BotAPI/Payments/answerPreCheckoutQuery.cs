@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -17,11 +18,13 @@ namespace Telegram.BotAPI.Payments
         /// <param name="pre_checkout_query_id">Unique identifier for the query to be answered.</param>
         /// <param name="ok">Specify True if everything is alright (goods are available, etc.) and the bot is ready to proceed with the order. Use False if there are any problems.</param>
         /// <param name="error_message">Required if ok is False. Error message in human readable form that explains the reason for failure to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!"). Telegram will display this message to the user.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>On success, True is returned.</returns>
         public static bool AnswerPreCheckoutQuery(this BotClient T, string pre_checkout_query_id, bool ok, [Optional] string error_message)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -30,7 +33,7 @@ namespace Telegram.BotAPI.Payments
             if (!ok)
             {
                 if (error_message == default)
-                    throw new System.ArgumentNullException(nameof(error_message));
+                    throw new ArgumentNullException(nameof(error_message));
                 json.WriteString("error_message", error_message);
             }
             json.WriteEndObject();
@@ -45,10 +48,12 @@ namespace Telegram.BotAPI.Payments
         /// <param name="error_message">Required if ok is False. Error message in human readable form that explains the reason for failure to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!"). Telegram will display this message to the user.</param>
         /// <returns>On success, True is returned.</returns>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> AnswerPreCheckoutQueryAsync(this BotClient T, string pre_checkout_query_id, bool ok, [Optional] string error_message, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -57,7 +62,7 @@ namespace Telegram.BotAPI.Payments
             if (!ok)
             {
                 if (error_message == default)
-                    throw new System.ArgumentNullException(nameof(error_message));
+                    throw new ArgumentNullException(nameof(error_message));
                 json.WriteString("error_message", error_message);
             }
             json.WriteEndObject();

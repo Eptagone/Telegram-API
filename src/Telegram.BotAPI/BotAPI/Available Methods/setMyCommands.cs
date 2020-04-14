@@ -16,6 +16,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to change the list of the bot's commands. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="commands">A list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetMyCommands(this BotClient T, BotCommand[] commands)
         {
@@ -46,6 +48,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="T">BotClient</param>
         /// <param name="commands">A list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static async Task<bool> SetMyCommandsAsync(this BotClient T, BotCommand[] commands, [Optional] CancellationToken cancellationToken)
         {
