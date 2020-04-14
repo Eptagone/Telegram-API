@@ -24,8 +24,6 @@ namespace Telegram.BotAPI
         /// <exception cref="ArgumentNullException">Thrown when client is null.</exception>
         public static void SetHttpClient([Optional] HttpClient client)
         {
-            if (client == null)
-                throw new ArgumentNullException(nameof(client));
             Client = client ?? new HttpClient();
             if (!Client.DefaultRequestHeaders.Accept.Any(u => u.MediaType == "application/json"))
                 Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
