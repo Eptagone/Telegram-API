@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.5.3</Version>
+    <Version>1.5.4</Version>
     <PackageId>Telegram.BotAPI</PackageId>
     <Authors>Quetzal Rivera</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -13,7 +13,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Telegram.BotAPI is one of the most complete libraries available to interact with the Telegram Bot API in your NET project.
  
-Contains all available methods in the Bot API 4.7 released on March 30, 2020. In addition, it has a complete set of classes with all objects used.</Description>
+Contains all available methods in the Bot API 4.8 released on April 24, 2020. In addition, it has a complete set of classes with all objects used.</Description>
     <PackageTags>Telegram Bot API</PackageTags>
     <Title>Telegram Bot API</Title>
     <OutputType>Library</OutputType>
@@ -25,14 +25,13 @@ Contains all available methods in the Bot API 4.7 released on March 30, 2020. In
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/Eptagone/Telegram.BotAPI</RepositoryUrl>
     <PackageIcon>packicon.png</PackageIcon>
-    <AssemblyVersion>1.5.1.*</AssemblyVersion>
-    <FileVersion>1.5.1.0</FileVersion>
+    <AssemblyVersion>1.6.0.*</AssemblyVersion>
+    <FileVersion>1.6.0.0</FileVersion>
     <Deterministic>false</Deterministic>
     <PackageProjectUrl>https://github.com/Eptagone/Telegram.BotAPI</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <AssemblyName>Telegram.BotAPI</AssemblyName>
-    <PackageReleaseNotes>- Fixed BotRequestException for sync methods
-- Added Exceptions documentation</PackageReleaseNotes>
+    <PackageReleaseNotes>- Updated to Bot API 4.8</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

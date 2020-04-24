@@ -1,6 +1,6 @@
 # Telegram.BotAPI NET Samples
 [![NuGet version (Telegram.BotAPI)](https://img.shields.io/nuget/v/Telegram.BotAPI.svg?style=flat-square)](https://www.nuget.org/packages/Telegram.BotAPI/)
-[![Compatible with Bot API v4.7](https://img.shields.io/badge/Bot%20API%20version-v4.7-blue?style=flat-square)](https://core.telegram.org/bots/api#march-30-2020)
+[![Compatible with Bot API v4.8](https://img.shields.io/badge/Bot%20API%20version-v4.8-blue?style=flat-square)](https://core.telegram.org/bots/api#april-24-2020)
 
 ## Sample list
 - [Hello World](Hello%20World/readme.md)

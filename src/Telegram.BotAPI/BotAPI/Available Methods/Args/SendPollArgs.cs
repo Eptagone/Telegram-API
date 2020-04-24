@@ -35,10 +35,25 @@ namespace Telegram.BotAPI.Available_Methods
         [JsonPropertyName("correct_option_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Correct_option_id { get; set; }
+        ///<summary>Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters with at most 2 line feeds after entities parsing.</summary>
+        [JsonPropertyName("explanation")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Explanation { get; set; }
+        ///<summary>Mode for parsing entities in the explanation. See <a href="https://core.telegram.org/bots/api#formatting-options">formatting options</a> for more details.</summary>
+        [JsonPropertyName("explanation_parse_mode")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Explanation_parse_mode { get; set; }
+        ///<summary>Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.</summary>
+        [JsonPropertyName("open_period")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public ushort Open_period { get; set; }
+        ///<summary>Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open_period.</summary>
+        [JsonPropertyName("close_date")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public uint Close_date { get; set; }
         ///<summary>Pass True, if the poll needs to be immediately closed.</summary>
         [JsonPropertyName("is_closed")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Is_closed { get; set; }
-
     }
 }
