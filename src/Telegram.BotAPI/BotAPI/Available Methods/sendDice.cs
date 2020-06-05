@@ -2,9 +2,9 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Available_Methods
@@ -14,7 +14,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="emoji">Emoji on which the dice throw animation is based. Currently, must be one of “🎲” or “🎯”. Defauts to “🎲”.</param>
+        /// <param name="emoji">Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, or “🏀”. Dice can have values 1-6 for “🎲” and “🎯”, and values 1-5 for “🏀”. Defauts to “🎲”.</param>
         /// <param name="disable_notification">Optional. Sends the message <a href="https://telegram.org/blog/channels-2-0#silent-messages">silently</a>. Users will receive a notification with no sound.</param>
         /// <param name="reply_to_message_id">Optional. If the message is a reply, ID of the original message.</param>
         /// <param name="reply_markup">Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. <see cref="InlineKeyboardMarkup"/> or <see cref="ReplyKeyboardMarkup"/> or <see cref="ReplyKeyboardRemove"/> or <see cref="ForceReply"/></param>
@@ -44,7 +44,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="emoji">Emoji on which the dice throw animation is based. Currently, must be one of “🎲” or “🎯”. Defauts to “🎲”.</param>
+        /// <param name="emoji">Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, or “🏀”. Dice can have values 1-6 for “🎲” and “🎯”, and values 1-5 for “🏀”. Defauts to “🎲”.</param>
         /// <param name="disable_notification">Optional. Sends the message <a href="https://telegram.org/blog/channels-2-0#silent-messages">silently</a>. Users will receive a notification with no sound.</param>
         /// <param name="reply_to_message_id">Optional. If the message is a reply, ID of the original message.</param>
         /// <param name="reply_markup">Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. <see cref="InlineKeyboardMarkup"/> or <see cref="ReplyKeyboardMarkup"/> or <see cref="ReplyKeyboardRemove"/> or <see cref="ForceReply"/></param>
@@ -88,7 +88,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="emoji">Emoji on which the dice throw animation is based. Currently, must be one of “🎲” or “🎯”. Defauts to “🎲”.</param>
+        /// <param name="emoji">Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, or “🏀”. Dice can have values 1-6 for “🎲” and “🎯”, and values 1-5 for “🏀”. Defauts to “🎲”.</param>
         /// <param name="disable_notification">Optional. Sends the message <a href="https://telegram.org/blog/channels-2-0#silent-messages">silently</a>. Users will receive a notification with no sound.</param>
         /// <param name="reply_to_message_id">Optional. If the message is a reply, ID of the original message.</param>
         /// <param name="reply_markup">Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. <see cref="InlineKeyboardMarkup"/> or <see cref="ReplyKeyboardMarkup"/> or <see cref="ReplyKeyboardRemove"/> or <see cref="ForceReply"/></param>
@@ -119,7 +119,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="emoji">Emoji on which the dice throw animation is based. Currently, must be one of “🎲” or “🎯”. Defauts to “🎲”.</param>
+        /// <param name="emoji">Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, or “🏀”. Dice can have values 1-6 for “🎲” and “🎯”, and values 1-5 for “🏀”. Defauts to “🎲”.</param>
         /// <param name="disable_notification">Optional. Sends the message <a href="https://telegram.org/blog/channels-2-0#silent-messages">silently</a>. Users will receive a notification with no sound.</param>
         /// <param name="reply_to_message_id">Optional. If the message is a reply, ID of the original message.</param>
         /// <param name="reply_markup">Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. <see cref="InlineKeyboardMarkup"/> or <see cref="ReplyKeyboardMarkup"/> or <see cref="ReplyKeyboardRemove"/> or <see cref="ForceReply"/></param>

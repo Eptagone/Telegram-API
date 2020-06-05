@@ -12,14 +12,14 @@ namespace Telegram.BotAPI.Tests
         [Fact]
         public void SendAndStopPoll()
         {
-            var message = bot.SendPoll(new SendPollArgs
+            var message = Settings.Bot.SendPoll(new SendPollArgs
             {
-                Chat_id = chat_id,
+                Chat_id = Settings.PChatId,
                 Question = "¿5 + 6?",
                 Options = new string[] { "5", "-1", "6", "11" }
             }); //New poll
             Assert.NotNull(message);
-            var stopped = bot.StopPoll(chat_id, message.Message_id); //Stoppoll
+            var stopped = Settings.Bot.StopPoll(Settings.PChatId, message.Message_id); //Stoppoll
         }
     }
 }

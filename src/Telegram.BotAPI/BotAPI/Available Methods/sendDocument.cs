@@ -2,9 +2,9 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Available_Methods
@@ -32,7 +32,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> SendDocumentAsync(this BotClient T, SendDocumentArgs args, [Optional]CancellationToken cancellationToken)
+        public static async Task<Message> SendDocumentAsync(this BotClient T, SendDocumentArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
                 throw new ArgumentNullException(nameof(T));

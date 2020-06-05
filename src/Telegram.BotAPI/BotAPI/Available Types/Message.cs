@@ -1,9 +1,9 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
 {
@@ -55,6 +55,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("reply_to_message")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Message Reply_to_message { get; set; }
+        ///<summary>Optional. Bot through which the message was sent.</summary>
+        [JsonPropertyName("via_bot")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public User Via_bot { get; set; }
         ///<summary>Optional. Date the message was last edited in Unix time.</summary>
         [JsonPropertyName("edit_date")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

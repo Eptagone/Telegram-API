@@ -12,19 +12,19 @@ namespace Telegram.BotAPI.Tests
         [Trait("Reply", "Reply message")]
         public void ReplyToMessage()
         {
-            var message = bot.SendMessage(chat_id, "Message to reply"); // Message to reply
-            var reply = bot.SendMessage(chat_id, "Reply message", reply_to_message_id: message.Message_id); //Reply
+            var message = Settings.Bot.SendMessage(Settings.PChatId, "Message to reply"); // Message to reply
+            var reply = Settings.Bot.SendMessage(Settings.PChatId, "Reply message", reply_to_message_id: message.Message_id); //Reply
             Assert.NotNull(reply.Reply_to_message);
         }
         [Fact]
         [Trait("Reply alter", "Reply message")]
         public void ReplyToMessageAlter()
         {
-            var message = bot.SendMessage(chat_id, "Message to reply"); // Message to reply
-            var reply = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(Settings.PChatId, "Message to reply"); // Message to reply
+            var reply = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "Reply message Alter",
                     Reply_to_message_id = message.Message_id
                 }); //Reply Alter

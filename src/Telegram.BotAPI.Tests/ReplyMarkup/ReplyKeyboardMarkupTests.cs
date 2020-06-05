@@ -23,10 +23,10 @@ namespace Telegram.BotAPI.Tests
                     new KeyboardButton[] { new KeyboardButton("R4C1"), new KeyboardButton("R4C2") } //Row 4
                 }
             }; // New reply keyboard with 2 cols and 4 rows
-            var message = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "ReplyKeyboard2x4",
                     Reply_markup = replykeyboard
                 });
@@ -35,10 +35,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("Remove Keyboard", "ReplyKeyboardMarkup")]
         public void RemoveKeyboardMarkup()
         {
-            var message = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "Remove Reply Keyboard",
                     Reply_markup = new ReplyKeyboardRemove()
                 });

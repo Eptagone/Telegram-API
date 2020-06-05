@@ -1,7 +1,7 @@
-﻿using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Stickers
 {

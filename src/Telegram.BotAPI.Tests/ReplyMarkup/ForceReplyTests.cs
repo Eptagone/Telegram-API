@@ -13,10 +13,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("ForceReply", "ForceReply")]
         public void ForceReplyTest()
         {
-            var message = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "ForceReply Test",
                     Reply_markup = new ForceReply()
                 });

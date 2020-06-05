@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.Tests
         [Trait("Get Webhook info", "Getting Updates")]
         public void GetWebhookInfo()
         {
-            var webhookInfo = bot.GetWebhookInfo();
+            var webhookInfo = Settings.Bot.GetWebhookInfo();
             Assert.NotNull(webhookInfo);
         }
     }

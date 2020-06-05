@@ -31,6 +31,8 @@ namespace Telegram.BotAPI
         }
         internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = default)
         {
+            if (options == null)
+                options = new JsonSerializerOptions { IgnoreNullValues = true };
             var stream = new MemoryStream();
             using var writer = new Utf8JsonWriter(stream);
             element.WriteTo(writer); writer.Flush();

@@ -14,10 +14,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("Upload photos", "SendMediaGroup")]
         public void SendMediaGroupTest()
         {
-            var message = bot.SendMediaGroup(
+            var message = Settings.Bot.SendMediaGroup(
                 new SendMediaGroupArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Media = new InputMedia[]
                     {
                         new InputMediaPhoto{ Media = "attach://filephoto1", Caption = "<b>Stronger</b> shja", Parse_mode = "HTML"},

@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.Tests
         [Fact]
         public void SetChatPhoto()
         {
-            var setted = bot.SetChatPhoto(chat_id, new InputFile(Resources.Image_sample_JPG, "Image sample JPG.jpg"));
+            var setted = Settings.Bot.SetChatPhoto(Settings.ChatId, new InputFile(Resources.Image_sample_JPG, "Image sample JPG.jpg"));
             Assert.True(setted);
         }
     }

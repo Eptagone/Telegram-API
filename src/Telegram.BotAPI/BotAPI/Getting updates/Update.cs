@@ -1,12 +1,12 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 using Telegram.BotAPI.Available_Types;
 using Telegram.BotAPI.Inline_mode;
 using Telegram.BotAPI.Payments;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Telegram.BotAPI.Getting_updates
 {

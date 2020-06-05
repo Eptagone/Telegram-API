@@ -1,9 +1,9 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -31,10 +31,14 @@ namespace Telegram.BotAPI.Inline_mode
         [JsonPropertyName("gif_duration")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Gif_duration { get; set; }
-        /// <summary>URL of the static thumbnail for the result (jpeg or gif).</summary>
+        /// <summary>URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.</summary>
         [JsonPropertyName("thumb_url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Thumb_url { get; set; }
+        /// <summary>Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”.</summary>
+        [JsonPropertyName("thumb_mime_type")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Thumb_mime_type { get; set; }
         /// <summary>Optional. Title of the result.</summary>
         [JsonPropertyName("title")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

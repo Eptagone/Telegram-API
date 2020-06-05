@@ -14,10 +14,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("Upload doc", "Send Document")]
         public void SendDocumentUpload()
         {
-            var message = bot.SendDocument(
+            var message = Settings.Bot.SendDocument(
                 new SendDocumentArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Document = new InputFile(Resources.sampletextfile, "sampletextfile.txt")
                 });
             Assert.NotNull(message);
@@ -26,10 +26,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("Upload doc alter", "Send Document")]
         public void SendDocumentUploadAlter()
         {
-            var message = bot.SendDocument(
+            var message = Settings.Bot.SendDocument(
                 new SendDocumentArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Document = "attach://doc_file",
                     AttachFiles = new AttachFile[]
                     {
@@ -42,10 +42,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("Upload doc with thumb", "Send Document")]
         public void SendDocumentUploadWithThumb()
         {
-            var message = bot.SendDocument(
+            var message = Settings.Bot.SendDocument(
                 new SendDocumentArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Document = new InputFile(Resources.sampletextfile, "sampletextfile.txt"),
                     Thumb = new InputFile(Resources.Thumb_256x256, "Thumb 256x256.jpg")
                 });
@@ -55,10 +55,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("Upload doc with thumb alter", "Send Document")]
         public void SendDocumentUploadThumbWithThumbAlter()
         {
-            var message = bot.SendDocument(
+            var message = Settings.Bot.SendDocument(
                 new SendDocumentArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Document = "attach://doc_file",
                     Thumb = "attach://thumb_file",
                     AttachFiles = new AttachFile[]

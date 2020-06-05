@@ -73,7 +73,7 @@ namespace Telegram.BotAPI
             {
                 rpc.Wait(); return rpc.Result;
             }
-            catch(AggregateException exp)
+            catch (AggregateException exp)
             {
                 throw exp.InnerException;
             }

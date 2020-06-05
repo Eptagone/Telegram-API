@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.Tests
         [Trait("Get Updates", "Getting Updates")]
         public void GetUpdatesTest()
         {
-            var updates = bot.GetUpdates();
+            var updates = Settings.Bot.GetUpdates();
             Assert.NotNull(updates);
         }
     }

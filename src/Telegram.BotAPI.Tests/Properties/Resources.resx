@@ -124,9 +124,6 @@
   <data name="sampletextfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sampletextfile.txt;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="test_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\test_settings.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="Thumb_256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thumb 256x256.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

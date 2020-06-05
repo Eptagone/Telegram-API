@@ -2,10 +2,10 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
-using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -32,7 +32,7 @@ namespace Telegram.BotAPI.Stickers
                 args.Tgs_sticker = tgs_sticker;
             if (mask_position != default)
                 args.Mask_position = mask_position;
-            if(args.UseMultipart())
+            if (args.UseMultipart())
                 return T.RPCF<bool>("addStickerToSet", args);
             else
                 return T.RPC<bool>("addStickerToSet", args);
@@ -59,7 +59,7 @@ namespace Telegram.BotAPI.Stickers
                 args.Tgs_sticker = tgs_sticker;
             if (mask_position != default)
                 args.Mask_position = mask_position;
-            if(args.UseMultipart())
+            if (args.UseMultipart())
                 return await T.RPCAF<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             else
                 return await T.RPCA<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -128,7 +128,7 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(T));
             if (args == default)
                 throw new ArgumentNullException(nameof(args));
-            if(args.UseMultipart())
+            if (args.UseMultipart())
                 return T.RPCF<bool>("addStickerToSet", args);
             else
                 return T.RPC<bool>("addStickerToSet", args);
@@ -145,7 +145,7 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(T));
             if (args == default)
                 throw new ArgumentNullException(nameof(args));
-            if(args.UseMultipart())
+            if (args.UseMultipart())
                 return await T.RPCAF<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             else
                 return await T.RPCA<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);

@@ -3,11 +3,11 @@
 
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
-using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -178,7 +178,7 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(T));
             if (args == default)
                 throw new ArgumentNullException(nameof(args));
-            if(args.UseMultipart())
+            if (args.UseMultipart())
                 return T.RPCF<bool>("setStickerSetThumb", args);
             else
                 return T.RPC<bool>("setStickerSetThumb", args);

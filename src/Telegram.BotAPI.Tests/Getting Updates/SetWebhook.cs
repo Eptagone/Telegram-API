@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Telegram.BotAPI.Getting_updates;
+﻿using Telegram.BotAPI.Getting_updates;
 using Xunit;
 
 namespace Telegram.BotAPI.Tests
@@ -11,7 +8,8 @@ namespace Telegram.BotAPI.Tests
         [Fact]
         public void SetWebhook()
         {
-            var ok = bot.SetWebhook(new SetWebhookArgs {
+            var ok = Settings.Bot.SetWebhook(new SetWebhookArgs
+            {
                 Url = "https://tapi.azurewebsites.net/tapi/"
             });
             Assert.True(ok);

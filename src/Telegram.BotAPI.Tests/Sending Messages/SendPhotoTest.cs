@@ -14,9 +14,9 @@ namespace Telegram.BotAPI.Tests
         [Trait("Photo from telegram servers", "SendPhoto")]
         public void SendPhotoFromTelegramServersTest()
         {
-            var message = bot.SendPhoto(new SendPhotoArgs
+            var message = Settings.Bot.SendPhoto(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                Chat_id = Settings.PChatId,
                 Photo = "AgACAgEAAxkBAAM4XjI95Alvnw0bHXMYQzn0PrggqbUAAkOoMRtUu5BFSNvo0gL4nS1f_GsGAAQBAAMCAANtAAOpRgIAARgE"
             });
             Assert.NotNull(message);
@@ -25,10 +25,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("Upload photo", "SendPhoto")]
         public void SendPhotoFromUploadFile()
         {
-            var message = bot.SendPhoto(
+            var message = Settings.Bot.SendPhoto(
                 new SendPhotoArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Photo = new InputFile(Resources.Image_sample_JPG, "Image sample JPG.jpg")
                 });
             Assert.NotNull(message);
@@ -37,9 +37,9 @@ namespace Telegram.BotAPI.Tests
         [Trait("Photo from telegram servers", "SendPhotoAsync")]
         public async void SendPhotoFromTelegramServersAsyncTest()
         {
-            var message = await bot.SendPhotoAsync(new SendPhotoArgs
+            var message = await Settings.Bot.SendPhotoAsync(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                Chat_id = Settings.PChatId,
                 Photo = "AgACAgEAAxkBAAM4XjI95Alvnw0bHXMYQzn0PrggqbUAAkOoMRtUu5BFSNvo0gL4nS1f_GsGAAQBAAMCAANtAAOpRgIAARgE"
             }).ConfigureAwait(true);
             Assert.NotNull(message);
@@ -48,10 +48,10 @@ namespace Telegram.BotAPI.Tests
         [Trait("Upload photo", "SendPhotoAsync")]
         public async void SendPhotoFromUploadFileAsync()
         {
-            var message = await bot.SendPhotoAsync(
+            var message = await Settings.Bot.SendPhotoAsync(
                 new SendPhotoArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Photo = new InputFile(Resources.Image_sample_JPG, "Image sample JPG.jpg")
                 }).ConfigureAwait(true);
             Assert.NotNull(message);

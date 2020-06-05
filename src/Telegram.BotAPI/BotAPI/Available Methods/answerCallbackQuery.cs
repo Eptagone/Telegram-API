@@ -3,10 +3,10 @@
 
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -15,6 +15,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
+        /// <returns>true</returns>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool AnswerCallbackQuery(this BotClient T, AnswerCallbackQueryArgs args)

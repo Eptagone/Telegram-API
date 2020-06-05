@@ -1,17 +1,21 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
 {
-    /// <summary>This object represents a dice with random value from 1 to 6. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
+    /// <summary>This object represents an animated emoji that displays a random value.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class Dice
     {
-        /// <summary>Value of the dice, 1-6</summary>
+        /// <summary>Emoji on which the dice throw animation is based.</summary>
+        [JsonPropertyName("emoji")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Emoji { get; set; }
+        /// <summary>Value of the dice, 1-6 for “🎲” and “🎯” base emoji, 1-5 for “🏀” base emoji.</summary>
         [JsonPropertyName("Value")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ushort Value { get; set; }

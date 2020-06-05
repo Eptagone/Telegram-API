@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Telegram.BotAPI;
 using Telegram.BotAPI.Available_Methods;
 using Telegram.BotAPI.Available_Types;
 using Xunit;
@@ -21,10 +20,10 @@ namespace Telegram.BotAPI.Tests
                     new InlineKeyboardButton[]{ new InlineKeyboardButton { Text = "URL", Url = "https://core.telegram.org/bots/api#inlinekeyboardmarkup" } }
                 }
             };
-            var message = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "New inline keyboard button url Test",
                     Reply_markup = inlinekeyboard
                 });
@@ -41,10 +40,10 @@ namespace Telegram.BotAPI.Tests
                     new InlineKeyboardButton[]{ new InlineKeyboardButton { Text = "Callback", Callback_data = "callback_command" } }
                 }
             };
-            var message = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "New inline keyboard button callback Test",
                     Reply_markup = inlinekeyboard
                 });
@@ -61,10 +60,10 @@ namespace Telegram.BotAPI.Tests
                     new InlineKeyboardButton[]{ new InlineKeyboardButton { Text = "Switch Inline Query", Switch_inline_query = "inline_args" } }
                 }
             };
-            var message = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "New inline keyboard button switch inline query Test",
                     Reply_markup = inlinekeyboard
                 });
@@ -81,10 +80,10 @@ namespace Telegram.BotAPI.Tests
                     new InlineKeyboardButton[]{ new InlineKeyboardButton { Text = "Switch Inline Query Current Chat", Switch_inline_query_current_chat = "inline_args" } }
                 }
             };
-            var message = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "New inline keyboard button switch inline query current Test",
                     Reply_markup = inlinekeyboard
                 });
@@ -107,20 +106,18 @@ namespace Telegram.BotAPI.Tests
             };
             try
             {
-                var message = bot.SendMessage(
+                var message = Settings.Bot.SendMessage(
                     new SendMessageArgs
                     {
-                        Chat_id = chat_id,
+                        Chat_id = Settings.PChatId,
                         Text = "New inline keyboard button login url Test",
                         Reply_markup = inlinekeyboard
                     });
-                output.WriteLine(message.Text);
             }
             catch (BotRequestException exp) //To avoid the exception it is necessary to set the domain for your bot with BotFather
             {
                 Assert.NotNull(exp);
                 string expmessage = exp.Description;
-                output.WriteLine("Login Url => BotRequestException: {0}", expmessage);
             }
         }
         /// <summary>New InlineKeyboard 3 cols, 1 row, 2 rows and 3 rows.</summary>
@@ -147,10 +144,10 @@ namespace Telegram.BotAPI.Tests
                     } //Row 3
                 }
             }; // New reply keyboard with 2 cols and 4 rows
-            var message = bot.SendMessage(
+            var message = Settings.Bot.SendMessage(
                 new SendMessageArgs
                 {
-                    Chat_id = chat_id,
+                    Chat_id = Settings.PChatId,
                     Text = "InlineKeyboardMarkup Test. 3 cols, 1 row, 2 rows and 3 rows.",
                     Reply_markup = replykeyboard
                 });

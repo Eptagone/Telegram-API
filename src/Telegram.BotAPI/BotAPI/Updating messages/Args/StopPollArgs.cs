@@ -1,10 +1,10 @@
 ﻿// Copyright (c) 2020 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Updating_messages
 {

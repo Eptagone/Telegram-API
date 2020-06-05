@@ -2,9 +2,9 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -21,7 +21,7 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(T));
             if (args == default)
                 throw new ArgumentNullException(nameof(args));
-            if(args.UseMultipart())
+            if (args.UseMultipart())
                 return T.RPCF<bool>("createNewStickerSet", args);
             else
                 return T.RPC<bool>("createNewStickerSet", args);
@@ -38,7 +38,7 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(T));
             if (args == default)
                 throw new ArgumentNullException(nameof(args));
-            if(args.UseMultipart())
+            if (args.UseMultipart())
                 return await T.RPCAF<bool>("createNewStickerSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             else
                 return await T.RPCA<bool>("createNewStickerSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);

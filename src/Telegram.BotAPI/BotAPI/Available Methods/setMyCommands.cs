@@ -3,11 +3,11 @@
 
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
-using System.Runtime.InteropServices;
 
 namespace Telegram.BotAPI.Available_Methods
 {
@@ -29,7 +29,7 @@ namespace Telegram.BotAPI.Available_Methods
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteStartArray("commands");
-            foreach(var cmd in commands)
+            foreach (var cmd in commands)
             {
                 if (string.IsNullOrEmpty(cmd.Command) || string.IsNullOrEmpty(cmd.Description))
                     throw new ArgumentNullException($"{nameof(commands)} properties can't be null");
@@ -61,7 +61,7 @@ namespace Telegram.BotAPI.Available_Methods
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteStartArray("commands");
-            foreach(var cmd in commands)
+            foreach (var cmd in commands)
             {
                 if (string.IsNullOrEmpty(cmd.Command) || string.IsNullOrEmpty(cmd.Description))
                     throw new ArgumentNullException($"{nameof(commands)} properties can't be null");
