@@ -8,11 +8,11 @@ using Xunit;
 
 namespace Telegram.BotAPI.Tests
 {
-    public sealed partial class SendingMessages
+    public sealed class SendDocument
     {
         [Fact]
-        [Trait("Upload doc", "Send Document")]
-        public void SendDocumentUpload()
+        [Trait("SendDocument", "Upload Document")]
+        public void Test00()
         {
             var message = Settings.Bot.SendDocument(
                 new SendDocumentArgs
@@ -23,8 +23,8 @@ namespace Telegram.BotAPI.Tests
             Assert.NotNull(message);
         }
         [Fact]
-        [Trait("Upload doc alter", "Send Document")]
-        public void SendDocumentUploadAlter()
+        [Trait("SendDocument", "Attach Document")]
+        public void Test01()
         {
             var message = Settings.Bot.SendDocument(
                 new SendDocumentArgs
@@ -39,7 +39,7 @@ namespace Telegram.BotAPI.Tests
             Assert.NotNull(message);
         }
         [Fact]
-        [Trait("Upload doc with thumb", "Send Document")]
+        [Trait("SendDocument", "Upload with thumb")]
         public void SendDocumentUploadWithThumb()
         {
             var message = Settings.Bot.SendDocument(
@@ -52,7 +52,7 @@ namespace Telegram.BotAPI.Tests
             Assert.NotNull(message);
         }
         [Fact]
-        [Trait("Upload doc with thumb alter", "Send Document")]
+        [Trait("SendDocument", "Attach with thumb")]
         public void SendDocumentUploadThumbWithThumbAlter()
         {
             var message = Settings.Bot.SendDocument(

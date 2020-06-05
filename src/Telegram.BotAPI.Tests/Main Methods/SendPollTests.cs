@@ -7,10 +7,11 @@ using Xunit;
 
 namespace Telegram.BotAPI.Tests
 {
-    public sealed partial class SendingMessages
+    public sealed class SendPoll
     {
         [Fact]
-        public void SendAndStopPoll()
+        [Trait("SendPoll", "Send and stop poll")]
+        public void Test00()
         {
             var message = Settings.Bot.SendPoll(new SendPollArgs
             {
@@ -19,7 +20,8 @@ namespace Telegram.BotAPI.Tests
                 Options = new string[] { "5", "-1", "6", "11" }
             }); //New poll
             Assert.NotNull(message);
-            var stopped = Settings.Bot.StopPoll(Settings.PChatId, message.Message_id); //Stoppoll
+            var stoppedpoll = Settings.Bot.StopPoll(Settings.PChatId, message.Message_id);
+            Assert.NotNull(stoppedpoll);
         }
     }
 }

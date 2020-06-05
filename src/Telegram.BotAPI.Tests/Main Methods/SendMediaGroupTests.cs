@@ -11,8 +11,8 @@ namespace Telegram.BotAPI.Tests
     public sealed partial class SendingMessages
     {
         [Fact]
-        [Trait("Upload photos", "SendMediaGroup")]
-        public void SendMediaGroupTest()
+        [Trait("SendMediaGroup", "Upload photos")]
+        public void Test00()
         {
             var message = Settings.Bot.SendMediaGroup(
                 new SendMediaGroupArgs
