@@ -16,7 +16,7 @@ namespace Telegram_Calendar
         static void Main(string[] args)
         {
             Console.WriteLine("Start!");
-            var days = new Month(MonthName.April, 2020);
+            var days = new Month(MonthName.August, 2020);
             var updates = bot.GetUpdates();
             while (true)
             {

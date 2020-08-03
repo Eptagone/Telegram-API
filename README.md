@@ -18,9 +18,9 @@ All objects and methods are sorted in namespaces in the same order of sections a
 * Support [System.Text.Json](https://www.nuget.org/packages/System.Text.Json/) and [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/).
 
 ## .NET platforms support
-* NET Standard >= 2.0
-* NET Core >= 2.0
-* NET Framework >= 4.6.1
+* NET Standard >= 2.1
+* NET Core >= 3.0
+* NET Framework (Not supported)
 
 ## Installation
 ### Install from the command line:

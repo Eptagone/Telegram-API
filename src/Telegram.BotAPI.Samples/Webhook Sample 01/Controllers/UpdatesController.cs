@@ -6,7 +6,7 @@ using Telegram.BotAPI.Getting_updates;
 namespace Webhook_Sample_01.Controllers
 {
     [ApiController]
-    [Route("updates")]
+    [Route("[controller]")]
     public class UpdatesController : ControllerBase
     {
         [HttpPost]

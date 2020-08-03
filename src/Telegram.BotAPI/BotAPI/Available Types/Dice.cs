@@ -20,4 +20,15 @@ namespace Telegram.BotAPI.Available_Types
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ushort Value { get; set; }
     }
+
+    /// <summary>Dice base emojis</summary>
+    public sealed class DiceValue
+    {
+        /// <summary>Dice: 🎲 1 - 6 </summary>
+        public const string Dice = "🎲";
+        /// <summary>Darts: 🎯 </summary>
+        public const string Darts = "🎯";
+        /// <summary>Basketball: 🏀 </summary>
+        public const string Basketball = "🏀";
+    }
 }

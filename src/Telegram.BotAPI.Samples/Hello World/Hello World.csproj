@@ -3,11 +3,11 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Hello_World</RootNamespace>
+    <RootNamespace>HelloWorld</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Telegram.BotAPI" Version="1.5.4" />
+    <ProjectReference Include="..\..\Telegram.BotAPI\Telegram Bot API.csproj" />
   </ItemGroup>
 
 </Project>

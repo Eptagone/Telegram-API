@@ -4,7 +4,7 @@ using Telegram.BotAPI;
 using Telegram.BotAPI.Getting_updates;
 using Telegram.BotAPI.Available_Methods;
 
-namespace Hello_World
+namespace HelloWorld
 {
     class Program
     {
@@ -18,7 +18,7 @@ namespace Hello_World
                     foreach(var update in updates){
                         if(update.Type == UpdateType.Message){
                             var message = update.Message;
-                            //bot.SendChatAction(message.Chat.Id, "typing");
+                            //bot.SendChatAction(message.Chat.Id, ChatAction.Typing);
                             bot.SendMessage(message.Chat.Id, "Hello World!");
                         }
                     }

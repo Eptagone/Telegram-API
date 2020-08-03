@@ -12,7 +12,8 @@ namespace Webhook_Sample_01
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            TBot.Bot.SetWebhook(new SetWebhookArgs { Url = "https://tapi65.azurewebsites.net/updates" });
+            TBot.Bot.DeleteWebhook();
+            TBot.Bot.SetWebhook(new SetWebhookArgs { Url = "https://mywebhook.com/updates" });
         }
 
         public IConfiguration Configuration { get; }

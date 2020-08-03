@@ -31,7 +31,10 @@ Contains all available methods in the Bot API 4.9 released on June 4, 2020. In a
     <PackageProjectUrl>https://github.com/Eptagone/Telegram.BotAPI</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <AssemblyName>Telegram.BotAPI</AssemblyName>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>- Removed .NET Framework support :(
+- Optimized
+- New objects: BotTemplate, AllowUpdate, ChatAction, DiceValue
+- More Overloaded methods</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
