@@ -35,7 +35,7 @@ namespace Telegram.BotAPI.Available_Methods
         [JsonPropertyName("can_delete_messages")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Can_delete_messages { get; set; }
-        ///<summary>Optional. Pass True, if the administrator can invite new users to the chat..</summary>
+        ///<summary>Optional. Pass True, if the administrator can invite new users to the chat.</summary>
         [JsonPropertyName("can_invite_users")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Can_invite_users { get; set; }

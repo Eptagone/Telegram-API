@@ -48,6 +48,7 @@ namespace Telegram.BotAPI.Available_Methods
         [System.Text.Json.Serialization.JsonIgnore]
         [Newtonsoft.Json.JsonIgnore]
         public AttachFile[] AttachFiles { get; set; }
+
         internal bool UseMultipart()
         {
             if (Video != default)

@@ -95,4 +95,29 @@ namespace Telegram.BotAPI.Available_Methods
             return await T.RPCA<bool>("sendChatAction", stream, cancellationToken).ConfigureAwait(false);
         }
     }
+
+    /// <summary>Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_audio or upload_audio for audio files, upload_document for general files, find_location for location data, record_video_note or upload_video_note for video notes.</summary>
+    public static class ChatAction
+    {
+        /// <summary>For text messages</summary>
+        public const string Typing = "typing";
+        /// <summary>For photos</summary>
+        public const string Upload_photo = "upload_photo";
+        /// <summary>For videos</summary>
+        public const string Record_video = "record_video";
+        /// <summary>For videos</summary>
+        public const string Upload_video = "upload_video";
+        /// <summary>For audio files</summary>
+        public const string Record_audio = "record_audio";
+        /// <summary>For audio files</summary>
+        public const string Upload_audio = "upload_audio";
+        /// <summary>For general files</summary>
+        public const string Upload_document = "upload_document";
+        /// <summary>For location data</summary>
+        public const string Find_location = "find_location";
+        /// <summary>For video notes</summary>
+        public const string Record_video_note = "record_video_note";
+        /// <summary>For video notes</summary>
+        public const string Upload_video_note = "upload_video_note";
+    }
 }

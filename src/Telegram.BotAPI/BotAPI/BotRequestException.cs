@@ -12,6 +12,7 @@ namespace Telegram.BotAPI
         public int Error_code { get; set; }
         ///<summary>Error description.</summary>
         public string Description { get; set; }
+
         internal BotRequestException(int error_code, string description) : base(description)
         {
             Error_code = error_code;

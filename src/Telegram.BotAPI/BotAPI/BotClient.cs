@@ -18,8 +18,8 @@ namespace Telegram.BotAPI
     /// <summary>Telegram Bot Client.</summary>
     public sealed partial class BotClient
     {
-        /// <summary>Bot base url for file download.</summary>
-        public static readonly string BaseFilesUrl = "https://api.telegram.org/file/bot";
+        /// <summary>Bot base url for download files. {0} = BotToken, {1} = FilePath</summary>
+        public const string BaseFilesUrl = "https://api.telegram.org/file/bot{0}/{1}";
         /// <summary>Token granted by BotFather. Required to access the Telegram bot API.</summary>
         public string Token { get; set; }
         /// <summary>Set true if you want methods to return a default value when bot requests are rejected instead of throwing a <see cref="BotRequestException"/></summary>

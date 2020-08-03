@@ -38,11 +38,29 @@ namespace Telegram.BotAPI
             var rpc = RPCA<T>(method);
             try
             {
-                rpc.Wait(); return rpc.Result;
+                return rpc.Result;
             }
             catch (AggregateException exp)
             {
                 throw exp.InnerException;
+            }
+        }
+        /// <summary>RPC async</summary>
+        /// <typeparam name="T">return type.</typeparam>
+        /// <param name="method">method name</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        internal async Task<T> RPCA<T>(string method, [Optional] CancellationToken cancellationToken)
+        {
+            var streamresponse = await GetRequestAsync($"bot{Token}/{method}", cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
+            var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(streamresponse);
+            if (response.Ok == true)
+                return response.Result;
+            else
+            {
+                if (IgnoreBotExceptions)
+                    return default;
+                else
+                    throw new BotRequestException(response.Error_code, response.Description);
             }
         }
         /// <summary>RPC</summary>
@@ -55,7 +73,7 @@ namespace Telegram.BotAPI
             var rpc = RPCA<T>(method, args, options);
             try
             {
-                rpc.Wait(); return rpc.Result;
+                return rpc.Result;
             }
             catch (AggregateException exp)
             {
@@ -71,29 +89,11 @@ namespace Telegram.BotAPI
             var rpc = RPCA<T>(method, args);
             try
             {
-                rpc.Wait(); return rpc.Result;
+                return rpc.Result;
             }
             catch (AggregateException exp)
             {
                 throw exp.InnerException;
-            }
-        }
-        /// <summary>RPC async</summary>
-        /// <typeparam name="T">return type.</typeparam>
-        /// <param name="method">method name</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        internal async Task<T> RPCA<T>(string method, [Optional] CancellationToken cancellationToken)
-        {
-            var streamresponse = await GetRequestAsync<T>($"bot{Token}/{method}", cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
-            var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(streamresponse);
-            if (response.Ok == true)
-                return response.Result;
-            else
-            {
-                if (IgnoreBotExceptions)
-                    return default;
-                else
-                    throw new BotRequestException(response.Error_code, response.Description);
             }
         }
         /// <summary>RPC async</summary>
@@ -104,8 +104,10 @@ namespace Telegram.BotAPI
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         internal async Task<T> RPCA<T>(string method, object args, [Optional] JsonSerializerOptions serializeoptions, [Optional] CancellationToken cancellationToken)
         {
-            var stream = await Tools.SerializeAsStreamAsync(args, serializeoptions).ConfigureAwait(false);
-            return await RPCA<T>(method, stream, cancellationToken).ConfigureAwait(false);
+            var stream = await Tools.SerializeAsStreamAsync(args, serializeoptions)
+                .ConfigureAwait(false);
+            return await RPCA<T>(method, stream, cancellationToken)
+                .ConfigureAwait(false);
         }
         /// <summary>RPC async</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -115,7 +117,7 @@ namespace Telegram.BotAPI
         internal async Task<T> RPCA<T>(string method, Stream args, [Optional] CancellationToken cancellationToken)
         {
             var options = new JsonSerializerOptions();
-            var stream = await PostRequestAsync<T>($"bot{Token}/{method}", args, cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
+            var stream = await PostRequestAsync($"bot{Token}/{method}", args, cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
             var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
             if (response.Ok == true)
                 return response.Result;
@@ -137,7 +139,7 @@ namespace Telegram.BotAPI
             var rpcf = RPCAF<T>(method, args, serializeoptions, default);
             try
             {
-                rpcf.Wait(); return rpcf.Result;
+                return rpcf.Result;
             }
             catch (AggregateException exp)
             {
@@ -205,7 +207,7 @@ namespace Telegram.BotAPI
                     }
                 }
             }
-            var stream = await PostRequestAsyncFormData<T>($"bot{Token}/{method}", content, cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
+            var stream = await PostRequestAsyncFormData($"bot{Token}/{method}", content, cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
             var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream);
             content.Dispose();
             if (response.Ok == true)
@@ -218,7 +220,8 @@ namespace Telegram.BotAPI
                     throw new BotRequestException(response.Error_code, response.Description);
             }
         }
-        internal static async Task<Stream> PostRequestAsyncFormData<T>(string path, MultipartFormDataContent args, CancellationToken cancellationToken)
+
+        internal static async Task<Stream> PostRequestAsyncFormData(string path, MultipartFormDataContent args, CancellationToken cancellationToken)
         {
             using var request = new HttpRequestMessage(HttpMethod.Post, $"https://api.telegram.org/{path}")
             {
@@ -227,7 +230,7 @@ namespace Telegram.BotAPI
             var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
             return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         }
-        internal static async Task<Stream> PostRequestAsync<T>(string path, Stream args, CancellationToken cancellationToken)
+        internal static async Task<Stream> PostRequestAsync(string path, Stream args, CancellationToken cancellationToken)
         {
             using var request = new HttpRequestMessage(HttpMethod.Post, $"https://api.telegram.org/{path}")
             {
@@ -237,7 +240,7 @@ namespace Telegram.BotAPI
             var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
             return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         }
-        internal static async Task<Stream> GetRequestAsync<T>(string path, CancellationToken cancellationToken)
+        internal static async Task<Stream> GetRequestAsync(string path, CancellationToken cancellationToken)
         {
             using var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.telegram.org/{path}");
             var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);

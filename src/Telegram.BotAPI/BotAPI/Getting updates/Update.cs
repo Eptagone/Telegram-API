@@ -124,4 +124,30 @@ namespace Telegram.BotAPI.Getting_updates
         /// <summary>Poll answer update</summary>
         Poll_answer
     }
+    /// <summary>Allowed updates</summary>
+    public static class AllowUpdate
+    {
+        /// <summary>Message update: New incoming message of any kind — text, photo, sticker, etc.</summary>
+        public const string Message = "message";
+        /// <summary>Edited message update: New version of a message that is known to the bot and was edited.</summary>
+        public const string Edited_message = "edited_message";
+        /// <summary>Channel post update: New version of a channel post that is known to the bot and was edited.</summary>
+        public const string Channel_post = "channel_post";
+        /// <summary>Edited channel post update: New version of a channel post that is known to the bot and was edited.</summary>
+        public const string Edited_channel_post = "edited_channel_post";
+        /// <summary>Inline query update. New incoming inline query.</summary>
+        public const string Inline_query = "inline_query";
+        /// <summary>Chosen inline result update: The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.</summary>
+        public const string Chosen_inline_result = "chosen_inline_result";
+        /// <summary>Callback query update: New incoming callback query.</summary>
+        public const string Callback_query = "callback_query";
+        /// <summary>Shipping query update: New incoming shipping query. Only for invoices with flexible price.</summary>
+        public const string Shipping_query = "shipping_query";
+        /// <summary>Pre checkout query update: New incoming pre-checkout query. Contains full information about checkout.</summary>
+        public const string Pre_checkout_query = "pre_checkout_query";
+        /// <summary>Poll update: New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot.</summary>
+        public const string Poll = "poll";
+        /// <summary>Poll answer update: A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.</summary>
+        public const string Poll_answer = "poll_answer";
+    }
 }

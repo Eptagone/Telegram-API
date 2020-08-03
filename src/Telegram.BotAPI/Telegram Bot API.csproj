@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.5.5</Version>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.6.0</Version>
     <PackageId>Telegram.BotAPI</PackageId>
     <Authors>Quetzal Rivera</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -25,13 +25,13 @@ Contains all available methods in the Bot API 4.9 released on June 4, 2020. In a
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/Eptagone/Telegram.BotAPI</RepositoryUrl>
     <PackageIcon>packicon.png</PackageIcon>
-    <AssemblyVersion>1.6.1.*</AssemblyVersion>
-    <FileVersion>1.6.1.0</FileVersion>
+    <AssemblyVersion>1.6.0.*</AssemblyVersion>
+    <FileVersion>1.6.0.0</FileVersion>
     <Deterministic>false</Deterministic>
     <PackageProjectUrl>https://github.com/Eptagone/Telegram.BotAPI</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <AssemblyName>Telegram.BotAPI</AssemblyName>
-    <PackageReleaseNotes>- Updated to Bot API 4.9</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

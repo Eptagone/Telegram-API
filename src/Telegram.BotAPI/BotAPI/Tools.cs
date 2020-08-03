@@ -2,6 +2,7 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.Buffers;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -29,17 +30,17 @@ namespace Telegram.BotAPI
             stream.Seek(0, SeekOrigin.Begin);
             return stream;
         }
+
         internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = default)
         {
             if (options == null)
                 options = new JsonSerializerOptions { IgnoreNullValues = true };
-            var stream = new MemoryStream();
-            using var writer = new Utf8JsonWriter(stream);
+            var buffer = new ArrayBufferWriter<byte>();
+            using var writer = new Utf8JsonWriter(buffer);
             element.WriteTo(writer); writer.Flush();
-            stream.Seek(0, SeekOrigin.Begin);
-            var buffer = new ReadOnlySpan<byte>(stream.GetBuffer());
-            return JsonSerializer.Deserialize<T>(buffer, options);
+            return JsonSerializer.Deserialize<T>(buffer.WrittenSpan, options);
         }
+
         internal static bool IsNumber(this object value)
         {
             return value is sbyte

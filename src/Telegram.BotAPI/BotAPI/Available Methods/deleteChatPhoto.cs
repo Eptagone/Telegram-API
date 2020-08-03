@@ -20,7 +20,7 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool DeleteChatPhoto(this BotClient T, long chat_id)
         {
             if (T == default)
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(T));
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
