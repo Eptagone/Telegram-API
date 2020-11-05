@@ -9,12 +9,12 @@ namespace Telegram.BotAPI.Inline_mode
 {
     /// <summary>Represents a link to an mp3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class InlineQueryResultAudio : InlineQueryResult
+    public sealed class InlineQueryResultAudio : InlineQueryResultWithEntities, IInlineQueryResult, ICaption
     {
         /// <summary>Type of the result, must be audio.</summary>
         [JsonPropertyName("type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public override string Type => "audio";
+        public string Type => "audio";
         ///<summary>A valid URL for the audio file.</summary>
         [JsonPropertyName("audio_url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -23,10 +23,6 @@ namespace Telegram.BotAPI.Inline_mode
         [JsonPropertyName("caption")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
-        ///<summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
-        [JsonPropertyName("parse_mode")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Parse_mode { get; set; }
         /// <summary>Optional. Performer.</summary>
         [JsonPropertyName("performer")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -38,6 +34,6 @@ namespace Telegram.BotAPI.Inline_mode
         /// <summary>Optional. Content of the message to be sent instead of the audio.</summary>
         [JsonPropertyName("input_message_content")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public new InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent Input_message_content { get; set; }
     }
 }

@@ -39,6 +39,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("photo")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ChatPhoto Photo { get; set; }
+        /// <summary>Optional. Bio of the other party in a private chat. Returned only in getChat.</summary>
+        [JsonPropertyName("bio")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Bio { get; set; }
         /// <summary>Optional. Description, for supergroups and channel chats. Returned only in getChat.</summary>
         [JsonPropertyName("description")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -67,5 +71,25 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("can_set_sticker_set")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Can_set_sticker_set { get; set; }
+        /// <summary>Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.</summary>
+        [JsonPropertyName("linked_chat_id")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public long Linked_chat_id { get; set; }
+        /// <summary>Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.</summary>
+        [JsonPropertyName("location")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public ChatLocation Location { get; set; }
+    }
+    /// <summary>Type of chat, can be either “private”, “group”, “supergroup” or “channel”.</summary>
+    public static class ChatType
+    {
+        /// <summary>Private chat</summary>
+        public const string Private = "private";
+        /// <summary>Group chat</summary>
+        public const string Group = "group";
+        /// <summary>Supergroup chat</summary>
+        public const string Supergroup = "supergroup";
+        /// <summary>Channel chat</summary>
+        public const string Channel = "channel";
     }
 }

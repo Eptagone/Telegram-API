@@ -9,11 +9,11 @@ namespace Telegram.BotAPI.Tests
         /// <summary>Bot token for bot api testing.</summary>
         public static BotClient Bot => new BotClient(BotToken);
         /// <summary>Bot token for bot api testing.</summary>
-        public const string BotToken = "<botToken>";
+        public const string BotToken = "956001060:AAFve2YB_Yf7FdwKCS-nrwOulU8zHAqRP7Y";
         /// <summary>Unique Id of private chat for bot api testing. Can be the user id.</summary>
-        public const int PChatId = 0;
+        public const int PChatId = 418909573;
         /// <summary>Unique Id of group chat for bot api testing. Can be the user id.</summary>
-        public const int ChatId = default;
+        public const int ChatId = 418909573;
         // public const string ChatId = default;
         /// <summary>Unique Id of channel chat for bot api testing. Can be the user id.</summary>
         public const int ChannelId = default;

@@ -9,7 +9,7 @@ namespace Telegram.BotAPI.Available_Methods
 {
     /// <summary>SendDice method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendDiceArgs : BaseSendArgs
+    public sealed class SendDiceArgs : BaseSendArgsReplyMarkup
     {
         ///<summary>Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, or “🏀”. Dice can have values 1-6 for “🎲” and “🎯”, and values 1-5 for “🏀”. Defauts to “🎲”.</summary>
         [JsonPropertyName("emoji")]

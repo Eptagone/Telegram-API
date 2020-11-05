@@ -11,6 +11,12 @@ namespace Telegram.BotAPI.Available_Types
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class ReplyKeyboardMarkup : ReplyMarkup
     {
+        /// <summary>This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).</summary>
+        public ReplyKeyboardMarkup() {}
+        /// <summary>This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).</summary>
+        /// <param name="keyboard">Array of button rows, each represented by an Array of KeyboardButton objects.</param>
+        public ReplyKeyboardMarkup(params KeyboardButton[][] keyboard) => Keyboard = keyboard;
+
         ///<summary>Array of button rows, each represented by an Array of KeyboardButton objects.</summary>
         [JsonPropertyName("keyboard")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

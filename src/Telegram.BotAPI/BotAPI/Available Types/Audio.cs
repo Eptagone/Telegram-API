@@ -19,6 +19,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("file_unique_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string File_unique_id { get; set; }
+        ///<summary>Duration of the audio in seconds as defined by sender.</summary>
+        [JsonPropertyName("duration")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public uint Duration { get; set; }
         ///<summary>Optional. Performer of the audio as defined by sender or by audio tags.</summary>
         [JsonPropertyName("performer")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -27,6 +31,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("title")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Title { get; set; }
+        ///<summary>Optional. Original filename as defined by sender.</summary>
+        [JsonPropertyName("file_name")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string File_name { get; set; }
         ///<summary>Optional. MIME type of the file as defined by sender.</summary>
         [JsonPropertyName("mime_type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

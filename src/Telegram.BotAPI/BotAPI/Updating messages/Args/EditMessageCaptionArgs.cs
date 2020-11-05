@@ -4,12 +4,13 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Updating_messages
 {
     /// <summary>EditMessageCaption method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class EditMessageCaptionArgs
+    public sealed class EditMessageCaptionArgs : ICaption, IParseMode
     {
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonPropertyName("chat_id")]
@@ -31,9 +32,13 @@ namespace Telegram.BotAPI.Updating_messages
         [JsonPropertyName("parse_mode")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Parse_mode { get; set; }
-        ///<summary>A <see cref="Available_Types.InlineKeyboardMarkup"/> object for an inline keyboard.</summary>
+        ///<summary>List of special entities that appear in the caption, which can be specified instead of parse_mode.</summary>
+        [JsonPropertyName("caption_entities")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public MessageEntity[] Caption_entities { get; set; }
+        ///<summary>A <see cref="InlineKeyboardMarkup"/> object for an inline keyboard.</summary>
         [JsonPropertyName("reply_markup")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.InlineKeyboardMarkup Reply_markup { get; set; }
+        public InlineKeyboardMarkup Reply_markup { get; set; }
     }
 }

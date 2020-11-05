@@ -10,7 +10,7 @@ namespace Telegram.BotAPI.Available_Methods
 {
     /// <summary>SendVideoNote method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendVideoNoteArgs : BaseSendArgs
+    public sealed class SendVideoNoteArgs : BaseSendArgsReplyMarkup
     {
         ///<summary>Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data.</summary>
         [JsonPropertyName("video_note")]

@@ -9,7 +9,7 @@ namespace Telegram.BotAPI.Available_Types
 {
     /// <summary>This object represents a phone contact.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class Contact
+    public sealed class Contact : IContact
     {
         /// <summary>Contact's phone number.</summary>
         [JsonPropertyName("phone_number")]

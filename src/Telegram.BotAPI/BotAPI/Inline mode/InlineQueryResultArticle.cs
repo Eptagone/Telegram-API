@@ -9,12 +9,20 @@ namespace Telegram.BotAPI.Inline_mode
 {
     /// <summary>Represents a link to an article or web page.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class InlineQueryResultArticle : InlineQueryResult
+    public sealed class InlineQueryResultArticle : InlineQueryResult, IInlineQueryResult, IThumbUWH
     {
         /// <summary>Type of the result, must be article.</summary>
         [JsonPropertyName("type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public override string Type => "article";
+        public string Type => "article";
+        /// <summary>Title of the result.</summary>
+        [JsonPropertyName("title")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Title { get; set; }
+        /// <summary>Content of the message to be sent.</summary>
+        [JsonPropertyName("input_message_content")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public InputMessageContent Input_message_content { get; set; }
         /// <summary>Optional. URL of the result.</summary>
         [JsonPropertyName("url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -34,10 +42,10 @@ namespace Telegram.BotAPI.Inline_mode
         /// <summary>Optional. Thumbnail width.</summary>
         [JsonPropertyName("thumb_width")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Thumb_width { get; set; }
+        public uint Thumb_width { get; set; }
         /// <summary>Optional. Thumbnail height.</summary>
         [JsonPropertyName("thumb_height")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Thumb_height { get; set; }
+        public uint Thumb_height { get; set; }
     }
 }

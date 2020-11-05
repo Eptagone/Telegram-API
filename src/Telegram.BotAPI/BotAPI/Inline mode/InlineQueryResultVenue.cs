@@ -9,12 +9,12 @@ namespace Telegram.BotAPI.Inline_mode
 {
     /// <summary>Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class InlineQueryResultVenue : InlineQueryResult
+    public sealed class InlineQueryResultVenue : InlineQueryResult, IInlineQueryResult, IVenue, IThumbUWH
     {
         /// <summary>Type of the result, must be venue.</summary>
         [JsonPropertyName("type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public override string Type => "venue";
+        public string Type => "venue";
         /// <summary>Latitude of the venue location in degrees.</summary>
         [JsonPropertyName("latitude")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -23,11 +23,11 @@ namespace Telegram.BotAPI.Inline_mode
         [JsonPropertyName("longitude")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float Longitude { get; set; }
-        /// <summary>Title of the venue.</summary>
+        ///<summary>Title of the venue.</summary>
         [JsonPropertyName("title")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public new string Title { get; set; }
-        /// <summary>Address of the venue.</summary>
+        public string Title { get; set; }
+        ///<summary>Address of the venue.</summary>
         [JsonPropertyName("address")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Address { get; set; }
@@ -39,10 +39,18 @@ namespace Telegram.BotAPI.Inline_mode
         [JsonPropertyName("foursquare_type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Foursquare_type { get; set; }
+        ///<summary>Optional. Google Places identifier of the venue.</summary>
+        [JsonPropertyName("google_place_id")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Google_place_id { get; set; }
+        ///<summary>Optional. Google Places type of the venue. (See <a href="https://developers.google.com/places/web-service/supported_types">supported types</a>.)</summary>
+        [JsonPropertyName("google_place_type")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Google_place_type { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the venue.</summary>
         [JsonPropertyName("input_message_content")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public new InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent Input_message_content { get; set; }
         /// <summary>Optional. Url of the thumbnail for the result.</summary>
         [JsonPropertyName("thumb_url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

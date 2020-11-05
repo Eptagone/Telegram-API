@@ -9,7 +9,7 @@ namespace Telegram.BotAPI.Available_Methods
 {
     /// <summary>SendContact method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendContactArgs : BaseSendArgs
+    public sealed class SendContactArgs : BaseSendArgsReplyMarkup
     {
         ///<summary>Contact's phone number.</summary>
         [JsonPropertyName("phone_number")]

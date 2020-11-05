@@ -10,7 +10,7 @@ namespace Telegram.BotAPI.Updating_messages
 {
     /// <summary>EditMessage method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class EditMessageTextArgs
+    public sealed class EditMessageTextArgs : IParseMode
     {
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonPropertyName("chat_id")]
@@ -32,6 +32,10 @@ namespace Telegram.BotAPI.Updating_messages
         [JsonPropertyName("parse_mode")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Parse_mode { get; set; }
+        ///<summary>List of special entities that appear in message text, which can be specified instead of parse_mode.</summary>
+        [JsonPropertyName("entities")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public MessageEntity[] Entities { get; set; }
         ///<summary>Disables link previews for links in this message</summary>
         [JsonPropertyName("disable_web_page_preview")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

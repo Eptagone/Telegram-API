@@ -11,7 +11,7 @@ namespace Telegram.BotAPI.Available_Methods
 {
     public static partial class AvailableMethods
     {
-        /// <summary>Use this method to send a group of photos or videos as an album. On success, an array of the sent Messages is returned.</summary>
+        /// <summary>Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only group in an album with messages of the same type. On success, an array of Messages that were sent is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
@@ -25,7 +25,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new ArgumentNullException(nameof(args));
             return T.RPCF<Message[]>("sendMediaGroup", args);
         }
-        /// <summary>Use this method to send a group of photos or videos as an album. On success, an array of the sent Messages is returned.</summary>
+        /// <summary>Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only group in an album with messages of the same type. On success, an array of Messages that were sent is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>

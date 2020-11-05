@@ -4,14 +4,15 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Available_Methods
 {
     /// <summary>SendPoll method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendPollArgs : BaseSendArgs
+    public sealed class SendPollArgs : BaseSendArgsReplyMarkup
     {
-        ///<summary>Poll question, 1-255 characters.</summary>
+        ///<summary>Poll question, 1-300 characters.</summary>
         [JsonPropertyName("question")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Question { get; set; }
@@ -43,6 +44,10 @@ namespace Telegram.BotAPI.Available_Methods
         [JsonPropertyName("explanation_parse_mode")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Explanation_parse_mode { get; set; }
+        ///<summary>TList of special entities that appear in the poll explanation, which can be specified instead of parse_mode.</summary>
+        [JsonPropertyName("explanation_entities")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public MessageEntity[] Explanation_entities { get; set; }
         ///<summary>Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.</summary>
         [JsonPropertyName("open_period")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -55,5 +60,13 @@ namespace Telegram.BotAPI.Available_Methods
         [JsonPropertyName("is_closed")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Is_closed { get; set; }
+    }
+    /// <summary>Poll type, “quiz” or “regular”, defaults to “regular”</summary>
+    public static class PollType
+    {
+        /// <summary>Quiz poll</summary>
+        public const string Quiz = "quiz";
+        /// <summary>Regular poll</summary>
+        public const string Regular = "regular";
     }
 }

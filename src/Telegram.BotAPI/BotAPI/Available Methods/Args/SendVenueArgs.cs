@@ -9,7 +9,7 @@ namespace Telegram.BotAPI.Available_Methods
 {
     /// <summary>Send Venue.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendVenueArgs : BaseSendArgs
+    public sealed class SendVenueArgs : BaseSendArgsReplyMarkup, IVenue
     {
         ///<summary>Latitude of the venue.</summary>
         [JsonPropertyName("latitude")]
@@ -35,5 +35,13 @@ namespace Telegram.BotAPI.Available_Methods
         [JsonPropertyName("foursquare_type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Foursquare_type { get; set; }
+        ///<summary>Optional. Google Places identifier of the venue.</summary>
+        [JsonPropertyName("google_place_id")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Google_place_id { get; set; }
+        ///<summary>Optional. Google Places type of the venue. (See <a href="https://developers.google.com/places/web-service/supported_types">supported types</a>.)</summary>
+        [JsonPropertyName("google_place_type")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Google_place_type { get; set; }
     }
 }

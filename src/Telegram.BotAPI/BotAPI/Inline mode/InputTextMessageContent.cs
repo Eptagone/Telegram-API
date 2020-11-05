@@ -4,6 +4,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Inline_mode
 {
@@ -19,6 +20,10 @@ namespace Telegram.BotAPI.Inline_mode
         [JsonPropertyName("parse_mode")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Parse_mode { get; set; }
+        ///<summary>Optional. List of special entities that appear in message text, which can be specified instead of parse_mode.</summary>
+        [JsonPropertyName("entities")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public MessageEntity[] Entities { get; set; }
         ///<summary>Optional. Disables link previews for links in the sent message.</summary>
         [JsonPropertyName("disable_web_page_preview")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

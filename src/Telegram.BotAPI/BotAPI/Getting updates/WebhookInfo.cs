@@ -23,10 +23,14 @@ namespace Telegram.BotAPI.Getting_updates
         [JsonPropertyName("pending_update_count")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Pending_update_count { get; set; }
+        ///<summary>Optional. Currently used webhook IP address.</summary>
+        [JsonPropertyName("ip_address")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Ip_address { get; set; }
         ///<summary>Optional. Unix time for the most recent error that happened when trying to deliver an update via webhook.</summary>
         [JsonPropertyName("Last_error_date")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Last_error_date { get; set; }
+        public uint Last_error_date { get; set; }
         ///<summary>Optional. Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook.</summary>
         [JsonPropertyName("last_error_message")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

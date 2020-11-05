@@ -19,6 +19,10 @@ namespace Telegram.BotAPI.Available_Methods
         [JsonPropertyName("user_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int User_id { get; set; }
+        ///<summary>Pass True, if the administrator's presence in the chat is hidden.</summary>
+        [JsonPropertyName("is_anonymous")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool Is_anonymous { get; set; }
         ///<summary>Optional. Pass True, if the administrator can change chat title, photo and other settings.</summary>
         [JsonPropertyName("can_change_info")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

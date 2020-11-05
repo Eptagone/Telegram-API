@@ -9,12 +9,12 @@ namespace Telegram.BotAPI.Inline_mode
 {
     /// <summary>Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class InlineQueryResultVideo : InlineQueryResult
+    public sealed class InlineQueryResultVideo : InlineQueryResultWithEntities, IInlineQueryResult, ICaption
     {
         /// <summary>Type of the result, must be video.</summary>
         [JsonPropertyName("type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public override string Type => "video";
+        public string Type => "video";
         ///<summary>A valid URL for the embedded video player or video file.</summary>
         [JsonPropertyName("video_url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -31,10 +31,6 @@ namespace Telegram.BotAPI.Inline_mode
         [JsonPropertyName("caption")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
-        ///<summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
-        [JsonPropertyName("parse_mode")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Parse_mode { get; set; }
         /// <summary>Optional. Video width.</summary>
         [JsonPropertyName("video_width")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -54,6 +50,6 @@ namespace Telegram.BotAPI.Inline_mode
         /// <summary>Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).</summary>
         [JsonPropertyName("input_message_content")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public new InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent Input_message_content { get; set; }
     }
 }

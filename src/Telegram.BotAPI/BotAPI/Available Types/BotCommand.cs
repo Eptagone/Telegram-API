@@ -11,6 +11,17 @@ namespace Telegram.BotAPI.Available_Types
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class BotCommand
     {
+        /// <summary>New Bot Command</summary>
+        public BotCommand() { }
+        /// <summary>New Bot Command</summary>
+        /// <param name="command">Text of the command, 1-32 characters. Can contain only lowercase English letters, digits and underscores.</param>
+        /// <param name="description">Description of the command, 3-256 characters.</param>
+        public BotCommand(string command, string description)
+        {
+            Command = command;
+            Description = description;
+        }
+
         /// <summary>Text of the command, 1-32 characters. Can contain only lowercase English letters, digits and underscores.</summary>
         [JsonPropertyName("command")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

@@ -19,6 +19,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("from")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public User From { get; set; }
+        /// <summary>Optional. Sender of the message, sent on behalf of a chat. The channel itself for channel messages. The supergroup itself for messages from anonymous group administrators. The linked channel for messages automatically forwarded to the discussion group.</summary>
+        [JsonPropertyName("sender_chat")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Chat Sender_chat { get; set; }
         /// <summary>Date the message was sent in Unix time.</summary>
         [JsonPropertyName("date")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -79,10 +83,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("entities")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public MessageEntity[] Entities { get; set; }
-        ///<summary>Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption.</summary>
-        [JsonPropertyName("caption_entities")]
+        ///<summary>Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set.</summary>
+        [JsonPropertyName("animation")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public MessageEntity[] Caption_entities { get; set; }
+        public Animation Animation { get; set; }
         ///<summary>Optional. Message is an audio file, information about the file.</summary>
         [JsonPropertyName("audio")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -91,14 +95,6 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("document")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Document Document { get; set; }
-        ///<summary>Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set.</summary>
-        [JsonPropertyName("animation")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Animation Animation { get; set; }
-        ///<summary>Optional. Message is a game, information about the game.</summary>
-        [JsonPropertyName("game")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Games.Game Game { get; set; }
         ///<summary>Optional. Message is a photo, available sizes of the photo.</summary>
         [JsonPropertyName("photo")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -111,38 +107,46 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("video")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Video Video { get; set; }
-        ///<summary>Optional. Message is a voice message, information about the file.</summary>
-        [JsonPropertyName("voice")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Voice Voice { get; set; }
         ///<summary>Optional. Message is a video note, information about the video message.</summary>
         [JsonPropertyName("video_note")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public VideoNote Video_note { get; set; }
+        ///<summary>Optional. Message is a voice message, information about the file.</summary>
+        [JsonPropertyName("voice")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Voice Voice { get; set; }
         ///<summary>Optional. Caption for the audio, document, photo, video or voice, 0-1024 characters.</summary>
         [JsonPropertyName("caption")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
+        ///<summary>Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption.</summary>
+        [JsonPropertyName("caption_entities")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public MessageEntity[] Caption_entities { get; set; }
         ///<summary>Optional. Message is a shared contact, information about the contact.</summary>
         [JsonPropertyName("contact")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Contact Contact { get; set; }
-        ///<summary>Optional. Message is a shared location, information about the location.</summary>
-        [JsonPropertyName("location")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Location Location { get; set; }
-        ///<summary>Optional. Message is a venue, information about the venue.</summary>
-        [JsonPropertyName("venue")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Venue Venue { get; set; }
-        ///<summary>Optional. Message is a native poll, information about the poll.</summary>
-        [JsonPropertyName("poll")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Poll Poll { get; set; }
         ///<summary>Optional. Message is a dice with random value from 1 to 6</summary>
         [JsonPropertyName("dice")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Dice Dice { get; set; }
+        ///<summary>Optional. Message is a game, information about the game.</summary>
+        [JsonPropertyName("game")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Games.Game Game { get; set; }
+        ///<summary>Optional. Message is a native poll, information about the poll.</summary>
+        [JsonPropertyName("poll")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Poll Poll { get; set; }
+        ///<summary>Optional. Message is a venue, information about the venue.</summary>
+        [JsonPropertyName("venue")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Venue Venue { get; set; }
+        ///<summary>Optional. Message is a shared location, information about the location.</summary>
+        [JsonPropertyName("location")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Location Location { get; set; }
         ///<summary>Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members).</summary>
         [JsonPropertyName("new_chat_members")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -203,6 +207,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("passport_data")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Telegram_Passport.PassportData Passport_data { get; set; }
+        ///<summary>Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.</summary>
+        [JsonPropertyName("proximity_alert_triggered")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public ProximityAlertTriggered Proximity_alert_triggered { get; set; }
         ///<summary>Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.</summary>
         [JsonPropertyName("reply_markup")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

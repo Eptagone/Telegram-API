@@ -10,7 +10,7 @@ namespace Telegram.BotAPI.Available_Methods
 {
     /// <summary>SendVoice method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendVoiceArgs : BaseSendArgs
+    public sealed class SendVoiceArgs : BaseSendArgsReplyMarkup, ICaption, IParseMode
     {
         ///<summary>Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</summary>
         [JsonPropertyName("voice")]
@@ -24,6 +24,10 @@ namespace Telegram.BotAPI.Available_Methods
         [JsonPropertyName("parse_mode")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Parse_mode { get; set; }
+        /// <summary>Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode.</summary>
+        [JsonPropertyName("caption_entities")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public MessageEntity[] Caption_entities { get; set; }
         ///<summary>Optional. Duration of the voice message in seconds.</summary>
         [JsonPropertyName("duration")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

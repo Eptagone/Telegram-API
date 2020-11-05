@@ -4,12 +4,13 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Payments
 {
     /// <summary>SendInvoice method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendInvoiceArgs
+    public sealed class SendInvoiceArgs : BaseReplySendArgs, IReplyMarkupInline
     {
         /// <summary>Unique identifier for the target private chat.</summary>
         [JsonPropertyName("chat_id")]
@@ -94,13 +95,9 @@ namespace Telegram.BotAPI.Payments
         [JsonPropertyName("disable_notification")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Disable_notification { get; set; }
-        /// <summary>Optional. If the message is a reply, ID of the original message.</summary>
-        [JsonPropertyName("reply_to_message_id")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint reply_to_message_id { get; set; }
-        /// <summary>Optional. A <see cref="Available_Types.InlineKeyboardMarkup"/> object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button.</summary>
+        /// <summary>Optional. A <see cref="InlineKeyboardMarkup"/> object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button.</summary>
         [JsonPropertyName("reply_markup")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.InlineKeyboardMarkup Reply_markup { get; set; }
+        public InlineKeyboardMarkup Reply_markup { get; set; }
     }
 }

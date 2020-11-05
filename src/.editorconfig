@@ -17,3 +17,6 @@ dotnet_diagnostic.CA1032.severity = none
 
 # CA1054: Uri parameters should not be strings
 dotnet_diagnostic.CA1054.severity = none
+
+# CA1040: Avoid empty interfaces
+dotnet_diagnostic.CA1040.severity = silent

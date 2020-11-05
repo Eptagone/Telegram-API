@@ -9,16 +9,20 @@ namespace Telegram.BotAPI.Inline_mode
 {
     /// <summary>Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class InlineQueryResultCachedDocument : InlineQueryResult
+    public sealed class InlineQueryResultCachedDocument : InlineQueryResultWithEntities, IInlineQueryResult, ICaption
     {
         /// <summary>Type of the result, must be document.</summary>
         [JsonPropertyName("type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public override string Type => "document";
+        public string Type => "document";
         /// <summary>A valid file identifier for the file.</summary>
         [JsonPropertyName("document_file_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Document_file_id { get; set; }
+        /// <summary>Title of the result.</summary>
+        [JsonPropertyName("title")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Title { get; set; }
         /// <summary>Optional. Short description of the result.</summary>
         [JsonPropertyName("description")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -27,13 +31,9 @@ namespace Telegram.BotAPI.Inline_mode
         [JsonPropertyName("caption")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
-        ///<summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
-        [JsonPropertyName("parse_mode")]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Parse_mode { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the file.</summary>
         [JsonPropertyName("input_message_content")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public new InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent Input_message_content { get; set; }
     }
 }

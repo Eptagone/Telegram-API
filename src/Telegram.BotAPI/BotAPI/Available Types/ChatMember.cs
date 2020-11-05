@@ -23,10 +23,10 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("custom_title")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Custom_title { get; set; }
-        ///<summary>Optional. Restricted and kicked only. Date when restrictions will be lifted for this user, unix time.</summary>
-        [JsonPropertyName("until_date")]
+        ///<summary>Optional. Owner and administrators only. True, if the user's presence in the chat is hidden.</summary>
+        [JsonPropertyName("is_anonymous")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Until_date { get; set; }
+        public bool Is_anonymous { get; set; }
         ///<summary>Optional. Administrators only. True, if the bot is allowed to edit administrator privileges of that user.</summary>
         [JsonPropertyName("can_be_edited")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -87,5 +87,9 @@ namespace Telegram.BotAPI.Available_Types
         [JsonPropertyName("can_add_web_page_previews")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Can_add_web_page_previews { get; set; }
+        ///<summary>Optional. Restricted and kicked only. Date when restrictions will be lifted for this user, unix time.</summary>
+        [JsonPropertyName("until_date")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public uint Until_date { get; set; }
     }
 }

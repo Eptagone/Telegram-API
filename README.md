@@ -2,18 +2,17 @@
 |--------|--------|
 
 [![NuGet version (Telegram.BotAPI)](https://img.shields.io/nuget/v/Telegram.BotAPI.svg?style=flat-square)](https://www.nuget.org/packages/Telegram.BotAPI/)
-[![Compatible with Bot API v4.9](https://img.shields.io/badge/Bot%20API%20version-v4.9-blue?style=flat-square)](https://core.telegram.org/bots/api#june-4-2020)
-
+[![Compatible with Bot API v5.0](https://img.shields.io/badge/Bot%20API%20version-v5.0-blue?style=flat-square)](https://core.telegram.org/bots/api#november-4-2020)
 
 Telegram API NET is one of the most complete libraries available to interact with the Telegram Bot API in your .NET projects. Free and open source.
 
-It contains all the methods available in the Bot API 4.9 released on June 4, 2020. In addition, it has a complete set of classes with all the objects used.
+It contains all the methods available in the Bot API 5.0 released on November 4, 2020. In addition, it has a complete set of classes with all the objects used.
 
 All objects and methods are sorted in namespaces in the same order of sections as on the official Website of the [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Features
-* Contains pre-defined methods for all Bot API 4.9 methods.
-* Contains classes for each object type used in the Bot API 4.9.
+* Contains pre-defined methods for all Bot API 5.0 methods.
+* Contains classes for each object type used in the Bot API 5.0.
 * Support request cancellation for async methods.
 * Support [System.Text.Json](https://www.nuget.org/packages/System.Text.Json/) and [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/).
 

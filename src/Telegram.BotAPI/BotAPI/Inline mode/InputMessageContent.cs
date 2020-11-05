@@ -7,8 +7,8 @@ namespace Telegram.BotAPI.Inline_mode
     /// • <see cref="InputTextMessageContent"/><br />
     /// • <see cref="InputLocationMessageContent"/><br />
     /// • <see cref="InputVenueMessageContent"/><br />
-    /// • <see cref="InputVenueMessageContent"/></summary>
-    public class InputMessageContent
+    /// • <see cref="InputContactMessageContent"/></summary>
+    public abstract class InputMessageContent
     {
         //Base empty class
     }

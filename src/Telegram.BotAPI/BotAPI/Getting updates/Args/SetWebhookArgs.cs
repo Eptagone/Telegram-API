@@ -20,6 +20,10 @@ namespace Telegram.BotAPI.Getting_updates
         [JsonPropertyName("certificate")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public InputFile Certificate { get; set; }
+        ///<summary>The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS.</summary>
+        [JsonPropertyName("ip_address")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Ip_address { get; set; }
         ///<summary>Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot‘s server, and higher values to increase your bot’s throughput.</summary>
         [JsonPropertyName("max_connections")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -28,5 +32,9 @@ namespace Telegram.BotAPI.Getting_updates
         [JsonPropertyName("allowed_updates")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string[] Allowed_updates { get; set; }
+        ///<summary>Pass True to drop all pending updates.</summary>
+        [JsonPropertyName("drop_pending_updates")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool Drop_pending_updates { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.6.0</Version>
+    <Version>1.7.0-beta1</Version>
     <PackageId>Telegram.BotAPI</PackageId>
     <Authors>Quetzal Rivera</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -13,7 +13,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Telegram.BotAPI is one of the most complete libraries available to interact with the Telegram Bot API in your NET project.
  
-Contains all available methods in the Bot API 4.9 released on June 4, 2020. In addition, it has a complete set of classes with all objects used.</Description>
+Contains all available methods in the Bot API 5.0 released on November 4, 2020. In addition, it has a complete set of classes with all objects used.</Description>
     <PackageTags>Telegram Bot API</PackageTags>
     <Title>Telegram Bot API</Title>
     <OutputType>Library</OutputType>
@@ -25,16 +25,13 @@ Contains all available methods in the Bot API 4.9 released on June 4, 2020. In a
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/Eptagone/Telegram.BotAPI</RepositoryUrl>
     <PackageIcon>packicon.png</PackageIcon>
-    <AssemblyVersion>1.6.0.*</AssemblyVersion>
-    <FileVersion>1.6.0.0</FileVersion>
+    <AssemblyVersion>1.7.0.*</AssemblyVersion>
+    <FileVersion>1.7.0.0</FileVersion>
     <Deterministic>false</Deterministic>
     <PackageProjectUrl>https://github.com/Eptagone/Telegram.BotAPI</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <AssemblyName>Telegram.BotAPI</AssemblyName>
-    <PackageReleaseNotes>- Removed .NET Framework support :(
-- Optimized
-- New objects: BotTemplate, AllowUpdate, ChatAction, DiceValue
-- More Overloaded methods</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added Bot API 5.0 support!</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
