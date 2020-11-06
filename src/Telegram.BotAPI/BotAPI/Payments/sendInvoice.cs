@@ -19,9 +19,15 @@ namespace Telegram.BotAPI.Payments
         public static Message SendInvoice(this BotClient T, SendInvoiceArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPC<Message>("sendInvoice", args);
         }
         /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
@@ -33,9 +39,15 @@ namespace Telegram.BotAPI.Payments
         public static async Task<Message> SendInvoiceAsync(this BotClient T, SendInvoiceArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Message>("sendInvoice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

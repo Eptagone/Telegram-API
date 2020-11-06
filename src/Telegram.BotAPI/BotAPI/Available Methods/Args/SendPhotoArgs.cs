@@ -31,8 +31,13 @@ namespace Telegram.BotAPI.Available_Methods
         internal bool UseMultipart()
         {
             if (Photo != default)
+            {
                 if (Photo.GetType() == typeof(InputFile))
+                {
                     return true;
+                }
+            }
+
             return false;
         }
     }

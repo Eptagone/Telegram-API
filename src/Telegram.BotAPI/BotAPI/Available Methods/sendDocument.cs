@@ -20,9 +20,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendDocument(this BotClient T, SendDocumentArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<Message>("sendDocument", args);
         }
         /// <summary>Use this method to send general files. On success, the sent Message is returned.</summary>
@@ -35,9 +41,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendDocumentAsync(this BotClient T, SendDocumentArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<Message>("sendDocument", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

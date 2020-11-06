@@ -3,7 +3,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
@@ -12,38 +11,52 @@ namespace Telegram.BotAPI.Games
 {
     public static partial class GamesMethods
     {
-        ///<summary>Use this method to set the score of the specified user in a game. On success, if the message was sent by the bot, returns the edited Message, otherwise returns True. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.</summary>
-        ///<param name="T">BotClient</param>
+        ///<summary>Use this method to set the score of the specified user in a game.</summary>
+        ///<param name="B">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static dynamic SetGameScore(this BotClient T, SetGameScoreArgs args)
+        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.Available_Types.Message or bool.</exception>
+        /// <returns><see cref="Message"/> or <see cref="bool"/>. On success, if the message was sent by the bot, returns the edited Message, otherwise returns True. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.</returns>
+        public static T SetGameScore<T>(this BotClient B, SetGameScoreArgs args)
         {
-            if (T == default)
-                throw new ArgumentNullException(nameof(T));
-            var json_message = T.RPC<JsonElement>("setGameScore", args);
-            if (json_message.ValueKind == JsonValueKind.Object)
-                return json_message.ToObject<Message>();
-            else
-                return json_message.GetBoolean();
+            if (B == default)
+            {
+                throw new ArgumentNullException(nameof(B));
+            }
+            if (args == default)
+            {
+                throw new ArgumentNullException(nameof(args));
+            }
+            if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
+            {
+                throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.Available_Types.Message or bool.");
+            }
+            return B.RPC<T>("setGameScore", args);
         }
-        ///<summary>Use this method to set the score of the specified user in a game. On success, if the message was sent by the bot, returns the edited Message, otherwise returns True. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.</summary>
-        ///<param name="T">BotClient</param>
+        ///<summary>Use this method to set the score of the specified user in a game.</summary>
+        ///<param name="B">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<dynamic> SetGameScoreAsync(this BotClient T, SetGameScoreArgs args, [Optional] CancellationToken cancellationToken)
+        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.Available_Types.Message or bool.</exception>
+        /// <returns><see cref="Message"/> or <see cref="bool"/>. On success, if the message was sent by the bot, returns the edited Message, otherwise returns True. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.</returns>
+        public static async Task<T> SetGameScoreAsync<T>(this BotClient B, SetGameScoreArgs args, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
-                throw new ArgumentNullException(nameof(T));
+            if (B == default)
+            {
+                throw new ArgumentNullException(nameof(B));
+            }
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
-            var json_message = await T.RPCA<JsonElement>("setGameScore", args, cancellationToken: cancellationToken).ConfigureAwait(false);
-            if (json_message.ValueKind == JsonValueKind.Object)
-                return json_message.ToObject<Message>();
-            else
-                return json_message.GetBoolean();
+            }
+            if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
+            {
+                throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.Available_Types.Message or bool.");
+            }
+            return await B.RPCA<T>("setGameScore", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

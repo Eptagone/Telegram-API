@@ -20,9 +20,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message[] SendMediaGroup(this BotClient T, SendMediaGroupArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<Message[]>("sendMediaGroup", args);
         }
         /// <summary>Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only group in an album with messages of the same type. On success, an array of Messages that were sent is returned.</summary>
@@ -35,9 +41,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message[]> SendMediaGroupAsync(this BotClient T, SendMediaGroupArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<Message[]>("sendMediaGroup", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

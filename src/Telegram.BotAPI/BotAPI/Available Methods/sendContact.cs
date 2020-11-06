@@ -20,7 +20,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendContact(this BotClient T, SendContactArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPC<Message>("sendContact", args);
         }
         /// <summary>Use this method to send phone contacts. On success, the sent Message is returned.</summary>
@@ -33,9 +36,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendContactAsync(this BotClient T, SendContactArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Message>("sendContact", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

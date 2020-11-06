@@ -22,9 +22,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendPhoto(this BotClient T, SendPhotoArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<Message>("sendPhoto", args);
         }
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
@@ -42,7 +48,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message SendPhoto(this BotClient T, long chat_id, string photo, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup)
-            => T.SendPhoto(new SendPhotoArgs
+        {
+            return T.SendPhoto(new SendPhotoArgs
             {
                 Chat_id = chat_id,
                 Photo = photo,
@@ -52,6 +59,8 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             });
+        }
+
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -67,7 +76,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message SendPhoto(this BotClient T, string chat_id, string photo, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup)
-            => T.SendPhoto(new SendPhotoArgs
+        {
+            return T.SendPhoto(new SendPhotoArgs
             {
                 Chat_id = chat_id,
                 Photo = photo,
@@ -77,6 +87,8 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             });
+        }
+
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -92,7 +104,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message SendPhoto(this BotClient T, long chat_id, InputFile photo, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup)
-            => T.SendPhoto(new SendPhotoArgs
+        {
+            return T.SendPhoto(new SendPhotoArgs
             {
                 Chat_id = chat_id,
                 Photo = photo,
@@ -102,6 +115,8 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             });
+        }
+
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -117,7 +132,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message SendPhoto(this BotClient T, string chat_id, InputFile photo, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup)
-            => T.SendPhoto(new SendPhotoArgs
+        {
+            return T.SendPhoto(new SendPhotoArgs
             {
                 Chat_id = chat_id,
                 Photo = photo,
@@ -127,6 +143,8 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             });
+        }
+
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="args">Parameters.</param>
@@ -139,9 +157,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendPhotoAsync(this BotClient T, SendPhotoArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<Message>("sendPhoto", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
@@ -160,7 +184,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> SendPhotoAsync(this BotClient T, long chat_id, string photo, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
-            => await T.SendPhotoAsync(new SendPhotoArgs
+        {
+            return await T.SendPhotoAsync(new SendPhotoArgs
             {
                 Chat_id = chat_id,
                 Photo = photo,
@@ -170,6 +195,8 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             }, cancellationToken).ConfigureAwait(false);
+        }
+
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -186,7 +213,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> SendPhotoAsync(this BotClient T, string chat_id, string photo, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
-            => await T.SendPhotoAsync(new SendPhotoArgs
+        {
+            return await T.SendPhotoAsync(new SendPhotoArgs
             {
                 Chat_id = chat_id,
                 Photo = photo,
@@ -196,6 +224,8 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             }, cancellationToken).ConfigureAwait(false);
+        }
+
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -212,7 +242,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> SendPhotoAsync(this BotClient T, long chat_id, InputFile photo, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
-            => await T.SendPhotoAsync(new SendPhotoArgs
+        {
+            return await T.SendPhotoAsync(new SendPhotoArgs
             {
                 Chat_id = chat_id,
                 Photo = photo,
@@ -222,6 +253,8 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             }, cancellationToken).ConfigureAwait(false);
+        }
+
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
         /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
@@ -238,7 +271,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> SendPhotoAsync(this BotClient T, string chat_id, InputFile photo, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
-            => await T.SendPhotoAsync(new SendPhotoArgs
+        {
+            return await T.SendPhotoAsync(new SendPhotoArgs
             {
                 Chat_id = chat_id,
                 Photo = photo,
@@ -248,5 +282,6 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             }, cancellationToken).ConfigureAwait(false);
+        }
     }
 }

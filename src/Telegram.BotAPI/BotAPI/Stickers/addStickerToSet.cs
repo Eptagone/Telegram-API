@@ -24,18 +24,34 @@ namespace Telegram.BotAPI.Stickers
         public static bool AddStickerToSet(this BotClient T, int user_id, string name, [Optional] string png_sticker, [Optional] InputFile tgs_sticker, string emojis, [Optional] MaskPosition mask_position)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var args = new AddStickerToSetArgs { User_id = user_id, Name = name, Emojis = emojis };
             if (!string.IsNullOrEmpty(png_sticker))
+            {
                 args.Png_sticker = png_sticker;
+            }
+
             if (tgs_sticker != default)
+            {
                 args.Tgs_sticker = tgs_sticker;
+            }
+
             if (mask_position != default)
+            {
                 args.Mask_position = mask_position;
+            }
+
             if (args.UseMultipart())
+            {
                 return T.RPCF<bool>("addStickerToSet", args);
+            }
             else
+            {
                 return T.RPC<bool>("addStickerToSet", args);
+            }
         }
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -51,18 +67,34 @@ namespace Telegram.BotAPI.Stickers
         public static async Task<bool> AddStickerToSetAsync(this BotClient T, int user_id, string name, [Optional] string png_sticker, [Optional] InputFile tgs_sticker, string emojis, [Optional] MaskPosition mask_position, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var args = new AddStickerToSetArgs { User_id = user_id, Name = name, Emojis = emojis };
             if (!string.IsNullOrEmpty(png_sticker))
+            {
                 args.Png_sticker = png_sticker;
+            }
+
             if (tgs_sticker != default)
+            {
                 args.Tgs_sticker = tgs_sticker;
+            }
+
             if (mask_position != default)
+            {
                 args.Mask_position = mask_position;
+            }
+
             if (args.UseMultipart())
+            {
                 return await T.RPCAF<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
             else
+            {
                 return await T.RPCA<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
         }
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -77,18 +109,34 @@ namespace Telegram.BotAPI.Stickers
         public static bool AddStickerToSet(this BotClient T, int user_id, string name, [Optional] InputFile png_sticker, [Optional] InputFile tgs_sticker, string emojis, [Optional] MaskPosition mask_position)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var args = new AddStickerToSetArgs { User_id = user_id, Name = name, Emojis = emojis };
             if (png_sticker != default)
+            {
                 args.Png_sticker = png_sticker;
+            }
+
             if (tgs_sticker != default)
+            {
                 args.Tgs_sticker = tgs_sticker;
+            }
+
             if (mask_position != default)
+            {
                 args.Mask_position = mask_position;
+            }
+
             if (args.UseMultipart())
+            {
                 return T.RPCF<bool>("addStickerToSet", args);
+            }
             else
+            {
                 return T.RPC<bool>("addStickerToSet", args);
+            }
         }
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -104,18 +152,34 @@ namespace Telegram.BotAPI.Stickers
         public static async Task<bool> AddStickerToSetAsync(this BotClient T, int user_id, string name, [Optional] InputFile png_sticker, [Optional] InputFile tgs_sticker, string emojis, [Optional] MaskPosition mask_position, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var args = new AddStickerToSetArgs { User_id = user_id, Name = name, Emojis = emojis };
             if (png_sticker != default)
+            {
                 args.Png_sticker = png_sticker;
+            }
+
             if (tgs_sticker != default)
+            {
                 args.Tgs_sticker = tgs_sticker;
+            }
+
             if (mask_position != default)
+            {
                 args.Mask_position = mask_position;
+            }
+
             if (args.UseMultipart())
+            {
                 return await T.RPCAF<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
             else
+            {
                 return await T.RPCA<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
         }
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -125,13 +189,23 @@ namespace Telegram.BotAPI.Stickers
         public static bool AddStickerToSet(this BotClient T, AddStickerToSetArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             if (args.UseMultipart())
+            {
                 return T.RPCF<bool>("addStickerToSet", args);
+            }
             else
+            {
                 return T.RPC<bool>("addStickerToSet", args);
+            }
         }
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -142,13 +216,23 @@ namespace Telegram.BotAPI.Stickers
         public static async Task<bool> AddStickerToSetAsync(this BotClient T, AddStickerToSetArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             if (args.UseMultipart())
+            {
                 return await T.RPCAF<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
             else
+            {
                 return await T.RPCA<bool>("addStickerToSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
         }
     }
 }

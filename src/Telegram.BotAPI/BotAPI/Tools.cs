@@ -2,7 +2,6 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
-using System.Buffers;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -29,16 +28,6 @@ namespace Telegram.BotAPI
             await JsonSerializer.SerializeAsync(stream, args, args.GetType(), options).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return stream;
-        }
-
-        internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = default)
-        {
-            if (options == null)
-                options = new JsonSerializerOptions { IgnoreNullValues = true };
-            var buffer = new ArrayBufferWriter<byte>();
-            using var writer = new Utf8JsonWriter(buffer);
-            element.WriteTo(writer); writer.Flush();
-            return JsonSerializer.Deserialize<T>(buffer.WrittenSpan, options);
         }
 
         internal static bool IsNumber(this object value)
@@ -318,11 +307,20 @@ namespace Telegram.BotAPI
                                 writer.WriteStartObject("login_url");
                                 writer.WriteString("url", button.Login_url.Url);
                                 if (button.Login_url.Forward_text != default)
+                                {
                                     writer.WriteString("forward_text", button.Login_url.Forward_text);
+                                }
+
                                 if (button.Login_url.Bot_username != default)
+                                {
                                     writer.WriteString("bot_username", button.Login_url.Bot_username);
+                                }
+
                                 if (button.Login_url.Request_write_access)
+                                {
                                     writer.WriteBoolean("request_write_access", true);
+                                }
+
                                 writer.WriteEndObject();
                                 break;
                             case InlineKeyboardButtonType.Callback_data:
@@ -382,7 +380,10 @@ namespace Telegram.BotAPI
                     writer.WriteStartObject();
                     writer.WriteBoolean("force_reply", true);
                     if (forceReply.Selective)
+                    {
                         writer.WriteBoolean("selective", true);
+                    }
+
                     writer.WriteEndObject();
                     return;
                 }
@@ -401,7 +402,10 @@ namespace Telegram.BotAPI
                     writer.WriteStartObject();
                     writer.WriteBoolean("remove_keyboard", true);
                     if (replyKeyboardRemove.Selective)
+                    {
                         writer.WriteBoolean("selective", true);
+                    }
+
                     writer.WriteEndObject();
                     return;
                 }

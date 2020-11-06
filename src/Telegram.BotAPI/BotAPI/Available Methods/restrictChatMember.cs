@@ -18,9 +18,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool RestrictChatMember(this BotClient T, RestrictChatMemberArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPC<bool>("restrictChatMember", args);
         }
         /// <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
@@ -34,7 +40,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool RestrictChatMember(this BotClient T, long chat_id, int user_id, Available_Types.ChatPermissions permissions, [Optional] uint until_date)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var args = new RestrictChatMemberArgs
             {
                 Chat_id = chat_id,
@@ -42,7 +51,10 @@ namespace Telegram.BotAPI.Available_Methods
                 Permissions = permissions
             };
             if (until_date != default)
+            {
                 args.Until_date = until_date;
+            }
+
             return T.RPC<bool>("restrictChatMember", args);
         }
         /// <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
@@ -54,9 +66,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> RestrictChatMemberAsync(this BotClient T, RestrictChatMemberArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<bool>("restrictChatMember", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
@@ -71,7 +89,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> RestrictChatMemberAsync(this BotClient T, object chat_id, int user_id, Available_Types.ChatPermissions permissions, [Optional] uint until_date, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var args = new RestrictChatMemberArgs
             {
                 Chat_id = chat_id,
@@ -79,7 +100,10 @@ namespace Telegram.BotAPI.Available_Methods
                 Permissions = permissions
             };
             if (until_date != default)
+            {
                 args.Until_date = until_date;
+            }
+
             return await T.RPCA<bool>("restrictChatMember", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

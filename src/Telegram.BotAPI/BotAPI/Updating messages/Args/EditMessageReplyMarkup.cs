@@ -4,6 +4,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Updating_messages
 {
@@ -23,9 +24,9 @@ namespace Telegram.BotAPI.Updating_messages
         [JsonPropertyName("inline_message_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Inline_message_id { get; set; }
-        ///<summary>A <see cref="Available_Types.InlineKeyboardMarkup"/> object for an inline keyboard.</summary>
+        ///<summary>A <see cref="InlineKeyboardMarkup"/> object for an inline keyboard.</summary>
         [JsonPropertyName("reply_markup")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.InlineKeyboardMarkup Reply_markup { get; set; }
+        public InlineKeyboardMarkup Reply_markup { get; set; }
     }
 }

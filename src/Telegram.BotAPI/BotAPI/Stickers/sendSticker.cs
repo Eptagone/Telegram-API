@@ -19,9 +19,15 @@ namespace Telegram.BotAPI.Stickers
         public static Message SendSticker(this BotClient T, SendStickerArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<Message>("sendSticker", args);
         }
         /// <summary>Use this method to send static .WEBP or animated .TGS stickers. On success, the sent Message is returned..</summary>
@@ -33,9 +39,15 @@ namespace Telegram.BotAPI.Stickers
         public static async Task<Message> SendStickerAsync(this BotClient T, SendStickerArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<Message>("sendSticker", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

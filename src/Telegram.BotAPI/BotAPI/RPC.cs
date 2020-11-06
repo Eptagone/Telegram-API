@@ -26,9 +26,14 @@ namespace Telegram.BotAPI
         {
             Client = client ?? new HttpClient();
             if (!Client.DefaultRequestHeaders.Accept.Any(u => u.MediaType == "application/json"))
+            {
                 Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+
             if (!Client.DefaultRequestHeaders.Accept.Any(u => u.MediaType == "multipart/form-data"))
+            {
                 Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
+            }
         }
         /// <summary>RPC</summary>
         /// <typeparam name="T">return type.</typeparam>
@@ -54,13 +59,19 @@ namespace Telegram.BotAPI
             var streamresponse = await GetRequestAsync($"bot{Token}/{method}", cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
             var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(streamresponse);
             if (response.Ok == true)
+            {
                 return response.Result;
+            }
             else
             {
                 if (IgnoreBotExceptions)
+                {
                     return default;
+                }
                 else
+                {
                     throw new BotRequestException(response.Error_code, response.Description);
+                }
             }
         }
         /// <summary>RPC</summary>
@@ -120,13 +131,19 @@ namespace Telegram.BotAPI
             var stream = await PostRequestAsync($"bot{Token}/{method}", args, cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
             var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
             if (response.Ok == true)
+            {
                 return response.Result;
+            }
             else
             {
                 if (IgnoreBotExceptions)
+                {
                     return default;
+                }
                 else
+                {
                     throw new BotRequestException(response.Error_code, response.Description);
+                }
             }
         }
         /// <summary>RPC for files</summary>
@@ -211,13 +228,19 @@ namespace Telegram.BotAPI
             var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream);
             content.Dispose();
             if (response.Ok == true)
+            {
                 return response.Result;
+            }
             else
             {
                 if (IgnoreBotExceptions)
+                {
                     return default;
+                }
                 else
+                {
                     throw new BotRequestException(response.Error_code, response.Description);
+                }
             }
         }
 

@@ -21,7 +21,10 @@ namespace Telegram.BotAPI.Getting_updates
         public static bool DeleteWebhook(this BotClient T, [Optional] bool drop_pending_updates)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (drop_pending_updates)
             {
                 var stream = new MemoryStream();
@@ -47,7 +50,10 @@ namespace Telegram.BotAPI.Getting_updates
         public static async Task<bool> DeleteWebhookAsync(this BotClient T, [Optional] bool drop_pending_updates, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (drop_pending_updates)
             {
                 var stream = new MemoryStream();
@@ -55,7 +61,7 @@ namespace Telegram.BotAPI.Getting_updates
                 json.WriteStartObject();
                 json.WriteBoolean("drop_pending_updates", drop_pending_updates);
                 json.WriteEndObject();
-                await json.FlushAsync().ConfigureAwait(false);
+                await json.FlushAsync(cancellationToken).ConfigureAwait(false);
                 await json.DisposeAsync().ConfigureAwait(false);
                 stream.Seek(0, SeekOrigin.Begin);
                 return await T.RPCA<bool>("deleteWebhook", stream, cancellationToken).ConfigureAwait(false);

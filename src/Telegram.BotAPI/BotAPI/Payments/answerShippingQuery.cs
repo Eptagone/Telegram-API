@@ -24,7 +24,10 @@ namespace Telegram.BotAPI.Payments
         public static Message AnswerShippingQuery(this BotClient T, string shipping_query_id, bool ok, [Optional] ShippingOption[] shipping_options, [Optional] string error_message)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -33,7 +36,10 @@ namespace Telegram.BotAPI.Payments
             if (ok)
             {
                 if (shipping_options == default)
+                {
                     throw new ArgumentNullException(nameof(shipping_options));
+                }
+
                 json.WriteStartArray("shipping_options");
                 foreach (var option in shipping_options)
                 {
@@ -56,7 +62,10 @@ namespace Telegram.BotAPI.Payments
             else
             {
                 if (error_message == default)
+                {
                     throw new ArgumentNullException(nameof(error_message));
+                }
+
                 json.WriteString("error_message", error_message);
 
             }
@@ -78,7 +87,10 @@ namespace Telegram.BotAPI.Payments
         public static async Task<Message> AnswerShippingQueryAsync(this BotClient T, string shipping_query_id, bool ok, [Optional] ShippingOption[] shipping_options, [Optional] string error_message, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -87,7 +99,10 @@ namespace Telegram.BotAPI.Payments
             if (ok)
             {
                 if (shipping_options == default)
+                {
                     throw new ArgumentNullException(nameof(shipping_options));
+                }
+
                 json.WriteStartArray("shipping_options");
                 foreach (var option in shipping_options)
                 {
@@ -110,13 +125,16 @@ namespace Telegram.BotAPI.Payments
             else
             {
                 if (error_message == default)
+                {
                     throw new ArgumentNullException(nameof(error_message));
+                }
+
                 json.WriteString("error_message", error_message);
 
             }
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<Message>("answerShippingQuery", stream, cancellationToken).ConfigureAwait(false);
         }

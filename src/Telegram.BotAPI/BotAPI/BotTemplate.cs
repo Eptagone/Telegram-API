@@ -20,12 +20,16 @@ namespace Telegram.BotAPI
         /// <summary>Initializes TBaseBot implementation</summary>
         /// <param name="accessToken">Token granted by BotFather. Required to access the Telegram bot API</param>
         public BotTemplate(string accessToken)
-            => BotClient = new BotClient(accessToken);
+        {
+            BotClient = new BotClient(accessToken);
+        }
 
         /// <summary>Initializes TBaseBot implementation</summary>
         /// <param name="botClient">Bot Client</param>
         public BotTemplate(BotClient botClient)
-            => BotClient = botClient;
+        {
+            BotClient = botClient;
+        }
 
         /// <summary>Start to get updates using polling.</summary>
         /// <param name="allowed_updates">List of allowed updates.</param>
@@ -57,7 +61,9 @@ namespace Telegram.BotAPI
                             .ConfigureAwait(false);
 
                         if (updates.Length > 0)
+                        {
                             goto pending;
+                        }
                     }
                 }
             }
@@ -74,7 +80,10 @@ namespace Telegram.BotAPI
         public virtual void OnUpdate(Update update, [Optional] CancellationToken cancellationToken)
         {
             if (update == default)
+            {
                 throw new ArgumentNullException(nameof(update));
+            }
+
             try
             {
                 switch (update.Type)

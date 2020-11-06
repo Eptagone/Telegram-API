@@ -20,9 +20,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendVideo(this BotClient T, SendVideoArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<Message>("sendVideo", args);
         }
         /// <summary>Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.</summary>
@@ -35,9 +41,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendVideoAsync(this BotClient T, SendVideoArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<Message>("sendVideo", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

@@ -19,7 +19,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static User GetMe(this BotClient T)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPC<User>("getMe");
         }
         /// <summary>A simple method for testing your bot's auth token. Returns basic information about the bot in form of a User object.</summary>
@@ -31,7 +34,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<User> GetMeAsync(this BotClient T, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return await T.RPCA<User>("getMe", cancellationToken).ConfigureAwait(false);
         }
     }

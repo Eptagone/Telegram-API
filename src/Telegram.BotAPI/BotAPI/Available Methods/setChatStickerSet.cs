@@ -21,7 +21,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool SetChatStickerSet(this BotClient T, long chat_id, string sticker_set_name)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -41,7 +44,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool SetChatStickerSet(this BotClient T, string chat_id, string sticker_set_name)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -62,15 +68,18 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> SetChatStickerSetAsync(this BotClient T, long chat_id, string sticker_set_name, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteNumber("chat_id", chat_id);
             json.WriteString("sticker_set_name", sticker_set_name);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("setChatStickerSet", stream, cancellationToken).ConfigureAwait(false);
         }
@@ -84,15 +93,18 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> SetChatStickerSetAsync(this BotClient T, string chat_id, string sticker_set_name, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteString("chat_id", chat_id);
             json.WriteString("sticker_set_name", sticker_set_name);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("setChatStickerSet", stream, cancellationToken).ConfigureAwait(false);
         }

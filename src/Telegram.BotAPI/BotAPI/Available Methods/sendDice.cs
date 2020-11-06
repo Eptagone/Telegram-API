@@ -25,23 +25,44 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendDice(this BotClient T, string chat_id, [Optional] string emoji, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (string.IsNullOrEmpty(chat_id))
+            {
                 throw new ArgumentNullException(nameof(chat_id));
+            }
+
             var args = new SendDiceArgs
             {
                 Chat_id = chat_id
             };
             if (!string.IsNullOrEmpty(emoji))
+            {
                 args.Emoji = emoji;
+            }
+
             if (disable_notification)
+            {
                 args.Disable_notification = disable_notification;
+            }
+
             if (reply_to_message_id != default)
+            {
                 args.Reply_to_message_id = reply_to_message_id;
+            }
+
             if (allow_sending_without_reply)
+            {
                 args.Allow_sending_without_reply = allow_sending_without_reply;
+            }
+
             if (reply_markup != null)
+            {
                 args.Reply_markup = reply_markup;
+            }
+
             return T.RPC<Message>("sendDice", args);
         }
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
@@ -58,23 +79,44 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendDice(this BotClient T, long chat_id, [Optional] string emoji, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (chat_id == default)
+            {
                 throw new ArgumentNullException(nameof(chat_id));
+            }
+
             var args = new SendDiceArgs
             {
                 Chat_id = chat_id
             };
             if (!string.IsNullOrEmpty(emoji))
+            {
                 args.Emoji = emoji;
+            }
+
             if (disable_notification)
+            {
                 args.Disable_notification = disable_notification;
+            }
+
             if (reply_to_message_id != default)
+            {
                 args.Reply_to_message_id = reply_to_message_id;
+            }
+
             if (allow_sending_without_reply)
+            {
                 args.Allow_sending_without_reply = allow_sending_without_reply;
+            }
+
             if (reply_markup != null)
+            {
                 args.Reply_markup = reply_markup;
+            }
+
             return T.RPC<Message>("sendDice", args);
         }
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
@@ -86,9 +128,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendDice(this BotClient T, SendDiceArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPC<Message>("sendDice", args);
         }
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
@@ -106,23 +154,44 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendDiceAsync(this BotClient T, string chat_id, [Optional] string emoji, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (string.IsNullOrEmpty(chat_id))
+            {
                 throw new ArgumentNullException(nameof(chat_id));
+            }
+
             var args = new SendDiceArgs
             {
                 Chat_id = chat_id
             };
             if (!string.IsNullOrEmpty(emoji))
+            {
                 args.Emoji = emoji;
+            }
+
             if (disable_notification)
+            {
                 args.Disable_notification = disable_notification;
+            }
+
             if (reply_to_message_id != default)
+            {
                 args.Reply_to_message_id = reply_to_message_id;
+            }
+
             if (allow_sending_without_reply)
+            {
                 args.Allow_sending_without_reply = allow_sending_without_reply;
+            }
+
             if (reply_markup != null)
+            {
                 args.Reply_markup = reply_markup;
+            }
+
             return await T.RPCA<Message>("sendDice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
@@ -140,23 +209,44 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendDiceAsync(this BotClient T, long chat_id, [Optional] string emoji, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (chat_id == default)
+            {
                 throw new ArgumentNullException(nameof(chat_id));
+            }
+
             var args = new SendDiceArgs
             {
                 Chat_id = chat_id
             };
             if (!string.IsNullOrEmpty(emoji))
+            {
                 args.Emoji = emoji;
+            }
+
             if (disable_notification)
+            {
                 args.Disable_notification = disable_notification;
+            }
+
             if (reply_to_message_id != default)
+            {
                 args.Reply_to_message_id = reply_to_message_id;
+            }
+
             if (allow_sending_without_reply)
+            {
                 args.Allow_sending_without_reply = allow_sending_without_reply;
+            }
+
             if (reply_markup != null)
+            {
                 args.Reply_markup = reply_markup;
+            }
+
             return await T.RPCA<Message>("sendDice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the “proper” singular of die. But it's awkward, and we decided to help it change. One dice at a time!)</summary>
@@ -169,9 +259,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendDiceAsync(this BotClient T, SendDiceArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Message>("sendDice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

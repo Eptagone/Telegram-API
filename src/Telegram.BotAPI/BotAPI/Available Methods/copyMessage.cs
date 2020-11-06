@@ -18,12 +18,20 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static MessageId CopyMessage(this BotClient T, CopyMessageArgs args)
+        public static MessageId CopyMessage(
+            this BotClient T,
+            CopyMessageArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPC<MessageId>("copyMessage", args);
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
@@ -33,12 +41,21 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<MessageId> CopyMessageAsync(this BotClient T, CopyMessageArgs args, [Optional] CancellationToken cancellationToken)
+        public static async Task<MessageId> CopyMessageAsync(
+            this BotClient T,
+            CopyMessageArgs args,
+            [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<MessageId>("copyMessage", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

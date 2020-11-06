@@ -22,14 +22,20 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool KickChatMember(this BotClient T, long chat_id, int user_id, [Optional] uint until_date)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteNumber("chat_id", chat_id);
             json.WriteNumber("user_id", user_id);
             if (until_date != default)
+            {
                 json.WriteNumber("until_date", until_date);
+            }
+
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -45,14 +51,20 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool KickChatMember(this BotClient T, string chat_id, int user_id, [Optional] uint until_date)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteString("chat_id", chat_id);
             json.WriteNumber("user_id", user_id);
             if (until_date != default)
+            {
                 json.WriteNumber("until_date", until_date);
+            }
+
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -69,17 +81,23 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> KickChatMemberAsync(this BotClient T, long chat_id, int user_id, [Optional] int until_date, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteNumber("chat_id", chat_id);
             json.WriteNumber("user_id", user_id);
             if (until_date != default)
+            {
                 json.WriteNumber("until_date", until_date);
+            }
+
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("kickChatMember", stream, cancellationToken).ConfigureAwait(false);
         }
@@ -94,17 +112,23 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> KickChatMemberAsync(this BotClient T, string chat_id, int user_id, [Optional] int until_date, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteString("chat_id", chat_id);
             json.WriteNumber("user_id", user_id);
             if (until_date != default)
+            {
                 json.WriteNumber("until_date", until_date);
+            }
+
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("kickChatMember", stream, cancellationToken).ConfigureAwait(false);
         }

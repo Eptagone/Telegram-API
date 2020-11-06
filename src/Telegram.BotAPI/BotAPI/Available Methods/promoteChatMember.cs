@@ -20,7 +20,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool PromoteChatMember(this BotClient T, PromoteChatMemberArgs args)
         {
             if (T == default)
+            {
                 throw new System.ArgumentNullException(nameof(T));
+            }
+
             return T.RPC<bool>("promoteChatMember", args);
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
@@ -41,9 +44,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool PromoteChatMember(this BotClient T, string chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (chat_id == null)
+            {
                 throw new ArgumentNullException(nameof(chat_id));
+            }
+
             var stream = new MemoryStream();
             var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -81,7 +90,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool PromoteChatMember(this BotClient T, long chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -110,9 +122,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> PromoteChatMemberAsync(this BotClient T, PromoteChatMemberArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<bool>("promoteChatMember", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
@@ -134,9 +152,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> PromoteChatMemberAsync(this BotClient T, string chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (chat_id == null)
+            {
                 throw new ArgumentNullException(nameof(chat_id));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -152,7 +176,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteBoolean("can_pin_messages", can_pin_messages);
             json.WriteBoolean("can_promote_members", can_promote_members);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("promoteChatMember", stream, cancellationToken)
                 .ConfigureAwait(false);
@@ -176,7 +200,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> PromoteChatMemberAsync(this BotClient T, long chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -192,7 +219,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteBoolean("can_pin_messages", can_pin_messages);
             json.WriteBoolean("can_promote_members", can_promote_members);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("promoteChatMember", stream, cancellationToken)
                 .ConfigureAwait(false);

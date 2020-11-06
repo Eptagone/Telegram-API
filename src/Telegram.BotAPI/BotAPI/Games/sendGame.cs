@@ -19,7 +19,10 @@ namespace Telegram.BotAPI.Games
         public static Message SendGame(this BotClient T, SendGameArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPC<Message>("sendGame", args);
         }
         ///<summary>Use this method to send a game. On success, the sent Message is returned.</summary>
@@ -31,9 +34,15 @@ namespace Telegram.BotAPI.Games
         public static async Task<Message> SendGameAsync(this BotClient T, SendGameArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Message>("sendGame", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

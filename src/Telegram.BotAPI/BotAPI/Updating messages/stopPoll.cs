@@ -23,7 +23,10 @@ namespace Telegram.BotAPI.Updating_messages
         public static Poll StopPoll(this BotClient T, long chat_id, uint message_id)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -44,7 +47,10 @@ namespace Telegram.BotAPI.Updating_messages
         public static Poll StopPoll(this BotClient T, string chat_id, uint message_id)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -65,9 +71,15 @@ namespace Telegram.BotAPI.Updating_messages
         public static Poll StopPoll(this BotClient T, long chat_id, uint message_id, InlineKeyboardMarkup reply_markup)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (reply_markup == default)
+            {
                 throw new ArgumentNullException(nameof(reply_markup));
+            }
+
             var args = new StopPollArgs
             {
                 Chat_id = chat_id,
@@ -86,9 +98,15 @@ namespace Telegram.BotAPI.Updating_messages
         public static Poll StopPoll(this BotClient T, string chat_id, uint message_id, InlineKeyboardMarkup reply_markup)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (reply_markup == default)
+            {
                 throw new ArgumentNullException(nameof(reply_markup));
+            }
+
             var args = new StopPollArgs
             {
                 Chat_id = chat_id,
@@ -108,15 +126,18 @@ namespace Telegram.BotAPI.Updating_messages
         public static async Task<Poll> StopPollAsync(this BotClient T, long chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteNumber("chat_id", chat_id);
             json.WriteNumber("message_id", message_id);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<Poll>("stopPoll", stream, cancellationToken).ConfigureAwait(false);
         }
@@ -131,15 +152,18 @@ namespace Telegram.BotAPI.Updating_messages
         public static async Task<Poll> StopPollAsync(this BotClient T, string chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream);
             json.WriteStartObject();
             json.WriteString("chat_id", chat_id);
             json.WriteNumber("message_id", message_id);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<Poll>("stopPoll", stream, cancellationToken).ConfigureAwait(false);
         }
@@ -155,9 +179,15 @@ namespace Telegram.BotAPI.Updating_messages
         public static async Task<Poll> StopPollAsync(this BotClient T, long chat_id, uint message_id, [Optional] InlineKeyboardMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (reply_markup == default)
+            {
                 throw new ArgumentNullException(nameof(reply_markup));
+            }
+
             var args = new StopPollArgs
             {
                 Chat_id = chat_id,
@@ -177,9 +207,15 @@ namespace Telegram.BotAPI.Updating_messages
         public static async Task<Poll> StopPollAsync(this BotClient T, string chat_id, uint message_id, InlineKeyboardMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (reply_markup == default)
+            {
                 throw new ArgumentNullException(nameof(reply_markup));
+            }
+
             var args = new StopPollArgs
             {
                 Chat_id = chat_id,
@@ -196,9 +232,15 @@ namespace Telegram.BotAPI.Updating_messages
         public static Poll StopPoll(this BotClient T, StopPollArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPC<Poll>("stopPoll", args);
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
@@ -210,9 +252,15 @@ namespace Telegram.BotAPI.Updating_messages
         public static async Task<Poll> StopPollAsync(this BotClient T, StopPollArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Poll>("stopPoll", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

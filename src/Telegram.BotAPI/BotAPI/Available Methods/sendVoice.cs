@@ -20,9 +20,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendVoice(this BotClient T, SendVoiceArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<Message>("sendVoice", args);
         }
         /// <summary>Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned.</summary>
@@ -35,9 +41,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendVoiceAsync(this BotClient T, SendVoiceArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<Message>("sendVoice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

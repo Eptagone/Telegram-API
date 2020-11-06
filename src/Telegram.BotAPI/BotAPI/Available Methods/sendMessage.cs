@@ -22,9 +22,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendMessage(this BotClient T, SendMessageArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPC<Message>("sendMessage", args);
         }
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
@@ -37,9 +43,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendMessageAsync(this BotClient T, SendMessageArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Message>("sendMessage", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
@@ -59,23 +71,38 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendMessage(this BotClient T, object chat_id, string text, [Optional] string parse_mode, [Optional] MessageEntity[] entities, [Optional] bool disable_web_page_preview, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var args = new SendMessageArgs()
             {
                 Chat_id = chat_id,
                 Text = text
             };
             if (parse_mode != default)
+            {
                 args.Parse_mode = parse_mode;
+            }
+
             if (entities != default)
+            {
                 args.Entities = entities;
+            }
+
             args.Disable_web_page_preview = disable_web_page_preview;
             args.Disable_notification = disable_notification;
             if (reply_to_message_id != default)
+            {
                 args.Reply_to_message_id = reply_to_message_id;
+            }
+
             args.Allow_sending_without_reply = allow_sending_without_reply;
             if (reply_markup != default)
+            {
                 args.Reply_markup = reply_markup;
+            }
+
             return T.RPC<Message>("sendMessage", args);
         }
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
@@ -96,23 +123,38 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendMessageAsync(this BotClient T, object chat_id, string text, [Optional] string parse_mode, [Optional] MessageEntity[] entities, [Optional] bool disable_web_page_preview, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var args = new SendMessageArgs()
             {
                 Chat_id = chat_id,
                 Text = text
             };
             if (parse_mode != default)
+            {
                 args.Parse_mode = parse_mode;
+            }
+
             if (entities != default)
+            {
                 args.Entities = entities;
+            }
+
             args.Disable_web_page_preview = disable_web_page_preview;
             args.Disable_notification = disable_notification;
             if (reply_to_message_id != default)
+            {
                 args.Reply_to_message_id = reply_to_message_id;
+            }
+
             args.Allow_sending_without_reply = allow_sending_without_reply;
             if (reply_markup != default)
+            {
                 args.Reply_markup = reply_markup;
+            }
+
             return await T.RPCA<Message>("sendMessage", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
@@ -131,22 +173,40 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendMessage(this BotClient T, long chat_id, string text, [Optional] string parse_mode, [Optional] bool disable_web_page_preview, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteNumber("chat_id", chat_id);
             json.WriteString("text", text);
             if (parse_mode != default)
+            {
                 json.WriteString("parse_mode", parse_mode);
+            }
+
             if (disable_web_page_preview)
+            {
                 json.WriteBoolean("disable_web_page_preview", disable_web_page_preview);
+            }
+
             if (disable_notification)
+            {
                 json.WriteBoolean("disable_notification", disable_notification);
+            }
+
             if (reply_to_message_id != default)
+            {
                 json.WriteNumber("reply_to_message_id", reply_to_message_id);
+            }
+
             if (allow_sending_without_reply)
+            {
                 json.WriteBoolean("allow_sending_without_reply", allow_sending_without_reply);
+            }
+
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -168,24 +228,42 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendMessageAsync(this BotClient T, long chat_id, string text, [Optional] string parse_mode, [Optional] bool disable_web_page_preview, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteNumber("chat_id", chat_id);
             json.WriteString("text", text);
             if (parse_mode != default)
+            {
                 json.WriteString("parse_mode", parse_mode);
+            }
+
             if (disable_web_page_preview)
+            {
                 json.WriteBoolean("disable_web_page_preview", disable_web_page_preview);
+            }
+
             if (disable_notification)
+            {
                 json.WriteBoolean("disable_notification", disable_notification);
+            }
+
             if (allow_sending_without_reply)
+            {
                 json.WriteBoolean("allow_sending_without_reply", allow_sending_without_reply);
+            }
+
             if (reply_to_message_id != default)
+            {
                 json.WriteNumber("reply_to_message_id", reply_to_message_id);
+            }
+
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<Message>("sendMessage", stream, cancellationToken).ConfigureAwait(false);
         }

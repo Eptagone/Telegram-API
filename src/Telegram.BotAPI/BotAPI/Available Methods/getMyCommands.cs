@@ -19,7 +19,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static BotCommand[] GetMyCommands(this BotClient T)
         {
             if (T == null)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPC<BotCommand[]>("getMyCommands");
         }
         /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
@@ -31,7 +34,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<BotCommand[]> GetMyCommandsAsync(this BotClient T, [Optional] CancellationToken cancellationToken)
         {
             if (T == null)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return await T.RPCA<BotCommand[]>("getMyCommands", cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

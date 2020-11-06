@@ -20,7 +20,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendVenue(this BotClient T, SendVenueArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPC<Message>("sendVenue", args);
         }
         /// <summary>Use this method to send information about a venue. On success, the sent Message is returned.</summary>
@@ -33,9 +36,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendVenueAsync(this BotClient T, SendVenueArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Message>("sendVenue", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

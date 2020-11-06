@@ -3,7 +3,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.BotAPI.Available_Types;
@@ -12,50 +11,66 @@ namespace Telegram.BotAPI.Updating_messages
 {
     public static partial class UpdatingMessages
     {
-        /// <summary>Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <summary>Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL.</summary>
+        /// <param name="B">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        /// <returns>Message Object.</returns>
-        public static dynamic EditMessageMedia(this BotClient T, EditMessageMediaArgs args)
+        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.Available_Types.Message or bool.</exception>
+        /// <returns><see cref="Message"/> or <see cref="bool"/>. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</returns>
+        public static T EditMessageMedia<T>(this BotClient B, EditMessageMediaArgs args)
         {
-            if (T == default)
-                throw new ArgumentNullException(nameof(T));
+            if (B == default)
+            {
+                throw new ArgumentNullException(nameof(B));
+            }
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
-            JsonElement json_result;
-            if (args.AttachFiles == default)
-                json_result = T.RPC<JsonElement>("editMessageMedia", args);
+            }
+            if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
+            {
+                throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.Available_Types.Message or bool.");
+            }
+            if (args.UseMultipart())
+            {
+                return B.RPCF<T>("editMessageMedia", args);
+            }
             else
-                json_result = T.RPCF<JsonElement>("editMessageMedia", args);
-            if (json_result.ValueKind == JsonValueKind.Object)
-                return json_result.ToObject<Message>();
-            else
-                return json_result.GetBoolean();
+            {
+                return B.RPC<T>("editMessageMedia", args);
+            }
         }
-        /// <summary>Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <summary>Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL.</summary>
+        /// <param name="B">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        /// <returns>Message Object.</returns>
-        public static async Task<dynamic> EditMessageMediaAsync(this BotClient T, EditMessageMediaArgs args, [Optional] CancellationToken cancellationToken)
+        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.Available_Types.Message or bool.</exception>
+        /// <returns><see cref="Message"/> or <see cref="bool"/>. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.</returns>
+        public static async Task<T> EditMessageMediaAsync<T>(this BotClient B, EditMessageMediaArgs args, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
-                throw new ArgumentNullException(nameof(T));
+            if (B == default)
+            {
+                throw new ArgumentNullException(nameof(B));
+            }
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
-            JsonElement json_result;
-            if (args.AttachFiles == default)
-                json_result = await T.RPCA<JsonElement>("editMessageMedia", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
+            if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
+            {
+                throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.Available_Types.Message or bool.");
+            }
+            if (args.UseMultipart())
+            {
+                return await B.RPCAF<T>("editMessageMedia", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
             else
-                json_result = await T.RPCAF<JsonElement>("editMessageMedia", args, cancellationToken: cancellationToken).ConfigureAwait(false);
-            if (json_result.ValueKind == JsonValueKind.Object)
-                return json_result.ToObject<Message>();
-            else
-                return json_result.GetBoolean();
+            {
+                return await B.RPCA<T>("editMessageMedia", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
         }
     }
 }

@@ -24,7 +24,10 @@ namespace Telegram.BotAPI.Payments
         public static bool AnswerPreCheckoutQuery(this BotClient T, string pre_checkout_query_id, bool ok, [Optional] string error_message)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -33,7 +36,10 @@ namespace Telegram.BotAPI.Payments
             if (!ok)
             {
                 if (error_message == default)
+                {
                     throw new ArgumentNullException(nameof(error_message));
+                }
+
                 json.WriteString("error_message", error_message);
             }
             json.WriteEndObject();
@@ -53,7 +59,10 @@ namespace Telegram.BotAPI.Payments
         public static async Task<bool> AnswerPreCheckoutQueryAsync(this BotClient T, string pre_checkout_query_id, bool ok, [Optional] string error_message, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -62,12 +71,15 @@ namespace Telegram.BotAPI.Payments
             if (!ok)
             {
                 if (error_message == default)
+                {
                     throw new ArgumentNullException(nameof(error_message));
+                }
+
                 json.WriteString("error_message", error_message);
             }
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("answerPreCheckoutQuery", stream, cancellationToken).ConfigureAwait(false);
         }

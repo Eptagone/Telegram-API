@@ -20,9 +20,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendAnimation(this BotClient T, SendAnimationArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return args.UseMultipart() ? T.RPCF<Message>("sendAnimation", args) : T.RPC<Message>("sendAnimation", args);
         }
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
@@ -43,7 +49,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message SendAnimation(this BotClient T, string chat_id, string animation, [Optional] uint duration, [Optional] uint width, [Optional] uint height, [Optional] string thumb, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] AttachFile[] attachFiles)
-            => T.SendAnimation(new SendAnimationArgs
+        {
+            return T.SendAnimation(new SendAnimationArgs
             {
                 Chat_id = chat_id,
                 Animation = animation,
@@ -58,6 +65,7 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_markup = reply_markup,
                 AttachFiles = attachFiles
             });
+        }
 
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -77,7 +85,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message SendAnimation(this BotClient T, long chat_id, string animation, [Optional] uint duration, [Optional] uint width, [Optional] uint height, [Optional] string thumb, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] AttachFile[] attachFiles)
-            => T.SendAnimation(new SendAnimationArgs
+        {
+            return T.SendAnimation(new SendAnimationArgs
             {
                 Chat_id = chat_id,
                 Animation = animation,
@@ -92,6 +101,7 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_markup = reply_markup,
                 AttachFiles = attachFiles
             });
+        }
 
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -110,7 +120,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message SendAnimation(this BotClient T, string chat_id, InputFile animation, [Optional] uint duration, [Optional] uint width, [Optional] uint height, [Optional] InputFile thumb, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup)
-            => T.SendAnimation(new SendAnimationArgs
+        {
+            return T.SendAnimation(new SendAnimationArgs
             {
                 Chat_id = chat_id,
                 Animation = animation,
@@ -124,6 +135,7 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             });
+        }
 
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -142,7 +154,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static Message SendAnimation(this BotClient T, long chat_id, InputFile animation, [Optional] uint duration, [Optional] uint width, [Optional] uint height, [Optional] InputFile thumb, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup)
-            => T.SendAnimation(new SendAnimationArgs
+        {
+            return T.SendAnimation(new SendAnimationArgs
             {
                 Chat_id = chat_id,
                 Animation = animation,
@@ -156,6 +169,7 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup
             });
+        }
 
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -167,9 +181,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendAnimationAsync(this BotClient T, SendAnimationArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await (args.UseMultipart() ? T.RPCAF<Message>("sendAnimation", args, cancellationToken: cancellationToken).ConfigureAwait(false) : T.RPCA<Message>("sendAnimation", args, cancellationToken: cancellationToken).ConfigureAwait(false));
         }
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
@@ -191,7 +211,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> SendAnimationAsync(this BotClient T, string chat_id, string animation, [Optional] uint duration, [Optional] uint width, [Optional] uint height, [Optional] string thumb, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] AttachFile[] attachFiles, [Optional] CancellationToken cancellationToken)
-            => await T.SendAnimationAsync(new SendAnimationArgs
+        {
+            return await T.SendAnimationAsync(new SendAnimationArgs
             {
                 Chat_id = chat_id,
                 Animation = animation,
@@ -206,6 +227,7 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_markup = reply_markup,
                 AttachFiles = attachFiles
             }, cancellationToken).ConfigureAwait(false);
+        }
 
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -226,7 +248,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> SendAnimationAsync(this BotClient T, long chat_id, string animation, [Optional] uint duration, [Optional] uint width, [Optional] uint height, [Optional] string thumb, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] AttachFile[] attachFiles, [Optional] CancellationToken cancellationToken)
-            => await T.SendAnimationAsync(new SendAnimationArgs
+        {
+            return await T.SendAnimationAsync(new SendAnimationArgs
             {
                 Chat_id = chat_id,
                 Animation = animation,
@@ -241,6 +264,7 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_markup = reply_markup,
                 AttachFiles = attachFiles
             }, cancellationToken).ConfigureAwait(false);
+        }
 
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -260,7 +284,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> SendAnimationAsync(this BotClient T, string chat_id, InputFile animation, [Optional] uint duration, [Optional] uint width, [Optional] uint height, [Optional] InputFile thumb, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
-            => await T.SendAnimationAsync(new SendAnimationArgs
+        {
+            return await T.SendAnimationAsync(new SendAnimationArgs
             {
                 Chat_id = chat_id,
                 Animation = animation,
@@ -274,6 +299,7 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup,
             }, cancellationToken).ConfigureAwait(false);
+        }
 
         /// <summary>Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>
@@ -293,7 +319,8 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
         public static async Task<Message> SendAnimationAsync(this BotClient T, long chat_id, InputFile animation, [Optional] uint duration, [Optional] uint width, [Optional] uint height, [Optional] InputFile thumb, [Optional] string caption, [Optional] string parse_mode, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
-            => await T.SendAnimationAsync(new SendAnimationArgs
+        {
+            return await T.SendAnimationAsync(new SendAnimationArgs
             {
                 Chat_id = chat_id,
                 Animation = animation,
@@ -307,5 +334,6 @@ namespace Telegram.BotAPI.Available_Methods
                 Reply_to_message_id = reply_to_message_id,
                 Reply_markup = reply_markup,
             }, cancellationToken).ConfigureAwait(false);
+        }
     }
 }

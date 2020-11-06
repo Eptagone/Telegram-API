@@ -22,7 +22,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static File GetFile(this BotClient T, string file_id)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -42,7 +45,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<File> GetFileAsync(this BotClient T, string file_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();

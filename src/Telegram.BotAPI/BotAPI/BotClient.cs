@@ -30,10 +30,15 @@ namespace Telegram.BotAPI
         public BotClient(string accessToken)
         {
             if (string.IsNullOrEmpty(accessToken))
+            {
                 throw new ArgumentNullException(nameof(accessToken));
+            }
+
             Token = accessToken;
             if (Client == default)
+            {
                 SetHttpClient();
+            }
         }
     }
 }

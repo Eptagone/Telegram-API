@@ -19,9 +19,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static Message SendPoll(this BotClient T, SendPollArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPC<Message>("sendPoll", args);
         }
         /// <summary>Use this method to send a native poll. A native poll can't be sent to a private chat. On success, the sent Message is returned.</summary>
@@ -33,9 +39,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<Message> SendPollAsync(this BotClient T, SendPollArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Message>("sendPoll", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

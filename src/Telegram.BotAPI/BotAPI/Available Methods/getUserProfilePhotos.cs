@@ -21,18 +21,31 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>UserProfilePhotos Object.</returns>
-        public static UserProfilePhotos GetUserProfilePhotos(this BotClient T, int user_id, [Optional] uint offset, [Optional] ushort limit)
+        public static UserProfilePhotos GetUserProfilePhotos(
+            this BotClient T,
+            int user_id,
+            [Optional] uint offset,
+            [Optional] ushort limit)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteNumber("user_id", user_id);
             if (offset != default)
+            {
                 json.WriteNumber("offset", offset);
+            }
+
             if (limit != default)
+            {
                 json.WriteNumber("limit", limit);
+            }
+
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -47,21 +60,35 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>UserProfilePhotos Object.</returns>
-        public static async Task<UserProfilePhotos> GetUserProfilePhotosAsync(this BotClient T, int user_id, [Optional] uint offset, [Optional] ushort limit, [Optional] CancellationToken cancellationToken)
+        public static async Task<UserProfilePhotos> GetUserProfilePhotosAsync(
+            this BotClient T,
+            int user_id,
+            [Optional] uint offset,
+            [Optional] ushort limit,
+            [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteNumber("user_id", user_id);
             if (offset != default)
+            {
                 json.WriteNumber("offset", offset);
+            }
+
             if (limit != default)
+            {
                 json.WriteNumber("limit", limit);
+            }
+
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<UserProfilePhotos>("getUserProfilePhotos", stream, cancellationToken).ConfigureAwait(false);
         }

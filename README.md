@@ -13,13 +13,14 @@ All objects and methods are sorted in namespaces in the same order of sections a
 ## Features
 * Contains pre-defined methods for all Bot API 5.0 methods.
 * Contains classes for each object type used in the Bot API 5.0.
+* Contains sync and async methods.
 * Support request cancellation for async methods.
 * Support [System.Text.Json](https://www.nuget.org/packages/System.Text.Json/) and [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/).
 
 ## .NET platforms support
-* NET Standard >= 2.1
-* NET Core >= 3.0
-* NET Framework (Not supported)
+* NET Standard >= 2.0
+* NET Core and NET 5 >= 2.0
+* NET Framework >= 4.6.1
 
 ## Installation
 ### Install from the command line:

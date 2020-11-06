@@ -35,13 +35,26 @@ namespace Telegram.BotAPI.Available_Methods
         internal bool UseMultipart()
         {
             if (Video_note != default)
+            {
                 if (Video_note.GetType() == typeof(InputFile))
+                {
                     return true;
+                }
+            }
+
             if (Thumb != default)
+            {
                 if (Thumb.GetType() == typeof(InputFile))
+                {
                     return true;
+                }
+            }
+
             if (AttachFiles != default)
+            {
                 return true;
+            }
+
             return false;
         }
     }

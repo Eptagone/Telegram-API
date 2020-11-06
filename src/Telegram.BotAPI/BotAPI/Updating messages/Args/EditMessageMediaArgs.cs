@@ -39,7 +39,10 @@ namespace Telegram.BotAPI.Updating_messages
         internal bool UseMultipart()
         {
             if (AttachFiles != default)
+            {
                 return true;
+            }
+
             return false;
         }
     }

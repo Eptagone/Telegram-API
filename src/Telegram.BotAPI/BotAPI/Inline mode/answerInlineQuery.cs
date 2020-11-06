@@ -22,9 +22,15 @@ namespace Telegram.BotAPI.Inline_mode
         public static bool AnswerInlineQuery(this BotClient T, AnswerInlineQueryArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             var options = new JsonSerializerOptions { IgnoreNullValues = true };
             options.Converters.Add(new Tools.InlineQueryResultConverter());
             options.Converters.Add(new Tools.InputMessageContentConverter());
@@ -46,9 +52,15 @@ namespace Telegram.BotAPI.Inline_mode
         public static async Task<bool> AnswerInlineQueryAsync(this BotClient T, AnswerInlineQueryArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             var options = new JsonSerializerOptions { IgnoreNullValues = true };
             options.Converters.Add(new Tools.InlineQueryResultConverter());
             options.Converters.Add(new Tools.InputMessageContentConverter());

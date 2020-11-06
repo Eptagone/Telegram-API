@@ -19,7 +19,10 @@ namespace Telegram.BotAPI.Getting_updates
         public static Update[] GetUpdates(this BotClient T)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPC<Update[]>("getUpdates");
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
@@ -29,7 +32,10 @@ namespace Telegram.BotAPI.Getting_updates
         public static async Task<Update[]> GetUpdatesAsync(this BotClient T)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return await T.RPCA<Update[]>("getUpdates").ConfigureAwait(false);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
@@ -40,9 +46,15 @@ namespace Telegram.BotAPI.Getting_updates
         public static Update[] GetUpdates(this BotClient T, GetUpdatesArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPC<Update[]>("getUpdates", args);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
@@ -54,9 +66,15 @@ namespace Telegram.BotAPI.Getting_updates
         public static async Task<Update[]> GetUpdatesAsync(this BotClient T, GetUpdatesArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<Update[]>("getUpdates", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to receive incoming updates using long polling. An Array of <see cref="Update"/> objects is returned.</summary>
@@ -70,16 +88,28 @@ namespace Telegram.BotAPI.Getting_updates
         public static Update[] GetUpdates(this BotClient T, [Optional] uint offset, [Optional] ushort limit, [Optional] uint timeout, [Optional] string[] allowed_updates)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream);
             json.WriteStartObject();
             if (offset != default)
+            {
                 json.WriteNumber("offset", offset);
+            }
+
             if (limit != default)
+            {
                 json.WriteNumber("limit", limit);
+            }
+
             if (timeout != default)
+            {
                 json.WriteNumber("timeout", timeout);
+            }
+
             if (allowed_updates != default)
             {
                 json.WriteStartArray("allowed_updates");
@@ -106,16 +136,28 @@ namespace Telegram.BotAPI.Getting_updates
         public static async Task<Update[]> GetUpdatesAsync(this BotClient T, [Optional] uint offset, [Optional] ushort limit, [Optional] uint timeout, [Optional] string[] allowed_updates, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream);
             json.WriteStartObject();
             if (offset != default)
+            {
                 json.WriteNumber("offset", offset);
+            }
+
             if (limit != default)
+            {
                 json.WriteNumber("limit", limit);
+            }
+
             if (timeout != default)
+            {
                 json.WriteNumber("timeout", timeout);
+            }
+
             if (allowed_updates != default)
             {
                 json.WriteStartArray("allowed_updates");
@@ -126,8 +168,8 @@ namespace Telegram.BotAPI.Getting_updates
                 json.WriteEndArray();
             }
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<Update[]>("getUpdates", stream, cancellationToken).ConfigureAwait(false);
         }

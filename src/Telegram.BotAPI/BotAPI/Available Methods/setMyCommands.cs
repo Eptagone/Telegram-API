@@ -22,9 +22,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool SetMyCommands(this BotClient T, BotCommand[] commands)
         {
             if (T == null)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (commands == default)
+            {
                 throw new ArgumentNullException(nameof(commands));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -32,7 +38,10 @@ namespace Telegram.BotAPI.Available_Methods
             foreach (var cmd in commands)
             {
                 if (string.IsNullOrEmpty(cmd.Command) || string.IsNullOrEmpty(cmd.Description))
+                {
                     throw new ArgumentNullException($"{nameof(commands)} properties can't be null");
+                }
+
                 json.WriteStartObject();
                 json.WriteString("command", cmd.Command);
                 json.WriteString("description", cmd.Description);
@@ -54,9 +63,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> SetMyCommandsAsync(this BotClient T, BotCommand[] commands, [Optional] CancellationToken cancellationToken)
         {
             if (T == null)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (commands == default)
+            {
                 throw new ArgumentNullException(nameof(commands));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -64,7 +79,10 @@ namespace Telegram.BotAPI.Available_Methods
             foreach (var cmd in commands)
             {
                 if (string.IsNullOrEmpty(cmd.Command) || string.IsNullOrEmpty(cmd.Description))
+                {
                     throw new ArgumentNullException($"{nameof(commands)} properties can't be null");
+                }
+
                 json.WriteStartObject();
                 json.WriteString("command", cmd.Command);
                 json.WriteString("description", cmd.Description);
@@ -72,7 +90,7 @@ namespace Telegram.BotAPI.Available_Methods
             }
             json.WriteEndArray();
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("setMyCommands", stream, cancellationToken).ConfigureAwait(false);
         }

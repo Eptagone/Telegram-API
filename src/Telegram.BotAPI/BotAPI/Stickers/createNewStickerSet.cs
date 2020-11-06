@@ -18,13 +18,23 @@ namespace Telegram.BotAPI.Stickers
         public static bool CreateNewStickerSet(this BotClient T, CreateNewStickerSetArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             if (args.UseMultipart())
+            {
                 return T.RPCF<bool>("createNewStickerSet", args);
+            }
             else
+            {
                 return T.RPC<bool>("createNewStickerSet", args);
+            }
         }
         /// <summary>Use this method to create new sticker set owned by a user. The bot will be able to edit the created sticker set. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
@@ -35,13 +45,23 @@ namespace Telegram.BotAPI.Stickers
         public static async Task<bool> CreateNewStickerSetAsync(this BotClient T, CreateNewStickerSetArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             if (args.UseMultipart())
+            {
                 return await T.RPCAF<bool>("createNewStickerSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
             else
+            {
                 return await T.RPCA<bool>("createNewStickerSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            }
         }
     }
 }

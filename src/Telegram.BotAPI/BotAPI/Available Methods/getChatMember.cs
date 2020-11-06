@@ -23,7 +23,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static ChatMember GetChatMember(this BotClient T, string chat_id, int user_id)
         {
             if (T == default)
+            {
                 throw new System.ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -44,7 +47,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static ChatMember GetChatMember(this BotClient T, long chat_id, int user_id)
         {
             if (T == default)
+            {
                 throw new System.ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -66,7 +72,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<ChatMember> GetChatMemberAsync(this BotClient T, long chat_id, int user_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new System.ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -88,7 +97,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<ChatMember> GetChatMemberAsync(this BotClient T, string chat_id, int user_id, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new System.ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();

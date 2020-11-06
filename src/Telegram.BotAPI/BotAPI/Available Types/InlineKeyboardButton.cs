@@ -52,19 +52,40 @@ namespace Telegram.BotAPI.Available_Types
             get
             {
                 if (Url != default)
+                {
                     return InlineKeyboardButtonType.Url;
+                }
+
                 if (Login_url != default)
+                {
                     return InlineKeyboardButtonType.Login_Url;
+                }
+
                 if (Callback_data != default)
+                {
                     return InlineKeyboardButtonType.Callback_data;
+                }
+
                 if (Switch_inline_query != default)
+                {
                     return InlineKeyboardButtonType.Switch_inline_query;
+                }
+
                 if (Switch_inline_query_current_chat != default)
+                {
                     return InlineKeyboardButtonType.Switch_inline_query_current_chat;
+                }
+
                 if (Callback_game != default)
+                {
                     return InlineKeyboardButtonType.Callback_game;
+                }
+
                 if (Pay != default)
+                {
                     return InlineKeyboardButtonType.Pay;
+                }
+
                 return InlineKeyboardButtonType.Unknown;
             }
         }

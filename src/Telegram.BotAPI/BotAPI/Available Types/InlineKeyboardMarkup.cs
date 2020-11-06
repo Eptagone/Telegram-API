@@ -16,7 +16,9 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>This object represents an inline keyboard that appears right next to the message it belongs to.</summary>
         ///<param name="inlineKeyboard">Array of button rows, each represented by an Array of <see cref="InlineKeyboardButton"/> objects.</param>
         public InlineKeyboardMarkup(params InlineKeyboardButton[][] inlineKeyboard)
-            => Inline_keyboard = inlineKeyboard;
+        {
+            Inline_keyboard = inlineKeyboard;
+        }
 
         ///<summary>Array of button rows, each represented by an Array of <see cref="InlineKeyboardButton"/> objects.</summary>
         [JsonPropertyName("inline_keyboard")]

@@ -21,7 +21,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool SetChatPhoto(this BotClient T, long chat_id, InputFile photo)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPCF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo });
         }
 
@@ -34,7 +37,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool SetChatPhoto(this BotClient T, string chat_id, InputFile photo)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPCF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo });
         }
 
@@ -46,9 +52,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static bool SetChatPhoto(this BotClient T, SetChatPhotoArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<bool>("setChatPhoto", args);
         }
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
@@ -61,7 +73,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> SetChatPhotoAsync(this BotClient T, long chat_id, InputFile photo, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return await T.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
@@ -75,7 +90,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> SetChatPhotoAsync(this BotClient T, string chat_id, InputFile photo, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return await T.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
@@ -88,9 +106,15 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> SetChatPhotoAsync(this BotClient T, SetChatPhotoArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<bool>("setChatPhoto", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

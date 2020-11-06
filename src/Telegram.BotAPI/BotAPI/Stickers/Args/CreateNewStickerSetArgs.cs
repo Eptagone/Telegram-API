@@ -47,10 +47,18 @@ namespace Telegram.BotAPI.Stickers
         internal bool UseMultipart()
         {
             if (Png_sticker != default)
+            {
                 if (Png_sticker.GetType() == typeof(InputFile))
+                {
                     return true;
+                }
+            }
+
             if (Tgs_sticker != default)
+            {
                 return true;
+            }
+
             return false;
         }
     }

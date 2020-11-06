@@ -19,7 +19,10 @@ namespace Telegram.BotAPI.Games
         public static GameHighScore[] GetGameScore(this BotClient T, GetGameScoreArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             return T.RPC<GameHighScore[]>("getGameHighScores", args);
         }
         ///<summary>Use this method to get data for high score tables. Will return the score of the specified user and several of his neighbors in a game. On success, returns an Array of GameHighScore objects.<para>This method will currently return scores for the target user, plus two of his closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.</para></summary>
@@ -31,9 +34,15 @@ namespace Telegram.BotAPI.Games
         public static async Task<GameHighScore[]> GetGameScoreAsync(this BotClient T, GetGameScoreArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCA<GameHighScore[]>("getGameHighScores", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

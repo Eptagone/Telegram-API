@@ -20,10 +20,17 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static bool SetChatAdministratorCustomTitle(this BotClient T, long chat_id, int user_id, string custom_title)
+        public static bool SetChatAdministratorCustomTitle(
+            this BotClient T,
+            long chat_id,
+            int user_id,
+            string custom_title)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -44,10 +51,17 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static bool SetChatAdministratorCustomTitle(this BotClient T, string chat_id, int user_id, string custom_title)
+        public static bool SetChatAdministratorCustomTitle(
+            this BotClient T,
+            string chat_id,
+            int user_id,
+            string custom_title)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -71,7 +85,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient T, long chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -79,8 +96,8 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteNumber("user_id", user_id);
             json.WriteString("custom_title", custom_title);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
         }
@@ -97,7 +114,10 @@ namespace Telegram.BotAPI.Available_Methods
         public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient T, string chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -105,8 +125,8 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteNumber("user_id", user_id);
             json.WriteString("custom_title", custom_title);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
         }

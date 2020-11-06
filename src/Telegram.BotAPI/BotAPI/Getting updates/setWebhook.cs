@@ -21,9 +21,15 @@ namespace Telegram.BotAPI.Getting_updates
         public static bool SetWebhook(this BotClient T, SetWebhookArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<bool>("setWebhook", args);
         }
         /// <summary>Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.</summary>
@@ -35,9 +41,15 @@ namespace Telegram.BotAPI.Getting_updates
         public static async Task<bool> SetWebhookAsync(this BotClient T, SetWebhookArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<bool>("setWebhook", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.</summary>
@@ -53,7 +65,10 @@ namespace Telegram.BotAPI.Getting_updates
         public static bool SetWebhook(this BotClient T, string url, [Optional] InputFile certificate, [Optional] string ip_address, [Optional] uint max_connections, [Optional] string[] allowed_updates, [Optional] bool drop_pending_updates)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (certificate == default)
             {
                 var stream = new MemoryStream();
@@ -61,9 +76,15 @@ namespace Telegram.BotAPI.Getting_updates
                 json.WriteStartObject();
                 json.WriteString("url", url);
                 if (!string.IsNullOrEmpty(ip_address))
+                {
                     json.WriteString("ip_address", ip_address);
+                }
+
                 if (max_connections != default)
+                {
                     json.WriteNumber("max_connections", max_connections);
+                }
+
                 if (allowed_updates != default)
                 {
                     json.WriteStartArray("allowed_updates");
@@ -74,7 +95,10 @@ namespace Telegram.BotAPI.Getting_updates
                     json.WriteEndArray();
                 }
                 if (drop_pending_updates)
+                {
                     json.WriteBoolean("drop_pending_updates", drop_pending_updates);
+                }
+
                 json.WriteEndObject();
                 json.Flush(); json.Dispose();
                 stream.Seek(0, SeekOrigin.Begin);
@@ -84,13 +108,25 @@ namespace Telegram.BotAPI.Getting_updates
             {
                 var args = new SetWebhookArgs { Url = url, Certificate = certificate };
                 if (!string.IsNullOrEmpty(ip_address))
+                {
                     args.Ip_address = ip_address;
+                }
+
                 if (max_connections != default)
+                {
                     args.Max_connections = max_connections;
+                }
+
                 if (allowed_updates != default)
+                {
                     args.Allowed_updates = allowed_updates;
+                }
+
                 if (drop_pending_updates)
+                {
                     args.Drop_pending_updates = drop_pending_updates;
+                }
+
                 return T.RPCF<bool>("setWebhook", args);
             }
         }
@@ -108,7 +144,10 @@ namespace Telegram.BotAPI.Getting_updates
         public static async Task<bool> SetWebhookAsync(this BotClient T, string url, [Optional] InputFile certificate, [Optional] string ip_address, [Optional] uint max_connections, [Optional] string[] allowed_updates, [Optional] bool drop_pending_updates, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (certificate == default)
             {
                 var stream = new MemoryStream();
@@ -116,9 +155,15 @@ namespace Telegram.BotAPI.Getting_updates
                 json.WriteStartObject();
                 json.WriteString("url", url);
                 if (!string.IsNullOrEmpty(ip_address))
+                {
                     json.WriteString("ip_address", ip_address);
+                }
+
                 if (max_connections != default)
+                {
                     json.WriteNumber("max_connections", max_connections);
+                }
+
                 if (allowed_updates != default)
                 {
                     json.WriteStartArray("allowed_updates");
@@ -129,9 +174,12 @@ namespace Telegram.BotAPI.Getting_updates
                     json.WriteEndArray();
                 }
                 if (drop_pending_updates)
+                {
                     json.WriteBoolean("drop_pending_updates", drop_pending_updates);
+                }
+
                 json.WriteEndObject();
-                await json.FlushAsync().ConfigureAwait(false); await json.DisposeAsync();
+                await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
                 stream.Seek(0, SeekOrigin.Begin);
                 return await T.RPCA<bool>("setWebhook", stream, cancellationToken).ConfigureAwait(false);
             }
@@ -139,13 +187,25 @@ namespace Telegram.BotAPI.Getting_updates
             {
                 var args = new SetWebhookArgs { Url = url, Certificate = certificate };
                 if (!string.IsNullOrEmpty(ip_address))
+                {
                     args.Ip_address = ip_address;
+                }
+
                 if (max_connections != default)
+                {
                     args.Max_connections = max_connections;
+                }
+
                 if (allowed_updates != default)
+                {
                     args.Allowed_updates = allowed_updates;
+                }
+
                 if (drop_pending_updates)
+                {
                     args.Drop_pending_updates = drop_pending_updates;
+                }
+
                 return await T.RPCAF<bool>("setWebhook", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
         }

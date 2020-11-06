@@ -20,9 +20,15 @@ namespace Telegram.BotAPI.Stickers
         public static File UploadStickerFile(this BotClient T, int user_id, InputFile png_sticker)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (png_sticker is null)
+            {
                 throw new ArgumentNullException(nameof(png_sticker));
+            }
+
             return T.RPCF<File>("uploadStickerFile", new UploadStickerFileArgs { User_id = user_id, Png_sticker = png_sticker });
         }
 
@@ -34,9 +40,15 @@ namespace Telegram.BotAPI.Stickers
         public static File UploadStickerFile(this BotClient T, UploadStickerFileArgs args)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return T.RPCF<File>("uploadStickerFile", args);
         }
         /// <summary>Use this method to upload a .png file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded File on success.</summary>
@@ -49,9 +61,15 @@ namespace Telegram.BotAPI.Stickers
         public static async Task<File> UploadStickerFileAsync(this BotClient T, int user_id, InputFile png_sticker, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (png_sticker is null)
+            {
                 throw new ArgumentNullException(nameof(png_sticker));
+            }
+
             return await T.RPCAF<File>("uploadStickerFile", new UploadStickerFileArgs { User_id = user_id, Png_sticker = png_sticker }, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to upload a .png file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded File on success.</summary>
@@ -63,9 +81,15 @@ namespace Telegram.BotAPI.Stickers
         public static async Task<File> UploadStickerFileAsync(this BotClient T, UploadStickerFileArgs args, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             if (args == default)
+            {
                 throw new ArgumentNullException(nameof(args));
+            }
+
             return await T.RPCAF<File>("uploadStickerFile", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }

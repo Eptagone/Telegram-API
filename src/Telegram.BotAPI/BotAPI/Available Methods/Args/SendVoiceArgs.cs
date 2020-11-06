@@ -36,8 +36,13 @@ namespace Telegram.BotAPI.Available_Methods
         internal bool UseMultipart()
         {
             if (Voice != default)
+            {
                 if (Voice.GetType() == typeof(InputFile))
+                {
                     return true;
+                }
+            }
+
             return false;
         }
     }

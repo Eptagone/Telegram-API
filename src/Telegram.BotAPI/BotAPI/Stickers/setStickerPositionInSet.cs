@@ -22,7 +22,10 @@ namespace Telegram.BotAPI.Stickers
         public static bool SetStickerPositionInSet(this BotClient T, string sticker, int position)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
@@ -43,15 +46,18 @@ namespace Telegram.BotAPI.Stickers
         public static async Task<bool> SetStickerPositionInSetAsync(this BotClient T, string sticker, int position, [Optional] CancellationToken cancellationToken)
         {
             if (T == default)
+            {
                 throw new ArgumentNullException(nameof(T));
+            }
+
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
             json.WriteString("sticker", sticker);
             json.WriteNumber("position", position);
             json.WriteEndObject();
-            await json.FlushAsync().ConfigureAwait(false);
-            await json.DisposeAsync();
+            await json.FlushAsync(cancellationToken).ConfigureAwait(false);
+            await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
             return await T.RPCA<bool>("setStickerPositionInSet", stream, cancellationToken).ConfigureAwait(false);
         }
