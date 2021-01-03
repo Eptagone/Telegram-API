@@ -95,6 +95,8 @@ namespace Telegram.BotAPI.Available_Types
     ///<summary>The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”.</summary>
     public static class ChatMemberStatus
     {
+        ///<summary>Creator.</summary>
+        public const string Creator = "creator";
         ///<summary>Administrator.</summary>
         public const string Administrator = "administrator";
         ///<summary>Member.</summary>

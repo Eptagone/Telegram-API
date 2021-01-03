@@ -87,7 +87,8 @@ using Telegram.BotAPI;
 using Telegram.BotAPI.Available_Types;
 using Telegram.BotAPI.Available_Methods
 
-var bot = bot.SendDocument(
+var bot = new BotClient(token);
+bot.SendDocument(
     new SendDocumentArgs
     {
         Chat_id = chat_id,
