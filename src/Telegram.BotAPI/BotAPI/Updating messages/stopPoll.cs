@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -12,7 +12,7 @@ using Telegram.BotAPI.Available_Types;
 namespace Telegram.BotAPI.Updating_messages
 {
     /// <summary>Updating messages</summary>
-    public static partial class UpdatingMessages
+    public static partial class UpdatingMessagesExtensions
     {
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="T">BotClient</param>

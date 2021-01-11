@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -9,7 +9,7 @@ using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Stickers
 {
-    public static partial class StickersMethods
+    public static partial class StickersExtensions
     {
         /// <summary>Use this method to send static .WEBP or animated .TGS stickers. On success, the sent Message is returned..</summary>
         /// <param name="T">BotClient</param>

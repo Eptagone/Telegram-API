@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -9,7 +9,7 @@ using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Available_Methods
 {
-    public static partial class AvailableMethods
+    public static partial class AvailableMethodsExtensions
     {
         /// <summary>As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.</summary>
         /// <param name="T">BotClient</param>

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Available_Methods
 {
-    public static partial class AvailableMethods
+    public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="T">BotClient</param>

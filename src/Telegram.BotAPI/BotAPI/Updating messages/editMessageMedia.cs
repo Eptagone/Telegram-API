@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -9,7 +9,7 @@ using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Updating_messages
 {
-    public static partial class UpdatingMessages
+    public static partial class UpdatingMessagesExtensions
     {
         /// <summary>Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL.</summary>
         /// <param name="B">BotClient</param>

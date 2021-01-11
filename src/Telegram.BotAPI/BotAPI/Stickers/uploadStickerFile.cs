@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -9,7 +9,7 @@ using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Stickers
 {
-    public static partial class StickersMethods
+    public static partial class StickersExtensions
     {
         /// <summary>Use this method to upload a .png file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded File on success.</summary>
         /// <param name="T">BotClient</param>

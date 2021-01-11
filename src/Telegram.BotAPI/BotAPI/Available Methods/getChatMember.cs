@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -11,7 +11,7 @@ using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Available_Methods
 {
-    public static partial class AvailableMethods
+    public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to get information about a member of a chat. Returns a ChatMember object on success.</summary>
         /// <param name="T">BotClient</param>

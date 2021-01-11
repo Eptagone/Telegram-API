@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Telegram.BotAPI.Payments
 {
     /// <summary>Payments</summary>
-    public static partial class PaymentsMethods
+    public static partial class PaymentsExtensions
     {
         /// <summary>Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.</summary>
         /// <param name="T">Bot Client</param>

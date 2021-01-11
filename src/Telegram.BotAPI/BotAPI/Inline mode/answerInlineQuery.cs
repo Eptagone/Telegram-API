@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Telegram.BotAPI.Inline_mode
 {
     /// <summary>Inline mode</summary>
-    public static class Inlinemode
+    public static class InlineModeExtensions
     {
         /// <summary>Use this method to send answers to an inline query. On success, True is returned. 
         /// No more than 50 results per query are allowed.</summary>

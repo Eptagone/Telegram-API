@@ -33,10 +33,11 @@ Contains all available methods in the Bot API 5.0 released on November 4, 2020. 
     <AssemblyName>Telegram.BotAPI</AssemblyName>
     <PackageReleaseNotes>- Added Bot API 5.0 support!
 - Added new interfaces</PackageReleaseNotes>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.1">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

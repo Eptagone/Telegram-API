@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Available_Methods
 {
-    public static partial class AvailableMethods
+    public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
         /// <param name="T">Bot Client</param>

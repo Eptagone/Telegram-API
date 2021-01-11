@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -11,7 +11,7 @@ using Telegram.BotAPI.Available_Types;
 
 namespace Telegram.BotAPI.Getting_updates
 {
-    public static partial class GettingUpdates
+    public static partial class GettingUpdatesExtensions
     {
         /// <summary>Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.</summary>
         /// <param name="T">BotClient</param>

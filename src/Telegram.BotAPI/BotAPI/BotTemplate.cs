@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -12,6 +12,7 @@ using Telegram.BotAPI.Payments;
 namespace Telegram.BotAPI
 {
     /// <summary>Provides a Bot Template.</summary>
+    [Obsolete]
     public class BotTemplate
     {
         /// <summary>Bot client for API Requets.</summary>
@@ -79,13 +80,12 @@ namespace Telegram.BotAPI
         /// <param name="cancellationToken">Optional. Cancelation Token.</param>
         public virtual void OnUpdate(Update update, [Optional] CancellationToken cancellationToken)
         {
-            if (update == default)
-            {
-                throw new ArgumentNullException(nameof(update));
-            }
-
             try
             {
+                if (update == default)
+                {
+                    throw new ArgumentNullException(nameof(update));
+                }
                 switch (update.Type)
                 {
                     case UpdateType.Message:
@@ -117,6 +117,9 @@ namespace Telegram.BotAPI
                         break;
                     case UpdateType.Poll:
                         OnPoll?.Invoke(this, new UpdateEventArgs<Poll>(BotClient, update, update.Poll, cancellationToken));
+                        break;
+                    case UpdateType.Poll_answer:
+                        OnPollAnswer?.Invoke(this, new UpdateEventArgs<PollAnswer>(BotClient, update, update.Poll_answer, cancellationToken));
                         break;
                     case UpdateType.Unknown:
                     default:
@@ -153,6 +156,8 @@ namespace Telegram.BotAPI
         public event EventHandler<UpdateEventArgs<PreCheckoutQuery>> OnPreCheckoutQuery;
         /// <summary>Executes scheduled instructions for a poll update.</summary>
         public event EventHandler<UpdateEventArgs<Poll>> OnPoll;
+        /// <summary>Executes scheduled instructions for a poll answer update.</summary>
+        public event EventHandler<UpdateEventArgs<PollAnswer>> OnPollAnswer;
         /// <summary>Executes scheduled instructions for a bot exception.</summary>
         public event EventHandler<UpdateEventArgs<BotRequestException>> OnBotException;
         /// <summary>Executes scheduled instructions for a general exception.</summary>
@@ -161,6 +166,7 @@ namespace Telegram.BotAPI
 
     /// <summary>Update event args. Use with BotTemplate.</summary>
     /// <typeparam name="T">Event Type</typeparam>
+    [Obsolete]
     public sealed class UpdateEventArgs<T>
     {
 

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Telegram.BotAPI.Stickers
 {
     /// <summary>Stickers</summary>
-    public static partial class StickersMethods
+    public static partial class StickersExtensions
     {
         /// <summary>Use this method to move a sticker in a set created by the bot to a specific position . Returns True on success.</summary>
         /// <param name="T">BotClient</param>

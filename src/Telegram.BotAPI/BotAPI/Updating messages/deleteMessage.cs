@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Updating_messages
 {
-    public static partial class UpdatingMessages
+    public static partial class UpdatingMessagesExtensions
     {
         /// <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
         /// - A message can only be deleted if it was sent less than 48 hours ago.<br/>

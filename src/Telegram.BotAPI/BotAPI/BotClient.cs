@@ -1,12 +1,13 @@
 ﻿#region AUTHOR
 //--------------------------------------------------------------------------
 // @author: Quetzal Rivera          @email: QuetzalDeveloper@outlook.com
-// Project name: Telegram API       Date of creation: 13-12-2019
+// Project name: Telegram.BotAPI       Date of creation: 13-12-2019
 // Description: Library to access and interact with the Telegram Bot API.
 // Review History:
 // Creation: Creation   |   Date: 13-12-2019
+// Update: Added Bot API 5.0 support | Date: 6-12-2020
 // Description: Library creation. All commands are found
-// and/or methods up to Bot API 4.4 published on July 29, 2019
+// and/or methods up to Bot API 5.0 published on November 4, 2020
 // ________________________________________________________________________
 //--------------------------------------------------------------------------
 #endregion

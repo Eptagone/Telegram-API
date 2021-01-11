@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Quetzal Rivera.
+﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Telegram.BotAPI.Stickers
 {
-    public static partial class StickersMethods
+    public static partial class StickersExtensions
     {
         /// <summary>Use this method to create new sticker set owned by a user. The bot will be able to edit the created sticker set. Returns True on success.</summary>
         /// <param name="T">BotClient</param>
