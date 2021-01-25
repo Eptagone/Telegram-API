@@ -14,16 +14,16 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to get basic info about a file and prepare it for downloading.. On success, a File object is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="file_id">File identifier to get info about.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns><see cref="File"/></returns>
-        public static File GetFile(this BotClient T, string file_id)
+        public static File GetFile(this BotClient bot, string file_id)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -33,20 +33,20 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<File>("getFile", stream);
+            return bot.RPC<File>("getFile", stream);
         }
         /// <summary>Use this method to get basic info about a file and prepare it for downloading.. On success, a File object is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="file_id">File identifier to get info about.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns><see cref="File"/></returns>
-        public static async Task<File> GetFileAsync(this BotClient T, string file_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<File> GetFileAsync(this BotClient bot, string file_id, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -56,7 +56,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<File>("getFile", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<File>("getFile", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

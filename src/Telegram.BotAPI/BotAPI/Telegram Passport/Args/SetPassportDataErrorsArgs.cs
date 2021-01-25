@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Telegram_Passport
@@ -18,6 +19,6 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <summary>A <see cref="PassportElementError"/> array describing the errors.</summary>
         [JsonPropertyName("errors")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PassportElementError[] Errors { get; set; }
+        public IEnumerable<PassportElementError> Errors { get; set; }
     }
 }

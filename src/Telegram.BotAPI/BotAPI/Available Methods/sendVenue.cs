@@ -12,32 +12,32 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to send information about a venue. On success, the sent Message is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static Message SendVenue(this BotClient T, SendVenueArgs args)
+        public static Message SendVenue(this BotClient bot, SendVenueArgs args)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return T.RPC<Message>("sendVenue", args);
+            return bot.RPC<Message>("sendVenue", args);
         }
         /// <summary>Use this method to send information about a venue. On success, the sent Message is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> SendVenueAsync(this BotClient T, SendVenueArgs args, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> SendVenueAsync(this BotClient bot, SendVenueArgs args, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -45,7 +45,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await T.RPCA<Message>("sendVenue", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Message>("sendVenue", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

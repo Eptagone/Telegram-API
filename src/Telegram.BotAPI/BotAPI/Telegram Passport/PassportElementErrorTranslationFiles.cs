@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Telegram_Passport
@@ -22,6 +23,6 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <summary>List of base64-encoded file hashes.</summary>
         [JsonPropertyName("file_hashes")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string[] File_hashes { get; set; }
+        public IEnumerable<string> File_hashes { get; set; }
     }
 }

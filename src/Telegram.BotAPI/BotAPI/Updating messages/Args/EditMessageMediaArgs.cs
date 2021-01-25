@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Telegram.BotAPI.Available_Types;
 
@@ -10,7 +11,7 @@ namespace Telegram.BotAPI.Updating_messages
 {
     /// <summary>EditMessageMedia method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class EditMessageMediaArgs
+    public sealed class EditMessageMediaArgs : IAttachFiles
     {
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonPropertyName("chat_id")]
@@ -35,7 +36,7 @@ namespace Telegram.BotAPI.Updating_messages
         /// <summary>Attached files.</summary>
         [System.Text.Json.Serialization.JsonIgnore]
         [Newtonsoft.Json.JsonIgnore]
-        public AttachFile[] AttachFiles { get; set; }
+        public IEnumerable<AttachFile> AttachFiles { get; set; }
         internal bool UseMultipart()
         {
             if (AttachFiles != default)

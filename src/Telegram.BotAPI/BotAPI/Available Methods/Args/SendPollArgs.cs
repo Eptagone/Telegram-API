@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Telegram.BotAPI.Available_Types;
 
@@ -19,7 +20,7 @@ namespace Telegram.BotAPI.Available_Methods
         ///<summary>List of answer options, 2-10 strings 1-100 characters each.</summary>
         [JsonPropertyName("options")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string[] Options { get; set; }
+        public IEnumerable<string> Options { get; set; }
         ///<summary>True, if the poll needs to be anonymous, defaults to True.</summary>
         [JsonPropertyName("is_anonymous")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -47,7 +48,7 @@ namespace Telegram.BotAPI.Available_Methods
         ///<summary>TList of special entities that appear in the poll explanation, which can be specified instead of parse_mode.</summary>
         [JsonPropertyName("explanation_entities")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public MessageEntity[] Explanation_entities { get; set; }
+        public IEnumerable<MessageEntity> Explanation_entities { get; set; }
         ///<summary>Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.</summary>
         [JsonPropertyName("open_period")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

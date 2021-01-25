@@ -12,15 +12,15 @@ namespace Telegram.BotAPI.Payments
     public static partial class PaymentsExtensions
     {
         /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static Message SendInvoice(this BotClient T, SendInvoiceArgs args)
+        public static Message SendInvoice(this BotClient bot, SendInvoiceArgs args)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -28,19 +28,19 @@ namespace Telegram.BotAPI.Payments
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return T.RPC<Message>("sendInvoice", args);
+            return bot.RPC<Message>("sendInvoice", args);
         }
         /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<Message> SendInvoiceAsync(this BotClient T, SendInvoiceArgs args, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> SendInvoiceAsync(this BotClient bot, SendInvoiceArgs args, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -48,7 +48,7 @@ namespace Telegram.BotAPI.Payments
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await T.RPCA<Message>("sendInvoice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Message>("sendInvoice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -2,6 +2,7 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -14,16 +15,16 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to change the list of the bot's commands. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="commands">A list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static bool SetMyCommands(this BotClient T, BotCommand[] commands)
+        public static bool SetMyCommands(this BotClient bot, IEnumerable<BotCommand> commands)
         {
-            if (T == null)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (commands == default)
@@ -51,20 +52,20 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("setMyCommands", stream);
+            return bot.RPC<bool>("setMyCommands", stream);
         }
         /// <summary>Use this method to change the list of the bot's commands. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="commands">A list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static async Task<bool> SetMyCommandsAsync(this BotClient T, BotCommand[] commands, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetMyCommandsAsync(this BotClient bot, IEnumerable<BotCommand> commands, [Optional] CancellationToken cancellationToken)
         {
-            if (T == null)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (commands == default)
@@ -92,7 +93,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("setMyCommands", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("setMyCommands", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

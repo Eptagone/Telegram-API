@@ -20,16 +20,16 @@ namespace Telegram.BotAPI.Updating_messages
         /// - If the bot is an administrator of a group, it can delete any message there.<br/>
         /// - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
         /// Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool DeleteMessage(this BotClient T, long chat_id, uint message_id)
+        public static bool DeleteMessage(this BotClient bot, long chat_id, uint message_id)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -40,7 +40,7 @@ namespace Telegram.BotAPI.Updating_messages
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("deleteMessage", stream);
+            return bot.RPC<bool>("deleteMessage", stream);
         }
         /// <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
         /// - A message can only be deleted if it was sent less than 48 hours ago.<br/>
@@ -50,16 +50,16 @@ namespace Telegram.BotAPI.Updating_messages
         /// - If the bot is an administrator of a group, it can delete any message there.<br/>
         /// - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
         /// Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool DeleteMessage(this BotClient T, string chat_id, uint message_id)
+        public static bool DeleteMessage(this BotClient bot, string chat_id, uint message_id)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -70,7 +70,7 @@ namespace Telegram.BotAPI.Updating_messages
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("deleteMessage", stream);
+            return bot.RPC<bool>("deleteMessage", stream);
         }
         /// <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
         /// - A message can only be deleted if it was sent less than 48 hours ago.<br/>
@@ -80,17 +80,17 @@ namespace Telegram.BotAPI.Updating_messages
         /// - If the bot is an administrator of a group, it can delete any message there.<br/>
         /// - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
         /// Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> DeleteMessageAsync(this BotClient T, long chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> DeleteMessageAsync(this BotClient bot, long chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -102,7 +102,7 @@ namespace Telegram.BotAPI.Updating_messages
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("deleteMessage", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("deleteMessage", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to delete a message, including service messages, with the following limitations: <br/>
         /// - A message can only be deleted if it was sent less than 48 hours ago.<br/>
@@ -112,17 +112,17 @@ namespace Telegram.BotAPI.Updating_messages
         /// - If the bot is an administrator of a group, it can delete any message there.<br/>
         /// - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
         /// Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> DeleteMessageAsync(this BotClient T, string chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> DeleteMessageAsync(this BotClient bot, string chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -134,7 +134,7 @@ namespace Telegram.BotAPI.Updating_messages
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("deleteMessage", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("deleteMessage", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

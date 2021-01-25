@@ -11,6 +11,3 @@ dotnet_diagnostic.CA1040.severity = silent
 
 # CA1056: URI-like properties should not be strings
 dotnet_diagnostic.CA1056.severity = silent
-
-# CA1819: Properties should not return arrays
-dotnet_diagnostic.CA1819.severity = silent

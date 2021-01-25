@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Telegram_Passport
@@ -30,7 +31,7 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <summary>Optional. Array of encrypted files with documents provided by the user, available for “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials.</summary>
         [JsonPropertyName("files")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PassportFile[] Files { get; set; }
+        public IEnumerable<PassportFile> Files { get; set; }
         /// <summary>Optional. Encrypted file with the front side of the document, provided by the user. Available for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the accompanying EncryptedCredentials.</summary>
         [JsonPropertyName("front_side")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -46,7 +47,7 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <summary>Optional. Array of encrypted files with translated versions of documents provided by the user. Available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials.</summary>
         [JsonPropertyName("translation")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PassportFile[] Translation { get; set; }
+        public IEnumerable<PassportFile> Translation { get; set; }
         /// <summary>Base64-encoded element hash for using in PassportElementErrorUnspecified.</summary>
         [JsonPropertyName("hash")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

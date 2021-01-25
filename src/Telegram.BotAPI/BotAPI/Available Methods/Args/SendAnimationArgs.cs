@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Telegram.BotAPI.Available_Types;
 
@@ -10,7 +11,7 @@ namespace Telegram.BotAPI.Available_Methods
 {
     /// <summary>SendAnimation method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendAnimationArgs : BaseSendArgsReplyMarkup, ICaption, IParseMode
+    public sealed class SendAnimationArgs : BaseSendArgsReplyMarkup, ICaption, IParseMode, IAttachFiles
     {
         ///<summary>Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data.</summary>
         [JsonPropertyName("animation")]
@@ -43,11 +44,11 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode.</summary>
         [JsonPropertyName("caption_entities")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public MessageEntity[] Caption_entities { get; set; }
+        public IEnumerable<MessageEntity> Caption_entities { get; set; }
         /// <summary>Attached files.</summary>
         [System.Text.Json.Serialization.JsonIgnore]
         [Newtonsoft.Json.JsonIgnore]
-        public AttachFile[] AttachFiles { get; set; }
+        public IEnumerable<AttachFile> AttachFiles { get; set; }
         internal bool UseMultipart()
         {
             if (Animation != default)

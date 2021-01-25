@@ -14,15 +14,15 @@ namespace Telegram.BotAPI.Getting_updates
     public static partial class GettingUpdatesExtensions
     {
         /// <summary>Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. Requires no parameters.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <param name="drop_pending_updates">Pass True to drop all pending updates.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool DeleteWebhook(this BotClient T, [Optional] bool drop_pending_updates)
+        public static bool DeleteWebhook(this BotClient bot, [Optional] bool drop_pending_updates)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (drop_pending_updates)
@@ -34,24 +34,24 @@ namespace Telegram.BotAPI.Getting_updates
                 json.WriteEndObject();
                 json.Flush(); json.Dispose();
                 stream.Seek(0, SeekOrigin.Begin);
-                return T.RPC<bool>("deleteWebhook", stream);
+                return bot.RPC<bool>("deleteWebhook", stream);
             }
             else
             {
-                return T.RPC<bool>("deleteWebhook");
+                return bot.RPC<bool>("deleteWebhook");
             }
         }
         /// <summary>Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. Requires no parameters.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <param name="drop_pending_updates">Pass True to drop all pending updates.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> DeleteWebhookAsync(this BotClient T, [Optional] bool drop_pending_updates, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> DeleteWebhookAsync(this BotClient bot, [Optional] bool drop_pending_updates, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (drop_pending_updates)
@@ -64,11 +64,11 @@ namespace Telegram.BotAPI.Getting_updates
                 await json.FlushAsync(cancellationToken).ConfigureAwait(false);
                 await json.DisposeAsync().ConfigureAwait(false);
                 stream.Seek(0, SeekOrigin.Begin);
-                return await T.RPCA<bool>("deleteWebhook", stream, cancellationToken).ConfigureAwait(false);
+                return await bot.RPCA<bool>("deleteWebhook", stream, cancellationToken).ConfigureAwait(false);
             }
             else
             {
-                return await T.RPCA<bool>("deleteWebhook", cancellationToken).ConfigureAwait(false);
+                return await bot.RPCA<bool>("deleteWebhook", cancellationToken).ConfigureAwait(false);
             }
         }
     }

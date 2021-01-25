@@ -1,44 +1,55 @@
 # Telegram.BotAPI NET Documentation
+
 [![NuGet version (Telegram.BotAPI)](https://img.shields.io/nuget/v/Telegram.BotAPI.svg?style=flat-square)](https://www.nuget.org/packages/Telegram.BotAPI/)
 [![Compatible with Bot API v5.0](https://img.shields.io/badge/Bot%20API%20version-v5.0-blue?style=flat-square)](https://core.telegram.org/bots/api#november-4-2020)
 
 ## Getting started
+
 To get started you just need to start a new BotClient as follows.
+
 ```CSharp
 var MyBot = new BotClient(YourAccessTokenString);
 ```
+
 By adding the respective namespaces you will be able to use the extension methods for the instance you just created. For example, if you want to use the "GetChat" method you should include the namespace "Telegram.BotAPI.Available_Methods" to use method as follows.
+
 ```CSharp
 using Telegram.BotAPI.Available_Methods; //Contains methods
 ```
+
 ```CSharp
 var result = MyBot.GetChat(chat_id); //returns a Chat object available in "Telegram.BotAPI.Available_Types"
 ```
+
 In the event of any error in any request, a BotRequestException will be thrown, which will include an object with the error information.
+
 ## Namespaces
+
 All methods and object types used in the Telegram Bot API are separated into namespaces, with the same names of the sections in which they are organized on the official Telegram Bot API website. The available namespaces are shown below.
 
-| Name | Description |
-| :---|:---|
-| Telegram.BotAPI | Contains the BotClient and other base utilities |
-| Telegram.BotAPI.Getting_updates |Contains methods and types for getting updates |
-| Telegram.BotAPI.Available_Types | Contains available types |
-| Telegram.BotAPI.Available_Methods | Contains available methods |
+| Name                              | Description                                      |
+| :-------------------------------- | :----------------------------------------------- |
+| Telegram.BotAPI                   | Contains the BotClient and other base utilities  |
+| Telegram.BotAPI.Getting_updates   | Contains methods and types for getting updates   |
+| Telegram.BotAPI.Available_Types   | Contains available types                         |
+| Telegram.BotAPI.Available_Methods | Contains available methods                       |
 | Telegram.BotAPI.Updating_messages | Contains methods and types for updating messages |
-| Telegram.BotAPI.Stickers | Contains methods and types for stickers |
-| Telegram.BotAPI.Inline_mode | Contains methods and types for inline mode |
-| Telegram.BotAPI.Payments | Contains methods and types for payments |
-| Telegram.BotAPI.Telegram_Passport | Contains methods and types for Telegram Pasport |
-| Telegram.BotAPI.Games | Contains methods and types for games |
+| Telegram.BotAPI.Stickers          | Contains methods and types for stickers          |
+| Telegram.BotAPI.Inline_mode       | Contains methods and types for inline mode       |
+| Telegram.BotAPI.Payments          | Contains methods and types for payments          |
+| Telegram.BotAPI.Telegram_Passport | Contains methods and types for Telegram Pasport  |
+| Telegram.BotAPI.Games             | Contains methods and types for games             |
 
 For more detail of what each method does and the properties of each type, it is recommended to consult on the official website of the [Telegram Bot API](https://core.telegram.org/bots/api) while using the library.
 
 ## Examples
+
 - [Send Messages](###Send-Messages)
 - [Upload files](###Upload-files)
 - [Asynchronous methods](###Asynchronous-methods)
 
 ### Send Messages
+
 Sending messages examples
 
 #### Send message text
@@ -50,7 +61,9 @@ using Telegram.BotAPI.Available_Methods
 var bot = new BotClient(token);
 bot.SendMessage(chat_id, "Message Text");
 ```
+
 #### Send message photo
+
 ```CSharp
 using Telegram.BotAPI.Available_Methods
 
@@ -63,11 +76,13 @@ bot.SendPhoto(new SendPhotoArgs
 ```
 
 ### Upload files
+
 Depending on the method used. You can send attach files in two ways.
 
 The first way is to pass an inputfile object in the respective field. The second way is to add AttachFile objects in the AttachFiles field and pass "attach://\<attachfilename\>" in all the file fields you require.
 
 #### Option 1
+
 ```CSharp
 using Telegram.BotAPI;
 using Telegram.BotAPI.Available_Types;
@@ -81,7 +96,9 @@ bot.SendDocument(
         Document = new InputFile(filebytes, "file.zip")
     }); //upload document
 ```
+
 #### Option 2
+
 ```CSharp
 using Telegram.BotAPI;
 using Telegram.BotAPI.Available_Types;
@@ -100,10 +117,13 @@ bot.SendDocument(
         }
     }); //upload document
 ```
+
 ### Asynchronous methods
+
 All available methods have an alternative asynchronous method. These methods have the same name but with Async termination. The way you pass parameters is exactly the same as normal methods.
 
 For example, sending a text message asynchronously would be something like this:
+
 ```CSharp
 using Telegram.BotAPI;
 using Telegram.BotAPI.Available_Methods
@@ -113,4 +133,5 @@ await bot.SendMessageAsync(chat_id, "Message Text");
 ```
 
 ## Samples
+
 [See samples](../src/Telegram.BotAPI.Samples/readme.md)

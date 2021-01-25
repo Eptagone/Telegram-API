@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Getting_updates
@@ -42,6 +43,6 @@ namespace Telegram.BotAPI.Getting_updates
         ///<summary>Optional. A list of update types the bot is subscribed to. Defaults to all update types.</summary>
         [JsonPropertyName("allowed_updates")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string[] Allowed_updates { get; set; }
+        public IEnumerable<string> Allowed_updates { get; set; }
     }
 }

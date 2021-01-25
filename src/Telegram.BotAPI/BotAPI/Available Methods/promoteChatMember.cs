@@ -13,21 +13,21 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool PromoteChatMember(this BotClient T, PromoteChatMemberArgs args)
+        public static bool PromoteChatMember(this BotClient bot, PromoteChatMemberArgs args)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(T));
+                throw new System.ArgumentNullException(nameof(bot));
             }
 
-            return T.RPC<bool>("promoteChatMember", args);
+            return bot.RPC<bool>("promoteChatMember", args);
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="is_anonymous">Pass True, if the administrator's presence in the chat is hidden.</param>
@@ -41,11 +41,11 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="can_promote_members">Optional. Pass True, if the administrator can add new administrators with a subset of his own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by him).</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool PromoteChatMember(this BotClient T, string chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members)
+        public static bool PromoteChatMember(this BotClient bot, string chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (chat_id == null)
@@ -70,10 +70,10 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("promoteChatMember", stream);
+            return bot.RPC<bool>("promoteChatMember", stream);
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="is_anonymous">Pass True, if the administrator's presence in the chat is hidden.</param>
@@ -87,11 +87,11 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="can_promote_members">Optional. Pass True, if the administrator can add new administrators with a subset of his own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by him).</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool PromoteChatMember(this BotClient T, long chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members)
+        public static bool PromoteChatMember(this BotClient bot, long chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -111,19 +111,19 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("promoteChatMember", stream);
+            return bot.RPC<bool>("promoteChatMember", stream);
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> PromoteChatMemberAsync(this BotClient T, PromoteChatMemberArgs args, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> PromoteChatMemberAsync(this BotClient bot, PromoteChatMemberArgs args, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -131,10 +131,10 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await T.RPCA<bool>("promoteChatMember", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("promoteChatMember", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="is_anonymous">Pass True, if the administrator's presence in the chat is hidden.</param>
@@ -149,11 +149,11 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> PromoteChatMemberAsync(this BotClient T, string chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> PromoteChatMemberAsync(this BotClient bot, string chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (chat_id == null)
@@ -178,11 +178,11 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("promoteChatMember", stream, cancellationToken)
+            return await bot.RPCA<bool>("promoteChatMember", stream, cancellationToken)
                 .ConfigureAwait(false);
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="is_anonymous">Pass True, if the administrator's presence in the chat is hidden.</param>
@@ -197,11 +197,11 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> PromoteChatMemberAsync(this BotClient T, long chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> PromoteChatMemberAsync(this BotClient bot, long chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -221,7 +221,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("promoteChatMember", stream, cancellationToken)
+            return await bot.RPCA<bool>("promoteChatMember", stream, cancellationToken)
                 .ConfigureAwait(false);
         }
     }

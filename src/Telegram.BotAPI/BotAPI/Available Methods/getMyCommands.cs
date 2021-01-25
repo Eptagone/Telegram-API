@@ -2,6 +2,7 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,33 +13,64 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Array of <see cref="BotCommand"/></returns>
-        public static BotCommand[] GetMyCommands(this BotClient T)
+        public static BotCommand[] GetMyCommands(this BotClient bot)
         {
-            if (T == null)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return T.RPC<BotCommand[]>("getMyCommands");
+            return bot.RPC<BotCommand[]>("getMyCommands");
         }
         /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Array of <see cref="BotCommand"/></returns>
-        public static async Task<BotCommand[]> GetMyCommandsAsync(this BotClient T, [Optional] CancellationToken cancellationToken)
+        public static async Task<BotCommand[]> GetMyCommandsAsync(this BotClient bot, [Optional] CancellationToken cancellationToken)
         {
-            if (T == null)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return await T.RPCA<BotCommand[]>("getMyCommands", cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<BotCommand[]>("getMyCommands", cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
+        /// <param name="bot">BotClient</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
+        /// <returns>Array of <see cref="BotCommand"/></returns>
+        public static T GetMyCommands<T>(this BotClient bot)
+            where T : IEnumerable<BotCommand>
+        {
+            if (bot == default)
+            {
+                throw new ArgumentNullException(nameof(bot));
+            }
+
+            return bot.RPC<T>("getMyCommands");
+        }
+        /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
+        /// <param name="bot">BotClient</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
+        /// <returns>Array of <see cref="BotCommand"/></returns>
+        public static async Task<T> GetMyCommandsAsync<T>(this BotClient bot, [Optional] CancellationToken cancellationToken)
+            where T : IEnumerable<BotCommand>
+        {
+            if (bot == default)
+            {
+                throw new ArgumentNullException(nameof(bot));
+            }
+
+            return await bot.RPCA<T>("getMyCommands", cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

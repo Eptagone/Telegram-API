@@ -15,15 +15,15 @@ namespace Telegram.BotAPI.Inline_mode
     {
         /// <summary>Use this method to send answers to an inline query. On success, True is returned. 
         /// No more than 50 results per query are allowed.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool AnswerInlineQuery(this BotClient T, AnswerInlineQueryArgs args)
+        public static bool AnswerInlineQuery(this BotClient bot, AnswerInlineQueryArgs args)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -40,20 +40,20 @@ namespace Telegram.BotAPI.Inline_mode
             JsonSerializer.Serialize(json, args, typeof(AnswerInlineQueryArgs), options);
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("answerInlineQuery", stream);
+            return bot.RPC<bool>("answerInlineQuery", stream);
         }
         /// <summary>Use this method to send answers to an inline query. On success, True is returned. 
         /// No more than 50 results per query are allowed.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> AnswerInlineQueryAsync(this BotClient T, AnswerInlineQueryArgs args, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> AnswerInlineQueryAsync(this BotClient bot, AnswerInlineQueryArgs args, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -66,9 +66,9 @@ namespace Telegram.BotAPI.Inline_mode
             options.Converters.Add(new Tools.InputMessageContentConverter());
             options.Converters.Add(new Tools.InlineKeyboardMarkupConverter());
             var stream = new MemoryStream();
-            await JsonSerializer.SerializeAsync(stream, args, typeof(AnswerInlineQueryArgs), options).ConfigureAwait(false);
+            await JsonSerializer.SerializeAsync(stream, args, typeof(AnswerInlineQueryArgs), options, cancellationToken: cancellationToken).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("answerInlineQuery", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("answerInlineQuery", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

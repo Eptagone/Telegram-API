@@ -14,16 +14,16 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Chat Object.</returns>
-        public static Chat GetChat(this BotClient T, string chat_id)
+        public static Chat GetChat(this BotClient bot, string chat_id)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(T));
+                throw new System.ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -33,19 +33,19 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<Chat>("getChat", stream);
+            return bot.RPC<Chat>("getChat", stream);
         }
         /// <summary>Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Chat Object.</returns>
-        public static Chat GetChat(this BotClient T, long chat_id)
+        public static Chat GetChat(this BotClient bot, long chat_id)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(T));
+                throw new System.ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -55,20 +55,20 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<Chat>("getChat", stream);
+            return bot.RPC<Chat>("getChat", stream);
         }
         /// <summary>Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Chat Object.</returns>
-        public static async Task<Chat> GetChatAsync(this BotClient T, string chat_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<Chat> GetChatAsync(this BotClient bot, string chat_id, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(T));
+                throw new System.ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -78,20 +78,20 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Chat>("getChat", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Chat>("getChat", stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Chat Object.</returns>
-        public static async Task<Chat> GetChatAsync(this BotClient T, long chat_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<Chat> GetChatAsync(this BotClient bot, long chat_id, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(T));
+                throw new System.ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -101,7 +101,7 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<Chat>("getChat", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Chat>("getChat", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

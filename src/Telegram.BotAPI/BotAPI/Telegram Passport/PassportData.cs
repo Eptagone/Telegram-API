@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Telegram_Passport
@@ -14,7 +15,7 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <summary>Array with information about documents and other Telegram Passport elements that was shared with the bot.</summary>
         [JsonPropertyName("data")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public EncryptedPassportElement[] Data { get; set; }
+        public IEnumerable<EncryptedPassportElement> Data { get; set; }
         /// <summary>Encrypted credentials required to decrypt the data.</summary>
         [JsonPropertyName("credentials")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

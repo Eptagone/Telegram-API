@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
@@ -82,7 +83,7 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text.</summary>
         [JsonPropertyName("entities")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public MessageEntity[] Entities { get; set; }
+        public IEnumerable<MessageEntity> Entities { get; set; }
         ///<summary>Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set.</summary>
         [JsonPropertyName("animation")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -98,7 +99,7 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>Optional. Message is a photo, available sizes of the photo.</summary>
         [JsonPropertyName("photo")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PhotoSize[] Photo { get; set; }
+        public IEnumerable<PhotoSize> Photo { get; set; }
         ///<summary>Optional. Message is a sticker, information about the sticker.</summary>
         [JsonPropertyName("sticker")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -122,7 +123,7 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption.</summary>
         [JsonPropertyName("caption_entities")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public MessageEntity[] Caption_entities { get; set; }
+        public IEnumerable<MessageEntity> Caption_entities { get; set; }
         ///<summary>Optional. Message is a shared contact, information about the contact.</summary>
         [JsonPropertyName("contact")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -150,7 +151,7 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members).</summary>
         [JsonPropertyName("new_chat_members")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public User[] New_chat_members { get; set; }
+        public IEnumerable<User> New_chat_members { get; set; }
         ///<summary>Optional. A member was removed from the group, information about them (this member may be the bot itself).</summary>
         [JsonPropertyName("left_chat_member")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -162,7 +163,7 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>Optional. A chat photo was change to this value.</summary>
         [JsonPropertyName("new_chat_photo")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PhotoSize[] New_chat_photo { get; set; }
+        public IEnumerable<PhotoSize> New_chat_photo { get; set; }
         ///<summary>Optional. Service message: the chat photo was deleted.</summary>
         [JsonPropertyName("delete_chat_photo")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

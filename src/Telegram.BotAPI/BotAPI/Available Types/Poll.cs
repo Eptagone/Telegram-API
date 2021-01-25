@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
@@ -22,7 +23,7 @@ namespace Telegram.BotAPI.Available_Types
         /// <summary>List of poll options.</summary>
         [JsonPropertyName("options")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PollOption[] Options { get; set; }
+        public IEnumerable<PollOption> Options { get; set; }
         /// <summary>Total number of users that voted in the poll.</summary>
         [JsonPropertyName("total_voter_count")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -55,7 +56,7 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation.</summary>
         [JsonPropertyName("explanation_entities")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public MessageEntity[] Explanation_entities { get; set; }
+        public IEnumerable<MessageEntity> Explanation_entities { get; set; }
         ///<summary>Optional. Amount of time in seconds the poll will be active after creation.</summary>
         [JsonPropertyName("open_period")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

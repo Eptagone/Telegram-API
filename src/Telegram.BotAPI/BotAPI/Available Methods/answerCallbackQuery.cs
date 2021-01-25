@@ -13,24 +13,24 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <returns>true</returns>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool AnswerCallbackQuery(
-            this BotClient T,
+            this BotClient bot,
             AnswerCallbackQueryArgs args)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return T.RPC<bool>("answerCallbackQuery", args);
+            return bot.RPC<bool>("answerCallbackQuery", args);
         }
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="callback_query_id">Unique identifier for the query to be answered.</param>
         /// <param name="text">Optional. Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.</param>
         /// <param name="show_alert">Optional. If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.</param>
@@ -39,16 +39,16 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool AnswerCallbackQuery(
-            this BotClient T,
+            this BotClient bot,
             string callback_query_id,
             [Optional] string text,
             [Optional] bool show_alert,
             [Optional] string url,
             [Optional] uint cache_time)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -78,22 +78,22 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("answerCallbackQuery", stream);
+            return bot.RPC<bool>("answerCallbackQuery", stream);
         }
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> AnswerCallbackQueryAsync(
-            this BotClient T,
+            this BotClient bot,
             AnswerCallbackQueryArgs args,
             [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -101,10 +101,10 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await T.RPCA<bool>("answerCallbackQuery", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("answerCallbackQuery", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="callback_query_id">Unique identifier for the query to be answered.</param>
         /// <param name="text">Optional. Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.</param>
         /// <param name="show_alert">Optional. If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.</param>
@@ -114,7 +114,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> AnswerCallbackQueryAsync(
-            this BotClient T,
+            this BotClient bot,
             string callback_query_id,
             [Optional] string text,
             [Optional] bool show_alert,
@@ -122,9 +122,9 @@ namespace Telegram.BotAPI.Available_Methods
             [Optional] uint cache_time,
             [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -155,7 +155,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("answerCallbackQuery", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("answerCallbackQuery", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

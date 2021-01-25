@@ -11,31 +11,31 @@ namespace Telegram.BotAPI.Getting_updates
     public static partial class GettingUpdatesExtensions
     {
         /// <summary>Use this method to get current webhook status. On success, returns a <see cref="WebhookInfo"/> object. If the bot is using getUpdates, will return an object with the url field empty.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static WebhookInfo GetWebhookInfo(this BotClient T)
+        public static WebhookInfo GetWebhookInfo(this BotClient bot)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(T));
+                throw new System.ArgumentNullException(nameof(bot));
             }
 
-            return T.RPC<WebhookInfo>("getWebhookInfo");
+            return bot.RPC<WebhookInfo>("getWebhookInfo");
         }
         /// <summary>Use this method to get current webhook status. On success, returns a <see cref="WebhookInfo"/> object. If the bot is using getUpdates, will return an object with the url field empty.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<WebhookInfo> GetWebhookInfoAsync(this BotClient T, [Optional] CancellationToken cancellationToken)
+        public static async Task<WebhookInfo> GetWebhookInfoAsync(this BotClient bot, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return await T.RPCA<WebhookInfo>("getWebhookInfo", cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<WebhookInfo>("getWebhookInfo", cancellationToken).ConfigureAwait(false);
         }
     }
 }

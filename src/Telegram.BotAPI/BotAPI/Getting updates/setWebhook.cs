@@ -2,6 +2,7 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -14,15 +15,15 @@ namespace Telegram.BotAPI.Getting_updates
     public static partial class GettingUpdatesExtensions
     {
         /// <summary>Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetWebhook(this BotClient T, SetWebhookArgs args)
+        public static bool SetWebhook(this BotClient bot, SetWebhookArgs args)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -30,19 +31,19 @@ namespace Telegram.BotAPI.Getting_updates
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return T.RPCF<bool>("setWebhook", args);
+            return bot.RPCF<bool>("setWebhook", args);
         }
         /// <summary>Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetWebhookAsync(this BotClient T, SetWebhookArgs args, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetWebhookAsync(this BotClient bot, SetWebhookArgs args, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -50,10 +51,10 @@ namespace Telegram.BotAPI.Getting_updates
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await T.RPCAF<bool>("setWebhook", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<bool>("setWebhook", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="url">HTTPS url to send updates to. Use an empty string to remove webhook integration.</param>
         /// <param name="certificate">Upload your public key certificate so that the root certificate in use can be checked. See our <a href="https://core.telegram.org/bots/self-signed">self-signed guide</a> for details.</param>
         /// <param name="ip_address">The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS</param>
@@ -62,11 +63,11 @@ namespace Telegram.BotAPI.Getting_updates
         /// <param name="drop_pending_updates">Pass True to drop all pending updates.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetWebhook(this BotClient T, string url, [Optional] InputFile certificate, [Optional] string ip_address, [Optional] uint max_connections, [Optional] string[] allowed_updates, [Optional] bool drop_pending_updates)
+        public static bool SetWebhook(this BotClient bot, string url, [Optional] InputFile certificate, [Optional] string ip_address, [Optional] uint max_connections, [Optional] IEnumerable<string> allowed_updates, [Optional] bool drop_pending_updates)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (certificate == default)
@@ -102,7 +103,7 @@ namespace Telegram.BotAPI.Getting_updates
                 json.WriteEndObject();
                 json.Flush(); json.Dispose();
                 stream.Seek(0, SeekOrigin.Begin);
-                return T.RPC<bool>("setWebhook", stream);
+                return bot.RPC<bool>("setWebhook", stream);
             }
             else
             {
@@ -127,11 +128,11 @@ namespace Telegram.BotAPI.Getting_updates
                     args.Drop_pending_updates = drop_pending_updates;
                 }
 
-                return T.RPCF<bool>("setWebhook", args);
+                return bot.RPCF<bool>("setWebhook", args);
             }
         }
         /// <summary>Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="url">HTTPS url to send updates to. Use an empty string to remove webhook integration.</param>
         /// <param name="ip_address">The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS</param>
         /// <param name="certificate">Upload your public key certificate so that the root certificate in use can be checked. See our <a href="https://core.telegram.org/bots/self-signed">self-signed guide</a> for details.</param>
@@ -141,11 +142,11 @@ namespace Telegram.BotAPI.Getting_updates
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetWebhookAsync(this BotClient T, string url, [Optional] InputFile certificate, [Optional] string ip_address, [Optional] uint max_connections, [Optional] string[] allowed_updates, [Optional] bool drop_pending_updates, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetWebhookAsync(this BotClient bot, string url, [Optional] InputFile certificate, [Optional] string ip_address, [Optional] uint max_connections, [Optional] IEnumerable<string> allowed_updates, [Optional] bool drop_pending_updates, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (certificate == default)
@@ -181,7 +182,7 @@ namespace Telegram.BotAPI.Getting_updates
                 json.WriteEndObject();
                 await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
                 stream.Seek(0, SeekOrigin.Begin);
-                return await T.RPCA<bool>("setWebhook", stream, cancellationToken).ConfigureAwait(false);
+                return await bot.RPCA<bool>("setWebhook", stream, cancellationToken).ConfigureAwait(false);
             }
             else
             {
@@ -206,7 +207,7 @@ namespace Telegram.BotAPI.Getting_updates
                     args.Drop_pending_updates = drop_pending_updates;
                 }
 
-                return await T.RPCAF<bool>("setWebhook", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+                return await bot.RPCAF<bool>("setWebhook", args, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
         }
     }

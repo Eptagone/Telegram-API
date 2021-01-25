@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Telegram.BotAPI.Available_Types;
 
@@ -27,7 +28,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode.</summary>
         [JsonPropertyName("caption_entities")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public MessageEntity[] Caption_entities { get; set; }
+        public IEnumerable<MessageEntity> Caption_entities { get; set; }
         ///<summary>Optional. Duration of the voice message in seconds.</summary>
         [JsonPropertyName("duration")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

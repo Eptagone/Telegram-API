@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Payments
@@ -22,6 +23,6 @@ namespace Telegram.BotAPI.Payments
         /// <summary>List of price portions</summary>
         [JsonPropertyName("prices")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public LabeledPrice[] Prices { get; set; }
+        public IEnumerable<LabeledPrice> Prices { get; set; }
     }
 }

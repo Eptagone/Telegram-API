@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Inline_mode
@@ -18,7 +19,7 @@ namespace Telegram.BotAPI.Inline_mode
         ///<summary>A <see cref="IInlineQueryResult"/> array of results for the inline query.</summary>
         [JsonPropertyName("results")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InlineQueryResult[] Results { get; set; }
+        public IEnumerable<InlineQueryResult> Results { get; set; }
         ///<summary>The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.</summary>
         [JsonPropertyName("cache_time")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

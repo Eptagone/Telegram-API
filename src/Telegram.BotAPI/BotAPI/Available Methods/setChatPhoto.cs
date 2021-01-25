@@ -13,47 +13,47 @@ namespace Telegram.BotAPI.Available_Methods
     {
 
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="photo">New chat photo, uploaded using multipart/form-data.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatPhoto(this BotClient T, long chat_id, InputFile photo)
+        public static bool SetChatPhoto(this BotClient bot, long chat_id, InputFile photo)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return T.RPCF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo });
+            return bot.RPCF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo });
         }
 
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="photo">New chat photo, uploaded using multipart/form-data.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatPhoto(this BotClient T, string chat_id, InputFile photo)
+        public static bool SetChatPhoto(this BotClient bot, string chat_id, InputFile photo)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return T.RPCF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo });
+            return bot.RPCF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo });
         }
 
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatPhoto(this BotClient T, SetChatPhotoArgs args)
+        public static bool SetChatPhoto(this BotClient bot, SetChatPhotoArgs args)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -61,53 +61,53 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return T.RPCF<bool>("setChatPhoto", args);
+            return bot.RPCF<bool>("setChatPhoto", args);
         }
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="photo">New chat photo, uploaded using multipart/form-data.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatPhotoAsync(this BotClient T, long chat_id, InputFile photo, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatPhotoAsync(this BotClient bot, long chat_id, InputFile photo, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return await T.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="photo">New chat photo, uploaded using multipart/form-data.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatPhotoAsync(this BotClient T, string chat_id, InputFile photo, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatPhotoAsync(this BotClient bot, string chat_id, InputFile photo, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return await T.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<bool>("setChatPhoto", new SetChatPhotoArgs { Chat_id = chat_id, Photo = photo }, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="args">Parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatPhotoAsync(this BotClient T, SetChatPhotoArgs args, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatPhotoAsync(this BotClient bot, SetChatPhotoArgs args, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             if (args == default)
@@ -115,7 +115,7 @@ namespace Telegram.BotAPI.Available_Methods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await T.RPCAF<bool>("setChatPhoto", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<bool>("setChatPhoto", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

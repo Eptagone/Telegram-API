@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
@@ -18,6 +19,6 @@ namespace Telegram.BotAPI.Available_Types
         ///<summary>Requested profile pictures (in up to 4 sizes each).</summary>
         [JsonPropertyName("photos")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PhotoSize[][] Photos { get; set; }
+        public IEnumerable<IEnumerable<PhotoSize>> Photos { get; set; }
     }
 }

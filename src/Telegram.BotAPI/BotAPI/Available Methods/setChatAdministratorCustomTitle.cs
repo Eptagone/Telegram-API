@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
@@ -21,14 +21,14 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetChatAdministratorCustomTitle(
-            this BotClient T,
+            this BotClient bot,
             long chat_id,
             int user_id,
             string custom_title)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -40,11 +40,11 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("sendVideoNote", stream);
+            return bot.RPC<bool>("sendVideoNote", stream);
         }
 
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
@@ -52,14 +52,14 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetChatAdministratorCustomTitle(
-            this BotClient T,
+            this BotClient bot,
             string chat_id,
             int user_id,
             string custom_title)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -71,10 +71,10 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<bool>("sendVideoNote", stream);
+            return bot.RPC<bool>("sendVideoNote", stream);
         }
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
@@ -82,11 +82,11 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient T, long chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient bot, long chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -99,11 +99,11 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
@@ -111,11 +111,11 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient T, string chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient bot, string chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -128,7 +128,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

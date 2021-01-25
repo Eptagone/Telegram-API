@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Telegram.BotAPI.Available_Types;
 
@@ -10,7 +11,7 @@ namespace Telegram.BotAPI.Available_Methods
 {
     /// <summary>SendVideoNote method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class SendVideoNoteArgs : BaseSendArgsReplyMarkup
+    public sealed class SendVideoNoteArgs : BaseSendArgsReplyMarkup, IAttachFiles
     {
         ///<summary>Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data.</summary>
         [JsonPropertyName("video_note")]
@@ -31,7 +32,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <summary>Attached files.</summary>
         [System.Text.Json.Serialization.JsonIgnore]
         [Newtonsoft.Json.JsonIgnore]
-        public AttachFile[] AttachFiles { get; set; }
+        public IEnumerable<AttachFile> AttachFiles { get; set; }
         internal bool UseMultipart()
         {
             if (Video_note != default)

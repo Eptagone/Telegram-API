@@ -57,7 +57,7 @@ namespace Telegram.BotAPI
         internal async Task<T> RPCA<T>(string method, [Optional] CancellationToken cancellationToken)
         {
             var streamresponse = await GetRequestAsync($"bot{Token}/{method}", cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
-            var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(streamresponse);
+            var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(streamresponse, cancellationToken: cancellationToken);
             if (response.Ok == true)
             {
                 return response.Result;
@@ -129,7 +129,7 @@ namespace Telegram.BotAPI
         {
             var options = new JsonSerializerOptions();
             var stream = await PostRequestAsync($"bot{Token}/{method}", args, cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
-            var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options);
+            var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, options, cancellationToken: cancellationToken);
             if (response.Ok == true)
             {
                 return response.Result;
@@ -212,11 +212,10 @@ namespace Telegram.BotAPI
                     }
                     else
                     {
-                        var attachprop = args.GetType().GetProperty("AttachFiles");
-                        AttachFile[] attachfiles = attachprop == default ? default : (AttachFile[])attachprop.GetValue(args);
-                        if (attachfiles != default)
+                        if (args is IAttachFiles)
                         {
-                            foreach (AttachFile attachfile in attachfiles)
+                            var attachfiles = (args as IAttachFiles).AttachFiles;
+                            foreach (var attachfile in attachfiles)
                             {
                                 content.Add(attachfile.File.Content, attachfile.Name, attachfile.File.Filename);
                             }
@@ -225,7 +224,7 @@ namespace Telegram.BotAPI
                 }
             }
             var stream = await PostRequestAsyncFormData($"bot{Token}/{method}", content, cancellationToken == null ? default : cancellationToken).ConfigureAwait(false);
-            var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream);
+            var response = await JsonSerializer.DeserializeAsync<BotResponse<T>>(stream, cancellationToken: cancellationToken);
             content.Dispose();
             if (response.Ok == true)
             {

@@ -12,7 +12,7 @@ using Telegram.BotAPI.Payments;
 namespace Telegram.BotAPI
 {
     /// <summary>Provides a Bot Template.</summary>
-    [Obsolete]
+    [Obsolete("This class will be removed in future releases")]
     public class BotTemplate
     {
         /// <summary>Bot client for API Requets.</summary>
@@ -166,7 +166,7 @@ namespace Telegram.BotAPI
 
     /// <summary>Update event args. Use with BotTemplate.</summary>
     /// <typeparam name="T">Event Type</typeparam>
-    [Obsolete]
+    [Obsolete("This class will be removed in future releases")]
     public sealed class UpdateEventArgs<T>
     {
 

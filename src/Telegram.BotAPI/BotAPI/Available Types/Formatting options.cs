@@ -1,6 +1,10 @@
 ﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 namespace Telegram.BotAPI.Available_Types
 {
     /// <summary><b>Formatting options</b><br/>
@@ -80,5 +84,44 @@ namespace Telegram.BotAPI.Available_Types
         /// • Use nested <i>pre</i> and <i>code</i> tags, to define programming language for <i>pre</i> entity. <br/>
         /// • Programming language can't be specified for standalone <i>code</i> tags.</para></summary>
         public const string HTML = "HTML";
+        /// <summary>Replaces symbols that are not part of an HTML tag or entity with HTML entities (&lt; with &amp;lt;, &gt; with &amp;gt; and &amp; with &amp;amp;).</summary>
+        /// <param name="text">Input text.</param>
+        /// <returns>String with HTML entities.</returns>
+        public static string ParseHTML(this string text)
+        {
+            return text
+                       .Replace("&", "&amp;")
+                       .Replace("<", "&lt;")
+                       .Replace(">", "&gt;");
+        }
+
+        /// <summary>Prepends the character '\' for the escape characters: '_', '*', '`', '['.</summary>
+        /// <param name="input">Input text.</param>
+        public static string ParseMarkdown(this string input)
+        {
+            var chars = "_*`[";
+            return input.Prepends('\\', chars);
+        }
+        /// <summary>Prepends the character '\' for the escape characters: '_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!'.</summary>
+        /// <param name="input">Input text.</param>
+        public static string ParseMarkdownV2(this string input)
+        {
+            var chars = "_*[]()~`>#+-=|{}.!";
+            return input.Prepends('\\', chars);
+        }
+
+        private static string Prepends(this string text, char pChar, IEnumerable<char> characters)
+        {
+            var sb = new StringBuilder();
+            foreach (var c in text)
+            {
+                if (characters.Contains(c))
+                {
+                    sb.Append(pChar);
+                }
+                sb.Append(c);
+            }
+            return sb.ToString();
+        }
     }
 }

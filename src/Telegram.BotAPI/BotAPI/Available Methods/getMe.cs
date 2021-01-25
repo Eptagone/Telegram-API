@@ -12,33 +12,33 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>A simple method for testing your bot's auth token. Returns basic information about the bot in form of a User object.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>User Object.</returns>
-        public static User GetMe(this BotClient T)
+        public static User GetMe(this BotClient bot)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return T.RPC<User>("getMe");
+            return bot.RPC<User>("getMe");
         }
         /// <summary>A simple method for testing your bot's auth token. Returns basic information about the bot in form of a User object.</summary>
-        /// <param name="T">Bot Client</param>
+        /// <param name="bot">Bot Client</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>User Object.</returns>
-        public static async Task<User> GetMeAsync(this BotClient T, [Optional] CancellationToken cancellationToken)
+        public static async Task<User> GetMeAsync(this BotClient bot, [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
-            return await T.RPCA<User>("getMe", cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<User>("getMe", cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Telegram.BotAPI.Available_Methods
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to get a list of profile pictures for a user.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="offset">Optional. Sequential number of the first photo to be returned. By default, all photos are returned.</param>
         /// <param name="limit">Optional. Limits the number of photos to be retrieved. Values between 1—100 are accepted. Defaults to 100.</param>
@@ -22,14 +22,14 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>UserProfilePhotos Object.</returns>
         public static UserProfilePhotos GetUserProfilePhotos(
-            this BotClient T,
+            this BotClient bot,
             int user_id,
             [Optional] uint offset,
             [Optional] ushort limit)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -49,10 +49,10 @@ namespace Telegram.BotAPI.Available_Methods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return T.RPC<UserProfilePhotos>("getUserProfilePhotos", stream);
+            return bot.RPC<UserProfilePhotos>("getUserProfilePhotos", stream);
         }
         /// <summary>Use this method to get a list of profile pictures for a user.</summary>
-        /// <param name="T">BotClient</param>
+        /// <param name="bot">BotClient</param>
         /// <param name="user_id">Unique identifier of the target user.</param>
         /// <param name="offset">Sequential number of the first photo to be returned. By default, all photos are returned.</param>
         /// <param name="limit">Limits the number of photos to be retrieved. Values between 1—100 are accepted. Defaults to 100.</param>
@@ -61,15 +61,15 @@ namespace Telegram.BotAPI.Available_Methods
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>UserProfilePhotos Object.</returns>
         public static async Task<UserProfilePhotos> GetUserProfilePhotosAsync(
-            this BotClient T,
+            this BotClient bot,
             int user_id,
             [Optional] uint offset,
             [Optional] ushort limit,
             [Optional] CancellationToken cancellationToken)
         {
-            if (T == default)
+            if (bot == default)
             {
-                throw new ArgumentNullException(nameof(T));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
@@ -90,7 +90,7 @@ namespace Telegram.BotAPI.Available_Methods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await T.RPCA<UserProfilePhotos>("getUserProfilePhotos", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<UserProfilePhotos>("getUserProfilePhotos", stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -3,6 +3,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Telegram.BotAPI.Available_Types
@@ -22,6 +23,6 @@ namespace Telegram.BotAPI.Available_Types
         /// <summary>0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.</summary>
         [JsonPropertyName("option_ids")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint[] Option_ids { get; set; }
+        public IEnumerable<uint> Option_ids { get; set; }
     }
 }
