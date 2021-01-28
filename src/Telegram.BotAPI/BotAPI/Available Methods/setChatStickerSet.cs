@@ -18,7 +18,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="stickerSetName">Name of the sticker set to be set as the group sticker set.</param>
         /// /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatStickerSet(this BotClient bot, long chat_id, string sticker_set_name)
+        public static bool SetChatStickerSet(this BotClient bot, long chatId, string stickerSetName)
         {
             if (bot == default)
             {
@@ -28,8 +28,8 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
-            json.WriteString(PropertyNames.StickerSetName, sticker_set_name);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteString(PropertyNames.StickerSetName, stickerSetName);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -41,7 +41,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="stickerSetName">Name of the sticker set to be set as the group sticker set.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatStickerSet(this BotClient bot, string chat_id, string sticker_set_name)
+        public static bool SetChatStickerSet(this BotClient bot, string chatId, string stickerSetName)
         {
             if (bot == default)
             {
@@ -51,8 +51,8 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
-            json.WriteString(PropertyNames.StickerSetName, sticker_set_name);
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteString(PropertyNames.StickerSetName, stickerSetName);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -65,7 +65,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatStickerSetAsync(this BotClient bot, long chat_id, string sticker_set_name, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatStickerSetAsync(this BotClient bot, long chatId, string stickerSetName, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -75,8 +75,8 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
-            json.WriteString(PropertyNames.StickerSetName, sticker_set_name);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteString(PropertyNames.StickerSetName, stickerSetName);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
@@ -90,7 +90,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatStickerSetAsync(this BotClient bot, string chat_id, string sticker_set_name, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatStickerSetAsync(this BotClient bot, string chatId, string stickerSetName, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -100,8 +100,8 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
-            json.WriteString(PropertyNames.StickerSetName, sticker_set_name);
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteString(PropertyNames.StickerSetName, stickerSetName);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);

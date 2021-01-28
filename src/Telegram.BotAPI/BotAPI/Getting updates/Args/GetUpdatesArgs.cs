@@ -27,6 +27,6 @@ namespace Telegram.BotAPI.GettingUpdates
         ///<summary>List the types of updates you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.<para>Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.</para></summary>
         [JsonPropertyName(PropertyNames.AllowedUpdates)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IEnumerable<string> Allowed_updates { get; set; }
+        public IEnumerable<string> AllowedUpdates { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Telegram.BotAPI.Payments
         /// <param name="errorMessage">Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static Message AnswerShippingQuery(this BotClient bot, string shipping_query_id, bool ok, [Optional] IEnumerable<ShippingOption> shipping_options, [Optional] string error_message)
+        public static Message AnswerShippingQuery(this BotClient bot, string shippingQueryId, bool ok, [Optional] IEnumerable<ShippingOption> shippingOptions, [Optional] string errorMessage)
         {
             if (bot == default)
             {
@@ -32,17 +32,17 @@ namespace Telegram.BotAPI.Payments
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("shipping_query_id", shipping_query_id);
+            json.WriteString("shipping_query_id", shippingQueryId);
             json.WriteBoolean("ok", ok);
             if (ok)
             {
-                if (shipping_options == default)
+                if (shippingOptions == default)
                 {
-                    throw new ArgumentNullException(nameof(shipping_options));
+                    throw new ArgumentNullException(nameof(shippingOptions));
                 }
 
                 json.WriteStartArray("shipping_options");
-                foreach (var option in shipping_options)
+                foreach (var option in shippingOptions)
                 {
                     json.WriteStartObject();
                     json.WriteString(PropertyNames.Id, option.Id);
@@ -62,12 +62,12 @@ namespace Telegram.BotAPI.Payments
             }
             else
             {
-                if (error_message == default)
+                if (errorMessage == default)
                 {
-                    throw new ArgumentNullException(nameof(error_message));
+                    throw new ArgumentNullException(nameof(errorMessage));
                 }
 
-                json.WriteString("error_message", error_message);
+                json.WriteString("error_message", errorMessage);
 
             }
             json.WriteEndObject();
@@ -85,7 +85,7 @@ namespace Telegram.BotAPI.Payments
         /// <returns><see cref="Message"/></returns>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<Message> AnswerShippingQueryAsync(this BotClient bot, string shipping_query_id, bool ok, [Optional] IEnumerable<ShippingOption> shipping_options, [Optional] string error_message, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> AnswerShippingQueryAsync(this BotClient bot, string shippingQueryId, bool ok, [Optional] IEnumerable<ShippingOption> shippingOptions, [Optional] string errorMessage, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -95,17 +95,17 @@ namespace Telegram.BotAPI.Payments
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("shipping_query_id", shipping_query_id);
+            json.WriteString("shipping_query_id", shippingQueryId);
             json.WriteBoolean("ok", ok);
             if (ok)
             {
-                if (shipping_options == default)
+                if (shippingOptions == default)
                 {
-                    throw new ArgumentNullException(nameof(shipping_options));
+                    throw new ArgumentNullException(nameof(shippingOptions));
                 }
 
                 json.WriteStartArray("shipping_options");
-                foreach (var option in shipping_options)
+                foreach (var option in shippingOptions)
                 {
                     json.WriteStartObject();
                     json.WriteString(PropertyNames.Id, option.Id);
@@ -125,12 +125,12 @@ namespace Telegram.BotAPI.Payments
             }
             else
             {
-                if (error_message == default)
+                if (errorMessage == default)
                 {
-                    throw new ArgumentNullException(nameof(error_message));
+                    throw new ArgumentNullException(nameof(errorMessage));
                 }
 
-                json.WriteString("error_message", error_message);
+                json.WriteString("error_message", errorMessage);
 
             }
             json.WriteEndObject();

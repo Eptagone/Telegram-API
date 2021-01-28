@@ -18,7 +18,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="description">New chat description, 0-255 characters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatDescription(this BotClient bot, long chat_id, string description)
+        public static bool SetChatDescription(this BotClient bot, long chatId, string description)
         {
             if (bot == default)
             {
@@ -28,7 +28,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteString(PropertyNames.Description, description);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
@@ -41,7 +41,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="description">New chat description, 0-255 characters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatDescription(this BotClient bot, string chat_id, string description)
+        public static bool SetChatDescription(this BotClient bot, string chatId, string description)
         {
             if (bot == default)
             {
@@ -51,7 +51,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteString(PropertyNames.Description, description);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
@@ -65,7 +65,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatDescriptionAsync(this BotClient bot, long chat_id, string description, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatDescriptionAsync(this BotClient bot, long chatId, string description, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -75,7 +75,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteString(PropertyNames.Description, description);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
@@ -90,7 +90,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatDescriptionAsync(this BotClient bot, string chat_id, string description, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatDescriptionAsync(this BotClient bot, string chatId, string description, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -100,7 +100,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteString(PropertyNames.Description, description);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);

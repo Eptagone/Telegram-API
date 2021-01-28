@@ -43,6 +43,6 @@ namespace Telegram.BotAPI.GettingUpdates
         ///<summary>Optional. A list of update types the bot is subscribed to. Defaults to all update types.</summary>
         [JsonPropertyName(PropertyNames.AllowedUpdates)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IEnumerable<string> Allowed_updates { get; set; }
+        public IEnumerable<string> AllowedUpdates { get; set; }
     }
 }

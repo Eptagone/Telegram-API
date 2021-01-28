@@ -70,7 +70,7 @@ namespace Telegram.BotAPI
                 }
                 else
                 {
-                    throw new BotRequestException(response.Error_code, response.Description);
+                    throw new BotRequestException(response.ErrorCode, response.Description);
                 }
             }
         }
@@ -142,7 +142,7 @@ namespace Telegram.BotAPI
                 }
                 else
                 {
-                    throw new BotRequestException(response.Error_code, response.Description);
+                    throw new BotRequestException(response.ErrorCode, response.Description);
                 }
             }
         }
@@ -238,7 +238,7 @@ namespace Telegram.BotAPI
                 }
                 else
                 {
-                    throw new BotRequestException(response.Error_code, response.Description);
+                    throw new BotRequestException(response.ErrorCode, response.Description);
                 }
             }
         }

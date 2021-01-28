@@ -17,7 +17,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool UnpinAllChatMessages(this BotClient bot, long chat_id)
+        public static bool UnpinAllChatMessages(this BotClient bot, long chatId)
         {
             if (bot == default)
             {
@@ -27,7 +27,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -38,7 +38,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool UnpinAllChatMessages(this BotClient bot, string chat_id)
+        public static bool UnpinAllChatMessages(this BotClient bot, string chatId)
         {
             if (bot == default)
             {
@@ -48,7 +48,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -60,7 +60,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> UnpinAllChatMessages(this BotClient bot, long chat_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> UnpinAllChatMessages(this BotClient bot, long chatId, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -70,7 +70,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
@@ -82,7 +82,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> UnpinAllChatMessages(this BotClient bot, string chat_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> UnpinAllChatMessages(this BotClient bot, string chatId, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -92,7 +92,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);

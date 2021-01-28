@@ -22,45 +22,45 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static Message SendDice(this BotClient bot, string chat_id, [Optional] string emoji, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup)
+        public static Message SendDice(this BotClient bot, string chatId, [Optional] string emoji, [Optional] bool disableNotification, [Optional] uint replyToMessageId, [Optional] bool allowSendingWithoutReply, [Optional] ReplyMarkup replyMarkup)
         {
             if (bot == default)
             {
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            if (string.IsNullOrEmpty(chat_id))
+            if (string.IsNullOrEmpty(chatId))
             {
-                throw new ArgumentNullException(nameof(chat_id));
+                throw new ArgumentNullException(nameof(chatId));
             }
 
             var args = new SendDiceArgs
             {
-                ChatId = chat_id
+                ChatId = chatId
             };
             if (!string.IsNullOrEmpty(emoji))
             {
                 args.Emoji = emoji;
             }
 
-            if (disable_notification)
+            if (disableNotification)
             {
-                args.DisableNotification = disable_notification;
+                args.DisableNotification = disableNotification;
             }
 
-            if (reply_to_message_id != default)
+            if (replyToMessageId != default)
             {
-                args.ReplyToMessageId = reply_to_message_id;
+                args.ReplyToMessageId = replyToMessageId;
             }
 
-            if (allow_sending_without_reply)
+            if (allowSendingWithoutReply)
             {
-                args.AllowSendingWithoutReply = allow_sending_without_reply;
+                args.AllowSendingWithoutReply = allowSendingWithoutReply;
             }
 
-            if (reply_markup != null)
+            if (replyMarkup != null)
             {
-                args.ReplyMarkup = reply_markup;
+                args.ReplyMarkup = replyMarkup;
             }
 
             return bot.RPC<Message>(MethodNames.SendDice, args);
@@ -76,45 +76,45 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static Message SendDice(this BotClient bot, long chat_id, [Optional] string emoji, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup)
+        public static Message SendDice(this BotClient bot, long chatId, [Optional] string emoji, [Optional] bool disableNotification, [Optional] uint replyToMessageId, [Optional] bool allowSendingWithoutReply, [Optional] ReplyMarkup replyMarkup)
         {
             if (bot == default)
             {
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            if (chat_id == default)
+            if (chatId == default)
             {
-                throw new ArgumentNullException(nameof(chat_id));
+                throw new ArgumentNullException(nameof(chatId));
             }
 
             var args = new SendDiceArgs
             {
-                ChatId = chat_id
+                ChatId = chatId
             };
             if (!string.IsNullOrEmpty(emoji))
             {
                 args.Emoji = emoji;
             }
 
-            if (disable_notification)
+            if (disableNotification)
             {
-                args.DisableNotification = disable_notification;
+                args.DisableNotification = disableNotification;
             }
 
-            if (reply_to_message_id != default)
+            if (replyToMessageId != default)
             {
-                args.ReplyToMessageId = reply_to_message_id;
+                args.ReplyToMessageId = replyToMessageId;
             }
 
-            if (allow_sending_without_reply)
+            if (allowSendingWithoutReply)
             {
-                args.AllowSendingWithoutReply = allow_sending_without_reply;
+                args.AllowSendingWithoutReply = allowSendingWithoutReply;
             }
 
-            if (reply_markup != null)
+            if (replyMarkup != null)
             {
-                args.ReplyMarkup = reply_markup;
+                args.ReplyMarkup = replyMarkup;
             }
 
             return bot.RPC<Message>(MethodNames.SendDice, args);
@@ -151,45 +151,45 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> SendDiceAsync(this BotClient bot, string chat_id, [Optional] string emoji, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> SendDiceAsync(this BotClient bot, string chatId, [Optional] string emoji, [Optional] bool disableNotification, [Optional] uint replyToMessageId, [Optional] bool allowSendingWithoutReply, [Optional] ReplyMarkup replyMarkup, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            if (string.IsNullOrEmpty(chat_id))
+            if (string.IsNullOrEmpty(chatId))
             {
-                throw new ArgumentNullException(nameof(chat_id));
+                throw new ArgumentNullException(nameof(chatId));
             }
 
             var args = new SendDiceArgs
             {
-                ChatId = chat_id
+                ChatId = chatId
             };
             if (!string.IsNullOrEmpty(emoji))
             {
                 args.Emoji = emoji;
             }
 
-            if (disable_notification)
+            if (disableNotification)
             {
-                args.DisableNotification = disable_notification;
+                args.DisableNotification = disableNotification;
             }
 
-            if (reply_to_message_id != default)
+            if (replyToMessageId != default)
             {
-                args.ReplyToMessageId = reply_to_message_id;
+                args.ReplyToMessageId = replyToMessageId;
             }
 
-            if (allow_sending_without_reply)
+            if (allowSendingWithoutReply)
             {
-                args.AllowSendingWithoutReply = allow_sending_without_reply;
+                args.AllowSendingWithoutReply = allowSendingWithoutReply;
             }
 
-            if (reply_markup != null)
+            if (replyMarkup != null)
             {
-                args.ReplyMarkup = reply_markup;
+                args.ReplyMarkup = replyMarkup;
             }
 
             return await bot.RPCA<Message>(MethodNames.SendDice, args, cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -206,45 +206,45 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> SendDiceAsync(this BotClient bot, long chat_id, [Optional] string emoji, [Optional] bool disable_notification, [Optional] uint reply_to_message_id, [Optional] bool allow_sending_without_reply, [Optional] ReplyMarkup reply_markup, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> SendDiceAsync(this BotClient bot, long chatId, [Optional] string emoji, [Optional] bool disableNotification, [Optional] uint replyToMessageId, [Optional] bool allowSendingWithoutReply, [Optional] ReplyMarkup replyMarkup, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            if (chat_id == default)
+            if (chatId == default)
             {
-                throw new ArgumentNullException(nameof(chat_id));
+                throw new ArgumentNullException(nameof(chatId));
             }
 
             var args = new SendDiceArgs
             {
-                ChatId = chat_id
+                ChatId = chatId
             };
             if (!string.IsNullOrEmpty(emoji))
             {
                 args.Emoji = emoji;
             }
 
-            if (disable_notification)
+            if (disableNotification)
             {
-                args.DisableNotification = disable_notification;
+                args.DisableNotification = disableNotification;
             }
 
-            if (reply_to_message_id != default)
+            if (replyToMessageId != default)
             {
-                args.ReplyToMessageId = reply_to_message_id;
+                args.ReplyToMessageId = replyToMessageId;
             }
 
-            if (allow_sending_without_reply)
+            if (allowSendingWithoutReply)
             {
-                args.AllowSendingWithoutReply = allow_sending_without_reply;
+                args.AllowSendingWithoutReply = allowSendingWithoutReply;
             }
 
-            if (reply_markup != null)
+            if (replyMarkup != null)
             {
-                args.ReplyMarkup = reply_markup;
+                args.ReplyMarkup = replyMarkup;
             }
 
             return await bot.RPCA<Message>(MethodNames.SendDice, args, cancellationToken: cancellationToken).ConfigureAwait(false);

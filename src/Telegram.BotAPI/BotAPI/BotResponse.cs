@@ -17,7 +17,7 @@ namespace Telegram.BotAPI
         public T Result { get; set; }
         ///<summary>Error code.</summary>
         [JsonPropertyName("error_code")]
-        public int Error_code { get; set; }
+        public int ErrorCode { get; set; }
         ///<summary>Error description.</summary>
         [JsonPropertyName("description")]
         public string Description { get; set; }

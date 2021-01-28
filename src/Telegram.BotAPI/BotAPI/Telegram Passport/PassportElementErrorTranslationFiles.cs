@@ -23,6 +23,6 @@ namespace Telegram.BotAPI.TelegramPassport
         /// <summary>List of base64-encoded file hashes.</summary>
         [JsonPropertyName(PropertyNames.FileHashes)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IEnumerable<string> File_hashes { get; set; }
+        public IEnumerable<string> FileHashes { get; set; }
     }
 }

@@ -18,17 +18,17 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="title">New chat title, 1-255 characters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatTitle(this BotClient bot, long chat_id, string title)
+        public static bool SetChatTitle(this BotClient bot, long chatId, string title)
         {
             if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(bot));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteString(PropertyNames.Title, title);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
@@ -41,17 +41,17 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="title">New chat title, 1-255 characters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatTitle(this BotClient bot, string chat_id, string title)
+        public static bool SetChatTitle(this BotClient bot, string chatId, string title)
         {
             if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(bot));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteString(PropertyNames.Title, title);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
@@ -65,17 +65,17 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatTitleAsync(this BotClient bot, long chat_id, string title, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatTitleAsync(this BotClient bot, long chatId, string title, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(bot));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteString(PropertyNames.Title, title);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
@@ -90,17 +90,17 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatTitleAsync(this BotClient bot, string chat_id, string title, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatTitleAsync(this BotClient bot, string chatId, string title, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(bot));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteString(PropertyNames.Title, title);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);

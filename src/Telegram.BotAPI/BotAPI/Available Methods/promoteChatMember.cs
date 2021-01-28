@@ -21,7 +21,7 @@ namespace Telegram.BotAPI.AvailableMethods
         {
             if (bot == default)
             {
-                throw new System.ArgumentNullException(nameof(bot));
+                throw new ArgumentNullException(nameof(bot));
             }
 
             return bot.RPC<bool>(MethodNames.PromoteChatMember, args);
@@ -41,32 +41,32 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="canPromoteMembers">Optional. Pass True, if the administrator can add new administrators with a subset of his own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by him).</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool PromoteChatMember(this BotClient bot, string chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members)
+        public static bool PromoteChatMember(this BotClient bot, string chatId, int userId, [Optional] bool isAnonymous, [Optional] bool canChangeInfo, [Optional] bool canPostMessages, [Optional] bool canEditMessages, [Optional] bool canDeleteMessages, [Optional] bool canInviteUsers, [Optional] bool canRestrictMembers, [Optional] bool canPinMessages, [Optional] bool canPromoteMembers)
         {
             if (bot == default)
             {
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            if (chat_id == null)
+            if (chatId == null)
             {
-                throw new ArgumentNullException(nameof(chat_id));
+                throw new ArgumentNullException(nameof(chatId));
             }
 
             var stream = new MemoryStream();
             var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
-            json.WriteNumber(PropertyNames.UserId, user_id);
-            json.WriteBoolean(PropertyNames.IsAnonymous, is_anonymous);
-            json.WriteBoolean(PropertyNames.CanChangeInfo, can_change_info);
-            json.WriteBoolean(PropertyNames.CanPostMessages, can_post_messages);
-            json.WriteBoolean(PropertyNames.CanEditMessages, can_edit_messages);
-            json.WriteBoolean(PropertyNames.CanDeleteMessages, can_delete_messages);
-            json.WriteBoolean(PropertyNames.CanInviteUsers, can_invite_users);
-            json.WriteBoolean(PropertyNames.CanRestrictMembers, can_restrict_members);
-            json.WriteBoolean(PropertyNames.CanPinMessages, can_pin_messages);
-            json.WriteBoolean(PropertyNames.CanPromoteMembers, can_promote_members);
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteBoolean(PropertyNames.IsAnonymous, isAnonymous);
+            json.WriteBoolean(PropertyNames.CanChangeInfo, canChangeInfo);
+            json.WriteBoolean(PropertyNames.CanPostMessages, canPostMessages);
+            json.WriteBoolean(PropertyNames.CanEditMessages, canEditMessages);
+            json.WriteBoolean(PropertyNames.CanDeleteMessages, canDeleteMessages);
+            json.WriteBoolean(PropertyNames.CanInviteUsers, canInviteUsers);
+            json.WriteBoolean(PropertyNames.CanRestrictMembers, canRestrictMembers);
+            json.WriteBoolean(PropertyNames.CanPinMessages, canPinMessages);
+            json.WriteBoolean(PropertyNames.CanPromoteMembers, canPromoteMembers);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -87,7 +87,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="canPromoteMembers">Optional. Pass True, if the administrator can add new administrators with a subset of his own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by him).</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool PromoteChatMember(this BotClient bot, long chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members)
+        public static bool PromoteChatMember(this BotClient bot, long chatId, int userId, [Optional] bool isAnonymous, [Optional] bool canChangeInfo, [Optional] bool canPostMessages, [Optional] bool canEditMessages, [Optional] bool canDeleteMessages, [Optional] bool canInviteUsers, [Optional] bool canRestrictMembers, [Optional] bool canPinMessages, [Optional] bool canPromoteMembers)
         {
             if (bot == default)
             {
@@ -97,17 +97,17 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
-            json.WriteNumber(PropertyNames.UserId, user_id);
-            json.WriteBoolean(PropertyNames.IsAnonymous, is_anonymous);
-            json.WriteBoolean(PropertyNames.CanChangeInfo, can_change_info);
-            json.WriteBoolean(PropertyNames.CanPostMessages, can_post_messages);
-            json.WriteBoolean(PropertyNames.CanEditMessages, can_edit_messages);
-            json.WriteBoolean(PropertyNames.CanDeleteMessages, can_delete_messages);
-            json.WriteBoolean(PropertyNames.CanInviteUsers, can_invite_users);
-            json.WriteBoolean(PropertyNames.CanRestrictMembers, can_restrict_members);
-            json.WriteBoolean(PropertyNames.CanPinMessages, can_pin_messages);
-            json.WriteBoolean(PropertyNames.CanPromoteMembers, can_promote_members);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteBoolean(PropertyNames.IsAnonymous, isAnonymous);
+            json.WriteBoolean(PropertyNames.CanChangeInfo, canChangeInfo);
+            json.WriteBoolean(PropertyNames.CanPostMessages, canPostMessages);
+            json.WriteBoolean(PropertyNames.CanEditMessages, canEditMessages);
+            json.WriteBoolean(PropertyNames.CanDeleteMessages, canDeleteMessages);
+            json.WriteBoolean(PropertyNames.CanInviteUsers, canInviteUsers);
+            json.WriteBoolean(PropertyNames.CanRestrictMembers, canRestrictMembers);
+            json.WriteBoolean(PropertyNames.CanPinMessages, canPinMessages);
+            json.WriteBoolean(PropertyNames.CanPromoteMembers, canPromoteMembers);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -149,32 +149,32 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> PromoteChatMemberAsync(this BotClient bot, string chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> PromoteChatMemberAsync(this BotClient bot, string chatId, int userId, [Optional] bool isAnonymous, [Optional] bool canChangeInfo, [Optional] bool canPostMessages, [Optional] bool canEditMessages, [Optional] bool canDeleteMessages, [Optional] bool canInviteUsers, [Optional] bool canRestrictMembers, [Optional] bool canPinMessages, [Optional] bool canPromoteMembers, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            if (chat_id == null)
+            if (chatId == null)
             {
-                throw new ArgumentNullException(nameof(chat_id));
+                throw new ArgumentNullException(nameof(chatId));
             }
 
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
-            json.WriteNumber(PropertyNames.UserId, user_id);
-            json.WriteBoolean(PropertyNames.IsAnonymous, is_anonymous);
-            json.WriteBoolean(PropertyNames.CanChangeInfo, can_change_info);
-            json.WriteBoolean(PropertyNames.CanPostMessages, can_post_messages);
-            json.WriteBoolean(PropertyNames.CanEditMessages, can_edit_messages);
-            json.WriteBoolean(PropertyNames.CanDeleteMessages, can_delete_messages);
-            json.WriteBoolean(PropertyNames.CanInviteUsers, can_invite_users);
-            json.WriteBoolean(PropertyNames.CanRestrictMembers, can_restrict_members);
-            json.WriteBoolean(PropertyNames.CanPinMessages, can_pin_messages);
-            json.WriteBoolean(PropertyNames.CanPromoteMembers, can_promote_members);
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteBoolean(PropertyNames.IsAnonymous, isAnonymous);
+            json.WriteBoolean(PropertyNames.CanChangeInfo, canChangeInfo);
+            json.WriteBoolean(PropertyNames.CanPostMessages, canPostMessages);
+            json.WriteBoolean(PropertyNames.CanEditMessages, canEditMessages);
+            json.WriteBoolean(PropertyNames.CanDeleteMessages, canDeleteMessages);
+            json.WriteBoolean(PropertyNames.CanInviteUsers, canInviteUsers);
+            json.WriteBoolean(PropertyNames.CanRestrictMembers, canRestrictMembers);
+            json.WriteBoolean(PropertyNames.CanPinMessages, canPinMessages);
+            json.WriteBoolean(PropertyNames.CanPromoteMembers, canPromoteMembers);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
@@ -197,7 +197,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> PromoteChatMemberAsync(this BotClient bot, long chat_id, int user_id, [Optional] bool is_anonymous, [Optional] bool can_change_info, [Optional] bool can_post_messages, [Optional] bool can_edit_messages, [Optional] bool can_delete_messages, [Optional] bool can_invite_users, [Optional] bool can_restrict_members, [Optional] bool can_pin_messages, [Optional] bool can_promote_members, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> PromoteChatMemberAsync(this BotClient bot, long chatId, int userId, [Optional] bool isAnonymous, [Optional] bool canChangeInfo, [Optional] bool canPostMessages, [Optional] bool canEditMessages, [Optional] bool canDeleteMessages, [Optional] bool canInviteUsers, [Optional] bool canRestrictMembers, [Optional] bool canPinMessages, [Optional] bool canPromoteMembers, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -207,17 +207,17 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
-            json.WriteNumber(PropertyNames.UserId, user_id);
-            json.WriteBoolean(PropertyNames.IsAnonymous, is_anonymous);
-            json.WriteBoolean(PropertyNames.CanChangeInfo, can_change_info);
-            json.WriteBoolean(PropertyNames.CanPostMessages, can_post_messages);
-            json.WriteBoolean(PropertyNames.CanEditMessages, can_edit_messages);
-            json.WriteBoolean(PropertyNames.CanDeleteMessages, can_delete_messages);
-            json.WriteBoolean(PropertyNames.CanInviteUsers, can_invite_users);
-            json.WriteBoolean(PropertyNames.CanRestrictMembers, can_restrict_members);
-            json.WriteBoolean(PropertyNames.CanPinMessages, can_pin_messages);
-            json.WriteBoolean(PropertyNames.CanPromoteMembers, can_promote_members);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteBoolean(PropertyNames.IsAnonymous, isAnonymous);
+            json.WriteBoolean(PropertyNames.CanChangeInfo, canChangeInfo);
+            json.WriteBoolean(PropertyNames.CanPostMessages, canPostMessages);
+            json.WriteBoolean(PropertyNames.CanEditMessages, canEditMessages);
+            json.WriteBoolean(PropertyNames.CanDeleteMessages, canDeleteMessages);
+            json.WriteBoolean(PropertyNames.CanInviteUsers, canInviteUsers);
+            json.WriteBoolean(PropertyNames.CanRestrictMembers, canRestrictMembers);
+            json.WriteBoolean(PropertyNames.CanPinMessages, canPinMessages);
+            json.WriteBoolean(PropertyNames.CanPromoteMembers, canPromoteMembers);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);

@@ -19,7 +19,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="onlyIfBanned">Do nothing if the user is not banned</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool UnbanChatMember(this BotClient bot, long chat_id, int user_id, [Optional] bool only_if_banned)
+        public static bool UnbanChatMember(this BotClient bot, long chatId, int userId, [Optional] bool onlyIfBanned)
         {
             if (bot == default)
             {
@@ -29,11 +29,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
-            json.WriteNumber(PropertyNames.UserId, user_id);
-            if (only_if_banned)
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            if (onlyIfBanned)
             {
-                json.WriteBoolean("only_if_banned", only_if_banned);
+                json.WriteBoolean("only_if_banned", onlyIfBanned);
             }
 
             json.WriteEndObject();
@@ -48,7 +48,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="onlyIfBanned">Do nothing if the user is not banned</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool UnbanChatMember(this BotClient bot, string chat_id, int user_id, [Optional] bool only_if_banned)
+        public static bool UnbanChatMember(this BotClient bot, string chatId, int userId, [Optional] bool onlyIfBanned)
         {
             if (bot == default)
             {
@@ -58,11 +58,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
-            json.WriteNumber(PropertyNames.UserId, user_id);
-            if (only_if_banned)
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            if (onlyIfBanned)
             {
-                json.WriteBoolean("only_if_banned", only_if_banned);
+                json.WriteBoolean("only_if_banned", onlyIfBanned);
             }
 
             json.WriteEndObject();
@@ -78,7 +78,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> UnbanChatMemberAsync(this BotClient bot, long chat_id, int user_id, [Optional] bool only_if_banned, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> UnbanChatMemberAsync(this BotClient bot, long chatId, int userId, [Optional] bool onlyIfBanned, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -88,11 +88,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber(PropertyNames.ChatId, chat_id);
-            json.WriteNumber(PropertyNames.UserId, user_id);
-            if (only_if_banned)
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            if (onlyIfBanned)
             {
-                json.WriteBoolean("only_if_banned", only_if_banned);
+                json.WriteBoolean("only_if_banned", onlyIfBanned);
             }
 
             json.WriteEndObject();
@@ -109,7 +109,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> UnbanChatMemberAsync(this BotClient bot, string chat_id, int user_id, [Optional] bool only_if_banned, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> UnbanChatMemberAsync(this BotClient bot, string chatId, int userId, [Optional] bool onlyIfBanned, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -119,11 +119,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString(PropertyNames.ChatId, chat_id);
-            json.WriteNumber(PropertyNames.UserId, user_id);
-            if (only_if_banned)
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            if (onlyIfBanned)
             {
-                json.WriteBoolean("only_if_banned", only_if_banned);
+                json.WriteBoolean("only_if_banned", onlyIfBanned);
             }
 
             json.WriteEndObject();
