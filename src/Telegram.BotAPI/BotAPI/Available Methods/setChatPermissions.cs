@@ -8,17 +8,17 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="permissions">New default chat permissions.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatPermissions(this BotClient bot, long chat_id, Available_Types.ChatPermissions permissions)
+        public static bool SetChatPermissions(this BotClient bot, long chat_id, AvailableTypes.ChatPermissions permissions)
         {
             if (bot == default)
             {
@@ -83,11 +83,11 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="permissions">New default chat permissions.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatPermissions(this BotClient bot, string chat_id, Available_Types.ChatPermissions permissions)
+        public static bool SetChatPermissions(this BotClient bot, string chat_id, AvailableTypes.ChatPermissions permissions)
         {
             if (bot == default)
             {
@@ -152,12 +152,12 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="permissions">New default chat permissions.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatPermissionsAsync(this BotClient bot, long chat_id, Available_Types.ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatPermissionsAsync(this BotClient bot, long chat_id, AvailableTypes.ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -223,12 +223,12 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="permissions">New default chat permissions.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatPermissionsAsync(this BotClient bot, string chat_id, Available_Types.ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatPermissionsAsync(this BotClient bot, string chat_id, AvailableTypes.ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {

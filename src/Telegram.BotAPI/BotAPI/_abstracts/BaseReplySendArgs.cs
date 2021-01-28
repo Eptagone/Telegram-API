@@ -12,12 +12,12 @@ namespace Telegram.BotAPI
     public abstract class BaseReplySendArgs
     {
         /// <summary>Optional. If the message is a reply, ID of the original message.</summary>
-        [JsonPropertyName("reply_to_message_id")]
+        [JsonPropertyName(PropertyNames.ReplyToMessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Reply_to_message_id { get; set; }
+        public uint ReplyToMessageId { get; set; }
         /// <summary>Pass True, if the message should be sent even if the specified replied-to message is not found.</summary>
-        [JsonPropertyName("allow_sending_without_reply")]
+        [JsonPropertyName(PropertyNames.AllowSendingWithoutReply)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Allow_sending_without_reply { get; set; }
+        public bool AllowSendingWithoutReply { get; set; }
     }
 }

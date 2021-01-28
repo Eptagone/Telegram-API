@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Telegram.BotAPI.Inline_mode
+namespace Telegram.BotAPI.InlineMode
 {
     /// <summary>Inline mode</summary>
     public static class InlineModeExtensions

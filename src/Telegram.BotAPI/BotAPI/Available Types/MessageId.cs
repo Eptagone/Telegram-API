@@ -5,15 +5,15 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents a unique message identifier.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class MessageId
     {
         /// <summary>Unique message identifier.</summary>
-        [JsonPropertyName("message_id")]
+        [JsonPropertyName(PropertyNames.MessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Message_id { get; set; }
+        public uint MessageId { get; set; }
     }
 }

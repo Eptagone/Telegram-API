@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Inline_mode
+namespace Telegram.BotAPI.InlineMode
 {
     /// <summary>Represents a link to an article or web page.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -38,14 +38,14 @@ namespace Telegram.BotAPI.Inline_mode
         /// <summary>URL of the static thumbnail for the result (jpeg or gif).</summary>
         [JsonPropertyName("thumb_url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Thumb_url { get; set; }
+        public string ThumbUrl { get; set; }
         /// <summary>Optional. Thumbnail width.</summary>
         [JsonPropertyName("thumb_width")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Thumb_width { get; set; }
+        public uint ThumbWidth { get; set; }
         /// <summary>Optional. Thumbnail height.</summary>
         [JsonPropertyName("thumb_height")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Thumb_height { get; set; }
+        public uint ThumbHeight { get; set; }
     }
 }

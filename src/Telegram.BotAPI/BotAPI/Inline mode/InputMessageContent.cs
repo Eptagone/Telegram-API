@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-namespace Telegram.BotAPI.Inline_mode
+namespace Telegram.BotAPI.InlineMode
 {
     /// <summary>This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 4 types: <br /><br />
     /// • <see cref="InputTextMessageContent"/><br />

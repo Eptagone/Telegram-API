@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Getting_updates
+namespace Telegram.BotAPI.GettingUpdates
 {
     public static partial class GettingUpdatesExtensions
     {

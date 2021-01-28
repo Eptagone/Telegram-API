@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     public static partial class AvailableMethodsExtensions
     {
@@ -31,20 +31,20 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="callback_query_id">Unique identifier for the query to be answered.</param>
+        /// <param name="callbackQueryId">Unique identifier for the query to be answered.</param>
         /// <param name="text">Optional. Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.</param>
-        /// <param name="show_alert">Optional. If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.</param>
+        /// <param name="showAlert">Optional. If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.</param>
         /// <param name="url">Optional. URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game – note that this will only work if the query comes from a callback_game button. <br/>Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.</param>
-        /// <param name="cache_time">Optional. The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.</param>
+        /// <param name="cacheTime">Optional. The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool AnswerCallbackQuery(
             this BotClient bot,
-            string callback_query_id,
+            string callbackQueryId,
             [Optional] string text,
-            [Optional] bool show_alert,
+            [Optional] bool showAlert,
             [Optional] string url,
-            [Optional] uint cache_time)
+            [Optional] uint cacheTime)
         {
             if (bot == default)
             {
@@ -54,15 +54,15 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("callback_query_id", callback_query_id);
+            json.WriteString("callback_query_id", callbackQueryId);
             if (text != default)
             {
-                json.WriteString("text", text);
+                json.WriteString(PropertyNames.Text, text);
             }
 
-            if (show_alert != default)
+            if (showAlert != default)
             {
-                json.WriteBoolean("show_alert", show_alert);
+                json.WriteBoolean("show_alert", showAlert);
             }
 
             if (url != default)
@@ -70,9 +70,9 @@ namespace Telegram.BotAPI.Available_Methods
                 json.WriteString("url", url);
             }
 
-            if (cache_time != default)
+            if (cacheTime != default)
             {
-                json.WriteNumber("cache_time", cache_time);
+                json.WriteNumber("cache_time", cacheTime);
             }
 
             json.WriteEndObject();
@@ -105,21 +105,21 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="callback_query_id">Unique identifier for the query to be answered.</param>
+        /// <param name="callbackQueryId">Unique identifier for the query to be answered.</param>
         /// <param name="text">Optional. Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.</param>
-        /// <param name="show_alert">Optional. If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.</param>
+        /// <param name="showAlert">Optional. If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.</param>
         /// <param name="url">Optional. URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game – note that this will only work if the query comes from a callback_game button. <br/>Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.</param>
-        /// <param name="cache_time">Optional. The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.</param>
+        /// <param name="cacheTime">Optional. The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static async Task<bool> AnswerCallbackQueryAsync(
             this BotClient bot,
-            string callback_query_id,
+            string callbackQueryId,
             [Optional] string text,
-            [Optional] bool show_alert,
+            [Optional] bool showAlert,
             [Optional] string url,
-            [Optional] uint cache_time,
+            [Optional] uint cacheTime,
             [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
@@ -130,25 +130,25 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("callback_query_id", callback_query_id);
+            json.WriteString("callback_query_id", callbackQueryId);
             if (text != default)
             {
-                json.WriteString("text", text);
+                json.WriteString(PropertyNames.Text, text);
             }
 
-            if (show_alert != default)
+            if (showAlert != default)
             {
-                json.WriteBoolean("show_alert", show_alert);
+                json.WriteBoolean("show_alert", showAlert);
             }
 
             if (url != default)
             {
-                json.WriteString("url", url);
+                json.WriteString(PropertyNames.Url, url);
             }
 
-            if (cache_time != default)
+            if (cacheTime != default)
             {
-                json.WriteNumber("cache_time", cache_time);
+                json.WriteNumber("cache_time", cacheTime);
             }
 
             json.WriteEndObject();

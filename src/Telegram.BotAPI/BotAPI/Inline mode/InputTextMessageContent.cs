@@ -5,9 +5,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Inline_mode
+namespace Telegram.BotAPI.InlineMode
 {
     /// <summary>Represents the content of a text message to be sent as the result of an inline query.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]

@@ -5,9 +5,9 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     public static partial class AvailableMethodsExtensions
     {
@@ -35,7 +35,7 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="photo">InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</param>
         /// <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</param>
         /// <param name="parse_mode">Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</param>
@@ -51,19 +51,19 @@ namespace Telegram.BotAPI.Available_Methods
         {
             return bot.SendPhoto(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Photo = photo,
                 Caption = caption,
-                Parse_mode = parse_mode,
-                Disable_notification = disable_notification,
-                Reply_to_message_id = reply_to_message_id,
-                Reply_markup = reply_markup
+                ParseMode = parse_mode,
+                DisableNotification = disable_notification,
+                ReplyToMessageId = reply_to_message_id,
+                ReplyMarkup = reply_markup
             });
         }
 
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="photo">InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</param>
         /// <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</param>
         /// <param name="parse_mode">Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</param>
@@ -79,19 +79,19 @@ namespace Telegram.BotAPI.Available_Methods
         {
             return bot.SendPhoto(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Photo = photo,
                 Caption = caption,
-                Parse_mode = parse_mode,
-                Disable_notification = disable_notification,
-                Reply_to_message_id = reply_to_message_id,
-                Reply_markup = reply_markup
+                ParseMode = parse_mode,
+                DisableNotification = disable_notification,
+                ReplyToMessageId = reply_to_message_id,
+                ReplyMarkup = reply_markup
             });
         }
 
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="photo">InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</param>
         /// <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</param>
         /// <param name="parse_mode">Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</param>
@@ -107,19 +107,19 @@ namespace Telegram.BotAPI.Available_Methods
         {
             return bot.SendPhoto(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Photo = photo,
                 Caption = caption,
-                Parse_mode = parse_mode,
-                Disable_notification = disable_notification,
-                Reply_to_message_id = reply_to_message_id,
-                Reply_markup = reply_markup
+                ParseMode = parse_mode,
+                DisableNotification = disable_notification,
+                ReplyToMessageId = reply_to_message_id,
+                ReplyMarkup = reply_markup
             });
         }
 
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="photo">InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</param>
         /// <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</param>
         /// <param name="parse_mode">Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</param>
@@ -135,13 +135,13 @@ namespace Telegram.BotAPI.Available_Methods
         {
             return bot.SendPhoto(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Photo = photo,
                 Caption = caption,
-                Parse_mode = parse_mode,
-                Disable_notification = disable_notification,
-                Reply_to_message_id = reply_to_message_id,
-                Reply_markup = reply_markup
+                ParseMode = parse_mode,
+                DisableNotification = disable_notification,
+                ReplyToMessageId = reply_to_message_id,
+                ReplyMarkup = reply_markup
             });
         }
 
@@ -170,7 +170,7 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="photo">InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</param>
         /// <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</param>
         /// <param name="parse_mode">Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</param>
@@ -187,19 +187,19 @@ namespace Telegram.BotAPI.Available_Methods
         {
             return await bot.SendPhotoAsync(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Photo = photo,
                 Caption = caption,
-                Parse_mode = parse_mode,
-                Disable_notification = disable_notification,
-                Reply_to_message_id = reply_to_message_id,
-                Reply_markup = reply_markup
+                ParseMode = parse_mode,
+                DisableNotification = disable_notification,
+                ReplyToMessageId = reply_to_message_id,
+                ReplyMarkup = reply_markup
             }, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="photo">InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</param>
         /// <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</param>
         /// <param name="parse_mode">Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</param>
@@ -216,19 +216,19 @@ namespace Telegram.BotAPI.Available_Methods
         {
             return await bot.SendPhotoAsync(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Photo = photo,
                 Caption = caption,
-                Parse_mode = parse_mode,
-                Disable_notification = disable_notification,
-                Reply_to_message_id = reply_to_message_id,
-                Reply_markup = reply_markup
+                ParseMode = parse_mode,
+                DisableNotification = disable_notification,
+                ReplyToMessageId = reply_to_message_id,
+                ReplyMarkup = reply_markup
             }, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="photo">InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</param>
         /// <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</param>
         /// <param name="parse_mode">Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</param>
@@ -245,19 +245,19 @@ namespace Telegram.BotAPI.Available_Methods
         {
             return await bot.SendPhotoAsync(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Photo = photo,
                 Caption = caption,
-                Parse_mode = parse_mode,
-                Disable_notification = disable_notification,
-                Reply_to_message_id = reply_to_message_id,
-                Reply_markup = reply_markup
+                ParseMode = parse_mode,
+                DisableNotification = disable_notification,
+                ReplyToMessageId = reply_to_message_id,
+                ReplyMarkup = reply_markup
             }, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to send photos. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="photo">InputFile or String. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.</param>
         /// <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id), 0-1024 characters.</param>
         /// <param name="parse_mode">Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</param>
@@ -274,13 +274,13 @@ namespace Telegram.BotAPI.Available_Methods
         {
             return await bot.SendPhotoAsync(new SendPhotoArgs
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Photo = photo,
                 Caption = caption,
-                Parse_mode = parse_mode,
-                Disable_notification = disable_notification,
-                Reply_to_message_id = reply_to_message_id,
-                Reply_markup = reply_markup
+                ParseMode = parse_mode,
+                DisableNotification = disable_notification,
+                ReplyToMessageId = reply_to_message_id,
+                ReplyMarkup = reply_markup
             }, cancellationToken).ConfigureAwait(false);
         }
     }

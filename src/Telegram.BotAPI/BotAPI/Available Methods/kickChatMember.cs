@@ -8,18 +8,18 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
-        /// /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
+        /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
+        /// /// <param name="untilDate">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool KickChatMember(this BotClient bot, long chat_id, int user_id, [Optional] uint until_date)
+        public static bool KickChatMember(this BotClient bot, long chatId, int userId, [Optional] uint untilDate)
         {
             if (bot == default)
             {
@@ -29,11 +29,11 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteNumber("user_id", user_id);
-            if (until_date != default)
+            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber("user_id", userId);
+            if (untilDate != default)
             {
-                json.WriteNumber("until_date", until_date);
+                json.WriteNumber("untilDate", untilDate);
             }
 
             json.WriteEndObject();
@@ -43,12 +43,12 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
-        /// /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
+        /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
+        /// /// <param name="untilDate">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool KickChatMember(this BotClient bot, string chat_id, int user_id, [Optional] uint until_date)
+        public static bool KickChatMember(this BotClient bot, string chatId, int userId, [Optional] uint untilDate)
         {
             if (bot == default)
             {
@@ -58,11 +58,11 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteNumber("user_id", user_id);
-            if (until_date != default)
+            json.WriteString("chat_id", chatId);
+            json.WriteNumber("user_id", userId);
+            if (untilDate != default)
             {
-                json.WriteNumber("until_date", until_date);
+                json.WriteNumber("untilDate", untilDate);
             }
 
             json.WriteEndObject();
@@ -72,13 +72,13 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
-        /// /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
+        /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
+        /// /// <param name="untilDate">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> KickChatMemberAsync(this BotClient bot, long chat_id, int user_id, [Optional] uint until_date, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> KickChatMemberAsync(this BotClient bot, long chatId, int userId, [Optional] uint untilDate, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -88,11 +88,11 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteNumber("user_id", user_id);
-            if (until_date != default)
+            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber("user_id", userId);
+            if (untilDate != default)
             {
-                json.WriteNumber("until_date", until_date);
+                json.WriteNumber("untilDate", untilDate);
             }
 
             json.WriteEndObject();
@@ -103,13 +103,13 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
-        /// /// <param name="until_date">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
+        /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
+        /// /// <param name="untilDate">Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> KickChatMemberAsync(this BotClient bot, string chat_id, int user_id, [Optional] uint until_date, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> KickChatMemberAsync(this BotClient bot, string chatId, int userId, [Optional] uint untilDate, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -119,11 +119,11 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteNumber("user_id", user_id);
-            if (until_date != default)
+            json.WriteString("chat_id", chatId);
+            json.WriteNumber("user_id", userId);
+            if (untilDate != default)
             {
-                json.WriteNumber("until_date", until_date);
+                json.WriteNumber("untilDate", untilDate);
             }
 
             json.WriteEndObject();

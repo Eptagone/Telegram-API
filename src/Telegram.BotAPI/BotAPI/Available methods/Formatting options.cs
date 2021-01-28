@@ -1,11 +1,12 @@
 ﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableMethods
 {
     /// <summary><b>Formatting options</b><br/>
     /// <para>The Bot API supports basic formatting for messages. You can use bold, italic, underlined and strikethrough text, as well as inline links and pre-formatted code in your bots' messages. Telegram clients will render them accordingly. You can use either markdown-style or HTML-style formatting.</para>
@@ -85,20 +86,28 @@ namespace Telegram.BotAPI.Available_Types
         /// • Programming language can't be specified for standalone <i>code</i> tags.</para></summary>
         public const string HTML = "HTML";
         /// <summary>Replaces symbols that are not part of an HTML tag or entity with HTML entities (&lt; with &amp;lt;, &gt; with &amp;gt; and &amp; with &amp;amp;).</summary>
-        /// <param name="text">Input text.</param>
+        /// <param name="input">Input text.</param>
         /// <returns>String with HTML entities.</returns>
-        public static string ParseHTML(this string text)
+        public static string ParseHTML(this string input)
         {
-            return text
-                       .Replace("&", "&amp;")
-                       .Replace("<", "&lt;")
-                       .Replace(">", "&gt;");
+            if (input == null)
+            {
+                throw new NullReferenceException(nameof(input));
+            }
+            return input
+                .Replace("&", "&amp;")
+                .Replace("<", "&lt;")
+                .Replace(">", "&gt;");
         }
 
         /// <summary>Prepends the character '\' for the escape characters: '_', '*', '`', '['.</summary>
         /// <param name="input">Input text.</param>
         public static string ParseMarkdown(this string input)
         {
+            if (input == null)
+            {
+                throw new NullReferenceException(nameof(input));
+            }
             var chars = "_*`[";
             return input.Prepends('\\', chars);
         }
@@ -106,6 +115,10 @@ namespace Telegram.BotAPI.Available_Types
         /// <param name="input">Input text.</param>
         public static string ParseMarkdownV2(this string input)
         {
+            if (input == null)
+            {
+                throw new NullReferenceException(nameof(input));
+            }
             var chars = "_*[]()~`>#+-=|{}.!";
             return input.Prepends('\\', chars);
         }

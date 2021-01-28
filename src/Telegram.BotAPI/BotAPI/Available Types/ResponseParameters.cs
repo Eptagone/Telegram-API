@@ -5,19 +5,19 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     ///<summary>Contains information about why a request was unsuccessful.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class ResponseParameters
     {
         ///<summary>Optional. The group has been migrated to a supergroup with the specified identifier. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.</summary>
-        [JsonPropertyName("migrate_to_chat_id")]
+        [JsonPropertyName(PropertyNames.MigrateToChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public long Migrate_to_chat_id { get; set; }
+        public long MigrateToChatId { get; set; }
         ///<summary>Optional. In case of exceeding flood control, the number of seconds left to wait before the request can be repeated.</summary>
-        [JsonPropertyName("retry_after")]
+        [JsonPropertyName(PropertyNames.RetryAfter)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Retry_after { get; set; }
+        public uint RetryAfter { get; set; }
     }
 }

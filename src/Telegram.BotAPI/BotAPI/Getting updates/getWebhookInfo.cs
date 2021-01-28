@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Telegram.BotAPI.Getting_updates
+namespace Telegram.BotAPI.GettingUpdates
 {
     public static partial class GettingUpdatesExtensions
     {

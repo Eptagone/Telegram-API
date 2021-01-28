@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents a bot command.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -23,11 +23,11 @@ namespace Telegram.BotAPI.Available_Types
         }
 
         /// <summary>Text of the command, 1-32 characters. Can contain only lowercase English letters, digits and underscores.</summary>
-        [JsonPropertyName("command")]
+        [JsonPropertyName(PropertyNames.Command)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Command { get; set; }
         /// <summary>Description of the command, 3-256 characters.</summary>
-        [JsonPropertyName("description")]
+        [JsonPropertyName(PropertyNames.Description)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Description { get; set; }
     }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Telegram_Passport
+namespace Telegram.BotAPI.TelegramPassport
 {
     /// <summary>Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]

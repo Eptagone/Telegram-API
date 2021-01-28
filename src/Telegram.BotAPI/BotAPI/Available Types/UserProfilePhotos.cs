@@ -6,19 +6,19 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     ///<summary>This object represent a user's profile pictures.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class UserProfilePhotos
     {
         ///<summary>Total number of profile pictures the target user has.</summary>
-        [JsonPropertyName("total_count")]
+        [JsonPropertyName(PropertyNames.TotalCount)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Total_count { get; set; }
+        public uint TotalCount { get; set; }
         ///<summary>Requested profile pictures (in up to 4 sizes each).</summary>
-        [JsonPropertyName("photos")]
+        [JsonPropertyName(PropertyNames.Photos)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IEnumerable<IEnumerable<PhotoSize>> Photos { get; set; }
+        public PhotoSize[][] Photos { get; set; }
     }
 }

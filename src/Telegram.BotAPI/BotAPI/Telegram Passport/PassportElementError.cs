@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Telegram_Passport
+namespace Telegram.BotAPI.TelegramPassport
 {
     /// <summary>This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:<br/>
     /// • <see cref="PassportElementErrorDataField"/><br/>

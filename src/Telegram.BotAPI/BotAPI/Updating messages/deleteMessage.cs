@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Telegram.BotAPI.Updating_messages
+namespace Telegram.BotAPI.UpdatingMessages
 {
     public static partial class UpdatingMessagesExtensions
     {
@@ -21,11 +21,11 @@ namespace Telegram.BotAPI.Updating_messages
         /// - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
         /// Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool DeleteMessage(this BotClient bot, long chat_id, uint message_id)
+        public static bool DeleteMessage(this BotClient bot, long chatId, uint messageId)
         {
             if (bot == default)
             {
@@ -35,8 +35,8 @@ namespace Telegram.BotAPI.Updating_messages
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteNumber("message_id", message_id);
+            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber("message_id", messageId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -51,11 +51,11 @@ namespace Telegram.BotAPI.Updating_messages
         /// - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
         /// Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool DeleteMessage(this BotClient bot, string chat_id, uint message_id)
+        public static bool DeleteMessage(this BotClient bot, string chatId, uint messageId)
         {
             if (bot == default)
             {
@@ -65,8 +65,8 @@ namespace Telegram.BotAPI.Updating_messages
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteNumber("message_id", message_id);
+            json.WriteString("chat_id", chatId);
+            json.WriteNumber("message_id", messageId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
@@ -81,12 +81,12 @@ namespace Telegram.BotAPI.Updating_messages
         /// - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
         /// Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> DeleteMessageAsync(this BotClient bot, long chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> DeleteMessageAsync(this BotClient bot, long chatId, uint messageId, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -96,8 +96,8 @@ namespace Telegram.BotAPI.Updating_messages
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteNumber("message_id", message_id);
+            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber("message_id", messageId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
@@ -113,12 +113,12 @@ namespace Telegram.BotAPI.Updating_messages
         /// - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.<br/>
         /// Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the message to delete.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> DeleteMessageAsync(this BotClient bot, string chat_id, uint message_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> DeleteMessageAsync(this BotClient bot, string chatId, uint messageId, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -128,8 +128,8 @@ namespace Telegram.BotAPI.Updating_messages
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteNumber("message_id", message_id);
+            json.WriteString("chat_id", chatId);
+            json.WriteNumber("message_id", messageId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);

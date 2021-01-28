@@ -4,7 +4,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI.Payments
 {
@@ -98,6 +98,6 @@ namespace Telegram.BotAPI.Payments
         /// <summary>Optional. A <see cref="InlineKeyboardMarkup"/> object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button.</summary>
         [JsonPropertyName("reply_markup")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InlineKeyboardMarkup Reply_markup { get; set; }
+        public InlineKeyboardMarkup ReplyMarkup { get; set; }
     }
 }

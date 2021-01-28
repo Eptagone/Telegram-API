@@ -3,10 +3,9 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents the content of a media message to be sent. It should be one of: <br /><br />
     /// • <see cref="InputMediaAnimation"/><br />
@@ -18,12 +17,12 @@ namespace Telegram.BotAPI.Available_Types
     public abstract class InputMedia
     {
         ///<summary>File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://&lt;file_attach_name&gt;” to upload a new one using multipart/form-data under &lt;file_attach_name&gt; name.</summary>
-        [JsonPropertyName("media")]
+        [JsonPropertyName(PropertyNames.Media)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Media { get; set; }
         /// <summary>Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode.</summary>
-        [JsonPropertyName("caption_entities")]
+        [JsonPropertyName(PropertyNames.CaptionEntities)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IEnumerable<MessageEntity> Caption_entities { get; set; }
+        public MessageEntity[] CaptionEntities { get; set; }
     }
 }

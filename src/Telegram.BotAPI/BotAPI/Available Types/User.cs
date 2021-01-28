@@ -5,47 +5,47 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents a Telegram user or bot.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class User
     {
         /// <summary>Unique identifier for this user or bot.</summary>
-        [JsonPropertyName("id")]
+        [JsonPropertyName(PropertyNames.Id)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Id { get; set; }
         /// <summary>True, if this user is a bot.</summary>
-        [JsonPropertyName("is_bot")]
+        [JsonPropertyName(PropertyNames.IsBot)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Is_bot { get; set; }
+        public bool IsBot { get; set; }
         /// <summary>User‘s or bot’s first name.</summary>
-        [JsonPropertyName("first_name")]
+        [JsonPropertyName(PropertyNames.FirstName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string First_name { get; set; }
+        public string FirstName { get; set; }
         /// <summary>Optional. User‘s or bot’s last name.</summary>
-        [JsonPropertyName("last_name")]
+        [JsonPropertyName(PropertyNames.LastName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Last_name { get; set; }
+        public string LastName { get; set; }
         /// <summary>Optional. User‘s or bot’s username.</summary>
-        [JsonPropertyName("username")]
+        [JsonPropertyName(PropertyNames.Username)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Username { get; set; }
         /// <summary>Optional. IETF language tag of the user's language.</summary>
-        [JsonPropertyName("language_code")]
+        [JsonPropertyName(PropertyNames.LanguageCode)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Language_code { get; set; }
+        public string LanguageCode { get; set; }
         /// <summary>Optional. True, if the bot can be invited to groups. Returned only in getMe.</summary>
-        [JsonPropertyName("can_join_groups")]
+        [JsonPropertyName(PropertyNames.CanJoinGroups)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_join_groups { get; set; }
+        public bool CanJoinGroups { get; set; }
         /// <summary>Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.</summary>
-        [JsonPropertyName("can_read_all_group_messages")]
+        [JsonPropertyName(PropertyNames.CanReadAllGroupMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_read_all_group_messages { get; set; }
+        public bool CanReadAllGroupMessages { get; set; }
         /// <summary>Optional. True, if the bot supports inline queries. Returned only in getMe.</summary>
-        [JsonPropertyName("supports_inline_queries")]
+        [JsonPropertyName(PropertyNames.SupportsInlineQueries)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Supports_inline_queries { get; set; }
+        public bool SupportsInlineQueries { get; set; }
     }
 }

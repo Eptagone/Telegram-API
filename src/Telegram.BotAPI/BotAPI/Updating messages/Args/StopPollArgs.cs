@@ -4,9 +4,9 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Updating_messages
+namespace Telegram.BotAPI.UpdatingMessages
 {
     /// <summary>StopPoll method parameters.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -15,7 +15,7 @@ namespace Telegram.BotAPI.Updating_messages
         /// <summary>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonPropertyName("chat_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public object Chat_id { get; set; }
+        public object ChatId { get; set; }
         /// <summary>Identifier of the original message with the poll.</summary>
         [JsonPropertyName("message_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

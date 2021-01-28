@@ -5,18 +5,18 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents an animated emoji that displays a random value.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class Dice
     {
         /// <summary>Emoji on which the dice throw animation is based.</summary>
-        [JsonPropertyName("emoji")]
+        [JsonPropertyName(PropertyNames.Emoji)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Emoji { get; set; }
         /// <summary>Value of the dice, 1-6 for “🎲” and “🎯” base emoji, 1-5 for “🏀” and “⚽” base emoji, 1-64 for “🎰” base emoji.</summary>
-        [JsonPropertyName("Value")]
+        [JsonPropertyName(PropertyNames.Value)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ushort Value { get; set; }
     }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Inline_mode
+namespace Telegram.BotAPI.InlineMode
 {
     /// <summary>Represents a result of an inline query that was chosen by the user and sent to their chat partner.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -18,11 +18,11 @@ namespace Telegram.BotAPI.Inline_mode
         /// <summary>The user that chose the result.</summary>
         [JsonPropertyName("from")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.User From { get; set; }
+        public AvailableTypes.User From { get; set; }
         /// <summary>Optional. Sender location, only for bots that require user location.</summary>
         [JsonPropertyName("location")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.Location Location { get; set; }
+        public AvailableTypes.Location Location { get; set; }
         /// <summary>Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.</summary>
         [JsonPropertyName("inline_message_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

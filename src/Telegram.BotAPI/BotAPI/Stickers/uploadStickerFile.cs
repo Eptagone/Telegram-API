@@ -5,7 +5,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.Stickers
     {
         /// <summary>Use this method to upload a .png file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded File on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="user_id">User identifier of sticker file owner.</param>
+        /// <param name="userId">User identifier of sticker file owner.</param>
         /// <param name="png_sticker">Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
@@ -53,7 +53,7 @@ namespace Telegram.BotAPI.Stickers
         }
         /// <summary>Use this method to upload a .png file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded File on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="user_id">User identifier of sticker file owner.</param>
+        /// <param name="userId">User identifier of sticker file owner.</param>
         /// <param name="png_sticker">Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>

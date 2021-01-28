@@ -5,30 +5,30 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents a phone contact.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class Contact : IContact
     {
         /// <summary>Contact's phone number.</summary>
-        [JsonPropertyName("phone_number")]
+        [JsonPropertyName(PropertyNames.PhoneNumber)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Phone_number { get; set; }
+        public string PhoneNumber { get; set; }
         /// <summary>Contact's first name.</summary>
-        [JsonPropertyName("first_name")]
+        [JsonPropertyName(PropertyNames.FirstName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string First_name { get; set; }
+        public string FirstName { get; set; }
         /// <summary>Optional. Contact's last name.</summary>
-        [JsonPropertyName("last_name")]
+        [JsonPropertyName(PropertyNames.LastName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Last_name { get; set; }
+        public string LastName { get; set; }
         /// <summary>Optional. Contact's user identifier in Telegram.</summary>
-        [JsonPropertyName("user_id")]
+        [JsonPropertyName(PropertyNames.UserId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int User_id { get; set; }
+        public int UserId { get; set; }
         /// <summary>Optional. Additional data about the contact in the form of a vCard.</summary>
-        [JsonPropertyName("vcard")]
+        [JsonPropertyName(PropertyNames.Vcard)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Vcard { get; set; }
     }

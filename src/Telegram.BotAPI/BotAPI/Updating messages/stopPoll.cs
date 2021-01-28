@@ -7,16 +7,16 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Updating_messages
+namespace Telegram.BotAPI.UpdatingMessages
 {
     /// <summary>Updating messages</summary>
     public static partial class UpdatingMessagesExtensions
     {
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
@@ -40,7 +40,7 @@ namespace Telegram.BotAPI.Updating_messages
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
@@ -63,7 +63,7 @@ namespace Telegram.BotAPI.Updating_messages
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <param name="reply_markup">A <see cref="InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
@@ -90,7 +90,7 @@ namespace Telegram.BotAPI.Updating_messages
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <param name="reply_markup">A <see cref="InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
@@ -118,7 +118,7 @@ namespace Telegram.BotAPI.Updating_messages
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
@@ -144,7 +144,7 @@ namespace Telegram.BotAPI.Updating_messages
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
@@ -170,7 +170,7 @@ namespace Telegram.BotAPI.Updating_messages
 
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <param name="reply_markup">A <see cref="InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
@@ -198,7 +198,7 @@ namespace Telegram.BotAPI.Updating_messages
         }
         /// <summary>Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="message_id">Identifier of the original message with the poll</param>
         /// <param name="reply_markup">A <see cref="InlineKeyboardMarkup"/> object for a new message inline keyboard.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>

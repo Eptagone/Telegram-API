@@ -5,92 +5,92 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     ///<summary>This object contains information about one member of a chat.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class ChatMember
+    public sealed class ChatMember // : ChatPermissions // #NOTE: Can inherit ChatPermissions class
     {
         ///<summary>Information about the user.</summary>
-        [JsonPropertyName("user")]
+        [JsonPropertyName(PropertyNames.User)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public User User { get; set; }
         ///<summary>The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”.</summary>
-        [JsonPropertyName("status")]
+        [JsonPropertyName(PropertyNames.Status)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Status { get; set; }
         ///<summary>Optional. Owner and administrators only. Custom title for this user.</summary>
-        [JsonPropertyName("custom_title")]
+        [JsonPropertyName(PropertyNames.CustomTitle)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Custom_title { get; set; }
+        public string CustomTitle { get; set; }
         ///<summary>Optional. Owner and administrators only. True, if the user's presence in the chat is hidden.</summary>
-        [JsonPropertyName("is_anonymous")]
+        [JsonPropertyName(PropertyNames.IsAnonymous)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Is_anonymous { get; set; }
+        public bool IsAnonymous { get; set; }
         ///<summary>Optional. Administrators only. True, if the bot is allowed to edit administrator privileges of that user.</summary>
-        [JsonPropertyName("can_be_edited")]
+        [JsonPropertyName(PropertyNames.CanBeEdited)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_be_edited { get; set; }
+        public bool CanBeEdited { get; set; }
         ///<summary>Optional. Administrators only. True, if the administrator can post in the channel, channels only.</summary>
-        [JsonPropertyName("can_post_message")]
+        [JsonPropertyName(PropertyNames.CanPostMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_post_messages { get; set; }
+        public bool CanPostMessages { get; set; }
         ///<summary>Optional. Administrators only. True, if the administrator can edit messages of other users and can pin messages, channels only.</summary>
-        [JsonPropertyName("can_edit_messages")]
+        [JsonPropertyName(PropertyNames.CanEditMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_edit_messages { get; set; }
+        public bool CanEditMessages { get; set; }
         ///<summary>Optional. Administrators only. True, if the administrator can delete messages of other users.</summary>
-        [JsonPropertyName("can_delete_messages")]
+        [JsonPropertyName(PropertyNames.CanDeleteMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_delete_messages { get; set; }
+        public bool CanDeleteMessages { get; set; }
         ///<summary>Optional. Administrators only. True, if the administrator can restrict, ban or unban chat members.</summary>
-        [JsonPropertyName("can_restrict_members")]
+        [JsonPropertyName(PropertyNames.CanRestrictMembers)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_restrict_members { get; set; }
+        public bool CanRestrictMembers { get; set; }
         ///<summary>Optional. Administrators only. True, if the administrator can add new administrators with a subset of his own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by the user).</summary>
-        [JsonPropertyName("can_promote_members")]
+        [JsonPropertyName(PropertyNames.CanPromoteMembers)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_promote_members { get; set; }
+        public bool CanPromoteMembers { get; set; }
         ///<summary>Optional. Administrators only. True, if the administrator can change the chat title, photo and other settings.</summary>
-        [JsonPropertyName("can_change_info")]
+        [JsonPropertyName(PropertyNames.CanChangeInfo)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_change_info { get; set; }
+        public bool CanChangeInfo { get; set; }
         ///<summary>Optional. Administrators only. True, if the administrator can invite new users to the chat.</summary>
-        [JsonPropertyName("can_invite_users")]
+        [JsonPropertyName(PropertyNames.CanInviteUsers)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_invite_users { get; set; }
+        public bool CanInviteUsers { get; set; }
         ///<summary>Optional. Administrators only. True, if the administrator can pin messages, supergroups only.</summary>
-        [JsonPropertyName("can_pin_messages")]
+        [JsonPropertyName(PropertyNames.CanPinMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_pin_messages { get; set; }
+        public bool CanPinMessages { get; set; }
         ///<summary>Optional. Restricted only. True, if the user is a member of the chat at the moment of the request.</summary>
-        [JsonPropertyName("is_member")]
+        [JsonPropertyName(PropertyNames.IsMember)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Is_member { get; set; }
+        public bool IsMember { get; set; }
         ///<summary>Optional. Restricted only. True, if the user can send text messages, contacts, locations and venues.</summary>
-        [JsonPropertyName("can_send_messages")]
+        [JsonPropertyName(PropertyNames.CanSendMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_send_messages { get; set; }
+        public bool CanSendMessages { get; set; }
         ///<summary>Optional. Restricted only. True, if the user can send audios, documents, photos, videos, video notes and voice notes, implies can_send_messages.</summary>
-        [JsonPropertyName("can_send_media_messages")]
+        [JsonPropertyName(PropertyNames.CanSendMediaMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_send_media_messages { get; set; }
+        public bool CanSendMediaMessages { get; set; }
         ///<summary>Optional. Restricted only. True, if the user is allowed to send polls.</summary>
-        [JsonPropertyName("can_send_polls")]
+        [JsonPropertyName(PropertyNames.CanSendPolls)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_send_polls { get; set; }
+        public bool CanSendPolls { get; set; }
         ///<summary>Optional. Restricted only. True, if the user can send animations, games, stickers and use inline bots, implies can_send_media_messages.</summary>
-        [JsonPropertyName("can_send_other_messages")]
+        [JsonPropertyName(PropertyNames.CanSendOtherMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_send_other_messages { get; set; }
+        public bool CanSendOtherMessages { get; set; }
         ///<summary>Optional. Restricted only. True, if user may add web page previews to his messages, implies can_send_media_messages.</summary>
-        [JsonPropertyName("can_add_web_page_previews")]
+        [JsonPropertyName(PropertyNames.CanAddWebPagePreviews)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_add_web_page_previews { get; set; }
+        public bool CanAddWebPagePreviews { get; set; }
         ///<summary>Optional. Restricted and kicked only. Date when restrictions will be lifted for this user, unix time.</summary>
-        [JsonPropertyName("until_date")]
+        [JsonPropertyName(PropertyNames.UntilDate)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Until_date { get; set; }
+        public uint UntilDate { get; set; }
     }
     ///<summary>The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”.</summary>
     public static class ChatMemberStatus

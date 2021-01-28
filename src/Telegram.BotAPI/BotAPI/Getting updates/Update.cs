@@ -4,11 +4,11 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
-using Telegram.BotAPI.Inline_mode;
+using Telegram.BotAPI.AvailableTypes;
+using Telegram.BotAPI.InlineMode;
 using Telegram.BotAPI.Payments;
 
-namespace Telegram.BotAPI.Getting_updates
+namespace Telegram.BotAPI.GettingUpdates
 {
     /// <summary>This object represents an incoming update. 
     /// At most one of the optional parameters can be present in any given update.</summary>

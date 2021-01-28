@@ -2,9 +2,9 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
-using Telegram.BotAPI.Available_Types;
-using Telegram.BotAPI.Getting_updates;
-using Telegram.BotAPI.Inline_mode;
+using Telegram.BotAPI.AvailableTypes;
+using Telegram.BotAPI.GettingUpdates;
+using Telegram.BotAPI.InlineMode;
 using Telegram.BotAPI.Payments;
 
 namespace Telegram.BotAPI

@@ -6,7 +6,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Telegram_Passport
+namespace Telegram.BotAPI.TelegramPassport
 {
     /// <summary>Contains information about Telegram Passport data shared with the bot by the user.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]

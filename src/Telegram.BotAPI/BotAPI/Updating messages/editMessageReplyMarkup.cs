@@ -5,9 +5,9 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Updating_messages
+namespace Telegram.BotAPI.UpdatingMessages
 {
     public static partial class UpdatingMessagesExtensions
     {
@@ -16,7 +16,7 @@ namespace Telegram.BotAPI.Updating_messages
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.Available_Types.Message or bool.</exception>
+        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.AvailableTypes.Message or bool.</exception>
         /// <returns><see cref="Message"/> or <see cref="bool"/>. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</returns>
         public static T EditMessageReplyMarkup<T>(this BotClient bot, EditMessageReplyMarkup args)
         {
@@ -30,7 +30,7 @@ namespace Telegram.BotAPI.Updating_messages
             }
             if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
             {
-                throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.Available_Types.Message or bool.");
+                throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
             return bot.RPC<T>("editMessageReplyMarkup", args);
         }
@@ -40,7 +40,7 @@ namespace Telegram.BotAPI.Updating_messages
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.Available_Types.Message or bool.</exception>
+        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.AvailableTypes.Message or bool.</exception>
         /// <returns><see cref="Message"/> or <see cref="bool"/>. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.</returns>
         public static async Task<T> EditMessageReplyMarkupAsync<T>(this BotClient bot, EditMessageReplyMarkup args, [Optional] CancellationToken cancellationToken)
         {
@@ -54,7 +54,7 @@ namespace Telegram.BotAPI.Updating_messages
             }
             if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
             {
-                throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.Available_Types.Message or bool.");
+                throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
             return await bot.RPCA<T>("editMessageReplyMarkup", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Net.Http;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.</summary>
     public sealed class InputFile

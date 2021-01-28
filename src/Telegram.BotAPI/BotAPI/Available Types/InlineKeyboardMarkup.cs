@@ -6,7 +6,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     ///<summary>This object represents an inline keyboard that appears right next to the message it belongs to.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -18,12 +18,24 @@ namespace Telegram.BotAPI.Available_Types
         ///<param name="inlineKeyboard">Array of button rows, each represented by an Array of <see cref="InlineKeyboardButton"/> objects.</param>
         public InlineKeyboardMarkup(params IEnumerable<InlineKeyboardButton>[] inlineKeyboard)
         {
-            Inline_keyboard = inlineKeyboard;
+            InlineKeyboard = inlineKeyboard;
+        }
+        ///<summary>This object represents an inline keyboard that appears right next to the message it belongs to.</summary>
+        ///<param name="inlineKeyboard">Array of button rows, each represented by an Array of <see cref="InlineKeyboardButton"/> objects.</param>
+        public InlineKeyboardMarkup(params InlineKeyboardButton[][] inlineKeyboard)
+        {
+            InlineKeyboard = inlineKeyboard;
+        }
+        ///<summary>This object represents an inline keyboard that appears right next to the message it belongs to.</summary>
+        ///<param name="inlineKeyboard">Array of button rows, each represented by an Array of <see cref="InlineKeyboardButton"/> objects.</param>
+        public InlineKeyboardMarkup(IEnumerable<IEnumerable<InlineKeyboardButton>> inlineKeyboard)
+        {
+            InlineKeyboard = inlineKeyboard;
         }
 
         ///<summary>Array of button rows, each represented by an Array of <see cref="InlineKeyboardButton"/> objects.</summary>
-        [JsonPropertyName("inline_keyboard")]
+        [JsonPropertyName(PropertyNames.InlineKeyboard)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IEnumerable<IEnumerable<InlineKeyboardButton>> Inline_keyboard { get; set; }
+        public IEnumerable<IEnumerable<InlineKeyboardButton>> InlineKeyboard { get; set; }
     }
 }

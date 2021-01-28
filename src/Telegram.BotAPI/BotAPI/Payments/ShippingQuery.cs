@@ -18,7 +18,7 @@ namespace Telegram.BotAPI.Payments
         /// <summary>User who sent the query</summary>
         [JsonPropertyName("from")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.User From { get; set; }
+        public AvailableTypes.User From { get; set; }
         /// <summary>Bot specified invoice payload</summary>
         [JsonPropertyName("invoice_payload")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

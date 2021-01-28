@@ -4,20 +4,20 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     /// <summary>SetChatPhoto method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class SetChatPhotoArgs
     {
         /// <summary>Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</summary>
-        [JsonPropertyName("chat_id")]
+        [JsonPropertyName(PropertyNames.ChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public object Chat_id { get; set; }
+        public object ChatId { get; set; }
         /// <summary>New chat photo, uploaded using multipart/form-data.</summary>
-        [JsonPropertyName("photo")]
+        [JsonPropertyName(PropertyNames.Photo)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public InputFile Photo { get; set; }
     }

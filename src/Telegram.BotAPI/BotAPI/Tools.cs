@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
-using Telegram.BotAPI.Inline_mode;
-using Telegram.BotAPI.Telegram_Passport;
+using Telegram.BotAPI.AvailableTypes;
+using Telegram.BotAPI.InlineMode;
+using Telegram.BotAPI.TelegramPassport;
 
 namespace Telegram.BotAPI
 {

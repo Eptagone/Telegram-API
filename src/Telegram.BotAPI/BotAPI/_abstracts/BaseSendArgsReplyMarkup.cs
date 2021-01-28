@@ -4,17 +4,17 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI
 {
     /// <summary>Base object for message-sending methods arguments with reply markup property.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public abstract class BaseSendArgsReplyMarkup : BaseSendArgs, IReplyMarkup
+    public abstract class BaseSendArgsReplyMarkup : BaseSendArgs, IReplyMarkup<ReplyMarkup>
     {
         /// <summary>Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. <see cref="InlineKeyboardMarkup"/> or <see cref="ReplyKeyboardMarkup"/> or <see cref="ReplyKeyboardRemove"/> or <see cref="ForceReply"/></summary>
-        [JsonPropertyName("reply_markup")]
+        [JsonPropertyName(PropertyNames.ReplyMarkup)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public ReplyMarkup Reply_markup { get; set; }
+        public ReplyMarkup ReplyMarkup { get; set; }
     }
 }

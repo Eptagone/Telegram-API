@@ -7,6 +7,6 @@ namespace Telegram.BotAPI
     public interface IParseMode
     {
         ///<summary>Optional. Mode for parsing. See <a href="https://core.telegram.org/bots/api#formatting-options">formatting options</a> for more details.</summary>
-        public string Parse_mode { get; set; }
+        public string ParseMode { get; set; }
     }
 }

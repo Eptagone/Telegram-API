@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Inline_mode
+namespace Telegram.BotAPI.InlineMode
 {
     /// <summary>Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -34,19 +34,19 @@ namespace Telegram.BotAPI.Inline_mode
         ///<summary>Optional. Foursquare identifier of the venue if known.</summary>
         [JsonPropertyName("foursquare_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Foursquare_id { get; set; }
+        public string FoursquareId { get; set; }
         ///<summary>Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)</summary>
         [JsonPropertyName("foursquare_type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Foursquare_type { get; set; }
+        public string FoursquareType { get; set; }
         ///<summary>Optional. Google Places identifier of the venue.</summary>
         [JsonPropertyName("google_place_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Google_place_id { get; set; }
+        public string GooglePlaceId { get; set; }
         ///<summary>Optional. Google Places type of the venue. (See <a href="https://developers.google.com/places/web-service/supported_types">supported types</a>.)</summary>
         [JsonPropertyName("google_place_type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Google_place_type { get; set; }
+        public string GooglePlaceType { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the venue.</summary>
         [JsonPropertyName("input_message_content")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -54,14 +54,14 @@ namespace Telegram.BotAPI.Inline_mode
         /// <summary>Optional. Url of the thumbnail for the result.</summary>
         [JsonPropertyName("thumb_url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Thumb_url { get; set; }
+        public string ThumbUrl { get; set; }
         /// <summary>Optional. Thumbnail width.</summary>
         [JsonPropertyName("thumb_width")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Thumb_width { get; set; }
+        public uint ThumbWidth { get; set; }
         /// <summary>Optional. Thumbnail height.</summary>
         [JsonPropertyName("thumb_height")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Thumb_height { get; set; }
+        public uint ThumbHeight { get; set; }
     }
 }

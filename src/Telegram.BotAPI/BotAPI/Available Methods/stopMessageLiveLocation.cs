@@ -5,9 +5,9 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     public static partial class AvailableMethodsExtensions
     {
@@ -16,7 +16,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="args">Parameters.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.Available_Types.Message or bool.</exception>
+        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.AvailableTypes.Message or bool.</exception>
         /// <returns><see cref="Message"/> or <see cref="bool"/>. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</returns>
         public static T StopMessageLiveLocation<T>(this BotClient bot, StopMessageLiveLocationArgs args)
         {
@@ -30,7 +30,7 @@ namespace Telegram.BotAPI.Available_Methods
             }
             if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
             {
-                throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.Available_Types.Message or bool.");
+                throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
             return bot.RPC<T>("stopMessageLiveLocation", args);
         }
@@ -40,7 +40,7 @@ namespace Telegram.BotAPI.Available_Methods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.Available_Types.Message or bool.</exception>
+        /// <exception cref="ArgumentException">Thrown when T is not Telegram.BotAPI.AvailableTypes.Message or bool.</exception>
         /// <returns><see cref="Message"/> or <see cref="bool"/>. On success, if the message was sent by the bot, the sent Message is returned, otherwise True is returned.</returns>
         public static async Task<T> StopMessageLiveLocationAsync<T>(this BotClient bot, StopMessageLiveLocationArgs args, [Optional] CancellationToken cancellationToken)
         {
@@ -54,7 +54,7 @@ namespace Telegram.BotAPI.Available_Methods
             }
             if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
             {
-                throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.Available_Types.Message or bool.");
+                throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
             return await bot.RPCA<T>("stopMessageLiveLocation", args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

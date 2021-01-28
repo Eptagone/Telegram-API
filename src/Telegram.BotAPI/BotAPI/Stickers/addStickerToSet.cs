@@ -5,7 +5,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.Stickers
     {
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="user_id">User identifier of sticker set owner.</param>
+        /// <param name="userId">User identifier of sticker set owner.</param>
         /// <param name="name">User identifier of sticker set owner.</param>
         /// <param name="png_sticker">Optional. Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</param>
         /// /// <param name="tgs_sticker">Optional. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.</param>
@@ -55,7 +55,7 @@ namespace Telegram.BotAPI.Stickers
         }
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="user_id">User identifier of sticker set owner.</param>
+        /// <param name="userId">User identifier of sticker set owner.</param>
         /// <param name="name">User identifier of sticker set owner.</param>
         /// <param name="png_sticker">Optional. Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</param>
         /// /// <param name="tgs_sticker">Optional. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.</param>
@@ -98,7 +98,7 @@ namespace Telegram.BotAPI.Stickers
         }
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="user_id">User identifier of sticker set owner.</param>
+        /// <param name="userId">User identifier of sticker set owner.</param>
         /// <param name="name">User identifier of sticker set owner.</param>
         /// <param name="png_sticker">Optional. Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</param>
         /// /// <param name="tgs_sticker">Optional. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.</param>
@@ -140,7 +140,7 @@ namespace Telegram.BotAPI.Stickers
         }
         /// <summary>Use this method to add a new sticker to a set created by the bot. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="user_id">User identifier of sticker set owner.</param>
+        /// <param name="userId">User identifier of sticker set owner.</param>
         /// <param name="name">User identifier of sticker set owner.</param>
         /// <param name="png_sticker">Optional. Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.</param>
         /// /// <param name="tgs_sticker">Optional. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.</param>

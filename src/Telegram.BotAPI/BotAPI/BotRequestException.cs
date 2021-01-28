@@ -9,13 +9,13 @@ namespace Telegram.BotAPI
     public sealed class BotRequestException : Exception
     {
         ///<summary>Error code.</summary>
-        public int Error_code { get; set; }
+        public int ErrorCode { get; set; }
         ///<summary>Error description.</summary>
         public string Description { get; set; }
 
         internal BotRequestException(int error_code, string description) : base(description)
         {
-            Error_code = error_code;
+            ErrorCode = error_code;
             Description = description;
         }
     }

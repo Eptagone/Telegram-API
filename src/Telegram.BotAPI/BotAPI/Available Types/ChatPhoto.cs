@@ -5,27 +5,27 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents a chat photo.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class ChatPhoto
     {
         /// <summary>File identifier of small (160x160) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.</summary>
-        [JsonPropertyName("small_file_id")]
+        [JsonPropertyName(PropertyNames.SmallFileId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Small_file_id { get; set; }
+        public string SmallFileId { get; set; }
         /// <summary>Unique file identifier of small (160x160) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
-        [JsonPropertyName("small_file_unique_id")]
+        [JsonPropertyName(PropertyNames.SmallFileUniqueId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Small_file_unique_id { get; set; }
+        public string SmallFileUniqueId { get; set; }
         /// <summary>File identifier of big (640x640) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.</summary>
-        [JsonPropertyName("big_file_id")]
+        [JsonPropertyName(PropertyNames.BigFileId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Big_file_id { get; set; }
+        public string BigFileId { get; set; }
         /// <summary>Unique file identifier of big (640x640) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
-        [JsonPropertyName("big_file_unique_id")]
+        [JsonPropertyName(PropertyNames.BigFileUniqueId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Big_file_unique_id { get; set; }
+        public string BigFileUniqueId { get; set; }
     }
 }

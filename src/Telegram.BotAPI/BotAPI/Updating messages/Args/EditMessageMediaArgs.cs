@@ -1,13 +1,14 @@
 ﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Updating_messages
+namespace Telegram.BotAPI.UpdatingMessages
 {
     /// <summary>EditMessageMedia method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -16,7 +17,7 @@ namespace Telegram.BotAPI.Updating_messages
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonPropertyName("chat_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public object Chat_id { get; set; }
+        public object ChatId { get; set; }
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonPropertyName("message_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -35,16 +36,7 @@ namespace Telegram.BotAPI.Updating_messages
         public InlineKeyboardMarkup Reply_markup { get; set; }
         /// <summary>Attached files.</summary>
         [System.Text.Json.Serialization.JsonIgnore]
-        [Newtonsoft.Json.JsonIgnore]
-        public IEnumerable<AttachFile> AttachFiles { get; set; }
-        internal bool UseMultipart()
-        {
-            if (AttachFiles != default)
-            {
-                return true;
-            }
-
-            return false;
-        }
+        public List<AttachFile> AttachFiles { get; } = new List<AttachFile>();
+        internal bool UseMultipart() => AttachFiles.Any();
     }
 }

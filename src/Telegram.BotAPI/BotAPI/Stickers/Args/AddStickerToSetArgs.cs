@@ -4,7 +4,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -15,7 +15,7 @@ namespace Telegram.BotAPI.Stickers
         /// <summary>User identifier of sticker set owner.</summary>
         [JsonPropertyName("user_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int User_id { get; set; }
+        public int UserId { get; set; }
         /// <summary>Sticker set name.</summary>
         [JsonPropertyName("name")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

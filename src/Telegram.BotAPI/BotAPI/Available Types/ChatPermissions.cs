@@ -5,43 +5,43 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Available_Types
+namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>Describes actions that a non-administrator user is allowed to take in a chat.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class ChatPermissions
     {
         ///<summary>Optional. True, if the user is allowed to send text messages, contacts, locations and venues.</summary>
-        [JsonPropertyName("can_send_messages")]
+        [JsonPropertyName(PropertyNames.CanSendMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_send_messages { get; set; }
+        public bool CanSendMessages { get; set; }
         ///<summary>Optional. True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes, implies can_send_messages.</summary>
-        [JsonPropertyName("can_send_media_messages")]
+        [JsonPropertyName(PropertyNames.CanSendMediaMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_send_media_messages { get; set; }
+        public bool CanSendMediaMessages { get; set; }
         ///<summary>Optional. True, if the user is allowed to send polls, implies can_send_messages.</summary>
-        [JsonPropertyName("can_send_polls")]
+        [JsonPropertyName(PropertyNames.CanSendPolls)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_send_polls { get; set; }
+        public bool CanSendPolls { get; set; }
         ///<summary>Optional. True, if the user is allowed to send animations, games, stickers and use inline bots, implies can_send_media_messages.</summary>
-        [JsonPropertyName("can_send_other_messages")]
+        [JsonPropertyName(PropertyNames.CanSendOtherMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_send_other_messages { get; set; }
+        public bool CanSendOtherMessages { get; set; }
         ///<summary>Optional. True, if the user is allowed to add web page previews to their messages, implies can_send_media_messages.</summary>
-        [JsonPropertyName("can_add_web_page_previews")]
+        [JsonPropertyName(PropertyNames.CanAddWebPagePreviews)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_add_web_page_previews { get; set; }
+        public bool CanAddWebPagePreviews { get; set; }
         ///<summary>Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups.</summary>
-        [JsonPropertyName("can_change_info")]
+        [JsonPropertyName(PropertyNames.CanChangeInfo)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_change_info { get; set; }
+        public bool CanChangeInfo { get; set; }
         ///<summary>Optional. True, if the user is allowed to invite new users to the chat.</summary>
-        [JsonPropertyName("can_invite_users")]
+        [JsonPropertyName(PropertyNames.CanInviteUsers)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_invite_users { get; set; }
+        public bool CanInviteUsers { get; set; }
         ///<summary>Optional. True, if the user is allowed to pin messages. Ignored in public supergroups.</summary>
-        [JsonPropertyName("can_pin_messages")]
+        [JsonPropertyName(PropertyNames.CanPinMessages)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Can_pin_messages { get; set; }
+        public bool CanPinMessages { get; set; }
     }
 }

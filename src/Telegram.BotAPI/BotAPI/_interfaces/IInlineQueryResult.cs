@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
-using Telegram.BotAPI.Available_Types;
-using Telegram.BotAPI.Inline_mode;
+using Telegram.BotAPI.AvailableTypes;
+using Telegram.BotAPI.InlineMode;
 
 namespace Telegram.BotAPI
 {
@@ -14,6 +14,6 @@ namespace Telegram.BotAPI
         /// <summary>Unique identifier for this result, 1-64 Bytes.</summary>
         public string Id { get; set; }
         /// <summary>Optional. Inline keyboard attached to the message.</summary>
-        public InlineKeyboardMarkup Reply_markup { get; set; }
+        public InlineKeyboardMarkup ReplyMarkup { get; set; }
     }
 }

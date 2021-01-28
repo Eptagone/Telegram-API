@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Inline_mode
+namespace Telegram.BotAPI.InlineMode
 {
     /// <summary>Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -22,11 +22,11 @@ namespace Telegram.BotAPI.Inline_mode
         /// <summary>A valid URL for the file.</summary>
         [JsonPropertyName("document_url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Document_url { get; set; }
+        public string DocumentUrl { get; set; }
         /// <summary>Mime type of the content of the file, either “application/pdf” or “application/zip”.</summary>
         [JsonPropertyName("mime_type")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Mime_type { get; set; }
+        public string MimeType { get; set; }
         /// <summary>Optional. Short description of the result.</summary>
         [JsonPropertyName("description")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -34,18 +34,18 @@ namespace Telegram.BotAPI.Inline_mode
         /// <summary>Optional. Content of the message to be sent instead of the file.</summary>
         [JsonPropertyName("input_message_content")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
         /// <summary>Optional. URL of the thumbnail (jpeg only) for the file.</summary>
         [JsonPropertyName("thumb_url")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Thumb_url { get; set; }
+        public string ThumbUrl { get; set; }
         /// <summary>Optional. Thumbnail width.</summary>
         [JsonPropertyName("thumb_width")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Thumb_width { get; set; }
+        public uint ThumbWidth { get; set; }
         /// <summary>Optional. Thumbnail height.</summary>
         [JsonPropertyName("thumb_height")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Thumb_height { get; set; }
+        public uint ThumbHeight { get; set; }
     }
 }

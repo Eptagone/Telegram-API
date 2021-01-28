@@ -14,15 +14,15 @@ namespace Telegram.BotAPI.Games
         /// <summary>Create a new CallbackGame.</summary>
         public CallbackGame() { }
         /// <summary>Create a new CallbackGame.</summary>
-        /// <param name="game_short_name">Game short name</param>
-        public CallbackGame(string game_short_name)
+        /// <param name="gameShortName">Game short name</param>
+        public CallbackGame(string gameShortName)
         {
-            Game_short_name = game_short_name;
+            GameShortName = gameShortName;
         }
 
         /// <summary>Game short name</summary>
-        [JsonPropertyName("game_short_name")]
+        [JsonPropertyName(PropertyNames.GameShortName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Game_short_name { get; set; }
+        public string GameShortName { get; set; }
     }
 }

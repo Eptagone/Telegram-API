@@ -12,12 +12,12 @@ namespace Telegram.BotAPI
     public abstract class BaseSendArgs : BaseReplySendArgs
     {
         ///<summary><see cref="long"/> or <see cref="string"/>. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
-        [JsonPropertyName("chat_id")]
+        [JsonPropertyName(PropertyNames.ChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public object Chat_id { get; set; }
+        public object ChatId { get; set; }
         /// <summary>Optional. Sends the message <a href="https://telegram.org/blog/channels-2-0#silent-messages">silently</a>. Users will receive a notification with no sound.</summary>
-        [JsonPropertyName("disable_notification")]
+        [JsonPropertyName(PropertyNames.DisableNotification)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Disable_notification { get; set; }
+        public bool DisableNotification { get; set; }
     }
 }

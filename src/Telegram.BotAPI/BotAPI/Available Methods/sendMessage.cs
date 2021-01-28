@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     public static partial class AvailableMethodsExtensions
     {
@@ -57,7 +57,7 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="text">Text of the message to be sent.</param>
         /// <param name="parse_mode">Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</param>
         /// <param name="entities">List of special entities that appear in message text, which can be specified instead of parse_mode.</param>
@@ -78,12 +78,12 @@ namespace Telegram.BotAPI.Available_Methods
 
             var args = new SendMessageArgs()
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Text = text
             };
             if (parse_mode != default)
             {
-                args.Parse_mode = parse_mode;
+                args.ParseMode = parse_mode;
             }
 
             if (entities != default)
@@ -91,24 +91,24 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Entities = entities;
             }
 
-            args.Disable_web_page_preview = disable_web_page_preview;
-            args.Disable_notification = disable_notification;
+            args.DisableWebPagePreview = disable_web_page_preview;
+            args.DisableNotification = disable_notification;
             if (reply_to_message_id != default)
             {
-                args.Reply_to_message_id = reply_to_message_id;
+                args.ReplyToMessageId = reply_to_message_id;
             }
 
-            args.Allow_sending_without_reply = allow_sending_without_reply;
+            args.AllowSendingWithoutReply = allow_sending_without_reply;
             if (reply_markup != default)
             {
-                args.Reply_markup = reply_markup;
+                args.ReplyMarkup = reply_markup;
             }
 
             return bot.RPC<Message>("sendMessage", args);
         }
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="text">Text of the message to be sent.</param>
         /// <param name="parse_mode">Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</param>
         /// <param name="entities">List of special entities that appear in message text, which can be specified instead of parse_mode.</param>
@@ -130,12 +130,12 @@ namespace Telegram.BotAPI.Available_Methods
 
             var args = new SendMessageArgs()
             {
-                Chat_id = chat_id,
+                ChatId = chat_id,
                 Text = text
             };
             if (parse_mode != default)
             {
-                args.Parse_mode = parse_mode;
+                args.ParseMode = parse_mode;
             }
 
             if (entities != default)
@@ -143,17 +143,17 @@ namespace Telegram.BotAPI.Available_Methods
                 args.Entities = entities;
             }
 
-            args.Disable_web_page_preview = disable_web_page_preview;
-            args.Disable_notification = disable_notification;
+            args.DisableWebPagePreview = disable_web_page_preview;
+            args.DisableNotification = disable_notification;
             if (reply_to_message_id != default)
             {
-                args.Reply_to_message_id = reply_to_message_id;
+                args.ReplyToMessageId = reply_to_message_id;
             }
 
-            args.Allow_sending_without_reply = allow_sending_without_reply;
+            args.AllowSendingWithoutReply = allow_sending_without_reply;
             if (reply_markup != default)
             {
-                args.Reply_markup = reply_markup;
+                args.ReplyMarkup = reply_markup;
             }
 
             return await bot.RPCA<Message>("sendMessage", args, cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -161,7 +161,7 @@ namespace Telegram.BotAPI.Available_Methods
 
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="text">Text of the message to be sent.</param>
         /// <param name="parse_mode">Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</param>
         /// <param name="disable_web_page_preview">Disables link previews for links in this message</param>
@@ -215,7 +215,7 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to send text messages. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="text">Text of the message to be sent.</param>
         /// <param name="parse_mode">Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</param>
         /// <param name="disable_web_page_preview">Disables link previews for links in this message</param>

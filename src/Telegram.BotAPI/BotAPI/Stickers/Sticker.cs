@@ -34,7 +34,7 @@ namespace Telegram.BotAPI.Stickers
         ///<summary>Optional. Sticker thumbnail in the .webp or .jpg format.</summary>
         [JsonPropertyName("thumb")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.PhotoSize Thumb { get; set; }
+        public AvailableTypes.PhotoSize Thumb { get; set; }
         ///<summary>Optional. Emoji associated with the sticker.</summary>
         [JsonPropertyName("emoji")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

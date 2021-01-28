@@ -7,23 +7,23 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     /// <summary>Available Methods</summary>
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
-        /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="message_id">Message identifier in the chat specified in fromChatId.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static Message ForwardMessage(this BotClient bot, string chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification)
+        public static Message ForwardMessage(this BotClient bot, string chatId, string fromChatId, uint messageId, [Optional] bool disableNotification)
         {
             if (bot == default)
             {
@@ -33,12 +33,12 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteString("from_chat_id", from_chat_id);
-            json.WriteNumber("message_id", message_id);
-            if (disable_notification != default)
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteString("from_chat_id", fromChatId);
+            json.WriteNumber("message_id", messageId);
+            if (disableNotification != default)
             {
-                json.WriteBoolean("disable_notification", disable_notification);
+                json.WriteBoolean("disable_notification", disableNotification);
             }
 
             json.WriteEndObject();
@@ -48,14 +48,14 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
-        /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="message_id">Message identifier in the chat specified in fromChatId.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static Message ForwardMessage(this BotClient bot, long chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification)
+        public static Message ForwardMessage(this BotClient bot, long chatId, long fromChatId, uint messageId, [Optional] bool disableNotification)
         {
             if (bot == default)
             {
@@ -65,12 +65,12 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteNumber("from_chat_id", from_chat_id);
-            json.WriteNumber("message_id", message_id);
-            if (disable_notification != default)
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber("from_chat_id", fromChatId);
+            json.WriteNumber(PropertyNames.MessageId, messageId);
+            if (disableNotification != default)
             {
-                json.WriteBoolean("disable_notification", disable_notification);
+                json.WriteBoolean(PropertyNames.DisableNotification, disableNotification);
             }
 
             json.WriteEndObject();
@@ -80,14 +80,14 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
-        /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="message_id">Message identifier in the chat specified in fromChatId.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static Message ForwardMessage(this BotClient bot, string chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification)
+        public static Message ForwardMessage(this BotClient bot, string chatId, long fromChatId, uint messageId, [Optional] bool disableNotification)
         {
             if (bot == default)
             {
@@ -97,12 +97,12 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteNumber("from_chat_id", from_chat_id);
-            json.WriteNumber("message_id", message_id);
-            if (disable_notification != default)
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber("from_chat_id", fromChatId);
+            json.WriteNumber(PropertyNames.MessageId, messageId);
+            if (disableNotification != default)
             {
-                json.WriteBoolean("disable_notification", disable_notification);
+                json.WriteBoolean(PropertyNames.DisableNotification, disableNotification);
             }
 
             json.WriteEndObject();
@@ -112,14 +112,14 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
-        /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="message_id">Message identifier in the chat specified in fromChatId.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static Message ForwardMessage(this BotClient bot, long chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification)
+        public static Message ForwardMessage(this BotClient bot, long chatId, string fromChatId, uint messageId, [Optional] bool disableNotification)
         {
             if (bot == default)
             {
@@ -129,12 +129,12 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteString("from_chat_id", from_chat_id);
-            json.WriteNumber("message_id", message_id);
-            if (disable_notification != default)
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteString("from_chat_id", fromChatId);
+            json.WriteNumber(PropertyNames.MessageId, messageId);
+            if (disableNotification != default)
             {
-                json.WriteBoolean("disable_notification", disable_notification);
+                json.WriteBoolean(PropertyNames.DisableNotification, disableNotification);
             }
 
             json.WriteEndObject();
@@ -144,15 +144,15 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
-        /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="message_id">Message identifier in the chat specified in fromChatId.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> ForwardMessageAsync(this BotClient bot, string chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> ForwardMessageAsync(this BotClient bot, string chatId, string fromChatId, uint messageId, [Optional] bool disableNotification, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -162,12 +162,12 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteString("from_chat_id", from_chat_id);
-            json.WriteNumber("message_id", message_id);
-            if (disable_notification != default)
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteString("from_chat_id", fromChatId);
+            json.WriteNumber(PropertyNames.MessageId, messageId);
+            if (disableNotification != default)
             {
-                json.WriteBoolean("disable_notification", disable_notification);
+                json.WriteBoolean(PropertyNames.DisableNotification, disableNotification);
             }
 
             json.WriteEndObject();
@@ -178,15 +178,15 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
-        /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="message_id">Message identifier in the chat specified in fromChatId.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> ForwardMessageAsync(this BotClient bot, long chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> ForwardMessageAsync(this BotClient bot, long chatId, long fromChatId, uint messageId, [Optional] bool disableNotification, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -196,12 +196,12 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteNumber("from_chat_id", from_chat_id);
-            json.WriteNumber("message_id", message_id);
-            if (disable_notification != default)
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber("from_chat_id", fromChatId);
+            json.WriteNumber(PropertyNames.MessageId, messageId);
+            if (disableNotification != default)
             {
-                json.WriteBoolean("disable_notification", disable_notification);
+                json.WriteBoolean(PropertyNames.DisableNotification, disableNotification);
             }
 
             json.WriteEndObject();
@@ -212,15 +212,15 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
-        /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="message_id">Message identifier in the chat specified in fromChatId.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> ForwardMessageAsync(this BotClient bot, string chat_id, long from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> ForwardMessageAsync(this BotClient bot, string chatId, long fromChatId, uint messageId, [Optional] bool disableNotification, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -230,12 +230,12 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteNumber("from_chat_id", from_chat_id);
-            json.WriteNumber("message_id", message_id);
-            if (disable_notification != default)
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber("from_chat_id", fromChatId);
+            json.WriteNumber(PropertyNames.MessageId, messageId);
+            if (disableNotification != default)
             {
-                json.WriteBoolean("disable_notification", disable_notification);
+                json.WriteBoolean(PropertyNames.DisableNotification, disableNotification);
             }
 
             json.WriteEndObject();
@@ -246,15 +246,15 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to forward messages of any kind. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
         /// <param name="from_chat_id">Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</param>
         /// <param name="disable_notification">Sends the message silently. Users will receive a notification with no sound.</param>
-        /// <param name="message_id">Message identifier in the chat specified in from_chat_id.</param>
+        /// <param name="message_id">Message identifier in the chat specified in fromChatId.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>Message Object.</returns>
-        public static async Task<Message> ForwardMessageAsync(this BotClient bot, long chat_id, string from_chat_id, uint message_id, [Optional] bool disable_notification, [Optional] CancellationToken cancellationToken)
+        public static async Task<Message> ForwardMessageAsync(this BotClient bot, long chatId, string fromChatId, uint messageId, [Optional] bool disableNotification, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -264,12 +264,12 @@ namespace Telegram.BotAPI.Available_Methods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteString("from_chat_id", from_chat_id);
-            json.WriteNumber("message_id", message_id);
-            if (disable_notification != default)
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteString("from_chat_id", fromChatId);
+            json.WriteNumber("message_id", messageId);
+            if (disableNotification != default)
             {
-                json.WriteBoolean("disable_notification", disable_notification);
+                json.WriteBoolean("disable_notification", disableNotification);
             }
 
             json.WriteEndObject();

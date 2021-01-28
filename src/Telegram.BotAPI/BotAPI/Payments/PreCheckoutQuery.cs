@@ -18,7 +18,7 @@ namespace Telegram.BotAPI.Payments
         /// <summary>User who sent the query</summary>
         [JsonPropertyName("from")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.User From { get; set; }
+        public AvailableTypes.User From { get; set; }
         /// <summary>Three-letter ISO 4217 <a href="https://core.telegram.org/bots/payments#supported-currencies">currency</a> code.</summary>
         [JsonPropertyName("currency")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

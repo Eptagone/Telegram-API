@@ -6,7 +6,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Telegram.BotAPI.Telegram_Passport
+namespace Telegram.BotAPI.TelegramPassport
 {
     /// <summary>SetPassportDataErrors method parameters.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -15,7 +15,7 @@ namespace Telegram.BotAPI.Telegram_Passport
         /// <summary>User identifier.</summary>
         [JsonPropertyName("user_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int User_id { get; set; }
+        public int UserId { get; set; }
         /// <summary>A <see cref="PassportElementError"/> array describing the errors.</summary>
         [JsonPropertyName("errors")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

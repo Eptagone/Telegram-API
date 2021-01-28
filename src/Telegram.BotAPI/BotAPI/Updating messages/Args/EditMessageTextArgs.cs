@@ -5,9 +5,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Updating_messages
+namespace Telegram.BotAPI.UpdatingMessages
 {
     /// <summary>EditMessage method arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -16,7 +16,7 @@ namespace Telegram.BotAPI.Updating_messages
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
         [JsonPropertyName("chat_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public object Chat_id { get; set; }
+        public object ChatId { get; set; }
         ///<summary>Required if inline_message_id is not specified. Identifier of the message to edit.</summary>
         [JsonPropertyName("message_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -32,7 +32,7 @@ namespace Telegram.BotAPI.Updating_messages
         ///<summary>Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</summary>
         [JsonPropertyName("parse_mode")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Parse_mode { get; set; }
+        public string ParseMode { get; set; }
         ///<summary>List of special entities that appear in message text, which can be specified instead of parse_mode.</summary>
         [JsonPropertyName("entities")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

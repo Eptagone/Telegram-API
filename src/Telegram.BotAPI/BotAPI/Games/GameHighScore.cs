@@ -4,6 +4,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI.Games
 {
@@ -16,9 +17,9 @@ namespace Telegram.BotAPI.Games
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Position { get; set; }
         /// <summary>User</summary>
-        [JsonPropertyName("user")]
+        [JsonPropertyName(PropertyNames.User)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.User User { get; set; }
+        public User User { get; set; }
         /// <summary>Score</summary>
         [JsonPropertyName("score")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

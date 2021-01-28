@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
-using Telegram.BotAPI.Available_Types;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI.Stickers
 {
@@ -12,7 +12,7 @@ namespace Telegram.BotAPI.Stickers
         /// <summary>User identifier of sticker file owner.</summary>
         [JsonPropertyName("user_id")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int User_id { get; set; }
+        public int UserId { get; set; }
         /// <summary>Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px.</summary>
         [JsonPropertyName("png_sticker")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

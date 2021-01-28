@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     public static partial class AvailableMethodsExtensions
     {
@@ -28,8 +28,8 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="is_anonymous">Pass True, if the administrator's presence in the chat is hidden.</param>
         /// <param name="can_change_info">Optional. Pass True, if the administrator can change chat title, photo and other settings.</param>
         /// <param name="can_post_messages">Optional. Pass True, if the administrator can create channel posts, channels only.</param>
@@ -74,8 +74,8 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="is_anonymous">Pass True, if the administrator's presence in the chat is hidden.</param>
         /// <param name="can_change_info">Optional. Pass True, if the administrator can change chat title, photo and other settings.</param>
         /// <param name="can_post_messages">Optional. Pass True, if the administrator can create channel posts, channels only.</param>
@@ -135,8 +135,8 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="is_anonymous">Pass True, if the administrator's presence in the chat is hidden.</param>
         /// <param name="can_change_info">Optional. Pass True, if the administrator can change chat title, photo and other settings.</param>
         /// <param name="can_post_messages">Optional. Pass True, if the administrator can create channel posts, channels only.</param>
@@ -183,8 +183,8 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass False for all boolean parameters to demote a user. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="is_anonymous">Pass True, if the administrator's presence in the chat is hidden.</param>
         /// <param name="can_change_info">Optional. Pass True, if the administrator can change chat title, photo and other settings.</param>
         /// <param name="can_post_messages">Optional. Pass True, if the administrator can create channel posts, channels only.</param>

@@ -8,14 +8,14 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Telegram.BotAPI.Available_Methods
+namespace Telegram.BotAPI.AvailableMethods
 {
     public static partial class AvailableMethodsExtensions
     {
         /// <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="only_if_banned">Do nothing if the user is not banned</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
@@ -43,8 +43,8 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="only_if_banned">Do nothing if the user is not banned</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
@@ -72,8 +72,8 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="only_if_banned">Do nothing if the user is not banned</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
@@ -103,8 +103,8 @@ namespace Telegram.BotAPI.Available_Methods
         }
         /// <summary>Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="chat_id">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
-        /// <param name="user_id">Unique identifier of the target user.</param>
+        /// <param name="chatId">Unique identifier for the target group or username of the target supergroup or channel (in the format @username).</param>
+        /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="only_if_banned">Do nothing if the user is not banned</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>

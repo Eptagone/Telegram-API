@@ -4,8 +4,9 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.AvailableTypes;
 
-namespace Telegram.BotAPI.Inline_mode
+namespace Telegram.BotAPI.InlineMode
 {
     /// <summary>This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
@@ -18,11 +19,11 @@ namespace Telegram.BotAPI.Inline_mode
         ///<summary>Sender.</summary>
         [JsonPropertyName("from")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.User From { get; set; }
+        public User From { get; set; }
         ///<summary>Optional. Sender location, only for bots that request user location.</summary>
         [JsonPropertyName("location")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.Location Location { get; set; }
+        public Location Location { get; set; }
         ///<summary>Text of the query (up to 512 characters).</summary>
         [JsonPropertyName("query")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

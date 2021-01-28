@@ -30,6 +30,6 @@ namespace Telegram.BotAPI.Games
         /// <summary>Optional. A JSON-serialized object for an inline keyboard. If empty, one ‘Play game_title’ button will be shown. If not empty, the first button must launch the game.</summary>
         [JsonPropertyName("reply_markup")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Available_Types.InlineKeyboardMarkup Reply_markup { get; set; }
+        public AvailableTypes.InlineKeyboardMarkup Reply_markup { get; set; }
     }
 }
