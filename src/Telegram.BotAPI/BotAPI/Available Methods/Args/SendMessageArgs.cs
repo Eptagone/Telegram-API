@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -26,7 +26,7 @@ namespace Telegram.BotAPI.AvailableMethods
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public MessageEntity[] Entities { get; set; }
         /// <summary>Optional. Disables link previews for links in this message.</summary>
-        [JsonPropertyName("disable_web_page_preview")]
+        [JsonPropertyName(PropertyNames.DisableWebPagePreview)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool DisableWebPagePreview { get; set; }
     }

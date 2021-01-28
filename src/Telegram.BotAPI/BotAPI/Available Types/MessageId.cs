@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -9,7 +9,7 @@ namespace Telegram.BotAPI.AvailableTypes
 {
     /// <summary>This object represents a unique message identifier.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class MessageId
+    public sealed class MessageID
     {
         /// <summary>Unique message identifier.</summary>
         [JsonPropertyName(PropertyNames.MessageId)]

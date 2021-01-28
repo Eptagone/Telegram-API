@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -33,11 +33,11 @@ namespace Telegram.BotAPI.InlineMode
     public abstract class InlineQueryResult
     {
         /// <summary>Unique identifier for this result, 1-64 Bytes.</summary>
-        [JsonPropertyName("id")]
+        [JsonPropertyName(PropertyNames.Id)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
         /// <summary>Optional. Inline keyboard attached to the message.</summary>
-        [JsonPropertyName("reply_markup")]
+        [JsonPropertyName(PropertyNames.ReplyMarkup)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public InlineKeyboardMarkup ReplyMarkup { get; set; }
     }
@@ -61,11 +61,11 @@ namespace Telegram.BotAPI.InlineMode
     public abstract class InlineQueryResultWithEntities : InlineQueryResult, IParseMode
     {
         ///<summary>Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.</summary>
-        [JsonPropertyName("parse_mode")]
+        [JsonPropertyName(PropertyNames.ParseMode)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ParseMode { get; set; }
         /// <summary>Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode.</summary>
-        [JsonPropertyName("caption_entities")]
+        [JsonPropertyName(PropertyNames.CaptionEntities)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public MessageEntity[] CaptionEntities { get; set; }
     }

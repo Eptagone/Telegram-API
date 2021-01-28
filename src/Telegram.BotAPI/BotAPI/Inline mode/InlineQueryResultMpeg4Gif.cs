@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,44 +12,44 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultMpeg4Gif : InlineQueryResultWithEntities, IInlineQueryResult, ICaption
     {
         /// <summary>Type of the result, must be mpeg4_gif.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "mpeg4_gif";
         ///<summary>A valid URL for the MP4 file. File size must not exceed 1MB.</summary>
-        [JsonPropertyName("mpeg4_url")]
+        [JsonPropertyName(PropertyNames.Mpeg4Url)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Mpeg4_url { get; set; }
+        public string Mpeg4Url { get; set; }
         /// <summary>Optional. Video width.</summary>
-        [JsonPropertyName("mpeg4_width")]
+        [JsonPropertyName(PropertyNames.Mpeg4Width)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Mpeg4_width { get; set; }
+        public int Mpeg4Width { get; set; }
         ///<summary>Optional. Video height.</summary>
-        [JsonPropertyName("mpeg4_height")]
+        [JsonPropertyName(PropertyNames.Mpeg4Height)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Mpeg4_height { get; set; }
+        public int Mpeg4Height { get; set; }
         ///<summary>Optional. Video height.</summary>
-        [JsonPropertyName("mpeg4_duration")]
+        [JsonPropertyName(PropertyNames.Mpeg4Duration)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Mpeg4_duration { get; set; }
+        public int Mpeg4Duration { get; set; }
         /// <summary>URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.</summary>
-        [JsonPropertyName("thumb_url")]
+        [JsonPropertyName(PropertyNames.ThumbUrl)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Thumb_url { get; set; }
+        public string ThumbUrl { get; set; }
         /// <summary>Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”.</summary>
-        [JsonPropertyName("thumb_mime_type")]
+        [JsonPropertyName(PropertyNames.ThumbMimeType)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Thumb_mime_type { get; set; }
+        public string ThumbMimeType { get; set; }
         /// <summary>Optional. Title of the result.</summary>
-        [JsonPropertyName("title")]
+        [JsonPropertyName(PropertyNames.Title)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Title { get; set; }
         ///<summary>Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters.</summary>
-        [JsonPropertyName("caption")]
+        [JsonPropertyName(PropertyNames.Caption)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the video animation.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
     }
 }

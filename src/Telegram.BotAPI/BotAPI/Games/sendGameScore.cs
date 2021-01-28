@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -32,7 +32,7 @@ namespace Telegram.BotAPI.Games
             {
                 throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
-            return bot.RPC<T>("setGameScore", args);
+            return bot.RPC<T>(MethodNames.SetGameScore, args);
         }
         ///<summary>Use this method to set the score of the specified user in a game.</summary>
         ///<param name="bot">BotClient</param>
@@ -56,7 +56,7 @@ namespace Telegram.BotAPI.Games
             {
                 throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
-            return await bot.RPCA<T>("setGameScore", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.SetGameScore, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

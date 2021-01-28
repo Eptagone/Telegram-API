@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -34,11 +34,11 @@ namespace Telegram.BotAPI.GettingUpdates
                 json.WriteEndObject();
                 json.Flush(); json.Dispose();
                 stream.Seek(0, SeekOrigin.Begin);
-                return bot.RPC<bool>("deleteWebhook", stream);
+                return bot.RPC<bool>(MethodNames.DeleteWebhook, stream);
             }
             else
             {
-                return bot.RPC<bool>("deleteWebhook");
+                return bot.RPC<bool>(MethodNames.DeleteWebhook);
             }
         }
         /// <summary>Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. Requires no parameters.</summary>
@@ -64,11 +64,11 @@ namespace Telegram.BotAPI.GettingUpdates
                 await json.FlushAsync(cancellationToken).ConfigureAwait(false);
                 await json.DisposeAsync().ConfigureAwait(false);
                 stream.Seek(0, SeekOrigin.Begin);
-                return await bot.RPCA<bool>("deleteWebhook", stream, cancellationToken).ConfigureAwait(false);
+                return await bot.RPCA<bool>(MethodNames.DeleteWebhook, stream, cancellationToken).ConfigureAwait(false);
             }
             else
             {
-                return await bot.RPCA<bool>("deleteWebhook", cancellationToken).ConfigureAwait(false);
+                return await bot.RPCA<bool>(MethodNames.DeleteWebhook, cancellationToken).ConfigureAwait(false);
             }
         }
     }

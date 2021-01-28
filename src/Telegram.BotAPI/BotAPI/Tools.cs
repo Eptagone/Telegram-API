@@ -291,7 +291,7 @@ namespace Telegram.BotAPI
             {
                 writer.WriteStartObject();
                 writer.WriteStartArray("inline_keyboard");
-                foreach (var ink in value.Inline_keyboard)
+                foreach (var ink in value.InlineKeyboard)
                 {
                     writer.WriteStartArray();
                     foreach (var button in ink)
@@ -303,38 +303,38 @@ namespace Telegram.BotAPI
                             case InlineKeyboardButtonType.Url:
                                 writer.WriteString("url", button.Url);
                                 break;
-                            case InlineKeyboardButtonType.Login_Url:
+                            case InlineKeyboardButtonType.LoginUrl:
                                 writer.WriteStartObject("login_url");
-                                writer.WriteString("url", button.Login_url.Url);
-                                if (button.Login_url.Forward_text != default)
+                                writer.WriteString("url", button.LoginUrl.Url);
+                                if (button.LoginUrl.ForwardText != default)
                                 {
-                                    writer.WriteString("forward_text", button.Login_url.Forward_text);
+                                    writer.WriteString("forward_text", button.LoginUrl.ForwardText);
                                 }
 
-                                if (button.Login_url.Bot_username != default)
+                                if (button.LoginUrl.BotUsername != default)
                                 {
-                                    writer.WriteString("bot_username", button.Login_url.Bot_username);
+                                    writer.WriteString("bot_username", button.LoginUrl.BotUsername);
                                 }
 
-                                if (button.Login_url.Request_write_access)
+                                if (button.LoginUrl.RequestWriteAccess)
                                 {
                                     writer.WriteBoolean("request_write_access", true);
                                 }
 
                                 writer.WriteEndObject();
                                 break;
-                            case InlineKeyboardButtonType.Callback_data:
-                                writer.WriteString("callback_data", button.Callback_data);
+                            case InlineKeyboardButtonType.CallbackData:
+                                writer.WriteString("callback_data", button.CallbackData);
                                 break;
-                            case InlineKeyboardButtonType.Switch_inline_query:
-                                writer.WriteString("switch_inline_query", button.Switch_inline_query);
+                            case InlineKeyboardButtonType.SwitchInlineQuery:
+                                writer.WriteString("switch_inline_query", button.SwitchInlineQuery);
                                 break;
-                            case InlineKeyboardButtonType.Switch_inline_query_current_chat:
-                                writer.WriteString("switch_inline_query_current_chat", button.Switch_inline_query_current_chat);
+                            case InlineKeyboardButtonType.SwitchInlineQueryCurrentChat:
+                                writer.WriteString("switch_inline_query_current_chat", button.SwitchInlineQueryCurrentChat);
                                 break;
-                            case InlineKeyboardButtonType.Callback_game:
+                            case InlineKeyboardButtonType.CallbackGame:
                                 writer.WriteStartObject("callback_game");
-                                writer.WriteString("game_short_name", button.Callback_game.Game_short_name);
+                                writer.WriteString("game_short_name", button.CallbackGame.GameShortName);
                                 writer.WriteEndObject();
                                 break;
                             case InlineKeyboardButtonType.Pay:

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,28 +12,28 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultAudio : InlineQueryResultWithEntities, IInlineQueryResult, ICaption
     {
         /// <summary>Type of the result, must be audio.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "audio";
         ///<summary>A valid URL for the audio file.</summary>
-        [JsonPropertyName("audio_url")]
+        [JsonPropertyName(PropertyNames.AudioUrl)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Audio_url { get; set; }
+        public string AudioUrl { get; set; }
         ///<summary>Optional. Caption, 0-1024 characters.</summary>
-        [JsonPropertyName("caption")]
+        [JsonPropertyName(PropertyNames.Caption)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
         /// <summary>Optional. Performer.</summary>
-        [JsonPropertyName("performer")]
+        [JsonPropertyName(PropertyNames.Performer)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Performer { get; set; }
         /// <summary>Optional. Audio duration in seconds.</summary>
-        [JsonPropertyName("audio_duration")]
+        [JsonPropertyName(PropertyNames.AudioDuration)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Audio_duration { get; set; }
+        public uint AudioDuration { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the audio.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -16,10 +16,10 @@ namespace Telegram.BotAPI.Payments
     {
         /// <summary>If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="shipping_query_id">Unique identifier for the query to be answered</param>
+        /// <param name="shippingQueryId">Unique identifier for the query to be answered</param>
         /// <param name="ok">Specify True if delivery to the specified address is possible and False if there are any problems (for example, if delivery to the specified address is not possible).</param>
-        /// <param name="shipping_options">Required if ok is True. A JSON-serialized array of available shipping options.</param>
-        /// <param name="error_message">Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.</param>
+        /// <param name="shippingOptions">Required if ok is True. A JSON-serialized array of available shipping options.</param>
+        /// <param name="errorMessage">Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static Message AnswerShippingQuery(this BotClient bot, string shipping_query_id, bool ok, [Optional] IEnumerable<ShippingOption> shipping_options, [Optional] string error_message)
@@ -45,14 +45,14 @@ namespace Telegram.BotAPI.Payments
                 foreach (var option in shipping_options)
                 {
                     json.WriteStartObject();
-                    json.WriteString("id", option.Id);
-                    json.WriteString("title", option.Title);
-                    json.WriteStartArray("prices");
+                    json.WriteString(PropertyNames.Id, option.Id);
+                    json.WriteString(PropertyNames.Title, option.Title);
+                    json.WriteStartArray(PropertyNames.Prices);
                     foreach (var price in option.Prices)
                     {
                         json.WriteStartObject();
-                        json.WriteString("label", price.Label);
-                        json.WriteNumber("amount", price.Amount);
+                        json.WriteString(PropertyNames.Label, price.Label);
+                        json.WriteNumber(PropertyNames.Amount, price.Amount);
                         json.WriteEndObject();
                     }
                     json.WriteEndArray();
@@ -73,14 +73,14 @@ namespace Telegram.BotAPI.Payments
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<Message>("answerShippingQuery", stream);
+            return bot.RPC<Message>(MethodNames.AnswerShippingQuery, stream);
         }
         /// <summary>If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.</summary>
         /// <param name="bot">BotClient</param>
-        /// <param name="shipping_query_id">Unique identifier for the query to be answered</param>
+        /// <param name="shippingQueryId">Unique identifier for the query to be answered</param>
         /// <param name="ok">Specify True if delivery to the specified address is possible and False if there are any problems (for example, if delivery to the specified address is not possible).</param>
-        /// <param name="shipping_options">Required if ok is True. A JSON-serialized array of available shipping options.</param>
-        /// <param name="error_message">Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.</param>
+        /// <param name="shippingOptions">Required if ok is True. A JSON-serialized array of available shipping options.</param>
+        /// <param name="errorMessage">Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="Message"/></returns>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
@@ -108,14 +108,14 @@ namespace Telegram.BotAPI.Payments
                 foreach (var option in shipping_options)
                 {
                     json.WriteStartObject();
-                    json.WriteString("id", option.Id);
-                    json.WriteString("title", option.Title);
-                    json.WriteStartArray("prices");
+                    json.WriteString(PropertyNames.Id, option.Id);
+                    json.WriteString(PropertyNames.Title, option.Title);
+                    json.WriteStartArray(PropertyNames.Prices);
                     foreach (var price in option.Prices)
                     {
                         json.WriteStartObject();
-                        json.WriteString("label", price.Label);
-                        json.WriteNumber("amount", price.Amount);
+                        json.WriteString(PropertyNames.Label, price.Label);
+                        json.WriteNumber(PropertyNames.Amount, price.Amount);
                         json.WriteEndObject();
                     }
                     json.WriteEndArray();
@@ -137,7 +137,7 @@ namespace Telegram.BotAPI.Payments
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<Message>("answerShippingQuery", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Message>(MethodNames.AnswerShippingQuery, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

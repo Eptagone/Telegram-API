@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,24 +12,24 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultVoice : InlineQueryResultWithEntities, IInlineQueryResult, ICaption
     {
         /// <summary>Type of the result, must be voice.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "voice";
         ///<summary>A valid URL for the voice recording.</summary>
-        [JsonPropertyName("voice_url")]
+        [JsonPropertyName(PropertyNames.VoiceUrl)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Voice_url { get; set; }
+        public string VoiceUrl { get; set; }
         ///<summary>Optional. Caption, 0-1024 characters.</summary>
-        [JsonPropertyName("caption")]
+        [JsonPropertyName(PropertyNames.Caption)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
         ///<summary>Optional. Recording duration in seconds.</summary>
-        [JsonPropertyName("voice_duration")]
+        [JsonPropertyName(PropertyNames.VoiceDuration)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Voice_duration { get; set; }
+        public uint VoiceDuration { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the voice message.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
     }
 }

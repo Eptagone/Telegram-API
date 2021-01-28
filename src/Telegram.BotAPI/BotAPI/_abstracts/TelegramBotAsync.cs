@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -32,35 +32,35 @@ namespace Telegram.BotAPI
                     case UpdateType.Message:
                         await OnMessageAsync(update.Message, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Edited_message:
-                        await OnEditedMessageAsync(update.Edited_message, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.EditedMessage:
+                        await OnEditedMessageAsync(update.EditedMessage, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Channel_post:
-                        await OnChannelPostAsync(update.Channel_post, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.ChannelPost:
+                        await OnChannelPostAsync(update.ChannelPost, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Edited_channel_post:
-                        await OnEditedChannelPostAsync(update.Edited_channel_post, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.EditedChannelPost:
+                        await OnEditedChannelPostAsync(update.EditedChannelPost, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Inline_query:
-                        await OnInlineQueryAsync(update.Inline_query, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.InlineQuery:
+                        await OnInlineQueryAsync(update.InlineQuery, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Chosen_inline_result:
-                        await OnChosenInlineResultAsync(update.Chosen_inline_result, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.ChosenInlineResult:
+                        await OnChosenInlineResultAsync(update.ChosenInlineResult, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Callback_query:
-                        await OnCallbackQueryAsync(update.Callback_query, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.CallbackQuery:
+                        await OnCallbackQueryAsync(update.CallbackQuery, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Shipping_query:
-                        await OnShippingQueryAsync(update.Shipping_query, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.ShippingQuery:
+                        await OnShippingQueryAsync(update.ShippingQuery, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Pre_checkout_query:
-                        await OnPreCheckoutQueryAsync(update.Pre_checkout_query, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.PreCheckoutQuery:
+                        await OnPreCheckoutQueryAsync(update.PreCheckoutQuery, cancellationToken).ConfigureAwait(false);
                         break;
                     case UpdateType.Poll:
                         await OnPollAsync(update.Poll, cancellationToken).ConfigureAwait(false);
                         break;
-                    case UpdateType.Poll_answer:
-                        await OnPollAnswerAsync(update.Poll_answer, cancellationToken).ConfigureAwait(false);
+                    case UpdateType.PollAnswer:
+                        await OnPollAnswerAsync(update.PollAnswer, cancellationToken).ConfigureAwait(false);
                         break;
                     case UpdateType.Unknown:
                     default:

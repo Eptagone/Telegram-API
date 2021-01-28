@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -30,7 +30,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return bot.RPCF<Message[]>("sendMediaGroup", args);
+            return bot.RPCF<Message[]>(MethodNames.SendMediaGroup, args);
         }
         /// <summary>Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only group in an album with messages of the same type. On success, an array of Messages that were sent is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -51,7 +51,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCAF<Message[]>("sendMediaGroup", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<Message[]>(MethodNames.SendMediaGroup, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only group in an album with messages of the same type. On success, an array of Messages that were sent is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -72,7 +72,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return bot.RPCF<T>("sendMediaGroup", args);
+            return bot.RPCF<T>(MethodNames.SendMediaGroup, args);
         }
         /// <summary>Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only group in an album with messages of the same type. On success, an array of Messages that were sent is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -94,7 +94,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCAF<T>("sendMediaGroup", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<T>(MethodNames.SendMediaGroup, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

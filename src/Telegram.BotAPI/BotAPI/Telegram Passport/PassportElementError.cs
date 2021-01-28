@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -21,15 +21,15 @@ namespace Telegram.BotAPI.TelegramPassport
     public abstract class PassportElementError
     {
         /// <summary>Error source.</summary>
-        [JsonPropertyName("source")]
+        [JsonPropertyName(PropertyNames.Source)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public abstract string Source { get; }
         /// <summary>The section of the user's Telegram Passport which has the issue.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public abstract string Type { get; set; }
         /// <summary>Error message.</summary>
-        [JsonPropertyName("message")]
+        [JsonPropertyName(PropertyNames.Message)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Message { get; set; }
     }

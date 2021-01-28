@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -30,11 +30,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<ChatMember[]>("getChatAdministrators", stream);
+            return bot.RPC<ChatMember[]>(MethodNames.GetChatAdministrators, stream);
         }
         /// <summary>Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -52,11 +52,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chatId);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<ChatMember[]>("getChatAdministrators", stream);
+            return bot.RPC<ChatMember[]>(MethodNames.GetChatAdministrators, stream);
         }
         /// <summary>Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -75,12 +75,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<ChatMember[]>("getChatAdministrators", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<ChatMember[]>(MethodNames.GetChatAdministrators, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -99,12 +99,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chatId);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<ChatMember[]>("getChatAdministrators", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<ChatMember[]>(MethodNames.GetChatAdministrators, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -123,11 +123,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<T>("getChatAdministrators", stream);
+            return bot.RPC<T>(MethodNames.GetChatAdministrators, stream);
         }
         /// <summary>Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -146,11 +146,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chatId);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<T>("getChatAdministrators", stream);
+            return bot.RPC<T>(MethodNames.GetChatAdministrators, stream);
         }
         /// <summary>Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -170,12 +170,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<T>("getChatAdministrators", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.GetChatAdministrators, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -195,12 +195,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chatId);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<T>("getChatAdministrators", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.GetChatAdministrators, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

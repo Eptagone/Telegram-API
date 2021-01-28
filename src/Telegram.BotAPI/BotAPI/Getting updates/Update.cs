@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -16,53 +16,53 @@ namespace Telegram.BotAPI.GettingUpdates
     public sealed class Update
     {
         ///<summary>The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.</summary>
-        [JsonPropertyName("update_id")]
+        [JsonPropertyName(PropertyNames.UpdateId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Update_id { get; set; }
+        public uint UpdateId { get; set; }
         ///<summary>Optional. New incoming message of any kind — text, photo, sticker, etc.</summary>
-        [JsonPropertyName("message")]
+        [JsonPropertyName(PropertyNames.Message)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Message Message { get; set; }
         ///<summary>Optional. New version of a message that is known to the bot and was edited.</summary>
-        [JsonPropertyName("edited_message")]
+        [JsonPropertyName(PropertyNames.EditedMessage)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Message Edited_message { get; set; }
+        public Message EditedMessage { get; set; }
         ///<summary>Optional. New incoming channel post of any kind — text, photo, sticker, etc.</summary>
-        [JsonPropertyName("channel_post")]
+        [JsonPropertyName(PropertyNames.ChannelPost)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Message Channel_post { get; set; }
+        public Message ChannelPost { get; set; }
         ///<summary>Optional. New version of a channel post that is known to the bot and was edited.</summary>
-        [JsonPropertyName("edited_channel_post")]
+        [JsonPropertyName(PropertyNames.EditedChannelPost)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Message Edited_channel_post { get; set; }
+        public Message EditedChannelPost { get; set; }
         ///<summary>Optional. New incoming inline query.</summary>
-        [JsonPropertyName("inline_query")]
+        [JsonPropertyName(PropertyNames.InlineQuery)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InlineQuery Inline_query { get; set; }
+        public InlineQuery InlineQuery { get; set; }
         ///<summary>Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.</summary>
-        [JsonPropertyName("chosen_inline_result")]
+        [JsonPropertyName(PropertyNames.ChosenInlineResult)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public ChosenInlineResult Chosen_inline_result { get; set; }
+        public ChosenInlineResult ChosenInlineResult { get; set; }
         ///<summary>Optional. New incoming callback query.</summary>
-        [JsonPropertyName("callback_query")]
+        [JsonPropertyName(PropertyNames.CallbackQuery)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public CallbackQuery Callback_query { get; set; }
+        public CallbackQuery CallbackQuery { get; set; }
         ///<summary>Optional. New incoming shipping query. Only for invoices with flexible price.</summary>
-        [JsonPropertyName("shipping_query")]
+        [JsonPropertyName(PropertyNames.ShippingQuery)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public ShippingQuery Shipping_query { get; set; }
+        public ShippingQuery ShippingQuery { get; set; }
         ///<summary>Optional. New incoming pre-checkout query. Contains full information about checkout.</summary>
-        [JsonPropertyName("pre_checkout_query")]
+        [JsonPropertyName(PropertyNames.PreCheckoutQuery)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PreCheckoutQuery Pre_checkout_query { get; set; }
+        public PreCheckoutQuery PreCheckoutQuery { get; set; }
         ///<summary>Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot.</summary>
-        [JsonPropertyName("poll")]
+        [JsonPropertyName(PropertyNames.Poll)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Poll Poll { get; set; }
         ///<summary>Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.</summary>
-        [JsonPropertyName("poll_answer")]
+        [JsonPropertyName(PropertyNames.PollAnswer)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public PollAnswer Poll_answer { get; set; }
+        public PollAnswer PollAnswer { get; set; }
         /// <summary>Update type.</summary>
         [System.Text.Json.Serialization.JsonIgnore]
         [Newtonsoft.Json.JsonIgnore]
@@ -75,44 +75,44 @@ namespace Telegram.BotAPI.GettingUpdates
                     return UpdateType.Message;
                 }
 
-                if (Edited_message != default)
+                if (EditedMessage != default)
                 {
-                    return UpdateType.Edited_message;
+                    return UpdateType.EditedMessage;
                 }
 
-                if (Channel_post != default)
+                if (ChannelPost != default)
                 {
-                    return UpdateType.Channel_post;
+                    return UpdateType.ChannelPost;
                 }
 
-                if (Edited_channel_post != default)
+                if (EditedChannelPost != default)
                 {
-                    return UpdateType.Edited_channel_post;
+                    return UpdateType.EditedChannelPost;
                 }
 
-                if (Inline_query != default)
+                if (InlineQuery != default)
                 {
-                    return UpdateType.Inline_query;
+                    return UpdateType.InlineQuery;
                 }
 
-                if (Chosen_inline_result != default)
+                if (ChosenInlineResult != default)
                 {
-                    return UpdateType.Chosen_inline_result;
+                    return UpdateType.ChosenInlineResult;
                 }
 
-                if (Callback_query != default)
+                if (CallbackQuery != default)
                 {
-                    return UpdateType.Callback_query;
+                    return UpdateType.CallbackQuery;
                 }
 
-                if (Shipping_query != default)
+                if (ShippingQuery != default)
                 {
-                    return UpdateType.Shipping_query;
+                    return UpdateType.ShippingQuery;
                 }
 
-                if (Pre_checkout_query != default)
+                if (PreCheckoutQuery != default)
                 {
-                    return UpdateType.Pre_checkout_query;
+                    return UpdateType.PreCheckoutQuery;
                 }
 
                 if (Poll != default)
@@ -120,9 +120,9 @@ namespace Telegram.BotAPI.GettingUpdates
                     return UpdateType.Poll;
                 }
 
-                if (Poll_answer != default)
+                if (PollAnswer != default)
                 {
-                    return UpdateType.Poll_answer;
+                    return UpdateType.PollAnswer;
                 }
 
                 return UpdateType.Unknown;
@@ -137,25 +137,25 @@ namespace Telegram.BotAPI.GettingUpdates
         /// <summary>Message update</summary>
         Message,
         /// <summary>Edited message update</summary>
-        Edited_message,
+        EditedMessage,
         /// <summary>Channel post update</summary>
-        Channel_post,
+        ChannelPost,
         /// <summary>Edited channel post update</summary>
-        Edited_channel_post,
+        EditedChannelPost,
         /// <summary>Inline query update</summary>
-        Inline_query,
+        InlineQuery,
         /// <summary>Chosen inline result update</summary>
-        Chosen_inline_result,
+        ChosenInlineResult,
         /// <summary>Callback query update</summary>
-        Callback_query,
+        CallbackQuery,
         /// <summary>Shipping query update</summary>
-        Shipping_query,
+        ShippingQuery,
         /// <summary>Pre checkout query update</summary>
-        Pre_checkout_query,
+        PreCheckoutQuery,
         /// <summary>Poll update</summary>
         Poll,
         /// <summary>Poll answer update</summary>
-        Poll_answer
+        PollAnswer
     }
     /// <summary>Allowed updates</summary>
     public static class AllowUpdate
@@ -163,24 +163,24 @@ namespace Telegram.BotAPI.GettingUpdates
         /// <summary>Message update: New incoming message of any kind — text, photo, sticker, etc.</summary>
         public const string Message = "message";
         /// <summary>Edited message update: New version of a message that is known to the bot and was edited.</summary>
-        public const string Edited_message = "edited_message";
+        public const string EditedMessage = "edited_message";
         /// <summary>Channel post update: New version of a channel post that is known to the bot and was edited.</summary>
-        public const string Channel_post = "channel_post";
+        public const string ChannelPost = "channel_post";
         /// <summary>Edited channel post update: New version of a channel post that is known to the bot and was edited.</summary>
-        public const string Edited_channel_post = "edited_channel_post";
+        public const string EditedChannelPost = "edited_channel_post";
         /// <summary>Inline query update. New incoming inline query.</summary>
-        public const string Inline_query = "inline_query";
+        public const string InlineQuery = "inline_query";
         /// <summary>Chosen inline result update: The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.</summary>
-        public const string Chosen_inline_result = "chosen_inline_result";
+        public const string ChosenInlineResult = "chosen_inline_result";
         /// <summary>Callback query update: New incoming callback query.</summary>
-        public const string Callback_query = "callback_query";
+        public const string CallbackQuery = "callback_query";
         /// <summary>Shipping query update: New incoming shipping query. Only for invoices with flexible price.</summary>
-        public const string Shipping_query = "shipping_query";
+        public const string ShippingQuery = "shipping_query";
         /// <summary>Pre checkout query update: New incoming pre-checkout query. Contains full information about checkout.</summary>
-        public const string Pre_checkout_query = "pre_checkout_query";
+        public const string PreCheckoutQuery = "pre_checkout_query";
         /// <summary>Poll update: New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot.</summary>
         public const string Poll = "poll";
         /// <summary>Poll answer update: A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.</summary>
-        public const string Poll_answer = "poll_answer";
+        public const string PollAnswer = "poll_answer";
     }
 }

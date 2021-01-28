@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,44 +12,44 @@ namespace Telegram.BotAPI.Stickers
     public sealed class Sticker
     {
         ///<summary>Identifier for this file, which can be used to download or reuse the file.</summary>
-        [JsonPropertyName("file_id")]
+        [JsonPropertyName(PropertyNames.FileId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string File_id { get; set; }
+        public string FileId { get; set; }
         ///<summary>Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.</summary>
-        [JsonPropertyName("file_unique_id")]
+        [JsonPropertyName(PropertyNames.FileUniqueId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string File_unique_id { get; set; }
+        public string FileUniqueId { get; set; }
         ///<summary>Sticker width.</summary>
-        [JsonPropertyName("width")]
+        [JsonPropertyName(PropertyNames.Width)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Width { get; set; }
         ///<summary>Sticker height.</summary>
-        [JsonPropertyName("height")]
+        [JsonPropertyName(PropertyNames.Height)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Height { get; set; }
         ///<summary>True, if the sticker is animated.</summary>
-        [JsonPropertyName("is_animated")]
+        [JsonPropertyName(PropertyNames.IsAnimated)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Is_animated { get; set; }
+        public bool IsAnimated { get; set; }
         ///<summary>Optional. Sticker thumbnail in the .webp or .jpg format.</summary>
-        [JsonPropertyName("thumb")]
+        [JsonPropertyName(PropertyNames.Thumb)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public AvailableTypes.PhotoSize Thumb { get; set; }
         ///<summary>Optional. Emoji associated with the sticker.</summary>
-        [JsonPropertyName("emoji")]
+        [JsonPropertyName(PropertyNames.Emoji)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Emoji { get; set; }
         ///<summary>Optional. Name of the sticker set to which the sticker belongs.</summary>
-        [JsonPropertyName("set_name")]
+        [JsonPropertyName(PropertyNames.SetName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Set_name { get; set; }
+        public string SetName { get; set; }
         ///<summary>Optional. For mask stickers, the position where the mask should be placed.</summary>
-        [JsonPropertyName("mask_position")]
+        [JsonPropertyName(PropertyNames.MaskPosition)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public MaskPosition Mask_position { get; set; }
+        public MaskPosition MaskPosition { get; set; }
         ///<summary>Optional. File size.</summary>
-        [JsonPropertyName("file_size")]
+        [JsonPropertyName(PropertyNames.FileSize)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint File_size { get; set; }
+        public uint FileSize { get; set; }
     }
 }

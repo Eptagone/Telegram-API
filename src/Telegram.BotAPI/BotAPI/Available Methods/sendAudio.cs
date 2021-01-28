@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -29,7 +29,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return args.UseMultipart() ? bot.RPCF<Message>("sendAudio", args) : bot.RPC<Message>("sendAudio", args);
+            return args.UseMultipart() ? bot.RPCF<Message>(MethodNames.SendAudio, args) : bot.RPC<Message>(MethodNames.SendAudio, args);
         }
         /// <summary>Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .mp3 format. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -50,7 +50,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCAF<Message>("sendAudio", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<Message>(MethodNames.SendAudio, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -28,7 +28,7 @@ namespace Telegram.BotAPI.Payments
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return bot.RPC<Message>("sendInvoice", args);
+            return bot.RPC<Message>(MethodNames.SendInvoice, args);
         }
         /// <summary>Use this method to send invoices. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -48,7 +48,7 @@ namespace Telegram.BotAPI.Payments
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCA<Message>("sendInvoice", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Message>(MethodNames.SendInvoice, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

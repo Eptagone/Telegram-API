@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -32,7 +32,7 @@ namespace Telegram.BotAPI.AvailableMethods
             {
                 throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
-            return bot.RPC<T>("stopMessageLiveLocation", args);
+            return bot.RPC<T>(MethodNames.StopMessageLiveLocation, args);
         }
         /// <summary>Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before live_period expires.</summary>
         /// <param name="bot">BotClient</param>
@@ -56,7 +56,7 @@ namespace Telegram.BotAPI.AvailableMethods
             {
                 throw new ArgumentException($"{nameof(T)} must be Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
-            return await bot.RPCA<T>("stopMessageLiveLocation", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.StopMessageLiveLocation, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

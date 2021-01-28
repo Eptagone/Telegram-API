@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -27,11 +27,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
+            json.WriteNumber(PropertyNames.ChatId, chat_id);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("unpinAllChatMessages", stream);
+            return bot.RPC<bool>(MethodNames.UnpinAllChatMessages, stream);
         }
         /// <summary>Use this method to unpin a message in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the ‘can_pin_messages’ admin right in the supergroup or ‘can_edit_messages’ admin right in the channel. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -48,11 +48,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
+            json.WriteString(PropertyNames.ChatId, chat_id);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("unpinAllChatMessages", stream);
+            return bot.RPC<bool>(MethodNames.UnpinAllChatMessages, stream);
         }
         /// <summary>Use this method to unpin a message in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the ‘can_pin_messages’ admin right in the supergroup or ‘can_edit_messages’ admin right in the channel. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -70,11 +70,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
+            json.WriteNumber(PropertyNames.ChatId, chat_id);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("unpinAllChatMessages", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.UnpinAllChatMessages, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to unpin a message in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the ‘can_pin_messages’ admin right in the supergroup or ‘can_edit_messages’ admin right in the channel. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -92,11 +92,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
+            json.WriteString(PropertyNames.ChatId, chat_id);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("unpinAllChatMessages", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.UnpinAllChatMessages, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

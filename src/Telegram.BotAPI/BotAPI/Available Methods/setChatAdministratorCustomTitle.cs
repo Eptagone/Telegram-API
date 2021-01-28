@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -16,15 +16,15 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="bot">Bot Client</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="userId">Unique identifier of the target user.</param>
-        /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+        /// <param name="customTitle">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetChatAdministratorCustomTitle(
             this BotClient bot,
-            long chat_id,
-            int user_id,
-            string custom_title)
+            long chatId,
+            int userId,
+            string customTitle)
         {
             if (bot == default)
             {
@@ -34,28 +34,28 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteNumber("user_id", user_id);
-            json.WriteString("custom_title", custom_title);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteString(PropertyNames.CustomTitle, customTitle);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("sendVideoNote", stream);
+            return bot.RPC<bool>(MethodNames.SendVideoNote, stream);
         }
 
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
         /// <param name="bot">Bot Client</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="userId">Unique identifier of the target user.</param>
-        /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+        /// <param name="customTitle">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
         public static bool SetChatAdministratorCustomTitle(
             this BotClient bot,
-            string chat_id,
-            int user_id,
-            string custom_title)
+            string chatId,
+            int userId,
+            string customTitle)
         {
             if (bot == default)
             {
@@ -65,24 +65,24 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteNumber("user_id", user_id);
-            json.WriteString("custom_title", custom_title);
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteString(PropertyNames.CustomTitle, customTitle);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("sendVideoNote", stream);
+            return bot.RPC<bool>(MethodNames.SendVideoNote, stream);
         }
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
         /// <param name="bot">Bot Client</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="userId">Unique identifier of the target user.</param>
-        /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+        /// <param name="customTitle">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient bot, long chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient bot, long chatId, int userId, string customTitle, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -92,26 +92,26 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteNumber("user_id", user_id);
-            json.WriteString("custom_title", custom_title);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteString(PropertyNames.CustomTitle, customTitle);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SendVideoNote, stream, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.</summary>
         /// <param name="bot">Bot Client</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="userId">Unique identifier of the target user.</param>
-        /// <param name="custom_title">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
+        /// <param name="customTitle">New custom title for the administrator; 0-16 characters, emoji are not allowed.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient bot, string chat_id, int user_id, string custom_title, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatAdministratorCustomTitleAsync(this BotClient bot, string chatId, int userId, string customTitle, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -121,14 +121,14 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteNumber("user_id", user_id);
-            json.WriteString("custom_title", custom_title);
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteString(PropertyNames.CustomTitle, customTitle);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("sendVideoNote", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SendVideoNote, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

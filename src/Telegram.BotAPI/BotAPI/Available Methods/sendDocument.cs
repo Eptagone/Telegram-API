@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -29,7 +29,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return bot.RPCF<Message>("sendDocument", args);
+            return bot.RPCF<Message>(MethodNames.SendDocument, args);
         }
         /// <summary>Use this method to send general files. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -50,7 +50,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCAF<Message>("sendDocument", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<Message>(MethodNames.SendDocument, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

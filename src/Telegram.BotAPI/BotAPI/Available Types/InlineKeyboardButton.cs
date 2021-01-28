@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -160,13 +160,13 @@ namespace Telegram.BotAPI.AvailableTypes
         Url,
         /// <summary>Login Url button.</summary>
         LoginUrl,
-        /// <summary>Callback_data button.</summary>
+        /// <summary>CallbackData button.</summary>
         CallbackData,
-        /// <summary>Switch_inline_query button.</summary>
+        /// <summary>SwitchInlineQuery button.</summary>
         SwitchInlineQuery,
-        /// <summary>Switch_inline_query_current_chat button.</summary>
+        /// <summary>SwitchInlineQueryCurrentChat button.</summary>
         SwitchInlineQueryCurrentChat,
-        /// <summary>Callback_game button.</summary>
+        /// <summary>CallbackGame button.</summary>
         CallbackGame,
         /// <summary>Pay button.</summary>
         Pay

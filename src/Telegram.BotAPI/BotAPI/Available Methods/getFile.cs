@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -29,11 +29,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("fileId", fileId);
+            json.WriteString(PropertyNames.FileId, fileId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<File>("getFile", stream);
+            return bot.RPC<File>(MethodNames.GetFile, stream);
         }
         /// <summary>Use this method to get basic info about a file and prepare it for downloading.. On success, a File object is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -52,11 +52,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("fileId", fileId);
+            json.WriteString(PropertyNames.FileId, fileId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<File>("getFile", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<File>(MethodNames.GetFile, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.AvailableMethods
     public sealed class CopyMessageArgs : BaseSendArgsReplyMarkup, ICaption, IParseMode
     {
         ///<summary><see cref="long"/> or <see cref="string"/>. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername).</summary>
-        [JsonPropertyName("from_chat_id")]
+        [JsonPropertyName(PropertyNames.FromChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object FromChatId { get; set; }
         ///<summary>Message identifier in the chat specified in from_chat_id.</summary>

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -23,7 +23,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<User>("getMe");
+            return bot.RPC<User>(MethodNames.GetMe);
         }
         /// <summary>A simple method for testing your bot's auth token. Returns basic information about the bot in form of a User object.</summary>
         /// <param name="bot">Bot Client</param>
@@ -38,7 +38,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return await bot.RPCA<User>("getMe", cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<User>(MethodNames.GetMe, cancellationToken).ConfigureAwait(false);
         }
     }
 }

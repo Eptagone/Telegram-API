@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -28,7 +28,7 @@ namespace Telegram.BotAPI.UpdatingMessages
             {
                 throw new ArgumentNullException(nameof(args));
             }
-            return bot.RPC<T>("editMessageText", args);
+            return bot.RPC<T>(MethodNames.EditMessageText, args);
         }
         /// <summary>Use this method to edit text and game messages.</summary>
         /// <param name="bot">BotClient</param>
@@ -48,7 +48,7 @@ namespace Telegram.BotAPI.UpdatingMessages
             {
                 throw new ArgumentNullException(nameof(args));
             }
-            return await bot.RPCA<T>("editMessageText", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.EditMessageText, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to edit text and game messages.</summary>
         /// <param name="bot">BotClient</param>
@@ -67,7 +67,7 @@ namespace Telegram.BotAPI.UpdatingMessages
             {
                 throw new ArgumentNullException(nameof(args));
             }
-            return bot.RPC<Message>("editMessageText", args);
+            return bot.RPC<Message>(MethodNames.EditMessageText, args);
         }
         /// <summary>Use this method to edit text and game messages.</summary>
         /// <param name="bot">BotClient</param>
@@ -87,7 +87,7 @@ namespace Telegram.BotAPI.UpdatingMessages
             {
                 throw new ArgumentNullException(nameof(args));
             }
-            return await bot.RPCA<Message>("editMessageText", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Message>(MethodNames.EditMessageText, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

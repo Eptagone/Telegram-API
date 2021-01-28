@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -28,12 +28,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteString("description", description);
+            json.WriteNumber(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.Description, description);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("setChatDescription", stream);
+            return bot.RPC<bool>(MethodNames.SetChatDescription, stream);
         }
         /// <summary>Use this method to change the description of a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -51,12 +51,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteString("description", description);
+            json.WriteString(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.Description, description);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("setChatDescription", stream);
+            return bot.RPC<bool>(MethodNames.SetChatDescription, stream);
         }
         /// <summary>Use this method to change the description of a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -75,13 +75,13 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteString("description", description);
+            json.WriteNumber(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.Description, description);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("setChatDescription", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SetChatDescription, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to change the description of a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -100,13 +100,13 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteString("description", description);
+            json.WriteString(PropertyNames.ChatId, chat_id);
+            json.WriteString(PropertyNames.Description, description);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("setChatDescription", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SetChatDescription, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

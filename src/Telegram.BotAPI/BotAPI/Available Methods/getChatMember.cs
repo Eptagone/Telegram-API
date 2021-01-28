@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -30,12 +30,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chatId);
-            json.WriteNumber("user_id", userId);
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<ChatMember>("getChatMember", stream);
+            return bot.RPC<ChatMember>(MethodNames.GetChatMember, stream);
         }
         /// <summary>Use this method to get information about a member of a chat. Returns a ChatMember object on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -54,12 +54,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chatId);
-            json.WriteNumber("user_id", userId);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<ChatMember>("getChatMember", stream);
+            return bot.RPC<ChatMember>(MethodNames.GetChatMember, stream);
         }
         /// <summary>Use this method to get information about a member of a chat. Returns a ChatMember object on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -79,12 +79,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chatId);
-            json.WriteNumber("user_id", userId);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<ChatMember>("getChatMember", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<ChatMember>(MethodNames.GetChatMember, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to get information about a member of a chat. Returns a ChatMember object on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -104,12 +104,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chatId);
-            json.WriteNumber("user_id", userId);
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteNumber(PropertyNames.UserId, userId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<ChatMember>("getChatMember", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<ChatMember>(MethodNames.GetChatMember, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

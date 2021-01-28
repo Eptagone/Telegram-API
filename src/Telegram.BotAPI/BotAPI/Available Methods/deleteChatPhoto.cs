@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -33,7 +33,7 @@ namespace Telegram.BotAPI.AvailableMethods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("deleteChatPhoto", stream);
+            return bot.RPC<bool>(MethodNames.DeleteChatPhoto, stream);
         }
         /// <summary>Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -57,7 +57,7 @@ namespace Telegram.BotAPI.AvailableMethods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("deleteChatPhoto", stream);
+            return bot.RPC<bool>(MethodNames.DeleteChatPhoto, stream);
         }
         /// <summary>Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -83,7 +83,7 @@ namespace Telegram.BotAPI.AvailableMethods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("deleteChatPhoto", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.DeleteChatPhoto, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -109,7 +109,7 @@ namespace Telegram.BotAPI.AvailableMethods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("deleteChatPhoto", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.DeleteChatPhoto, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

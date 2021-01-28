@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -32,7 +32,7 @@ namespace Telegram.BotAPI.UpdatingMessages
             {
                 throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
-            return bot.RPC<T>("editMessageReplyMarkup", args);
+            return bot.RPC<T>(MethodNames.EditMessageReplyMarkup, args);
         }
         /// <summary>Use this method to edit only the reply markup of messages.</summary>
         /// <param name="bot">BotClient</param>
@@ -56,7 +56,7 @@ namespace Telegram.BotAPI.UpdatingMessages
             {
                 throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
-            return await bot.RPCA<T>("editMessageReplyMarkup", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.EditMessageReplyMarkup, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

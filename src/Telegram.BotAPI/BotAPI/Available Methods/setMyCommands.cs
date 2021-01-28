@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -44,15 +44,15 @@ namespace Telegram.BotAPI.AvailableMethods
                 }
 
                 json.WriteStartObject();
-                json.WriteString("command", cmd.Command);
-                json.WriteString("description", cmd.Description);
+                json.WriteString(PropertyNames.Command, cmd.Command);
+                json.WriteString(PropertyNames.Description, cmd.Description);
                 json.WriteEndObject();
             }
             json.WriteEndArray();
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("setMyCommands", stream);
+            return bot.RPC<bool>(MethodNames.SetMyCommands, stream);
         }
         /// <summary>Use this method to change the list of the bot's commands. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -85,15 +85,15 @@ namespace Telegram.BotAPI.AvailableMethods
                 }
 
                 json.WriteStartObject();
-                json.WriteString("command", cmd.Command);
-                json.WriteString("description", cmd.Description);
+                json.WriteString(PropertyNames.Command, cmd.Command);
+                json.WriteString(PropertyNames.Description, cmd.Description);
                 json.WriteEndObject();
             }
             json.WriteEndArray();
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("setMyCommands", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SetMyCommands, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

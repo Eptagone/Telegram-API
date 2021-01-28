@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -29,11 +29,11 @@ namespace Telegram.BotAPI.Stickers
 
             if (args.UseMultipart())
             {
-                return bot.RPCF<bool>("createNewStickerSet", args);
+                return bot.RPCF<bool>(MethodNames.CreateNewStickerSet, args);
             }
             else
             {
-                return bot.RPC<bool>("createNewStickerSet", args);
+                return bot.RPC<bool>(MethodNames.CreateNewStickerSet, args);
             }
         }
         /// <summary>Use this method to create new sticker set owned by a user. The bot will be able to edit the created sticker set. Returns True on success.</summary>
@@ -56,11 +56,11 @@ namespace Telegram.BotAPI.Stickers
 
             if (args.UseMultipart())
             {
-                return await bot.RPCAF<bool>("createNewStickerSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+                return await bot.RPCAF<bool>(MethodNames.CreateNewStickerSet, args, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
             else
             {
-                return await bot.RPCA<bool>("createNewStickerSet", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+                return await bot.RPCA<bool>(MethodNames.CreateNewStickerSet, args, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
         }
     }

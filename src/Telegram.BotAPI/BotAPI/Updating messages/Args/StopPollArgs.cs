@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -13,16 +13,16 @@ namespace Telegram.BotAPI.UpdatingMessages
     public class StopPollArgs
     {
         /// <summary>Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
-        [JsonPropertyName("chat_id")]
+        [JsonPropertyName(PropertyNames.ChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object ChatId { get; set; }
         /// <summary>Identifier of the original message with the poll.</summary>
-        [JsonPropertyName("message_id")]
+        [JsonPropertyName(PropertyNames.MessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Message_id { get; set; }
+        public uint MessageId { get; set; }
         /// <summary>Optional. A <see cref="InlineKeyboardMarkup"/> object for a new message inline keyboard.</summary>
-        [JsonPropertyName("reply_markup")]
+        [JsonPropertyName(PropertyNames.ReplyMarkup)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InlineKeyboardMarkup Reply_markup { get; set; }
+        public InlineKeyboardMarkup ReplyMarkup { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -13,23 +13,23 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQuery
     {
         ///<summary>Unique identifier for this query.</summary>
-        [JsonPropertyName("id")]
+        [JsonPropertyName(PropertyNames.Id)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
         ///<summary>Sender.</summary>
-        [JsonPropertyName("from")]
+        [JsonPropertyName(PropertyNames.From)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public User From { get; set; }
         ///<summary>Optional. Sender location, only for bots that request user location.</summary>
-        [JsonPropertyName("location")]
+        [JsonPropertyName(PropertyNames.Location)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Location Location { get; set; }
         ///<summary>Text of the query (up to 512 characters).</summary>
-        [JsonPropertyName("query")]
+        [JsonPropertyName(PropertyNames.Query)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Query { get; set; }
         ///<summary>Offset of the results to be returned, can be controlled by the bot.</summary>
-        [JsonPropertyName("offset")]
+        [JsonPropertyName(PropertyNames.Offset)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Offset { get; set; }
     }

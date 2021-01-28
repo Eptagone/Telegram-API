@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -42,7 +42,7 @@ namespace Telegram.BotAPI.AvailableMethods
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Explanation { get; set; }
         ///<summary>Mode for parsing entities in the explanation. See <a href="https://core.telegram.org/bots/api#formatting-options">formatting options</a> for more details.</summary>
-        [JsonPropertyName("explanation_parse_mode")]
+        [JsonPropertyName(PropertyNames.ExplanationParseMode)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ExplanationParseMode { get; set; }
         ///<summary>TList of special entities that appear in the poll explanation, which can be specified instead of parse_mode.</summary>

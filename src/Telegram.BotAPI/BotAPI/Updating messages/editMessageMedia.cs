@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -34,11 +34,11 @@ namespace Telegram.BotAPI.UpdatingMessages
             }
             if (args.UseMultipart())
             {
-                return bot.RPCF<T>("editMessageMedia", args);
+                return bot.RPCF<T>(MethodNames.EditMessageMedia, args);
             }
             else
             {
-                return bot.RPC<T>("editMessageMedia", args);
+                return bot.RPC<T>(MethodNames.EditMessageMedia, args);
             }
         }
         /// <summary>Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL.</summary>
@@ -65,11 +65,11 @@ namespace Telegram.BotAPI.UpdatingMessages
             }
             if (args.UseMultipart())
             {
-                return await bot.RPCAF<T>("editMessageMedia", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+                return await bot.RPCAF<T>(MethodNames.EditMessageMedia, args, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
             else
             {
-                return await bot.RPCA<T>("editMessageMedia", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+                return await bot.RPCA<T>(MethodNames.EditMessageMedia, args, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
         }
     }

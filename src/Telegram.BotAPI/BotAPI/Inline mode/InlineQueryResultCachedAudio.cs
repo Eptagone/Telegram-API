@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,20 +12,20 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultCachedAudio : InlineQueryResultWithEntities, IInlineQueryResult, ICaption
     {
         /// <summary>Type of the result, must be audio.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "audio";
         /// <summary>A valid file identifier for the audio file.</summary>
-        [JsonPropertyName("audio_file_id")]
+        [JsonPropertyName(PropertyNames.AudioFileId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Audio_file_id { get; set; }
+        public string AudioFileId { get; set; }
         /// <summary>Optional. Caption, 0-1024 characters.</summary>
-        [JsonPropertyName("caption")]
+        [JsonPropertyName(PropertyNames.Caption)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the audio.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
     }
 }

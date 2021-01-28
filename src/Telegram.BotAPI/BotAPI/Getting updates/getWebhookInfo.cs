@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -21,7 +21,7 @@ namespace Telegram.BotAPI.GettingUpdates
                 throw new System.ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<WebhookInfo>("getWebhookInfo");
+            return bot.RPC<WebhookInfo>(MethodNames.GetWebhookInfo);
         }
         /// <summary>Use this method to get current webhook status. On success, returns a <see cref="WebhookInfo"/> object. If the bot is using getUpdates, will return an object with the url field empty.</summary>
         /// <param name="bot">Bot Client</param>
@@ -35,7 +35,7 @@ namespace Telegram.BotAPI.GettingUpdates
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return await bot.RPCA<WebhookInfo>("getWebhookInfo", cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<WebhookInfo>(MethodNames.GetWebhookInfo, cancellationToken).ConfigureAwait(false);
         }
     }
 }

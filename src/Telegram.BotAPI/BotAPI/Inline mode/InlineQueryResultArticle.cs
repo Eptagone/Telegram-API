@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,39 +12,39 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultArticle : InlineQueryResult, IInlineQueryResult, IThumbUWH
     {
         /// <summary>Type of the result, must be article.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "article";
         /// <summary>Title of the result.</summary>
-        [JsonPropertyName("title")]
+        [JsonPropertyName(PropertyNames.Title)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Title { get; set; }
         /// <summary>Content of the message to be sent.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
         /// <summary>Optional. URL of the result.</summary>
-        [JsonPropertyName("url")]
+        [JsonPropertyName(PropertyNames.Url)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Url { get; set; }
         /// <summary>Optional. Pass True, if you don't want the URL to be shown in the message.</summary>
-        [JsonPropertyName("hide_url")]
+        [JsonPropertyName(PropertyNames.HideUrl)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Hide_url { get; set; }
+        public bool HideUrl { get; set; }
         /// <summary>Optional. Short description of the result.</summary>
-        [JsonPropertyName("description")]
+        [JsonPropertyName(PropertyNames.Description)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>URL of the static thumbnail for the result (jpeg or gif).</summary>
-        [JsonPropertyName("thumb_url")]
+        [JsonPropertyName(PropertyNames.ThumbUrl)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ThumbUrl { get; set; }
         /// <summary>Optional. Thumbnail width.</summary>
-        [JsonPropertyName("thumb_width")]
+        [JsonPropertyName(PropertyNames.ThumbWidth)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint ThumbWidth { get; set; }
         /// <summary>Optional. Thumbnail height.</summary>
-        [JsonPropertyName("thumb_height")]
+        [JsonPropertyName(PropertyNames.ThumbHeight)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint ThumbHeight { get; set; }
     }

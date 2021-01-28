@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -20,7 +20,7 @@ namespace Telegram.BotAPI.Stickers
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static bool SetStickerSetThumb(this BotClient bot, string name, int user_id)
+        public static bool SetStickerSetThumb(this BotClient bot, string name, int userId)
         {
             if (bot == default)
             {
@@ -32,20 +32,20 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(name));
             }
 
-            if (user_id == default)
+            if (userId == default)
             {
-                throw new ArgumentNullException(nameof(user_id));
+                throw new ArgumentNullException(nameof(userId));
             }
 
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("name", name);
-            json.WriteNumber("user_id", user_id);
+            json.WriteString(PropertyNames.Name, name);
+            json.WriteNumber(PropertyNames.UserId, userId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("setStickerSetThumb", stream);
+            return bot.RPC<bool>(MethodNames.SetStickerSetThumb, stream);
         }
         /// <summary>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -55,7 +55,7 @@ namespace Telegram.BotAPI.Stickers
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static async Task<bool> SetStickerSetThumbAsync(this BotClient bot, string name, int user_id, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetStickerSetThumbAsync(this BotClient bot, string name, int userId, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -67,20 +67,20 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(name));
             }
 
-            if (user_id == default)
+            if (userId == default)
             {
-                throw new ArgumentNullException(nameof(user_id));
+                throw new ArgumentNullException(nameof(userId));
             }
 
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("name", name);
-            json.WriteNumber("user_id", user_id);
+            json.WriteString(PropertyNames.Name, name);
+            json.WriteNumber(PropertyNames.UserId, userId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("setStickerSetThumb", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SetStickerSetThumb, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -90,7 +90,7 @@ namespace Telegram.BotAPI.Stickers
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static bool SetStickerSetThumb(this BotClient bot, string name, int user_id, string thumb)
+        public static bool SetStickerSetThumb(this BotClient bot, string name, int userId, string thumb)
         {
             if (bot == default)
             {
@@ -102,9 +102,9 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(name));
             }
 
-            if (user_id == default)
+            if (userId == default)
             {
-                throw new ArgumentNullException(nameof(user_id));
+                throw new ArgumentNullException(nameof(userId));
             }
 
             if (string.IsNullOrEmpty(thumb))
@@ -115,13 +115,13 @@ namespace Telegram.BotAPI.Stickers
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("name", name);
-            json.WriteNumber("user_id", user_id);
-            json.WriteString("thumb", thumb);
+            json.WriteString(PropertyNames.Name, name);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteString(PropertyNames.Thumb, thumb);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("setStickerSetThumb", stream);
+            return bot.RPC<bool>(MethodNames.SetStickerSetThumb, stream);
         }
         /// <summary>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -132,7 +132,7 @@ namespace Telegram.BotAPI.Stickers
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static async Task<bool> SetStickerSetThumbAsync(this BotClient bot, string name, int user_id, string thumb, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetStickerSetThumbAsync(this BotClient bot, string name, int userId, string thumb, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -144,9 +144,9 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(name));
             }
 
-            if (user_id == default)
+            if (userId == default)
             {
-                throw new ArgumentNullException(nameof(user_id));
+                throw new ArgumentNullException(nameof(userId));
             }
 
             if (string.IsNullOrEmpty(thumb))
@@ -157,13 +157,13 @@ namespace Telegram.BotAPI.Stickers
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("name", name);
-            json.WriteNumber("user_id", user_id);
-            json.WriteString("thumb", thumb);
+            json.WriteString(PropertyNames.Name, name);
+            json.WriteNumber(PropertyNames.UserId, userId);
+            json.WriteString(PropertyNames.Thumb, thumb);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false); await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("setStickerSetThumb", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SetStickerSetThumb, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -173,7 +173,7 @@ namespace Telegram.BotAPI.Stickers
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static bool SetStickerSetThumb(this BotClient bot, string name, int user_id, InputFile thumb)
+        public static bool SetStickerSetThumb(this BotClient bot, string name, int userId, InputFile thumb)
         {
             if (bot == default)
             {
@@ -185,9 +185,9 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(name));
             }
 
-            if (user_id == default)
+            if (userId == default)
             {
-                throw new ArgumentNullException(nameof(user_id));
+                throw new ArgumentNullException(nameof(userId));
             }
 
             if (thumb == default)
@@ -195,8 +195,8 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(thumb));
             }
 
-            var args = new SetStickerSetThumbArgs { Name = name, User_id = user_id, Thumb = thumb };
-            return bot.RPCF<bool>("setStickerSetThumb", args);
+            var args = new SetStickerSetThumbArgs { Name = name, UserId = userId, Thumb = thumb };
+            return bot.RPCF<bool>(MethodNames.SetStickerSetThumb, args);
         }
         /// <summary>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -207,7 +207,7 @@ namespace Telegram.BotAPI.Stickers
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         /// <returns>True</returns>
-        public static async Task<bool> SetStickerSetThumbAsync(this BotClient bot, string name, int user_id, InputFile thumb, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetStickerSetThumbAsync(this BotClient bot, string name, int userId, InputFile thumb, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -219,9 +219,9 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(name));
             }
 
-            if (user_id == default)
+            if (userId == default)
             {
-                throw new ArgumentNullException(nameof(user_id));
+                throw new ArgumentNullException(nameof(userId));
             }
 
             if (thumb == default)
@@ -229,8 +229,8 @@ namespace Telegram.BotAPI.Stickers
                 throw new ArgumentNullException(nameof(thumb));
             }
 
-            var args = new SetStickerSetThumbArgs { Name = name, User_id = user_id, Thumb = thumb };
-            return await bot.RPCAF<bool>("setStickerSetThumb", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            var args = new SetStickerSetThumbArgs { Name = name, UserId = userId, Thumb = thumb };
+            return await bot.RPCAF<bool>(MethodNames.SetStickerSetThumb, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -252,11 +252,11 @@ namespace Telegram.BotAPI.Stickers
 
             if (args.UseMultipart())
             {
-                return bot.RPCF<bool>("setStickerSetThumb", args);
+                return bot.RPCF<bool>(MethodNames.SetStickerSetThumb, args);
             }
             else
             {
-                return bot.RPC<bool>("setStickerSetThumb", args);
+                return bot.RPC<bool>(MethodNames.SetStickerSetThumb, args);
             }
         }
         /// <summary>Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.</summary>
@@ -280,11 +280,11 @@ namespace Telegram.BotAPI.Stickers
 
             if (args.UseMultipart())
             {
-                return await bot.RPCAF<bool>("setStickerSetThumb", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+                return await bot.RPCAF<bool>(MethodNames.SetStickerSetThumb, args, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
             else
             {
-                return await bot.RPCA<bool>("setStickerSetThumb", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+                return await bot.RPCA<bool>(MethodNames.SetStickerSetThumb, args, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
         }
     }

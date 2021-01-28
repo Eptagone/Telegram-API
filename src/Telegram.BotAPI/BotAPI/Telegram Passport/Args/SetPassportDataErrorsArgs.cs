@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -13,11 +13,11 @@ namespace Telegram.BotAPI.TelegramPassport
     public class SetPassportDataErrorsArgs
     {
         /// <summary>User identifier.</summary>
-        [JsonPropertyName("user_id")]
+        [JsonPropertyName(PropertyNames.UserId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int UserId { get; set; }
         /// <summary>A <see cref="PassportElementError"/> array describing the errors.</summary>
-        [JsonPropertyName("errors")]
+        [JsonPropertyName(PropertyNames.Errors)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public IEnumerable<PassportElementError> Errors { get; set; }
     }

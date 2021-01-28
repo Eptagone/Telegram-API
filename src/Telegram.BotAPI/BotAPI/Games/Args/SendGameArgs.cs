@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,24 +12,24 @@ namespace Telegram.BotAPI.Games
     public sealed class SendGameArgs
     {
         /// <summary>Unique identifier for the target chat.</summary>
-        [JsonPropertyName("chat_id")]
+        [JsonPropertyName(PropertyNames.ChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public long Chat_id { get; set; }
+        public long ChatId { get; set; }
         /// <summary>Short name of the game, serves as the unique identifier for the game. Set up your games via BotFather.</summary>
-        [JsonPropertyName("game_short_name")]
+        [JsonPropertyName(PropertyNames.GameShortName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Game_short_name { get; set; }
+        public string GameShortName { get; set; }
         /// <summary>Optional. Sends the message silently. Users will receive a notification with no sound.</summary>
-        [JsonPropertyName("disable_notification")]
+        [JsonPropertyName(PropertyNames.DisableNotification)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Disable_notification { get; set; }
+        public bool DisableNotification { get; set; }
         /// <summary>Optional. If the message is a reply, ID of the original message.</summary>
-        [JsonPropertyName("reply_to_message_id")]
+        [JsonPropertyName(PropertyNames.ReplyToMessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Reply_to_message_id { get; set; }
+        public uint ReplyToMessageId { get; set; }
         /// <summary>Optional. A JSON-serialized object for an inline keyboard. If empty, one ‘Play game_title’ button will be shown. If not empty, the first button must launch the game.</summary>
-        [JsonPropertyName("reply_markup")]
+        [JsonPropertyName(PropertyNames.ReplyMarkup)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public AvailableTypes.InlineKeyboardMarkup Reply_markup { get; set; }
+        public AvailableTypes.InlineKeyboardMarkup ReplyMarkup { get; set; }
     }
 }

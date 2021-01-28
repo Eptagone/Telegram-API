@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -28,7 +28,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return bot.RPC<Message>("sendPoll", args);
+            return bot.RPC<Message>(MethodNames.SendPoll, args);
         }
         /// <summary>Use this method to send a native poll. A native poll can't be sent to a private chat. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -48,7 +48,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCA<Message>("sendPoll", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Message>(MethodNames.SendPoll, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

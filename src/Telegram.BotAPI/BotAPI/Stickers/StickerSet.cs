@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -14,27 +14,27 @@ namespace Telegram.BotAPI.Stickers
     public sealed class StickerSet
     {
         ///<summary>Sticker set name.</summary>
-        [JsonPropertyName("name")]
+        [JsonPropertyName(PropertyNames.Name)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Name { get; set; }
         ///<summary>Sticker set title.</summary>
-        [JsonPropertyName("title")]
+        [JsonPropertyName(PropertyNames.Title)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Title { get; set; }
         ///<summary>True, if the sticker is animated.</summary>
-        [JsonPropertyName("is_animated")]
+        [JsonPropertyName(PropertyNames.IsAnimated)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Is_animated { get; set; }
+        public bool IsAnimated { get; set; }
         ///<summary>True, if the sticker set contains masks.</summary>
-        [JsonPropertyName("contains_masks")]
+        [JsonPropertyName(PropertyNames.ContainsMasks)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Contains_masks { get; set; }
+        public bool ContainsMasks { get; set; }
         ///<summary>List of all set stickers.</summary>
-        [JsonPropertyName("stickers")]
+        [JsonPropertyName(PropertyNames.Stickers)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public IEnumerable<Sticker> Stickers { get; set; }
         ///<summary>Optional. Sticker set thumbnail in the .WEBP or .TGS format.</summary>
-        [JsonPropertyName("thumb")]
+        [JsonPropertyName(PropertyNames.Thumb)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public PhotoSize Thumb { get; set; }
     }

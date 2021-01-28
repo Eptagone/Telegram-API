@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,20 +12,20 @@ namespace Telegram.BotAPI.TelegramPassport
     public sealed class PassportElementErrorDataField : PassportElementError
     {
         /// <summary>Error source, must be data.</summary>
-        [JsonPropertyName("source")]
+        [JsonPropertyName(PropertyNames.Source)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public override string Source => "data";
         /// <summary>The section of the user's Telegram Passport which has the error, one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public override string Type { get; set; }
         /// <summary>Name of the data field which has the error.</summary>
-        [JsonPropertyName("field_name")]
+        [JsonPropertyName(PropertyNames.FieldName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Field_name { get; set; }
+        public string FieldName { get; set; }
         /// <summary>Base64-encoded data hash.</summary>
-        [JsonPropertyName("data_hash")]
+        [JsonPropertyName(PropertyNames.DataHash)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Data_hash { get; set; }
+        public string DataHash { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -27,35 +27,35 @@ namespace Telegram.BotAPI
                     case UpdateType.Message:
                         OnMessage(update.Message);
                         break;
-                    case UpdateType.Edited_message:
-                        OnEditedMessage(update.Edited_message);
+                    case UpdateType.EditedMessage:
+                        OnEditedMessage(update.EditedMessage);
                         break;
-                    case UpdateType.Channel_post:
-                        OnChannelPost(update.Channel_post);
+                    case UpdateType.ChannelPost:
+                        OnChannelPost(update.ChannelPost);
                         break;
-                    case UpdateType.Edited_channel_post:
-                        OnEditedChannelPost(update.Edited_channel_post);
+                    case UpdateType.EditedChannelPost:
+                        OnEditedChannelPost(update.EditedChannelPost);
                         break;
-                    case UpdateType.Inline_query:
-                        OnInlineQuery(update.Inline_query);
+                    case UpdateType.InlineQuery:
+                        OnInlineQuery(update.InlineQuery);
                         break;
-                    case UpdateType.Chosen_inline_result:
-                        OnChosenInlineResult(update.Chosen_inline_result);
+                    case UpdateType.ChosenInlineResult:
+                        OnChosenInlineResult(update.ChosenInlineResult);
                         break;
-                    case UpdateType.Callback_query:
-                        OnCallbackQuery(update.Callback_query);
+                    case UpdateType.CallbackQuery:
+                        OnCallbackQuery(update.CallbackQuery);
                         break;
-                    case UpdateType.Shipping_query:
-                        OnShippingQuery(update.Shipping_query);
+                    case UpdateType.ShippingQuery:
+                        OnShippingQuery(update.ShippingQuery);
                         break;
-                    case UpdateType.Pre_checkout_query:
-                        OnPreCheckoutQuery(update.Pre_checkout_query);
+                    case UpdateType.PreCheckoutQuery:
+                        OnPreCheckoutQuery(update.PreCheckoutQuery);
                         break;
                     case UpdateType.Poll:
                         OnPoll(update.Poll);
                         break;
-                    case UpdateType.Poll_answer:
-                        OnPollAnswer(update.Poll_answer);
+                    case UpdateType.PollAnswer:
+                        OnPollAnswer(update.PollAnswer);
                         break;
                     case UpdateType.Unknown:
                     default:

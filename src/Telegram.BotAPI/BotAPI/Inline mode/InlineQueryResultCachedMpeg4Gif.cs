@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,24 +12,24 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultCachedMpeg4Gif : InlineQueryResultWithEntities, IInlineQueryResult, ICaption
     {
         /// <summary>Type of the result, must be mpeg4_gif.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "mpeg4_gif";
         /// <summary>A valid file identifier for the MP4 file.</summary>
-        [JsonPropertyName("mpeg4_file_id")]
+        [JsonPropertyName(PropertyNames.Mpeg4FileId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Mpeg4_file_id { get; set; }
+        public string Mpeg4FileId { get; set; }
         /// <summary>Optional. Title of the result.</summary>
-        [JsonPropertyName("title")]
+        [JsonPropertyName(PropertyNames.Title)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Title { get; set; }
         ///<summary>Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters.</summary>
-        [JsonPropertyName("caption")]
+        [JsonPropertyName(PropertyNames.Caption)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the video animation.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
     }
 }

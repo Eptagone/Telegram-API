@@ -1,9 +1,10 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI.Payments
 {
@@ -12,32 +13,32 @@ namespace Telegram.BotAPI.Payments
     public sealed class PreCheckoutQuery
     {
         /// <summary>Unique query identifier</summary>
-        [JsonPropertyName("id")]
+        [JsonPropertyName(PropertyNames.Id)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
         /// <summary>User who sent the query</summary>
-        [JsonPropertyName("from")]
+        [JsonPropertyName(PropertyNames.From)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public AvailableTypes.User From { get; set; }
+        public User From { get; set; }
         /// <summary>Three-letter ISO 4217 <a href="https://core.telegram.org/bots/payments#supported-currencies">currency</a> code.</summary>
-        [JsonPropertyName("currency")]
+        [JsonPropertyName(PropertyNames.Currency)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Currency { get; set; }
         /// <summary>Total price in the <i>smallest units</i> of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the <i>exp</i> parameter in <a href="https://core.telegram.org/bots/payments/currencies.json">currencies.json</a>, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).</summary>
-        [JsonPropertyName("total_amount")]
+        [JsonPropertyName(PropertyNames.TotalAmount)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Total_amount { get; set; }
+        public uint TotalAmount { get; set; }
         /// <summary>Bot specified invoice payload.</summary>
-        [JsonPropertyName("invoice_payload")]
+        [JsonPropertyName(PropertyNames.InvoicePayload)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Invoice_payload { get; set; }
+        public string InvoicePayload { get; set; }
         /// <summary>Optional. Identifier of the shipping option chosen by the user.</summary>
-        [JsonPropertyName("shipping_option_id")]
+        [JsonPropertyName(PropertyNames.ShippingOptionId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Shipping_option_id { get; set; }
+        public string ShippingOptionId { get; set; }
         /// <summary>Optional. Order info provided by the user.</summary>
-        [JsonPropertyName("order_info")]
+        [JsonPropertyName(PropertyNames.OrderInfo)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public OrderInfo Order_info { get; set; }
+        public OrderInfo OrderInfo { get; set; }
     }
 }

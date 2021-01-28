@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -24,7 +24,7 @@ namespace Telegram.BotAPI.Games
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<GameHighScore[]>("getGameHighScores", args);
+            return bot.RPC<GameHighScore[]>(MethodNames.GetGameHighScores, args);
         }
         ///<summary>Use this method to get data for high score tables. Will return the score of the specified user and several of his neighbors in a game. On success, returns an Array of GameHighScore objects.<para>This method will currently return scores for the target user, plus two of his closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.</para></summary>
         ///<param name="bot">BotClient</param>
@@ -44,7 +44,7 @@ namespace Telegram.BotAPI.Games
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCA<GameHighScore[]>("getGameHighScores", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<GameHighScore[]>(MethodNames.GetGameHighScores, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         ///<summary>Use this method to get data for high score tables. Will return the score of the specified user and several of his neighbors in a game. On success, returns an Array of GameHighScore objects.<para>This method will currently return scores for the target user, plus two of his closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.</para></summary>
         ///<param name="bot">BotClient</param>
@@ -59,7 +59,7 @@ namespace Telegram.BotAPI.Games
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<T>("getGameHighScores", args);
+            return bot.RPC<T>(MethodNames.GetGameHighScores, args);
         }
         ///<summary>Use this method to get data for high score tables. Will return the score of the specified user and several of his neighbors in a game. On success, returns an Array of GameHighScore objects.<para>This method will currently return scores for the target user, plus two of his closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.</para></summary>
         ///<param name="bot">BotClient</param>
@@ -80,7 +80,7 @@ namespace Telegram.BotAPI.Games
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCA<T>("getGameHighScores", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.GetGameHighScores, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

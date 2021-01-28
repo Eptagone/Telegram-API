@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,15 +12,15 @@ namespace Telegram.BotAPI.TelegramPassport
     public sealed class EncryptedCredentials
     {
         /// <summary>Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and secrets required for EncryptedPassportElement decryption and authentication.</summary>
-        [JsonPropertyName("data")]
+        [JsonPropertyName(PropertyNames.Data)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Data { get; set; }
         /// <summary>Base64-encoded data hash for data authentication.</summary>
-        [JsonPropertyName("hash")]
+        [JsonPropertyName(PropertyNames.Hash)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Hash { get; set; }
         /// <summary>Base64-encoded secret, encrypted with the bot's public RSA key, required for data decryption.</summary>
-        [JsonPropertyName("secret")]
+        [JsonPropertyName(PropertyNames.Secret)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Secret { get; set; }
     }

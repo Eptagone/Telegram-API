@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,27 +12,27 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InputLocationMessageContent : InputMessageContent, ILocation
     {
         ///<summary>Longitude as defined by sender.</summary>
-        [JsonPropertyName("longitude")]
+        [JsonPropertyName(PropertyNames.Longitude)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float Longitude { get; set; }
         ///<summary>Latitude as defined by sender.</summary>
-        [JsonPropertyName("latitude")]
+        [JsonPropertyName(PropertyNames.Latitude)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float Latitude { get; set; }
         ///<summary>Optional. The radius of uncertainty for the location, measured in meters; 0-1500.</summary>
-        [JsonPropertyName("horizontal_accuracy")]
+        [JsonPropertyName(PropertyNames.HorizontalAccuracy)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float HorizontalAccuracy { get; set; }
         ///<summary>Optional. Time relative to the message sending date, during which the location can be updated, in seconds. For active live locations only.</summary>
-        [JsonPropertyName("live_period")]
+        [JsonPropertyName(PropertyNames.LivePeriod)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint LivePeriod { get; set; }
         ///<summary>Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only.</summary>
-        [JsonPropertyName("heading")]
+        [JsonPropertyName(PropertyNames.Heading)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ushort Heading { get; set; }
         ///<summary>Optional. Maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.</summary>
-        [JsonPropertyName("proximity_alert_radius")]
+        [JsonPropertyName(PropertyNames.ProximityAlertRadius)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint ProximityAlertRadius { get; set; }
     }

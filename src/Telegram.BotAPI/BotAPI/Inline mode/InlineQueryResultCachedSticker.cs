@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,16 +12,16 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultCachedSticker : InlineQueryResult, IInlineQueryResult
     {
         /// <summary>Type of the result, must be sticker.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "sticker";
         /// <summary>A valid file identifier of the sticker.</summary>
-        [JsonPropertyName("sticker_file_id")]
+        [JsonPropertyName(PropertyNames.StickerFileId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Sticker_file_id { get; set; }
+        public string StickerFileId { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the sticker.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
     }
 }

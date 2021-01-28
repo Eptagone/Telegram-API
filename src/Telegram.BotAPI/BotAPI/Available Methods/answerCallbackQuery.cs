@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -27,7 +27,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<bool>("answerCallbackQuery", args);
+            return bot.RPC<bool>(MethodNames.AnswerCallbackQuery, args);
         }
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -54,7 +54,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("callback_query_id", callbackQueryId);
+            json.WriteString(PropertyNames.CallbackQueryId, callbackQueryId);
             if (text != default)
             {
                 json.WriteString(PropertyNames.Text, text);
@@ -62,23 +62,23 @@ namespace Telegram.BotAPI.AvailableMethods
 
             if (showAlert != default)
             {
-                json.WriteBoolean("show_alert", showAlert);
+                json.WriteBoolean(PropertyNames.ShowAlert, showAlert);
             }
 
             if (url != default)
             {
-                json.WriteString("url", url);
+                json.WriteString(PropertyNames.Url, url);
             }
 
             if (cacheTime != default)
             {
-                json.WriteNumber("cache_time", cacheTime);
+                json.WriteNumber(PropertyNames.CacheTime, cacheTime);
             }
 
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("answerCallbackQuery", stream);
+            return bot.RPC<bool>(MethodNames.AnswerCallbackQuery, stream);
         }
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -101,7 +101,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCA<bool>("answerCallbackQuery", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.AnswerCallbackQuery, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -130,7 +130,7 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("callback_query_id", callbackQueryId);
+            json.WriteString(PropertyNames.CallbackQueryId, callbackQueryId);
             if (text != default)
             {
                 json.WriteString(PropertyNames.Text, text);
@@ -138,7 +138,7 @@ namespace Telegram.BotAPI.AvailableMethods
 
             if (showAlert != default)
             {
-                json.WriteBoolean("show_alert", showAlert);
+                json.WriteBoolean(PropertyNames.ShowAlert, showAlert);
             }
 
             if (url != default)
@@ -148,14 +148,14 @@ namespace Telegram.BotAPI.AvailableMethods
 
             if (cacheTime != default)
             {
-                json.WriteNumber("cache_time", cacheTime);
+                json.WriteNumber(PropertyNames.CacheTime, cacheTime);
             }
 
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("answerCallbackQuery", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.AnswerCallbackQuery, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

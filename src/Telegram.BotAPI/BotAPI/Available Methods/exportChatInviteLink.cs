@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -31,7 +31,7 @@ namespace Telegram.BotAPI.AvailableMethods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<string>("exportChatInviteLink", stream);
+            return bot.RPC<string>(MethodNames.ExportChatInviteLink, stream);
         }
         /// <summary>Use this method to generate a new invite link for a chat; any previously generated link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the new invite link as String on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -52,7 +52,7 @@ namespace Telegram.BotAPI.AvailableMethods
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<string>("exportChatInviteLink", stream);
+            return bot.RPC<string>(MethodNames.ExportChatInviteLink, stream);
         }
         /// <summary>Use this method to generate a new invite link for a chat; any previously generated link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the new invite link as String on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -75,7 +75,7 @@ namespace Telegram.BotAPI.AvailableMethods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<string>("exportChatInviteLink", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<string>(MethodNames.ExportChatInviteLink, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to generate a new invite link for a chat; any previously generated link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the new invite link as String on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -98,7 +98,7 @@ namespace Telegram.BotAPI.AvailableMethods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<string>("exportChatInviteLink", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<string>(MethodNames.ExportChatInviteLink, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

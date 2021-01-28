@@ -33,9 +33,9 @@ namespace Telegram.BotAPI
         }
 
         /// <summary>Start to get updates using polling.</summary>
-        /// <param name="allowed_updates">List of allowed updates.</param>
+        /// <param name="allowedUpdates">List of allowed updates.</param>
         /// <param name="cancellationToken">Optional. Cancelation Token.</param>
-        public virtual async void StartPollingAsync([Optional] string[] allowed_updates, CancellationToken cancellationToken = default)
+        public virtual async void StartPollingAsync([Optional] string[] allowedUpdates, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace Telegram.BotAPI
                 {
                     var updates = await BotClient
                             .GetUpdatesAsync(
-                                allowed_updates: allowed_updates,
+                                allowedUpdates: allowedUpdates,
                                 cancellationToken: cancellationToken)
                             .ConfigureAwait(false);
                     if (updates.Length > 0)
@@ -56,8 +56,8 @@ namespace Telegram.BotAPI
 
                         updates = await BotClient
                             .GetUpdatesAsync(
-                                updates[updates.Length - 1].Update_id + 1,
-                                allowed_updates: allowed_updates,
+                                updates[updates.Length - 1].UpdateId + 1,
+                                allowedUpdates: allowedUpdates,
                                 cancellationToken: cancellationToken)
                             .ConfigureAwait(false);
 
@@ -91,35 +91,35 @@ namespace Telegram.BotAPI
                     case UpdateType.Message:
                         OnMessage?.Invoke(this, new UpdateEventArgs<Message>(BotClient, update, update.Message, cancellationToken));
                         break;
-                    case UpdateType.Edited_message:
-                        OnEditedMessage?.Invoke(this, new UpdateEventArgs<Message>(BotClient, update, update.Edited_message, cancellationToken));
+                    case UpdateType.EditedMessage:
+                        OnEditedMessage?.Invoke(this, new UpdateEventArgs<Message>(BotClient, update, update.EditedMessage, cancellationToken));
                         break;
-                    case UpdateType.Channel_post:
-                        OnChannelPost?.Invoke(this, new UpdateEventArgs<Message>(BotClient, update, update.Channel_post, cancellationToken));
+                    case UpdateType.ChannelPost:
+                        OnChannelPost?.Invoke(this, new UpdateEventArgs<Message>(BotClient, update, update.ChannelPost, cancellationToken));
                         break;
-                    case UpdateType.Edited_channel_post:
-                        OnEditedChannelPost?.Invoke(this, new UpdateEventArgs<Message>(BotClient, update, update.Edited_channel_post, cancellationToken));
+                    case UpdateType.EditedChannelPost:
+                        OnEditedChannelPost?.Invoke(this, new UpdateEventArgs<Message>(BotClient, update, update.EditedChannelPost, cancellationToken));
                         break;
-                    case UpdateType.Inline_query:
-                        OnInlineQuery?.Invoke(this, new UpdateEventArgs<InlineQuery>(BotClient, update, update.Inline_query, cancellationToken));
+                    case UpdateType.InlineQuery:
+                        OnInlineQuery?.Invoke(this, new UpdateEventArgs<InlineQuery>(BotClient, update, update.InlineQuery, cancellationToken));
                         break;
-                    case UpdateType.Chosen_inline_result:
-                        OnChosenInlineResult?.Invoke(this, new UpdateEventArgs<ChosenInlineResult>(BotClient, update, update.Chosen_inline_result, cancellationToken));
+                    case UpdateType.ChosenInlineResult:
+                        OnChosenInlineResult?.Invoke(this, new UpdateEventArgs<ChosenInlineResult>(BotClient, update, update.ChosenInlineResult, cancellationToken));
                         break;
-                    case UpdateType.Callback_query:
-                        OnCallbackQuery?.Invoke(this, new UpdateEventArgs<CallbackQuery>(BotClient, update, update.Callback_query, cancellationToken));
+                    case UpdateType.CallbackQuery:
+                        OnCallbackQuery?.Invoke(this, new UpdateEventArgs<CallbackQuery>(BotClient, update, update.CallbackQuery, cancellationToken));
                         break;
-                    case UpdateType.Shipping_query:
-                        OnShippingQuery?.Invoke(this, new UpdateEventArgs<ShippingQuery>(BotClient, update, update.Shipping_query, cancellationToken));
+                    case UpdateType.ShippingQuery:
+                        OnShippingQuery?.Invoke(this, new UpdateEventArgs<ShippingQuery>(BotClient, update, update.ShippingQuery, cancellationToken));
                         break;
-                    case UpdateType.Pre_checkout_query:
-                        OnPreCheckoutQuery?.Invoke(this, new UpdateEventArgs<PreCheckoutQuery>(BotClient, update, update.Pre_checkout_query, cancellationToken));
+                    case UpdateType.PreCheckoutQuery:
+                        OnPreCheckoutQuery?.Invoke(this, new UpdateEventArgs<PreCheckoutQuery>(BotClient, update, update.PreCheckoutQuery, cancellationToken));
                         break;
                     case UpdateType.Poll:
                         OnPoll?.Invoke(this, new UpdateEventArgs<Poll>(BotClient, update, update.Poll, cancellationToken));
                         break;
-                    case UpdateType.Poll_answer:
-                        OnPollAnswer?.Invoke(this, new UpdateEventArgs<PollAnswer>(BotClient, update, update.Poll_answer, cancellationToken));
+                    case UpdateType.PollAnswer:
+                        OnPollAnswer?.Invoke(this, new UpdateEventArgs<PollAnswer>(BotClient, update, update.PollAnswer, cancellationToken));
                         break;
                     case UpdateType.Unknown:
                     default:

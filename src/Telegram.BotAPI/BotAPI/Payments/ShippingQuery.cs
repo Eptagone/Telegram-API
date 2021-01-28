@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,20 +12,20 @@ namespace Telegram.BotAPI.Payments
     public sealed class ShippingQuery
     {
         /// <summary>Unique query identifier</summary>
-        [JsonPropertyName("id")]
+        [JsonPropertyName(PropertyNames.Id)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
         /// <summary>User who sent the query</summary>
-        [JsonPropertyName("from")]
+        [JsonPropertyName(PropertyNames.From)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public AvailableTypes.User From { get; set; }
         /// <summary>Bot specified invoice payload</summary>
-        [JsonPropertyName("invoice_payload")]
+        [JsonPropertyName(PropertyNames.InvoicePayload)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Invoice_payload { get; set; }
+        public string InvoicePayload { get; set; }
         /// <summary>User specified shipping address</summary>
-        [JsonPropertyName("shipping_address")]
+        [JsonPropertyName(PropertyNames.ShippingAddress)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public ShippingAddress Shipping_address { get; set; }
+        public ShippingAddress ShippingAddress { get; set; }
     }
 }

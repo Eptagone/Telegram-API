@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,32 +12,32 @@ namespace Telegram.BotAPI.Games
     public sealed class SetGameScoreArgs
     {
         /// <summary>User identifier.</summary>
-        [JsonPropertyName("user_id")]
+        [JsonPropertyName(PropertyNames.UserId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint User_id { get; set; }
+        public uint UserId { get; set; }
         /// <summary>New score.</summary>
-        [JsonPropertyName("score")]
+        [JsonPropertyName(PropertyNames.Score)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint Score { get; set; }
         /// <summary>Optional. Pass True, if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters.</summary>
-        [JsonPropertyName("force")]
+        [JsonPropertyName(PropertyNames.Force)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool Force { get; set; }
         /// <summary>Optional. Pass True, if the game message should not be automatically edited to include the current scoreboard.</summary>
-        [JsonPropertyName("disable_edit_message")]
+        [JsonPropertyName(PropertyNames.DisableEditMessage)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Disable_edit_message { get; set; }
+        public bool DisableEditMessage { get; set; }
         /// <summary>Required if inline_message_id is not specified. Unique identifier for the target chat.</summary>
-        [JsonPropertyName("chat_id")]
+        [JsonPropertyName(PropertyNames.ChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public long Chat_id { get; set; }
+        public long ChatId { get; set; }
         /// <summary>Required if inline_message_id is not specified. Identifier of the sent message.</summary>
-        [JsonPropertyName("message_id")]
+        [JsonPropertyName(PropertyNames.MessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Message_id { get; set; }
+        public uint MessageId { get; set; }
         /// <summary>Required if chat_id and message_id are not specified. Identifier of the inline message.</summary>
-        [JsonPropertyName("inline_message_id")]
+        [JsonPropertyName(PropertyNames.InlineMessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Inline_message_id { get; set; }
+        public uint InlineMessageId { get; set; }
     }
 }

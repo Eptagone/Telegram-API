@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -13,7 +13,7 @@ namespace Telegram.BotAPI.Stickers
     public sealed class SendStickerArgs : BaseSendArgsReplyMarkup
     {
         /// <summary>Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .webp file from the Internet, or upload a new one using multipart/form-data.</summary>
-        [JsonPropertyName("sticker")]
+        [JsonPropertyName(PropertyNames.Sticker)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object Sticker { get; set; }
         internal bool UseMultipart()

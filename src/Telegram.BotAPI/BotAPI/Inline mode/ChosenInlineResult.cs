@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,23 +12,23 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class ChosenInlineResult
     {
         /// <summary>The unique identifier for the result that was chosen.</summary>
-        [JsonPropertyName("result_id")]
+        [JsonPropertyName(PropertyNames.ResultId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Result_id { get; set; }
+        public string ResultId { get; set; }
         /// <summary>The user that chose the result.</summary>
-        [JsonPropertyName("from")]
+        [JsonPropertyName(PropertyNames.From)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public AvailableTypes.User From { get; set; }
         /// <summary>Optional. Sender location, only for bots that require user location.</summary>
-        [JsonPropertyName("location")]
+        [JsonPropertyName(PropertyNames.Location)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public AvailableTypes.Location Location { get; set; }
         /// <summary>Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.</summary>
-        [JsonPropertyName("inline_message_id")]
+        [JsonPropertyName(PropertyNames.InlineMessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Inline_message_id { get; set; }
+        public string InlineMessageId { get; set; }
         /// <summary>The query that was used to obtain the result.</summary>
-        [JsonPropertyName("query")]
+        [JsonPropertyName(PropertyNames.Query)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Query { get; set; }
     }

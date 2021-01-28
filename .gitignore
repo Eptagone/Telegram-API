@@ -359,3 +359,6 @@ MigrationBackup/
 
 # Test proyects
 src/Telegram.BotAPI.Tests/
+
+# Powershell Scripts
+*.ps1

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -13,35 +13,35 @@ namespace Telegram.BotAPI.GettingUpdates
     public sealed class WebhookInfo
     {
         ///<summary>Webhook URL, may be empty if webhook is not set up.</summary>
-        [JsonPropertyName("url")]
+        [JsonPropertyName(PropertyNames.Url)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Url { get; set; }
         ///<summary>True, if a custom certificate was provided for webhook certificate checks.</summary>
-        [JsonPropertyName("has_custom_certificate")]
+        [JsonPropertyName(PropertyNames.HasCustomCertificate)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Has_custom_certificate { get; set; }
+        public bool HasCustomCertificate { get; set; }
         ///<summary>Number of updates awaiting delivery.</summary>
-        [JsonPropertyName("pending_update_count")]
+        [JsonPropertyName(PropertyNames.PendingUpdateCount)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Pending_update_count { get; set; }
+        public int PendingUpdateCount { get; set; }
         ///<summary>Optional. Currently used webhook IP address.</summary>
-        [JsonPropertyName("ip_address")]
+        [JsonPropertyName(PropertyNames.IpAddress)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Ip_address { get; set; }
+        public string IpAddress { get; set; }
         ///<summary>Optional. Unix time for the most recent error that happened when trying to deliver an update via webhook.</summary>
-        [JsonPropertyName("Last_error_date")]
+        [JsonPropertyName(PropertyNames.LastErrorDate)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Last_error_date { get; set; }
+        public uint LastErrorDate { get; set; }
         ///<summary>Optional. Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook.</summary>
-        [JsonPropertyName("last_error_message")]
+        [JsonPropertyName(PropertyNames.LastErrorMessage)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Last_error_message { get; set; }
+        public string LastErrorMessage { get; set; }
         ///<summary>Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery.</summary>
-        [JsonPropertyName("max_connections")]
+        [JsonPropertyName(PropertyNames.MaxConnections)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Max_connections { get; set; }
+        public int MaxConnections { get; set; }
         ///<summary>Optional. A list of update types the bot is subscribed to. Defaults to all update types.</summary>
-        [JsonPropertyName("allowed_updates")]
+        [JsonPropertyName(PropertyNames.AllowedUpdates)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public IEnumerable<string> Allowed_updates { get; set; }
     }

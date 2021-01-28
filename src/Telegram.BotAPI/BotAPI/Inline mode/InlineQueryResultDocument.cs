@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,39 +12,39 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultDocument : InlineQueryResultWithEntities, IInlineQueryResult, ICaption, IThumbUWH
     {
         /// <summary>Type of the result, must be document.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "document";
         ///<summary>Optional. Caption of the document to be sent, 0-1024 characters.</summary>
-        [JsonPropertyName("caption")]
+        [JsonPropertyName(PropertyNames.Caption)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Caption { get; set; }
         /// <summary>A valid URL for the file.</summary>
-        [JsonPropertyName("document_url")]
+        [JsonPropertyName(PropertyNames.DocumentUrl)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string DocumentUrl { get; set; }
         /// <summary>Mime type of the content of the file, either “application/pdf” or “application/zip”.</summary>
-        [JsonPropertyName("mime_type")]
+        [JsonPropertyName(PropertyNames.MimeType)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string MimeType { get; set; }
         /// <summary>Optional. Short description of the result.</summary>
-        [JsonPropertyName("description")]
+        [JsonPropertyName(PropertyNames.Description)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Description { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the file.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public InputMessageContent InputMessageContent { get; set; }
         /// <summary>Optional. URL of the thumbnail (jpeg only) for the file.</summary>
-        [JsonPropertyName("thumb_url")]
+        [JsonPropertyName(PropertyNames.ThumbUrl)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ThumbUrl { get; set; }
         /// <summary>Optional. Thumbnail width.</summary>
-        [JsonPropertyName("thumb_width")]
+        [JsonPropertyName(PropertyNames.ThumbWidth)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint ThumbWidth { get; set; }
         /// <summary>Optional. Thumbnail height.</summary>
-        [JsonPropertyName("thumb_height")]
+        [JsonPropertyName(PropertyNames.ThumbHeight)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint ThumbHeight { get; set; }
     }

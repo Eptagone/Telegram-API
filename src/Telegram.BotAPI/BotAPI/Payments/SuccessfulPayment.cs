@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,32 +12,32 @@ namespace Telegram.BotAPI.Payments
     public sealed class SuccessfulPayment
     {
         /// <summary>Three-letter ISO 4217 <a href="https://core.telegram.org/bots/payments#supported-currencies">currency</a> code</summary>
-        [JsonPropertyName("currency")]
+        [JsonPropertyName(PropertyNames.Currency)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Currency { get; set; }
         /// <summary>Total price in the <i>smallest units</i> of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the <i>exp</i> parameter in <a href="https://core.telegram.org/bots/payments/currencies.json">currencies.json</a>, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).</summary>
-        [JsonPropertyName("total_amount")]
+        [JsonPropertyName(PropertyNames.TotalAmount)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Total_amount { get; set; }
+        public string TotalAmount { get; set; }
         /// <summary>Bot specified invoice payload.</summary>
-        [JsonPropertyName("invoice_payload")]
+        [JsonPropertyName(PropertyNames.InvoicePayload)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Invoice_payload { get; set; }
+        public string InvoicePayload { get; set; }
         /// <summary>Optional. Identifier of the shipping option chosen by the user.</summary>
-        [JsonPropertyName("shipping_option_id")]
+        [JsonPropertyName(PropertyNames.ShippingOptionId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Shipping_option_id { get; set; }
+        public string ShippingOptionId { get; set; }
         /// <summary>Optional. Order info provided by the user.</summary>
-        [JsonPropertyName("order_info")]
+        [JsonPropertyName(PropertyNames.OrderInfo)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public OrderInfo Order_info { get; set; }
+        public OrderInfo OrderInfo { get; set; }
         /// <summary>Telegram payment identifier.</summary>
-        [JsonPropertyName("telegram_payment_charge_id")]
+        [JsonPropertyName(PropertyNames.TelegramPaymentChargeId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Telegram_payment_charge_id { get; set; }
+        public string TelegramPaymentChargeId { get; set; }
         /// <summary>Provider payment identifier.</summary>
-        [JsonPropertyName("provider_payment_charge_id")]
+        [JsonPropertyName(PropertyNames.ProviderPaymentChargeId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Provider_payment_charge_id { get; set; }
+        public string ProviderPaymentChargeId { get; set; }
     }
 }

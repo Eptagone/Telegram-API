@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -27,11 +27,11 @@ namespace Telegram.BotAPI.Stickers
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("sticker", sticker);
+            json.WriteString(PropertyNames.Sticker, sticker);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("deleteStickerFromSet", stream);
+            return bot.RPC<bool>(MethodNames.DeleteStickerFromSet, stream);
         }
         /// <summary>Use this method to delete a sticker from a set created by the bot. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -49,12 +49,12 @@ namespace Telegram.BotAPI.Stickers
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("sticker", sticker);
+            json.WriteString(PropertyNames.Sticker, sticker);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("deleteStickerFromSet", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.DeleteStickerFromSet, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

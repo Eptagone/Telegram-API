@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -13,39 +13,39 @@ namespace Telegram.BotAPI.InlineMode
     public sealed class InlineQueryResultContact : InlineQueryResult, IInlineQueryResult, IContact, IThumbUWH
     {
         /// <summary>Type of the result, must be contact.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Type => "contact";
         /// <summary>Contact's phone number.</summary>
-        [JsonPropertyName("phone_number")]
+        [JsonPropertyName(PropertyNames.PhoneNumber)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string PhoneNumber { get; set; }
         /// <summary>Contact's first name.</summary>
-        [JsonPropertyName("first_name")]
+        [JsonPropertyName(PropertyNames.FirstName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string FirstName { get; set; }
         /// <summary>Optional. Contact's last name.</summary>
-        [JsonPropertyName("last_name")]
+        [JsonPropertyName(PropertyNames.LastName)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string LastName { get; set; }
         /// <summary>Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes.</summary>
-        [JsonPropertyName("vcard")]
+        [JsonPropertyName(PropertyNames.Vcard)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Vcard { get; set; }
         /// <summary>Optional. Content of the message to be sent instead of the contact.</summary>
-        [JsonPropertyName("input_message_content")]
+        [JsonPropertyName(PropertyNames.InputMessageContent)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InputMessageContent Input_message_content { get; set; }
+        public InputMessageContent InputMessageContent { get; set; }
         /// <summary>Optional. Url of the thumbnail for the result.</summary>
-        [JsonPropertyName("thumb_url")]
+        [JsonPropertyName(PropertyNames.ThumbUrl)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ThumbUrl { get; set; }
         /// <summary>Optional. Thumbnail width.</summary>
-        [JsonPropertyName("thumb_width")]
+        [JsonPropertyName(PropertyNames.ThumbWidth)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint ThumbWidth { get; set; }
         /// <summary>Optional. Thumbnail height.</summary>
-        [JsonPropertyName("thumb_height")]
+        [JsonPropertyName(PropertyNames.ThumbHeight)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public uint ThumbHeight { get; set; }
     }

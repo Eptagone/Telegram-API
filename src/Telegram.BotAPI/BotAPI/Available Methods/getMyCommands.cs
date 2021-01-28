@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -24,7 +24,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<BotCommand[]>("getMyCommands");
+            return bot.RPC<BotCommand[]>(MethodNames.GetMyCommands);
         }
         /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -39,7 +39,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return await bot.RPCA<BotCommand[]>("getMyCommands", cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<BotCommand[]>(MethodNames.GetMyCommands, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -54,7 +54,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<T>("getMyCommands");
+            return bot.RPC<T>(MethodNames.GetMyCommands);
         }
         /// <summary>Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of <see cref="BotCommand"/> on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -70,7 +70,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return await bot.RPCA<T>("getMyCommands", cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.GetMyCommands, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

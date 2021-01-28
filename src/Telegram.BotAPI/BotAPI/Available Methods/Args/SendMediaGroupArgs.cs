@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System.Linq;
@@ -20,7 +20,7 @@ namespace Telegram.BotAPI.AvailableMethods
         public List<InputMedia> Media { get; } = new List<InputMedia>();
         /// <summary>Attached files.</summary>
         [System.Text.Json.Serialization.JsonIgnore]
-        public List<AttachFile> AttachFiles { get; } = new List<AttachFile>();
+        public List<AttachFile> AttachFiles { get; set; } = new List<AttachFile>();
         internal bool UseMultipart() => AttachFiles.Any();
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -27,14 +27,14 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return bot.RPC<bool>("restrictChatMember", args);
+            return bot.RPC<bool>(MethodNames.RestrictChatMember, args);
         }
         /// <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="permissions">New user permissions.</param>
-        /// <param name="until_date">Optional. Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.</param>
+        /// <param name="untilDate">Optional. Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
         public static bool RestrictChatMember(this BotClient bot, long chat_id, int user_id, AvailableTypes.ChatPermissions permissions, [Optional] uint until_date)
@@ -55,7 +55,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 args.UntilDate = until_date;
             }
 
-            return bot.RPC<bool>("restrictChatMember", args);
+            return bot.RPC<bool>(MethodNames.RestrictChatMember, args);
         }
         /// <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -75,14 +75,14 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCA<bool>("restrictChatMember", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.RestrictChatMember, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass True for all boolean parameters to lift restrictions from a user. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
         /// <param name="chatId">Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).</param>
         /// <param name="userId">Unique identifier of the target user.</param>
         /// <param name="permissions">New user permissions.</param>
-        /// <param name="until_date">Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.</param>
+        /// <param name="untilDate">Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
@@ -104,7 +104,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 args.UntilDate = until_date;
             }
 
-            return await bot.RPCA<bool>("restrictChatMember", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.RestrictChatMember, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

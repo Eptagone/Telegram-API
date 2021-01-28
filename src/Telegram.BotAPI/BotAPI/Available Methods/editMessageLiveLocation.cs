@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -32,7 +32,7 @@ namespace Telegram.BotAPI.AvailableMethods
             {
                 throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
-            return bot.RPC<T>("editMessageLiveLocation", args);
+            return bot.RPC<T>(MethodNames.EditMessageLiveLocation, args);
         }
         /// <summary>Use this method to edit live location messages sent by the bot or via the bot (for inline bots). A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation.</summary>
         /// <param name="bot">BotClient</param>
@@ -56,7 +56,7 @@ namespace Telegram.BotAPI.AvailableMethods
             {
                 throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
-            return await bot.RPCA<T>("editMessageLiveLocation", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<T>(MethodNames.EditMessageLiveLocation, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

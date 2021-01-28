@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,16 +12,16 @@ namespace Telegram.BotAPI.TelegramPassport
     public sealed class PassportElementErrorSelfie : PassportElementError
     {
         /// <summary>Error source, must be selfie.</summary>
-        [JsonPropertyName("source")]
+        [JsonPropertyName(PropertyNames.Source)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public override string Source => "selfie";
         /// <summary>The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”.</summary>
-        [JsonPropertyName("type")]
+        [JsonPropertyName(PropertyNames.Type)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public override string Type { get; set; }
         /// <summary>Base64-encoded hash of the file with the selfie.</summary>
-        [JsonPropertyName("file_hash")]
+        [JsonPropertyName(PropertyNames.FileHash)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string File_hash { get; set; }
+        public string FileHash { get; set; }
     }
 }

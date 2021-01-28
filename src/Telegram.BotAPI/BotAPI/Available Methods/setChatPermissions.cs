@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace Telegram.BotAPI.AvailableMethods
 {
@@ -18,7 +19,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="permissions">New default chat permissions.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatPermissions(this BotClient bot, long chat_id, AvailableTypes.ChatPermissions permissions)
+        public static bool SetChatPermissions(this BotClient bot, long chatId, ChatPermissions permissions)
         {
             if (bot == default)
             {
@@ -33,53 +34,53 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteStartObject("permissions");
-            if (permissions.Can_send_messages)
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteStartObject(PropertyNames.Permissions);
+            if (permissions.CanSendMessages)
             {
-                json.WriteBoolean("can_send_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendMessages, true);
             }
 
-            if (permissions.Can_send_media_messages)
+            if (permissions.CanSendMediaMessages)
             {
-                json.WriteBoolean("can_send_media_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendMediaMessages, true);
             }
 
-            if (permissions.Can_send_polls)
+            if (permissions.CanSendPolls)
             {
-                json.WriteBoolean("can_send_polls", true);
+                json.WriteBoolean(PropertyNames.CanSendPolls, true);
             }
 
-            if (permissions.Can_send_other_messages)
+            if (permissions.CanSendOtherMessages)
             {
-                json.WriteBoolean("can_send_other_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendOtherMessages, true);
             }
 
-            if (permissions.Can_add_web_page_previews)
+            if (permissions.CanAddWebPagePreviews)
             {
-                json.WriteBoolean("can_add_web_page_previews", true);
+                json.WriteBoolean(PropertyNames.CanAddWebPagePreviews, true);
             }
 
-            if (permissions.Can_change_info)
+            if (permissions.CanChangeInfo)
             {
-                json.WriteBoolean("can_change_info", true);
+                json.WriteBoolean(PropertyNames.CanChangeInfo, true);
             }
 
-            if (permissions.Can_invite_users)
+            if (permissions.CanInviteUsers)
             {
-                json.WriteBoolean("can_invite_users", true);
+                json.WriteBoolean(PropertyNames.CanInviteUsers, true);
             }
 
-            if (permissions.Can_pin_messages)
+            if (permissions.CanPinMessages)
             {
-                json.WriteBoolean("can_pin_messages", true);
+                json.WriteBoolean(PropertyNames.CanPinMessages, true);
             }
 
             json.WriteEndObject();
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("setChatPermissions", stream);
+            return bot.RPC<bool>(MethodNames.SetChatPermissions, stream);
         }
         /// <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -87,7 +88,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="permissions">New default chat permissions.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static bool SetChatPermissions(this BotClient bot, string chat_id, AvailableTypes.ChatPermissions permissions)
+        public static bool SetChatPermissions(this BotClient bot, string chatId, ChatPermissions permissions)
         {
             if (bot == default)
             {
@@ -102,53 +103,53 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteStartObject("permissions");
-            if (permissions.Can_send_messages)
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteStartObject(PropertyNames.Permissions);
+            if (permissions.CanSendMessages)
             {
-                json.WriteBoolean("can_send_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendMessages, true);
             }
 
-            if (permissions.Can_send_media_messages)
+            if (permissions.CanSendMediaMessages)
             {
-                json.WriteBoolean("can_send_media_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendMediaMessages, true);
             }
 
-            if (permissions.Can_send_polls)
+            if (permissions.CanSendPolls)
             {
-                json.WriteBoolean("can_send_polls", true);
+                json.WriteBoolean(PropertyNames.CanSendPolls, true);
             }
 
-            if (permissions.Can_send_other_messages)
+            if (permissions.CanSendOtherMessages)
             {
-                json.WriteBoolean("can_send_other_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendOtherMessages, true);
             }
 
-            if (permissions.Can_add_web_page_previews)
+            if (permissions.CanAddWebPagePreviews)
             {
-                json.WriteBoolean("can_add_web_page_previews", true);
+                json.WriteBoolean(PropertyNames.CanAddWebPagePreviews, true);
             }
 
-            if (permissions.Can_change_info)
+            if (permissions.CanChangeInfo)
             {
-                json.WriteBoolean("can_change_info", true);
+                json.WriteBoolean(PropertyNames.CanChangeInfo, true);
             }
 
-            if (permissions.Can_invite_users)
+            if (permissions.CanInviteUsers)
             {
-                json.WriteBoolean("can_invite_users", true);
+                json.WriteBoolean(PropertyNames.CanInviteUsers, true);
             }
 
-            if (permissions.Can_pin_messages)
+            if (permissions.CanPinMessages)
             {
-                json.WriteBoolean("can_pin_messages", true);
+                json.WriteBoolean(PropertyNames.CanPinMessages, true);
             }
 
             json.WriteEndObject();
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("setChatPermissions", stream);
+            return bot.RPC<bool>(MethodNames.SetChatPermissions, stream);
         }
         /// <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -157,7 +158,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatPermissionsAsync(this BotClient bot, long chat_id, AvailableTypes.ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatPermissionsAsync(this BotClient bot, long chatId, ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -172,46 +173,46 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chat_id);
-            json.WriteStartObject("permissions");
-            if (permissions.Can_send_messages)
+            json.WriteNumber(PropertyNames.ChatId, chatId);
+            json.WriteStartObject(PropertyNames.Permissions);
+            if (permissions.CanSendMessages)
             {
-                json.WriteBoolean("can_send_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendMessages, true);
             }
 
-            if (permissions.Can_send_media_messages)
+            if (permissions.CanSendMediaMessages)
             {
-                json.WriteBoolean("can_send_media_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendMediaMessages, true);
             }
 
-            if (permissions.Can_send_polls)
+            if (permissions.CanSendPolls)
             {
-                json.WriteBoolean("can_send_polls", true);
+                json.WriteBoolean(PropertyNames.CanSendPolls, true);
             }
 
-            if (permissions.Can_send_other_messages)
+            if (permissions.CanSendOtherMessages)
             {
-                json.WriteBoolean("can_send_other_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendOtherMessages, true);
             }
 
-            if (permissions.Can_add_web_page_previews)
+            if (permissions.CanAddWebPagePreviews)
             {
-                json.WriteBoolean("can_add_web_page_previews", true);
+                json.WriteBoolean(PropertyNames.CanAddWebPagePreviews, true);
             }
 
-            if (permissions.Can_change_info)
+            if (permissions.CanChangeInfo)
             {
-                json.WriteBoolean("can_change_info", true);
+                json.WriteBoolean(PropertyNames.CanChangeInfo, true);
             }
 
-            if (permissions.Can_invite_users)
+            if (permissions.CanInviteUsers)
             {
-                json.WriteBoolean("can_invite_users", true);
+                json.WriteBoolean(PropertyNames.CanInviteUsers, true);
             }
 
-            if (permissions.Can_pin_messages)
+            if (permissions.CanPinMessages)
             {
-                json.WriteBoolean("can_pin_messages", true);
+                json.WriteBoolean(PropertyNames.CanPinMessages, true);
             }
 
             json.WriteEndObject();
@@ -219,7 +220,7 @@ namespace Telegram.BotAPI.AvailableMethods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("setChatPermissions", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SetChatPermissions, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members admin rights. Returns True on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -228,7 +229,7 @@ namespace Telegram.BotAPI.AvailableMethods
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <exception cref="BotRequestException">Thrown when a request to Telegram Bot API got an error response.</exception>
         /// <exception cref="ArgumentNullException">Thrown when a required parameter is null.</exception>
-        public static async Task<bool> SetChatPermissionsAsync(this BotClient bot, string chat_id, AvailableTypes.ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
+        public static async Task<bool> SetChatPermissionsAsync(this BotClient bot, string chatId, ChatPermissions permissions, [Optional] CancellationToken cancellationToken)
         {
             if (bot == default)
             {
@@ -243,46 +244,46 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chat_id);
-            json.WriteStartObject("permissions");
-            if (permissions.Can_send_messages)
+            json.WriteString(PropertyNames.ChatId, chatId);
+            json.WriteStartObject(PropertyNames.Permissions);
+            if (permissions.CanSendMessages)
             {
-                json.WriteBoolean("can_send_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendMessages, true);
             }
 
-            if (permissions.Can_send_media_messages)
+            if (permissions.CanSendMediaMessages)
             {
-                json.WriteBoolean("can_send_media_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendMediaMessages, true);
             }
 
-            if (permissions.Can_send_polls)
+            if (permissions.CanSendPolls)
             {
-                json.WriteBoolean("can_send_polls", true);
+                json.WriteBoolean(PropertyNames.CanSendPolls, true);
             }
 
-            if (permissions.Can_send_other_messages)
+            if (permissions.CanSendOtherMessages)
             {
-                json.WriteBoolean("can_send_other_messages", true);
+                json.WriteBoolean(PropertyNames.CanSendOtherMessages, true);
             }
 
-            if (permissions.Can_add_web_page_previews)
+            if (permissions.CanAddWebPagePreviews)
             {
-                json.WriteBoolean("can_add_web_page_previews", true);
+                json.WriteBoolean(PropertyNames.CanAddWebPagePreviews, true);
             }
 
-            if (permissions.Can_change_info)
+            if (permissions.CanChangeInfo)
             {
-                json.WriteBoolean("can_change_info", true);
+                json.WriteBoolean(PropertyNames.CanChangeInfo, true);
             }
 
-            if (permissions.Can_invite_users)
+            if (permissions.CanInviteUsers)
             {
-                json.WriteBoolean("can_invite_users", true);
+                json.WriteBoolean(PropertyNames.CanInviteUsers, true);
             }
 
-            if (permissions.Can_pin_messages)
+            if (permissions.CanPinMessages)
             {
-                json.WriteBoolean("can_pin_messages", true);
+                json.WriteBoolean(PropertyNames.CanPinMessages, true);
             }
 
             json.WriteEndObject();
@@ -290,7 +291,7 @@ namespace Telegram.BotAPI.AvailableMethods
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("setChatPermissions", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SetChatPermissions, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

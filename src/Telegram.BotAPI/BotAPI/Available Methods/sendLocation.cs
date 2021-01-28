@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -24,7 +24,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<Message>("sendLocation", args);
+            return bot.RPC<Message>(MethodNames.SendLocation, args);
         }
         /// <summary>Use this method to send point on the map. On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -45,7 +45,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCA<Message>("sendLocation", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Message>(MethodNames.SendLocation, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

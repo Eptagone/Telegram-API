@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,28 +12,28 @@ namespace Telegram.BotAPI.Payments
     public sealed class ShippingAddress
     {
         /// <summary>ISO 3166-1 alpha-2 country code</summary>
-        [JsonPropertyName("country_code")]
+        [JsonPropertyName(PropertyNames.CountryCode)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Country_code { get; set; }
+        public string CountryCode { get; set; }
         /// <summary>State, if applicable</summary>
-        [JsonPropertyName("state")]
+        [JsonPropertyName(PropertyNames.State)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string State { get; set; }
         /// <summary>City</summary>
-        [JsonPropertyName("city")]
+        [JsonPropertyName(PropertyNames.City)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string City { get; set; }
         /// <summary>First line for the address</summary>
-        [JsonPropertyName("street_line1")]
+        [JsonPropertyName(PropertyNames.StreetLine1)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Street_line1 { get; set; }
+        public string StreetLine1 { get; set; }
         /// <summary>Second line for the address</summary>
-        [JsonPropertyName("street_line2")]
+        [JsonPropertyName(PropertyNames.StreetLine2)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Street_line2 { get; set; }
+        public string StreetLine2 { get; set; }
         /// <summary>Address post code</summary>
-        [JsonPropertyName("post_code")]
+        [JsonPropertyName(PropertyNames.PostCode)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Post_code { get; set; }
+        public string PostCode { get; set; }
     }
 }

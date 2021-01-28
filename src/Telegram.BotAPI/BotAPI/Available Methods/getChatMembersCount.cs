@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -27,11 +27,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<uint>("getChatMembersCount", stream);
+            return bot.RPC<uint>(MethodNames.GetChatMembersCount, stream);
         }
         /// <summary>Use this method to get the number of members in a chat. Returns Int on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -48,11 +48,11 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chatId);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<uint>("getChatMembersCount", stream);
+            return bot.RPC<uint>(MethodNames.GetChatMembersCount, stream);
         }
         /// <summary>Use this method to get the number of members in a chat. Returns Int on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -70,12 +70,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteNumber("chat_id", chatId);
+            json.WriteNumber(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<uint>("getChatMembersCount", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<uint>(MethodNames.GetChatMembersCount, stream, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>Use this method to get the number of members in a chat. Returns Int on success.</summary>
         /// <param name="bot">BotClient</param>
@@ -93,12 +93,12 @@ namespace Telegram.BotAPI.AvailableMethods
             var stream = new MemoryStream();
             using var json = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true });
             json.WriteStartObject();
-            json.WriteString("chat_id", chatId);
+            json.WriteString(PropertyNames.ChatId, chatId);
             json.WriteEndObject();
             await json.FlushAsync(cancellationToken).ConfigureAwait(false);
             await json.DisposeAsync().ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<uint>("getChatMembersCount", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<uint>(MethodNames.GetChatMembersCount, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

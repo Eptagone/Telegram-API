@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System.Linq;
@@ -15,28 +15,28 @@ namespace Telegram.BotAPI.UpdatingMessages
     public sealed class EditMessageMediaArgs : IAttachFiles
     {
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
-        [JsonPropertyName("chat_id")]
+        [JsonPropertyName(PropertyNames.ChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public object ChatId { get; set; }
         ///<summary>Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
-        [JsonPropertyName("message_id")]
+        [JsonPropertyName(PropertyNames.MessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Message_id { get; set; }
+        public uint MessageId { get; set; }
         ///<summary>Required if chat_id and message_id are not specified. Identifier of the inline message.</summary>
-        [JsonPropertyName("inline_message_id")]
+        [JsonPropertyName(PropertyNames.InlineMessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Inline_message_id { get; set; }
+        public string InlineMessageId { get; set; }
         ///<summary>A <see cref="InputMedia"/> object for a new media content of the message.</summary>
-        [JsonPropertyName("media")]
+        [JsonPropertyName(PropertyNames.Media)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public InputMedia Media { get; set; }
         ///<summary>A <see cref="InlineKeyboardMarkup"/> object for a new inline keyboard.</summary>
-        [JsonPropertyName("reply_markup")]
+        [JsonPropertyName(PropertyNames.ReplyMarkup)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public InlineKeyboardMarkup Reply_markup { get; set; }
+        public InlineKeyboardMarkup ReplyMarkup { get; set; }
         /// <summary>Attached files.</summary>
         [System.Text.Json.Serialization.JsonIgnore]
-        public List<AttachFile> AttachFiles { get; } = new List<AttachFile>();
+        public List<AttachFile> AttachFiles { get; set; } = new List<AttachFile>();
         internal bool UseMultipart() => AttachFiles.Any();
     }
 }

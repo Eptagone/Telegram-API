@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using Newtonsoft.Json;
@@ -12,20 +12,20 @@ namespace Telegram.BotAPI.Games
     public sealed class GetGameScoreArgs
     {
         /// <summary>Target user id.</summary>
-        [JsonPropertyName("user_id")]
+        [JsonPropertyName(PropertyNames.UserId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int UserId { get; set; }
         /// <summary>Required if inline_message_id is not specified. Unique identifier for the target chat.</summary>
-        [JsonPropertyName("chat_id")]
+        [JsonPropertyName(PropertyNames.ChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public long Chat_id { get; set; }
+        public long ChatId { get; set; }
         /// <summary>Required if inline_message_id is not specified. Identifier of the sent message.</summary>
-        [JsonPropertyName("message_id")]
+        [JsonPropertyName(PropertyNames.MessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public uint Message_id { get; set; }
+        public uint MessageId { get; set; }
         /// <summary>Required if chat_id and message_id are not specified. Identifier of the inline message.</summary>
-        [JsonPropertyName("inline_message_id")]
+        [JsonPropertyName(PropertyNames.InlineMessageId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Inline_message_id { get; set; }
+        public string InlineMessageId { get; set; }
     }
 }

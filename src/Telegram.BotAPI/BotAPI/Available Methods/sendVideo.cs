@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -29,7 +29,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return bot.RPCF<Message>("sendVideo", args);
+            return bot.RPCF<Message>(MethodNames.SendVideo, args);
         }
         /// <summary>Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned.</summary>
         /// <param name="bot">BotClient</param>
@@ -50,7 +50,7 @@ namespace Telegram.BotAPI.AvailableMethods
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCAF<Message>("sendVideo", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCAF<Message>(MethodNames.SendVideo, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

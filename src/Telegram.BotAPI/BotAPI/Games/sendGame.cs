@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -23,7 +23,7 @@ namespace Telegram.BotAPI.Games
                 throw new ArgumentNullException(nameof(bot));
             }
 
-            return bot.RPC<Message>("sendGame", args);
+            return bot.RPC<Message>(MethodNames.SendGame, args);
         }
         ///<summary>Use this method to send a game. On success, the sent Message is returned.</summary>
         ///<param name="bot">BotClient</param>
@@ -43,7 +43,7 @@ namespace Telegram.BotAPI.Games
                 throw new ArgumentNullException(nameof(args));
             }
 
-            return await bot.RPCA<Message>("sendGame", args, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<Message>(MethodNames.SendGame, args, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

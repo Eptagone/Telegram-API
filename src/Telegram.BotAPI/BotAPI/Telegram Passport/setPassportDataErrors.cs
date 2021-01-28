@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Quetzal Rivera.
+// Copyright (c) 2021 Quetzal Rivera.
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
@@ -37,7 +37,7 @@ namespace Telegram.BotAPI.TelegramPassport
             options.Converters.Add(new Tools.PassportElementErrorJsonConverter());
             var args = new SetPassportDataErrorsArgs
             {
-                User_id = user_id,
+                UserId = user_id,
                 Errors = errors
             };
             var stream = new MemoryStream();
@@ -45,7 +45,7 @@ namespace Telegram.BotAPI.TelegramPassport
             JsonSerializer.Serialize(json, args, options);
             json.Flush(); json.Dispose();
             stream.Seek(0, SeekOrigin.Begin);
-            return bot.RPC<bool>("setPassportDataErrors", stream);
+            return bot.RPC<bool>(MethodNames.SetPassportDataErrors, stream);
         }
         /// <summary>Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
         /// <para>Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.</para></summary>
@@ -75,13 +75,13 @@ namespace Telegram.BotAPI.TelegramPassport
             options.Converters.Add(new Tools.PassportElementErrorJsonConverter());
             var args = new SetPassportDataErrorsArgs
             {
-                User_id = user_id,
+                UserId = user_id,
                 Errors = errors
             };
             var stream = new MemoryStream();
             await JsonSerializer.SerializeAsync(stream, args, typeof(SetPassportDataErrorsArgs), options, cancellationToken: cancellationToken).ConfigureAwait(false);
             stream.Seek(0, SeekOrigin.Begin);
-            return await bot.RPCA<bool>("setPassportDataErrors", stream, cancellationToken).ConfigureAwait(false);
+            return await bot.RPCA<bool>(MethodNames.SetPassportDataErrors, stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }
