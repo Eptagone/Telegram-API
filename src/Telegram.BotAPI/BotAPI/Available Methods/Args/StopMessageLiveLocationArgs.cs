@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
 using Telegram.BotAPI.AvailableTypes;
-using Telegram.BotAPI;
 
 namespace Telegram.BotAPI.AvailableMethods
 {

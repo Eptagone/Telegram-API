@@ -6,6 +6,6 @@ namespace Telegram.BotAPI.AvailableTypes
     /// <summary>Reply Markup</summary>
     public abstract class ReplyMarkup
     {
-        
+
     }
 }

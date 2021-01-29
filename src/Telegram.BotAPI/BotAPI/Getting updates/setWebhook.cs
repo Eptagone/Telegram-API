@@ -120,7 +120,7 @@ namespace Telegram.BotAPI.GettingUpdates
 
                 if (allowedUpdates != default)
                 {
-                    args.Allowed_updates = allowedUpdates;
+                    args.AllowedUpdates = allowedUpdates;
                 }
 
                 if (dropPendingUpdates)
@@ -199,7 +199,7 @@ namespace Telegram.BotAPI.GettingUpdates
 
                 if (allowedUpdates != default)
                 {
-                    args.Allowed_updates = allowedUpdates;
+                    args.AllowedUpdates = allowedUpdates;
                 }
 
                 if (dropPendingUpdates)

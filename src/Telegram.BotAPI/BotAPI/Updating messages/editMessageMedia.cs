@@ -28,7 +28,7 @@ namespace Telegram.BotAPI.UpdatingMessages
             {
                 throw new ArgumentNullException(nameof(args));
             }
-            if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
+            if (typeof(T) != typeof(Message) && typeof(T) != typeof(bool))
             {
                 throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.AvailableTypes.Message or bool.");
             }
@@ -59,7 +59,7 @@ namespace Telegram.BotAPI.UpdatingMessages
             {
                 throw new ArgumentNullException(nameof(args));
             }
-            if (typeof(T) != typeof(Message) || typeof(T) != typeof(bool))
+            if (typeof(T) != typeof(Message) && typeof(T) != typeof(bool))
             {
                 throw new ArgumentException($"{nameof(T)} must be a Telegram.BotAPI.AvailableTypes.Message or bool.");
             }

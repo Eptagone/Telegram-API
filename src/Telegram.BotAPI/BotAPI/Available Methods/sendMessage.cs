@@ -2,7 +2,6 @@
 // Licensed under the MIT License, See LICENCE in the project root for license information.
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
