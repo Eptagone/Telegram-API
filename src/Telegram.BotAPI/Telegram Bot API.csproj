@@ -31,8 +31,11 @@ Contains all available methods in the Bot API 5.0 released on November 4, 2020. 
     <PackageProjectUrl>https://github.com/Eptagone/Telegram.BotAPI</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <AssemblyName>Telegram.BotAPI</AssemblyName>
-    <PackageReleaseNotes>- Added new interfaces
-- Removed underscores from namespaces</PackageReleaseNotes>
+    <PackageReleaseNotes>- Removed underscores from namespaces, properties, and parameters.
+- Added new interfaces.
+- Added abstract classes: TelegramBot and TelegramBotAsync.
+- The ParseMode class was moved to the Telegram.BotAPI.AvailableMethods namespace.
+- Added extension methods to the ParseMode class..</PackageReleaseNotes>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
